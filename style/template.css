@@ -1,0 +1,46 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    background-color:rgb(180,30,30);
+}
+
+.wrapper{
+    height: 360px;
+    width: 260px;
+    margin: 100px auto;
+    
+}
+
+.login{
+    background-image: url(../images/login-background.jpeg);
+    background-size: cover;
+    width:100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 100px auto;
+}
+
+.login .login_user{
+    margin-top: 50px;
+}
+
+.login .login_pass{
+    margin-top: 20px;
+}
+
+.login label{
+    padding-left: 10px;
+    font-weight: 500;
+}
+.login input{
+    height: 20px;
+    width: 180px;
+}
+
+
+.login button{
+    width:160px;
+    height: 30px;
+    margin: 40px auto;
+}
