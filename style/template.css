@@ -75,3 +75,32 @@ header .wrapper h1 span{
     height: 30px;
     margin: 40px auto;
 }
+
+footer .wrapper{
+    align-items: center;
+    background-color: dimgray;
+    display: flex;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 19px;
+    font-weight: 600;
+    height: 310px;
+    justify-content: space-around;
+}
+
+footer .container_links{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+footer .container_links ul{
+    display: flex;
+    list-style: none;
+    padding:0;
+}
+
+footer .container_links ul li{
+    margin: 0 5px;
+}
+
+
