@@ -5,20 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/template.css">
+    <!--Fonte Open Sans-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <title>lasCopas - login</title>
 </head>
 <body>
+    <header>
+        <div class="wrapper">
+            <a href="index.html"><h1>las <span>Copas</span></h1></a>
+        </div>
+    </header>
     <div class="wrapper">
-        <div class="login">
-            <div class="login_user">
-                <label for="usuario">Login: </label>
-                <input type="text" id="usuario" name="usuario" required>
+        <div class="login_container">
+            <div class="login">
+                <div class="login_user">
+                    <label for="usuario">Login: </label>
+                    <input type="text" id="usuario" name="usuario" required>
+                </div>
+                <div class="login_pass">
+                    <label for="password">Senha: </label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="login_button">Logar</button>
             </div>
-            <div class="login_pass">
-                <label for="password">Senha: </label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit" class="login_button">Logar</button>
         </div>
     </div>
 </body>
