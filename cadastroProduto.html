@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/template.css">
+    <link rel="stylesheet" href="./style/form.css">
+    <title>lasCopas - cadastro</title>
+</head>
+<body>
+    <header>
+        <div class="wrapper">
+            <a href="index.html"><h1>las <span>Copas</span></h1></a>
+            <nav>
+                <a href="produtos.html">Produtos</a>
+                <a href="sobre.html">Trajetoria</a>
+                <a class="link_login" href="login.html">Login</a>
+            </nav>
+        </div>
+    </header>
+    <content>
+        <div class="wrapper">
+            
+                <form action="teste.html">
+                    <div class="container_formulario">
+                    <div class="conjunto">
+                        <p>Uvas</p>
+                        <div class="wrapper_uvas">
+                            <div class="wrapper_check">
+                                <label for="syrrah">
+                                    <small>Syrrah</small>
+                                    <input type="checkbox" id="syrrah" name="uvas" value= "syrrah">
+                                </label>
+                                <label for="malbec">
+                                    <small>Malbec</small>
+                                    <input type="checkbox" id="malbec" name="uvas" value= "malbec">
+                                </label>
+                                <label for="tempr">
+                                    <small>Tempranillo</small>
+                                    <input type="checkbox" id="tempr" name="uvas" value="tempranillo">
+                                </label>
+                            </div>
+                            <div class="wrapper_check">
+                                <label for="suavignon">
+                                    <small>Suavignon</small>
+                                    <input type="checkbox" id="suavignon" name="uvas" value="suavignon">
+                                </label>
+                                <label for="pinot">
+                                    <small>Pinot Noir</small>
+                                    <input type="checkbox" id="pinot" name="uvas" value="pinot">
+                                </label>
+                                <label for="merlot">
+                                    <small>Merlot</small>
+                                    <input type="checkbox" id="merlot" name="uvas" value="merlot">
+                                </label>
+                            </div>
+                        </div>
+                        <p>Cosecha</p>
+                        <div class="wrapper_check">
+                            <label for="temprana">
+                                <small>Temprana</small>
+                                <input type="radio" id="temprana" name="cosecha" value="temprana">
+                            </label>
+                            <label for="tardia">
+                                <small>Tardia</small>
+                                <input type="radio" id="tardia" name="cosecha" value="tardia" checked>
+                            </label>
+                        </div>
+                        <p>Tipo</p>
+                        <div class="wrapper_check">
+                            <label for="tinto">
+                                <small>Tinto</small>
+                                <input type="radio" id="tinto" name="tipo" value="tinto" checked>
+                            </label>
+                            <label for="branco">
+                                <small>Branco</small>
+                                <input type="radio" id="branco" name="tipo" value="branco">
+                            </label>
+                            <label for="rose">
+                                <small>Rosé</small>
+                                <input type="radio" id="rose" name="tipo" value="rose">
+                            </label>
+                            <label for="frisante">
+                                <small>Frisante</small>
+                                <input type="radio" id="frisante" name="tipo" value="frisante">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="conjunto">
+                        <label for="finca">
+                            <small>Finca</small>
+                            <input type="text" id="finca" name="finca" required>
+                        </label>
+                        
+                        <label for="ano">
+                            <small>Ano produção</small>
+                            <input type="text" id="ano" name="ano">
+                        </label>
+
+                        <label for="preco">
+                            <small>Preço</small>
+                            <input type="text" id="preco" name="preco">
+                        </label>
+                        
+                        <p>País de origem</p>
+                        <label for="origem">
+                            <select id="origem" name="origem">
+                                <option disabled selected>Selecione Origem</option>
+                                <option value="ar">Argentina</option>
+                                <option value="br">Brasil</option>
+                                <option value="ch">Chile</option>
+                                <option value="es">Espanha</option>
+                                <option value="fr">França</option>
+                                <option value="it">Itália</option>
+                                <option value="pt">Portugal</option>
+                            </select>
+                        </label> 
+
+                        <label for="rotulo">
+                            <span>Carregar Rotulo</span>
+                            <input type="file" id="rotulo" name="rotulo" accept=".jpg, .jpeg, .png">
+                        </label>
+                    </div>
+
+                    
+                </div>
+                <button type="submit" value="Cadastrar">Cadastrar</button>
+                </form>
+            
+        </div>
+    </content>
+</body>
+</html>

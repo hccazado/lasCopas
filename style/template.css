@@ -18,6 +18,7 @@ header .wrapper{
     margin: 0;
     text-align: left;
     justify-content: space-between;
+    font-family: 'Open Sans', sans-serif;
 }
 
 header .wrapper a{
@@ -28,7 +29,6 @@ header .wrapper a{
 header .wrapper h1{
     color: #000;
     padding: 10px 0 20px 30px;
-    font-family: 'Open Sans', sans-serif;
     margin:0;
 }
 
