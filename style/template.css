@@ -37,43 +37,65 @@ header .wrapper h1 span{
 }
 
 .login_container{
-    height: 360px;
-    width: 260px;
-    margin: 100px auto;   
+    /*height: 360px;*/
+    
+    height: 400px;
+    margin: auto auto;   
 }
 
 .login{
-    background-image: url(../images/login-background.jpeg);
+   /*background-image: url(../images/login-background.jpeg);*/
     background-size: cover;
-    width:100%;
-    height: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: rgba(0,0,0, 0.6) 1px 2px 6px;
+    width:370px;
     display: flex;
     flex-direction: column;
-    margin: 100px auto;
+    margin: 60px auto;
 }
 
 .login .login_user{
-    margin-top: 50px;
-}
-
-.login .login_pass{
     margin-top: 20px;
 }
 
+
 .login label{
-    padding-left: 10px;
-    font-weight: 500;
+    margin: 20px;
 }
+
 .login input{
-    height: 20px;
-    width: 180px;
+    height: 30px;
+    margin: 20px 15px 20px 0;
+    width: 70%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 
 .login button{
-    width:160px;
-    height: 30px;
-    margin: 40px auto;
+    background-color: #ccc;
+    font-size: 14px;
+    width: 92%;
+    padding: 10px;
+    margin: 15px auto;
+    border: 0;
+    transition: all 0.5s;
+}
+
+.login button:hover{
+    background-color: cadetblue;
+    color: white
+}
+
+.login p {
+    text-align: center;
+    font-size: 13px;
+}
+.login p a{
+    text-decoration: none;
+    color: cadetblue;
+    font-weight: 600;
 }
 
 footer .wrapper{
