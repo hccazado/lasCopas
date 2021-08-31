@@ -14,13 +14,16 @@ header .wrapper{
     border-bottom: 1px solid darkgray;
     box-shadow: 2px 0 5px darkgray;
     box-sizing: border-box;
+    display: flex;
     height: 80px;
     margin: 0;
     text-align: left;
+    justify-content: space-between;
 }
 
 header .wrapper a{
     text-decoration: none;
+    justify-self: start;
 }
 
 header .wrapper h1{
@@ -35,6 +38,35 @@ header .wrapper h1 span{
     position: relative;
     top:20px;
 }
+
+header .wrapper nav{
+    list-style: none;
+    display: flex;
+    margin-top: 10px;
+}
+
+header .wrapper nav a{
+    color: #676767;
+    padding: 15px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    margin-right: 20px;
+    transition: all 0.5s;
+}
+header .wrapper .link_login{
+    color:darkblue;
+}
+
+header .wrapper nav a:hover{
+    background-color: cadetblue;
+    color:white;
+}
+header .wrapper nav a:active{
+    background-color: darkblue;
+    color:white;
+}
+
 
 .login_container{
     /*height: 360px;*/
