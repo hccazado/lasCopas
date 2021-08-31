@@ -1,7 +1,6 @@
 html, body{
     margin: 0;
     padding: 0;
-    /*background-color:rgb(180,30,30);*/
 }
 
 .wrapper{
@@ -67,6 +66,64 @@ header .wrapper nav a:active{
     color:white;
 }
 
+content .wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+content .wrapper #carousel{
+    margin: 10px auto;
+    width: 600px;
+    max-width: 100%;
+}
+
+content .wrapper #carousel img{
+    height: 270px;
+    
+}
+
+content .wrapper .destaque{
+    margin:40px 0 40px 0;
+}
+
+content .wrapper .destaque_container{
+    display: flex;
+    justify-content: space-around;
+}
+
+content .wrapper .card{
+    width: 30%;
+    margin: 20px auto;
+    border: 1px solid #676767;
+    border-radius: 10px;
+    box-shadow: rgba(80,80,70, 0.5) 1px 1px 5px;
+}
+
+content .wrapper .card a{
+    text-decoration: none;
+    color: #222;
+    text-align: left;
+}
+
+content .wrapper .card p{
+    text-align: left;
+    padding: 6px 0 6px 10px;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+
+content .wrapper .card small{
+    font-weight: 500;
+    text-align: left;
+    padding: 0 0 6px 10px;
+}
+
+
+content .wrapper .card img{
+    text-align: center;
+    width: 100%;
+}
 
 footer .wrapper{
     align-items: center;

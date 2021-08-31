@@ -1,13 +1,10 @@
 
 .login_container{
-    /*height: 360px;*/
-    
     height: 400px;
     margin: auto auto;   
 }
 
 .login{
-   /*background-image: url(../images/login-background.jpeg);*/
     background-size: cover;
     border: 1px solid #ccc;
     border-radius: 5px;
