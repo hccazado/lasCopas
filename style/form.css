@@ -3,28 +3,85 @@
     margin: 30px auto;
     padding: 10px;
     justify-content: space-around;
-    width:600px;
+    width:650px;
+}
+
+.wrapper .button{
+    padding: 10px 20px;
+    border: 0;
+    background-color: cadetblue;
+    color: #ccc;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.wrapper .button:hover{
+    color:#fff;
+    border: palevioletred 1px solid;
 }
 
 .wrapper .container_formulario .conjunto{
+    border: 1px solid black;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
     margin: 20px auto;
-    width:250px; 
+    width:280px; 
 }
 .wrapper .container_formulario .conjunto p {
     align-self: center;
-    margin: 6px;
+    margin: 10px;
+    border-bottom: 1px solid #ccc;
+    border-width: 80%;
+}
+
+.wrapper .container_formulario .conjunto label small{
+    font-size: 16px;
+}
+
+.wrapper .container_formulario .conjunto label input{
+    margin: 10px auto;
+}
+
+.wrapper .container_formulario .conjunto select{
+    margin: 10px auto;
+    width: 90%;
 }
 
 .wrapper .container_formulario .conjunto .wrapper_uvas{
     display: flex;
+    justify-content: space-around;
 }
 
 .wrapper .container_formulario .conjunto .wrapper_check{
     display: flex;
     flex-direction: column;
     width:100px;
+}
+
+.text_right{
+    text-align: right;
+}
+
+.cosecha{
+    flex-direction: row!important;
+    align-self: center;
+}
+
+.wrapper_tipo{
     align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    margin: 10px 20px 15px 10px;
+}
+.row{
+    align-self: center;
+    display: flex;
+    flex-direction: row!important;
+}
+
+.wrapper_campos{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 20px 20px 10px 0;
 }

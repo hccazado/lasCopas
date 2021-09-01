@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/template.css">
     <link rel="stylesheet" href="./style/form.css">
+    <!--Fonte Open Sans-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <title>lasCopas - cadastro</title>
 </head>
 <body>
@@ -27,7 +31,7 @@
                     <div class="conjunto">
                         <p>Uvas</p>
                         <div class="wrapper_uvas">
-                            <div class="wrapper_check">
+                            <div class="wrapper_check text_right">
                                 <label for="syrrah">
                                     <small>Syrrah</small>
                                     <input type="checkbox" id="syrrah" name="uvas" value= "syrrah">
@@ -41,7 +45,7 @@
                                     <input type="checkbox" id="tempr" name="uvas" value="tempranillo">
                                 </label>
                             </div>
-                            <div class="wrapper_check">
+                            <div class="wrapper_check text_right">
                                 <label for="suavignon">
                                     <small>Suavignon</small>
                                     <input type="checkbox" id="suavignon" name="uvas" value="suavignon">
@@ -57,7 +61,7 @@
                             </div>
                         </div>
                         <p>Cosecha</p>
-                        <div class="wrapper_check">
+                        <div class="wrapper_check cosecha">
                             <label for="temprana">
                                 <small>Temprana</small>
                                 <input type="radio" id="temprana" name="cosecha" value="temprana">
@@ -68,45 +72,50 @@
                             </label>
                         </div>
                         <p>Tipo</p>
-                        <div class="wrapper_check">
-                            <label for="tinto">
-                                <small>Tinto</small>
-                                <input type="radio" id="tinto" name="tipo" value="tinto" checked>
-                            </label>
-                            <label for="branco">
-                                <small>Branco</small>
-                                <input type="radio" id="branco" name="tipo" value="branco">
-                            </label>
-                            <label for="rose">
-                                <small>Rosé</small>
-                                <input type="radio" id="rose" name="tipo" value="rose">
-                            </label>
-                            <label for="frisante">
-                                <small>Frisante</small>
-                                <input type="radio" id="frisante" name="tipo" value="frisante">
-                            </label>
+                        <div class=" row">
+                            <div class="wrapper_tipo">
+                                <label for="tinto">
+                                    <small>Tinto</small>
+                                    <input type="radio" id="tinto" name="tipo" value="tinto" checked>
+                                </label>
+                                <label for="branco">
+                                    <small>Branco</small>
+                                    <input type="radio" id="branco" name="tipo" value="branco">
+                                </label>
+                            </div>
+                            <div class="wrapper_tipo">
+                                <label for="rose">
+                                    <small>Rosé</small>
+                                    <input type="radio" id="rose" name="tipo" value="rose">
+                                </label>
+                                <label for="frisante">
+                                    <small>Frisante</small>
+                                    <input type="radio" id="frisante" name="tipo" value="frisante">
+                                </label>
+                            </div>
                         </div>
                     </div>
 
                     <div class="conjunto">
-                        <label for="finca">
-                            <small>Finca</small>
-                            <input type="text" id="finca" name="finca" required>
-                        </label>
-                        
-                        <label for="ano">
-                            <small>Ano produção</small>
-                            <input type="text" id="ano" name="ano">
-                        </label>
+                        <div class="wrapper_campos">
+                            <label for="finca">
+                                <small>Finca</small>
+                                <input type="text" id="finca" name="finca" required>
+                            </label>
+                            
+                            <label for="ano">
+                                <small>Ano produção</small>
+                                <input type="number" id="ano" name="ano" min="1900">
+                            </label>
 
-                        <label for="preco">
-                            <small>Preço</small>
-                            <input type="text" id="preco" name="preco">
-                        </label>
-                        
+                            <label for="preco">
+                                <small>Preço</small>
+                                <input type="text" id="preco" name="preco">
+                            </label>
+                        </div>
                         <p>País de origem</p>
                         <label for="origem">
-                            <select id="origem" name="origem">
+                            <select id="origem" name="origem" required>
                                 <option disabled selected>Selecione Origem</option>
                                 <option value="ar">Argentina</option>
                                 <option value="br">Brasil</option>
@@ -118,17 +127,14 @@
                             </select>
                         </label> 
 
+                        <p>Carregar Rotulo</p>
                         <label for="rotulo">
-                            <span>Carregar Rotulo</span>
                             <input type="file" id="rotulo" name="rotulo" accept=".jpg, .jpeg, .png">
                         </label>
-                    </div>
-
-                    
+                    </div>    
                 </div>
-                <button type="submit" value="Cadastrar">Cadastrar</button>
-                </form>
-            
+                <button class="button" type="submit" value="Cadastrar">Cadastrar</button>
+            </form>
         </div>
     </content>
 </body>
