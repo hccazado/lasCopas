@@ -1,26 +1,12 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style/template.css">
-    <!--Fonte Open Sans-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-    <!--Importando CSS BootStrap-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <title>lasCopas - Home</title>
-</head>
+<%- include("./partials/header") %>
 <body>
     <header>
         <div class="wrapper">
             <a href="index.html"><h1>las <span>Copas</span></h1></a>
             <nav>
-                <a href="produtos.html">Produtos</a>
-                <a href="sobre.html">Trajetoria</a>
-                <a class="link_login" href="login.html">Login</a>
+                <a href="/produtos">Produtos</a>
+                <a href="/sobre">Trajetoria</a>
+                <a class="link_login" href="/login">Login</a>
             </nav>
         </div>
     </header>
@@ -29,13 +15,13 @@
             <div id="carousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img src="/images/finca1.jpg" class="d-block" alt="">
+                    <img src="./images/finca1.jpg" class="d-block" alt="">
                   </div>
                   <div class="carousel-item">
-                    <img src="/images/finca2-cuyo.jpg" class="d-block" alt="">
+                    <img src="./images/finca2-cuyo.jpg" class="d-block" alt="">
                   </div>
                   <div class="carousel-item">
-                    <img src="/images/finca3_cuyo.jpg" class="d-block" alt="">
+                    <img src="./images/finca3_cuyo.jpg" class="d-block" alt="">
                   </div>
                 </div>
               </div>
@@ -45,21 +31,21 @@
                 <div class="destaque_container">
                     <div class="card">
                         <a href="produto/id">
-                            <img src="/images/EM-roble.png" alt="Estancia Mendoza - Roble">
+                            <img src="./images/EM-roble.png" alt="Estancia Mendoza - Roble">
                             <p>Estancia Mendoza - Roble</p>
                             <small>R$70,90</small>    
                         </a>
                     </div>
                     <div class="card">
                         <a href="produto/id">
-                            <img src="/images/Trapiche - cabernet.png" alt="Trapiche - Cabernet Suavignon">
+                            <img src="./images/Trapiche - cabernet.png" alt="Trapiche - Cabernet Suavignon">
                             <p>Trapiche - Cabernet Suavignon</p>
                             <small>R$72,90</small> 
                         </a> 
                     </div>
                     <div class="card">
                         <a href="produto/id">
-                            <img src="/images/Artero-tempranillo.webp" alt="Artero - Tempranillo">
+                            <img src="./images/Artero-tempranillo.webp" alt="Artero - Tempranillo">
                             <p>Artero - Tempranillo</p>
                             <small>R$68,99</small>
                         </a>
@@ -79,13 +65,13 @@
                 <nav>
                     <ul>
                         <li>
-                            <a href="www.facebook.com"><img src="https://img.icons8.com/ios/50/000000/facebook--v1.png" alt="facebook logo"/></a>
+                            <a href="www.facebook.com" target="_blank"><img src="https://img.icons8.com/ios/50/000000/facebook--v1.png" alt="facebook logo"/></a>
                         </li>
                         <li>
-                            <a href="www.instagram.com"><img src="https://img.icons8.com/ios/50/000000/instagram-new--v1.png" alt="Instagram logo"/></a>
+                            <a href="www.instagram.com" target="_blank"><img src="https://img.icons8.com/ios/50/000000/instagram-new--v1.png" alt="Instagram logo"/></a>
                         </li>
                         <li>
-                            <a href="www.twitter.com"><img src="https://img.icons8.com/ios/50/000000/twitter--v1.png" alt="Twitter logo"/></a>
+                            <a href="www.twitter.com" target="_blank"><img src="https://img.icons8.com/ios/50/000000/twitter--v1.png" alt="Twitter logo"/></a>
                         </li>
                     </ul>
                 </nav>
