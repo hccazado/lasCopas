@@ -51,6 +51,7 @@
 .wrapper .container_formulario .conjunto .wrapper_uvas{
     display: flex;
     justify-content: space-around;
+    font-size: 11px;
 }
 
 .wrapper .container_formulario .conjunto .wrapper_check{
