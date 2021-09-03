@@ -129,11 +129,16 @@ footer .wrapper{
     align-items: center;
     background-color: dimgray;
     display: flex;
+    flex-wrap: wrap;
     font-family: 'Open Sans', sans-serif;
-    font-size: 19px;
+    font-size: 18px;
     font-weight: 600;
-    height: 310px;
+    
     justify-content: space-around;
+}
+
+footer .containet_map{
+    padding: 10px auto;
 }
 
 footer .container_links{

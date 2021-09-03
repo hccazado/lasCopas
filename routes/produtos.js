@@ -6,4 +6,6 @@ router.get("/", controller.index);
 
 router.get("/cadastro", controller.cadastro);
 
+router.get("/detalhe", controller.detalhe);
+
 module.exports = router;

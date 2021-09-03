@@ -1,0 +1,24 @@
+<%- include('./partials/header')%>
+<content>
+    <div class="wrapper">
+       <div class="produto_wrapper">
+            <div class="container_rotulo">
+                <img src="<%=rotulo%>" alt="rotulo">
+            </div>
+            <div class="container_descritivo">
+                <h4>Origem: <span><%=origem%></span></h4>
+                <h4>Uva: <span><%=uvas%></span></h4>
+                <h4>Ano: <span><%=ano%></span></h4>
+                <h4>Tipo: <span><%=tipo%></span></h4>
+                <% if (temDescricao) { %>
+                    <h4>Descrição: </h4><span><%=descricao%></span></span>
+                    <% } %>
+            </div>
+            <div class="preco">
+                <h4>Preço R$<%=preco%></h4>
+                <button class="button">Comprar</button>
+            </div>
+       </div>
+    </div>
+</content>
+<%- include('./partials/footer')%>

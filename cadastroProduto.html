@@ -25,116 +25,22 @@
     </header>
     <content>
         <div class="wrapper">
-            
-                <form action="teste.html">
-                    <div class="container_formulario">
-                    <div class="conjunto">
-                        <p>Uvas</p>
-                        <div class="wrapper_uvas">
-                            <div class="wrapper_check text_right">
-                                <label for="syrrah">
-                                    <small>Syrrah</small>
-                                    <input type="checkbox" id="syrrah" name="uvas" value= "syrrah">
-                                </label>
-                                <label for="malbec">
-                                    <small>Malbec</small>
-                                    <input type="checkbox" id="malbec" name="uvas" value= "malbec">
-                                </label>
-                                <label for="tempr">
-                                    <small>Tempranillo</small>
-                                    <input type="checkbox" id="tempr" name="uvas" value="tempranillo">
-                                </label>
-                            </div>
-                            <div class="wrapper_check text_right">
-                                <label for="suavignon">
-                                    <small>Suavignon</small>
-                                    <input type="checkbox" id="suavignon" name="uvas" value="suavignon">
-                                </label>
-                                <label for="pinot">
-                                    <small>Pinot Noir</small>
-                                    <input type="checkbox" id="pinot" name="uvas" value="pinot">
-                                </label>
-                                <label for="merlot">
-                                    <small>Merlot</small>
-                                    <input type="checkbox" id="merlot" name="uvas" value="merlot">
-                                </label>
-                            </div>
-                        </div>
-                        <p>Cosecha</p>
-                        <div class="wrapper_check cosecha">
-                            <label for="temprana">
-                                <small>Temprana</small>
-                                <input type="radio" id="temprana" name="cosecha" value="temprana">
-                            </label>
-                            <label for="tardia">
-                                <small>Tardia</small>
-                                <input type="radio" id="tardia" name="cosecha" value="tardia" checked>
-                            </label>
-                        </div>
-                        <p>Tipo</p>
-                        <div class=" row">
-                            <div class="wrapper_tipo">
-                                <label for="tinto">
-                                    <small>Tinto</small>
-                                    <input type="radio" id="tinto" name="tipo" value="tinto" checked>
-                                </label>
-                                <label for="branco">
-                                    <small>Branco</small>
-                                    <input type="radio" id="branco" name="tipo" value="branco">
-                                </label>
-                            </div>
-                            <div class="wrapper_tipo">
-                                <label for="rose">
-                                    <small>Rosé</small>
-                                    <input type="radio" id="rose" name="tipo" value="rose">
-                                </label>
-                                <label for="frisante">
-                                    <small>Frisante</small>
-                                    <input type="radio" id="frisante" name="tipo" value="frisante">
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="conjunto">
-                        <div class="wrapper_campos">
-                            <label for="finca">
-                                <small>Finca</small>  
-                            </label>
-                            <input type="text" id="finca" name="finca" required>
-                            
-                            <label for="ano">
-                                <small>Ano produção</small>
-                            </label>
-                            <input type="number" id="ano" name="ano" min="1900">
-
-                            <label for="preco">
-                                <small>Preço</small>
-                            </label>
-                            <input type="text" id="preco" name="preco">
-                        </div>
-                        <p>País de origem</p>
-                        <label for="origem">
-                            <select id="origem" name="origem" required>
-                                <option disabled selected>Selecione Origem</option>
-                                <option value="ar">Argentina</option>
-                                <option value="br">Brasil</option>
-                                <option value="ch">Chile</option>
-                                <option value="es">Espanha</option>
-                                <option value="fr">França</option>
-                                <option value="it">Itália</option>
-                                <option value="pt">Portugal</option>
-                            </select>
-                        </label> 
-
-                        <p>Carregar Rotulo</p>
-                        <label for="rotulo">
-                            <input type="file" id="rotulo" name="rotulo" accept=".jpg, .jpeg, .png">
-                        </label>
-                    </div>    
+           <div class="produto_wrapper">
+                <div class="container_rotulo">
+                    <img src="<%=rotulo%>" alt="rotulo">
                 </div>
-                <button class="button" type="submit" value="Cadastrar">Cadastrar</button>
-            </form>
+                <div class="descritivo_wrapper">
+                    <h4>Origem: <%=origem%></h4>
+                    <h4>Uva: <%=uvas%></h4>
+                    <h4>Ano: <%ano%></h4>
+                    <% if (temDescreicao) { %>
+                        <span><%=descricao%></span>
+                        <% } %>
+                </div>
+                <div class="preco">
+                    <h4>Preço <%=preco%></h4>
+                </div>
+           </div>
         </div>
     </content>
 </body>
