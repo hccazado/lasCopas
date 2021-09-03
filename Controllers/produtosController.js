@@ -12,14 +12,14 @@ const vinhos = [{
     descricao: "Um vilnho tinto de notas amadeiradas e aroma floral, sabor residual de rapadura. um autentico vinho argentino."},
     {
         id:10,
-        rotulo: "/images/EM-roble.png",
-        finca: "Estancia Mendoza",
+        rotulo: "/images/Trapiche - cabernet.png",
+        finca: "Traoiche",
         origem: "Argentina",
-        uvas: ["malbec","merlot"],
-        ano: 2016,
-        preco: "79,90",
+        uvas: ["Cabernet"],
+        ano: 2018,
+        preco: "74,90",
         tipo: "tinto",
-        temDescricao: true,
+        temDescricao: false,
         descricao: "Um vilnho tinto de notas amadeiradas e aroma floral, sabor residual de rapadura. um autentico vinho argentino."}]
 const controller = {
     index: (req, res, next) =>{

@@ -1,9 +1,11 @@
 <%-include('./partials/header')%>
 <div class="wrapper">
-    <div class="container_vinhos">
-        <h3>Tinto</h3>
+    <button class="link_button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTinto" aria-expanded="true" aria-controls="collapseTinto">
+        Tinto
+      </button>
+    <div class="container_vinhos collapse show" id="collapseTinto">
         <% for(vinho of vinhos){ %>
-     <div class="card">
+     <div class="cardp">
          <a href="produto/<%=vinho.id%>"><!--o id deve ser substituido por chave EJS com valor id-->
              <img src="<%=vinho.rotulo%>" alt="rotulo">
              <p><%=vinho.finca%> - <%=vinho.uvas%></p>
@@ -12,10 +14,12 @@
      </div>
      <% } %>
     </div>
-    <div class="container_vinhos">
-        <h3>Branco</h3>
+    <button class="link_button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBranco" aria-expanded="true" aria-controls="collapseBranco">
+        Branco
+      </button>
+    <div class="container_vinhos collapse show" id="collapseBranco">
         <% for(vinho of vinhos){ %>
-     <div class="card">
+     <div class="cardp">
         <a href="produto/<%=vinho.id%>"><!--o id deve ser substituido por chave EJS com valor id-->
             <img src="<%=vinho.rotulo%>" alt="rotulo">
             <p><%=vinho.finca%> - <%=vinho.uvas%></p>
@@ -24,10 +28,12 @@
      </div>
      <% } %>
     </div>
-    <div class="container_vinhos">
-        <h3>Rosé</h3>
+    <button class="link_button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRose" aria-expanded="true" aria-controls="collapseRose">
+        Rosé
+      </button>
+    <div class="container_vinhos collapse show" id="collapseRose">
         <% for(vinho of vinhos){ %>
-     <div class="card">
+     <div class="cardp">
         <a href="produto/<%=vinho.id%>"><!--o id deve ser substituido por chave EJS com valor id-->
             <img src="<%=vinho.rotulo%>" alt="rotulo">
             <p><%=vinho.finca%> - <%=vinho.uvas%></p>
@@ -36,10 +42,12 @@
      </div>
      <% } %>
     </div> 
-    <div class="container_vinhos">
-        <h3>Frisante</h3>
+    <button class="link_button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFrisante" aria-expanded="true" aria-controls="collapseFrisante">
+        Frisante
+      </button>
+    <div class="container_vinhos collapse show" id="collapseFrisante">
         <% for(vinho of vinhos){ %>
-     <div class="card">
+     <div class="cardp">
         <a href="produto/<%=vinho.id%>"><!--o id deve ser substituido por chave EJS com valor id-->
             <img src="<%=vinho.rotulo%>" alt="rotulo">
             <p><%=vinho.finca%> - <%=vinho.uvas%></p>

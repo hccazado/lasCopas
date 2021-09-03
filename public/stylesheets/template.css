@@ -91,21 +91,21 @@ content .wrapper .destaque_container{
     justify-content: space-around;
 }
 
-content .wrapper .card{
-    width: 30%;
+content .wrapper .cardp{
+    width: 320px;
     margin: 20px auto;
     border: 1px solid #676767;
     border-radius: 10px;
     box-shadow: rgba(80,80,70, 0.5) 1px 1px 5px;
 }
 
-content .wrapper .card a{
+content .wrapper .cardp a{
     text-decoration: none;
     color: #222;
     text-align: left;
 }
 
-content .wrapper .card p{
+content .wrapper .cardp p{
     text-align: left;
     padding: 6px 0 6px 10px;
     font-weight: 600;
@@ -113,14 +113,14 @@ content .wrapper .card p{
     margin-bottom: 0px;
 }
 
-content .wrapper .card small{
+content .wrapper .cardp small{
     font-weight: 500;
     text-align: left;
     padding: 0 0 6px 10px;
 }
 
 
-content .wrapper .card img{
+content .wrapper .cardp img{
     text-align: center;
     width: 100%;
 }
