@@ -152,4 +152,40 @@ footer .container_links ul li{
     margin: 0 5px;
 }
 
+/*-----Estilo Painel Administrativo-----*/
+.wrapper .painel_wrapper{
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 650px;
+    background-color: #bbb;
+}
 
+.wrapper .painel_wrapper .card_admin{
+    width: 30%;
+    margin: 20px auto;
+    border: 1px solid #676767;
+    border-radius: 10px;
+    box-shadow: rgba(80,80,70, 0.5) 1px 1px 5px;
+    transition: all 0,5s;
+}
+
+.wrapper .painel_wrapper .card_admin:hover{
+    background-color: #4e6ce4;
+    color:#fff;
+}
+
+.wrapper .painel_wrapper .card_admin img{
+    margin:20px auto;
+}
+
+.wrapper .painel_wrapper .card_admin a{
+    text-decoration: none;
+}
+
+.wrapper .painel_wrapper .card_admin span{
+    color: black;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    margin: 20px;
+}

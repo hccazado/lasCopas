@@ -152,4 +152,9 @@ footer .container_links ul li{
     margin: 0 5px;
 }
 
-
+/*-----Estilo Painel Administrativo-----*/
+.wrapper .painel_wrapper{
+    display: flex;
+    max-width: 650px;
+    background-color: #bbb;
+}

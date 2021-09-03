@@ -9,6 +9,11 @@ const controller = {
         res.render("envio", {
             title: title
         });
+    },
+    gerenciar:(req,res, next) =>{
+        res.render("painelAdministrativo", {
+            title: title
+        });
     }
 };
 
