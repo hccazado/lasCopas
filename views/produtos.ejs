@@ -1,0 +1,52 @@
+<%-include('./partials/header')%>
+<div class="wrapper">
+    <div class="container_vinhos">
+        <h3>Tinto</h3>
+        <% for(vinho of vinhos){ %>
+     <div class="card">
+         <a href="produto/<%=vinho.id%>"><!--o id deve ser substituido por chave EJS com valor id-->
+             <img src="<%=vinho.rotulo%>" alt="rotulo">
+             <p><%=vinho.finca%> - <%=vinho.uvas%></p>
+             <small>R$<%=vinho.preco%></small>
+         </a>
+     </div>
+     <% } %>
+    </div>
+    <div class="container_vinhos">
+        <h3>Branco</h3>
+        <% for(vinho of vinhos){ %>
+     <div class="card">
+        <a href="produto/<%=vinho.id%>"><!--o id deve ser substituido por chave EJS com valor id-->
+            <img src="<%=vinho.rotulo%>" alt="rotulo">
+            <p><%=vinho.finca%> - <%=vinho.uvas%></p>
+            <small>R$<%=vinho.preco%></small>
+        </a>
+     </div>
+     <% } %>
+    </div>
+    <div class="container_vinhos">
+        <h3>Rosé</h3>
+        <% for(vinho of vinhos){ %>
+     <div class="card">
+        <a href="produto/<%=vinho.id%>"><!--o id deve ser substituido por chave EJS com valor id-->
+            <img src="<%=vinho.rotulo%>" alt="rotulo">
+            <p><%=vinho.finca%> - <%=vinho.uvas%></p>
+            <small>R$<%=vinho.preco%></small>
+        </a>
+     </div>
+     <% } %>
+    </div> 
+    <div class="container_vinhos">
+        <h3>Frisante</h3>
+        <% for(vinho of vinhos){ %>
+     <div class="card">
+        <a href="produto/<%=vinho.id%>"><!--o id deve ser substituido por chave EJS com valor id-->
+            <img src="<%=vinho.rotulo%>" alt="rotulo">
+            <p><%=vinho.finca%> - <%=vinho.uvas%></p>
+            <small>R$<%=vinho.preco%></small>
+        </a>
+     </div>
+     <% } %>
+    </div>  
+ </div>
+ <%-include('./partials/footer')%>

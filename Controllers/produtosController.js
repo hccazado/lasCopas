@@ -1,9 +1,31 @@
 const title = "lasCopas - Produtos";
-
+const vinhos = [{
+    id:10,
+    rotulo: "/images/EM-roble.png",
+    finca: "Trapiche",
+    origem: "Argentina",
+    uvas: "malbec, merlot",
+    ano: 2016,
+    preco: "79,90",
+    tipo: "tinto",
+    temDescricao: true,
+    descricao: "Um vilnho tinto de notas amadeiradas e aroma floral, sabor residual de rapadura. um autentico vinho argentino."},
+    {
+        id:10,
+        rotulo: "/images/EM-roble.png",
+        finca: "Estancia Mendoza",
+        origem: "Argentina",
+        uvas: ["malbec","merlot"],
+        ano: 2016,
+        preco: "79,90",
+        tipo: "tinto",
+        temDescricao: true,
+        descricao: "Um vilnho tinto de notas amadeiradas e aroma floral, sabor residual de rapadura. um autentico vinho argentino."}]
 const controller = {
     index: (req, res, next) =>{
-        res.render("error", {
-            title: title
+        res.render("produtos", {
+            title: title,
+            vinhos: vinhos
         });
     },
     cadastro: (req, res, next) =>{
@@ -12,7 +34,7 @@ const controller = {
         });        
     },
     detalhe: (req, res, next) =>{
-        res.render("produto", {
+        res.render("detalheProduto", {
             title: title,
             rotulo: "/images/EM-roble.png",
             origem: "Argentina",
