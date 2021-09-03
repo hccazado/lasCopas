@@ -1,0 +1,87 @@
+<%- include('./partials/header') %>
+<content>
+    <div class="wrapper">
+        <form action="/envio">
+            
+            <div class="container_formulario">
+                <div class="envio">
+                    <h3>Endereço para Envio do Produto</h3>
+                    <div>
+                        <label for="destinatario">
+                            Destinatario
+                        </label>
+                        <input type="text" id="destinatario" name="destinatario" placeholder="Informe o nome para envio do produto">
+                    </div>
+                    <div>
+                        <label for="cep">
+                            CEP
+                        </label>
+                        <input type="text" id="cep" name="cep" placeholder="informe cep de envio">
+                    </div>
+                    <div>
+                        <label for="end1">
+                            End.
+                        </label>
+                        <input type="text" id="end1" name="end1" placeholder="digite endereço" required>
+                    </div>
+                    <div>
+                        <label for="end2">
+                            End.
+                        </label>
+                        <input type="text" id="end2" name="end2" placeholder="Preencha caso precise complementar endereço">
+                    </div>
+                    <div>
+                        <label for="baiiro">
+                            Bairro
+                        </label>
+                        <input type="text" id="baiiro" name="bairro" required>
+                    </div>  
+                    <div>
+                        <label for="cidade">
+                            Cidade
+                        </label>
+                        <input type="text" id="cidade" name="cidade" required>
+                    </div>
+                    <div>
+                        <label for="uf">
+                            UF
+                            <select id="uf" name="uf">
+                                <option disabled selected>Selecione UF</option>
+                                <option value="AC">Acre</option>
+                                <option value="AL">Alagoas</option>
+                                <option value="AP">Amapá</option>
+                                <option value="AM">Amazonas</option>
+                                <option value="BA">Bahia</option>
+                                <option value="CE">Ceará</option>
+                                <option value="DF">Distrito Federal</option>
+                                <option value="ES">Espírito Santo</option>
+                                <option value="GO">Goiás</option>
+                                <option value="MA">Maranhão</option>
+                                <option value="MT">Mato Grosso</option>
+                                <option value="MS">Mato Grosso do Sul</option>
+                                <option value="MG">Minas Gerais</option>
+                                <option value="PA">Pará</option>
+                                <option value="PB">Paraíba</option>
+                                <option value="PR">Paraná</option>
+                                <option value="PE">Pernambuco</option>
+                                <option value="PI">Piauí</option>
+                                <option value="RJ">Rio de Janeiro</option>
+                                <option value="RN">Rio Grande do Norte</option>
+                                <option value="RS">Rio Grande do Sul</option>
+                                <option value="RO">Rondônia</option>
+                                <option value="RR">Roraima</option>
+                                <option value="SC">Santa Catarina</option>
+                                <option value="SP">São Paulo</option>
+                                <option value="SE">Sergipe</option>
+                                <option value="TO">Tocantins</option>
+                                <option value="EX">Estrangeiro</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="button">Enviar!</button>
+        </form>
+    </div>
+</content>
+<%- include("./partials/footer") %>

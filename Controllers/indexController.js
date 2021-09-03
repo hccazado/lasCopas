@@ -4,6 +4,11 @@ const controller = {
         res.render("index", {
             title: title
         });
+    },
+    envio:(req,res, next) =>{
+        res.render("envio", {
+            title: title
+        });
     }
 };
 

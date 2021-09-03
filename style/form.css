@@ -21,12 +21,13 @@
 }
 
 .wrapper .container_formulario .conjunto{
-    border: 1px solid black;
+    border: 1px solid #676767;
     border-radius: 5px;
-
+    background-color: #bbb;
+    display: flex;
     flex-direction: column;
     margin: 20px auto;
-    width:290px; 
+    width:280px; 
 }
 .wrapper .container_formulario .conjunto p {
     align-self: center;
@@ -35,11 +36,11 @@
     border-width: 80%;
 }
 
-.wrapper .container_formulario .conjunto label small{
+.wrapper .container_formulario .conjunto label{
     font-size: 16px;
 }
 
-.wrapper .container_formulario .conjunto label input{
+.wrapper .container_formulario .conjunto input{
     margin: 10px auto;
 }
 
@@ -51,6 +52,7 @@
 .wrapper .container_formulario .conjunto .wrapper_uvas{
     display: flex;
     justify-content: space-around;
+    font-size: 11px;
 }
 
 .wrapper .container_formulario .conjunto .wrapper_check{
@@ -65,7 +67,6 @@
 
 .cosecha{
     flex-direction: row!important;
-
 }
 
 .wrapper_tipo{
@@ -74,7 +75,7 @@
     flex-direction: column;
     margin: 10px 20px 15px 10px;
 }
-.row{
+.tipo{
     align-self: center;
     display: flex;
     flex-direction: row!important;
@@ -84,9 +85,9 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    margin: 20px 20px 10px 0;
+    margin: 20px 10px 10px 0;
+    padding: 10px;
 }
-
 /* Estilos para formulario Cadastro clientes */
 
 .clientes{
@@ -106,8 +107,32 @@
 }
 .clientes option:hover{
     background-color: #05ca!important;
-    color: white !important;;
+    color: white !important;
 }
 .clientes label{
     padding: 5px 0 10px 5px;
+}
+
+/*Estilos para formulario Envio*/
+.envio{
+    display: flex;
+    flex-direction: column;
+    width:360px; 
+    
+}
+.envio input{
+    width: 260px;
+    height: 18px;
+    margin: 5px auto;
+}
+
+.envio select{
+    margin: 10px auto;
+    width: 270px;
+    height:22px;
+}
+
+.envio .button:hover{
+    background-color: #30aa30!important;
+    color: white !important;
 }
