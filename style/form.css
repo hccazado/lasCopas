@@ -56,7 +56,6 @@
 .wrapper .container_formulario .conjunto .wrapper_check{
     display: flex;
     flex-direction: column;
-    width:100px;
 }
 
 .text_right{
