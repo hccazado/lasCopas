@@ -49,7 +49,7 @@
                         </label>
                     </div>
                     <p>Tipo</p>
-                    <div class=" row">
+                    <div class="tipo">
                         <div class="wrapper_tipo">
                             <label for="tinto">
                                 <small>Tinto</small>
@@ -75,20 +75,24 @@
 
                 <div class="conjunto">
                     <div class="wrapper_campos">
-                        <label for="finca">
-                            <small>Finca</small>  
-                        </label>
-                        <input type="text" id="finca" name="finca" required>
-                        
-                        <label for="ano">
-                            <small>Ano produção</small>
-                        </label>
-                        <input type="number" id="ano" name="ano" min="1900">
-
-                        <label for="preco">
-                            <small>Preço</small>
-                        </label>
-                        <input type="text" id="preco" name="preco">
+                        <div>
+                            <label for="finca">
+                                Finca
+                            </label>
+                            <input type="text" id="finca" name="finca" placeholder="Informe bodega"required>
+                        </div>
+                        <div>
+                            <label for="ano">
+                                Ano
+                            </label>
+                            <input type="number" id="ano" name="ano" min="1900" placeholder="ano de produção">
+                        </div>
+                        <div>
+                            <label for="preco">
+                                Preço
+                            </label>
+                            <input type="text" id="preco" name="preco">
+                        </div>
                     </div>
                     <p>País de origem</p>
                     <label for="origem">

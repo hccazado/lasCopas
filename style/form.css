@@ -23,7 +23,7 @@
 .wrapper .container_formulario .conjunto{
     border: 1px solid black;
     border-radius: 5px;
-    display: flex;
+
     flex-direction: column;
     margin: 20px auto;
     width:290px; 
@@ -56,6 +56,7 @@
 .wrapper .container_formulario .conjunto .wrapper_check{
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .text_right{
@@ -64,7 +65,7 @@
 
 .cosecha{
     flex-direction: row!important;
-    align-self: center;
+
 }
 
 .wrapper_tipo{

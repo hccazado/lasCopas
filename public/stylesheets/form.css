@@ -21,8 +21,9 @@
 }
 
 .wrapper .container_formulario .conjunto{
-    border: 1px solid black;
+    border: 1px solid #676767;
     border-radius: 5px;
+    background-color: #bbb;
     display: flex;
     flex-direction: column;
     margin: 20px auto;
@@ -35,11 +36,11 @@
     border-width: 80%;
 }
 
-.wrapper .container_formulario .conjunto label small{
+.wrapper .container_formulario .conjunto label{
     font-size: 16px;
 }
 
-.wrapper .container_formulario .conjunto label input{
+.wrapper .container_formulario .conjunto input{
     margin: 10px auto;
 }
 
@@ -57,7 +58,7 @@
 .wrapper .container_formulario .conjunto .wrapper_check{
     display: flex;
     flex-direction: column;
-    width:100px;
+    justify-content: space-evenly;
 }
 
 .text_right{
@@ -66,7 +67,6 @@
 
 .cosecha{
     flex-direction: row!important;
-    align-self: center;
 }
 
 .wrapper_tipo{
@@ -75,7 +75,7 @@
     flex-direction: column;
     margin: 10px 20px 15px 10px;
 }
-.row{
+.tipo{
     align-self: center;
     display: flex;
     flex-direction: row!important;
@@ -85,7 +85,8 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    margin: 20px 20px 10px 0;
+    margin: 20px 10px 10px 0;
+    padding: 10px;
 }
 
 /* Estilos para formulario Cadastro clientes */
