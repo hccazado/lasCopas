@@ -11,11 +11,6 @@ const controller = {
             title: title
         });
     },
-    gerenciar:(req,res, next) =>{
-        res.render("painelAdministrativo", {
-            title: title
-        });
-    },
     sobre:(req,res,next) =>{
         res.render("sobre", {
             title: titleSobre
