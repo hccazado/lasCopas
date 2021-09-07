@@ -1,0 +1,34 @@
+<%-include('./partials/header')%>
+    <content>
+        <div class="wrapper">
+            <div class="container_lista">
+                <h5>Administração Pedidos</h5>
+                <div class="form-floating busca_cliente">
+                    <input type="text" class="form-control" id="buscaCliente" placeholder="Nro pedido">
+                    <label for="buscaCliente">Buscar pedido</label>
+                </div>
+                <div  class="table-responsive">
+                    <table class="table border border-success table-bordered caption-top">
+                        <caption>Pedidos Confirmados</caption>
+                        <thead>
+                            <tr>
+                                <td>Nro.</td>
+                                <td>Cliente</td>
+                                <td>CPF/CNPJ</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%for(let i=0; i<pedidos.length;i++){%>
+                            <tr>
+                                <td><a class="link_tabela" href="/:<%=pedidos[i].nro%>"><%=pedidos[i].nro%></a></td>
+                                <td><a class="link_tabela" href="/:<%=pedidos[i].nro%>"><%=pedidos[i].nome%></a></td>
+                                <td><a class="link_tabela" href="/:<%=pedidos[i].nro%>"><%=pedidos[i].doc%></a></td>
+                            </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </content>
+<%-include('./partials/footer')%>

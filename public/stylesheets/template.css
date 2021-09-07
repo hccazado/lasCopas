@@ -195,7 +195,27 @@ footer .container_links ul li{
     margin: 20px;
 }
 
-/*---------Estilo para pagina Sobre*/
+/*---------Estilo para pagina Administrar Clientes e Pedidos--*/
+
+.wrapper .container_lista{
+    margin: 15px auto;
+    width:90%;
+}
+
+.link_tabela{
+    text-decoration: none;
+    color:#2c3d4c;
+}
+
+.wrapper .container_lista h5{
+    font-size: 16px;
+}
+
+.container_busca{
+    width:90%;
+}
+
+/*---------Estilo para pagina Sobre---------------*/
 .wrapper .sobre h3{
     font-size: 18px;
     text-align: center;
