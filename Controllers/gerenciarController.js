@@ -30,6 +30,15 @@ const pedidos = [
     }
 ]
 
+const produtos = [
+    { 
+        id: 10,
+        finca: "Trapiche",
+        uvas: "suavignon",
+        preco: 79.90
+    }
+]
+
 const controller ={
     index: (req, res, next) =>{
         res.render("painelAdministrativo", {
@@ -46,6 +55,12 @@ const controller ={
         res.render("listaPedidos", {
             title:title,
             pedidos: pedidos
+        })
+    },
+    listarProdutos: (req, res, next) =>{
+        res.render("listaProdutos", {
+            title: title,
+            produtos: produtos
         })
     }
 };

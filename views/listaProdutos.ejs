@@ -1,0 +1,38 @@
+<%-include('./partials/header')%>
+
+<content>
+    <div class="wrapper">
+        <div class="container_lista">
+            <h5>Administração Produtos</h5>
+            <div class="form-floating busca_cliente">
+                <input type="text" class="form-control" id="buscaProduto" placeholder="Nome do Produto">
+                <label for="buscaProduto">Buscar Produto</label>
+            </div>
+            <div  class="table-responsive">
+                <table class="table border border-success table-bordered caption-top">
+                    <caption>Produtos Cadastrados</caption>
+                    <thead>
+                        <tr>
+                            <td>ID</td>
+                            <td>Finca</td>
+                            <td>Uvas</td>
+                            <td>Preço</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%for(let i=0; i<produtos.length;i++){%>
+                        <tr>
+                            <td><a class="link_tabela" href="/gerenciar/produtos/:<%=produtos[i].id%>"><%=produtos[i].id%></a></td>
+                            <td><a class="link_tabela" href="/gerenciar/produtos/:<%=produtos[i].id%>"><%=produtos[i].finca%></a></td>
+                            <td><a class="link_tabela" href="/gerenciar/produtos/:<%=produtos[i].id%>"><%=produtos[i].uvas%></a></td>
+                            <td><a class="link_tabela" href="/gerenciar/produtos/:<%=produtos[i].id%>"><%=produtos[i].preco%></a></td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</content>
+
+<%-include('./partials/footer')%>

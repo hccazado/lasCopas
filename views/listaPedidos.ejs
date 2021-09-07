@@ -4,8 +4,8 @@
             <div class="container_lista">
                 <h5>Administração Pedidos</h5>
                 <div class="form-floating busca_cliente">
-                    <input type="text" class="form-control" id="buscaCliente" placeholder="Nro pedido">
-                    <label for="buscaCliente">Buscar pedido</label>
+                    <input type="text" class="form-control" id="buscaPedido" placeholder="Nro pedido">
+                    <label for="buscaPedido">Buscar pedido</label>
                 </div>
                 <div  class="table-responsive">
                     <table class="table border border-success table-bordered caption-top">
@@ -20,9 +20,9 @@
                         <tbody>
                             <%for(let i=0; i<pedidos.length;i++){%>
                             <tr>
-                                <td><a class="link_tabela" href="/:<%=pedidos[i].nro%>"><%=pedidos[i].nro%></a></td>
-                                <td><a class="link_tabela" href="/:<%=pedidos[i].nro%>"><%=pedidos[i].nome%></a></td>
-                                <td><a class="link_tabela" href="/:<%=pedidos[i].nro%>"><%=pedidos[i].doc%></a></td>
+                                <td><a class="link_tabela" href="/gerenciar/pedidos/:<%=pedidos[i].nro%>"><%=pedidos[i].nro%></a></td>
+                                <td><a class="link_tabela" href="/gerenciar/pedidos/:<%=pedidos[i].nro%>"><%=pedidos[i].nome%></a></td>
+                                <td><a class="link_tabela" href="/gerenciar/pedidos/:<%=pedidos[i].nro%>"><%=pedidos[i].doc%></a></td>
                             </tr>
                             <% } %>
                         </tbody>
