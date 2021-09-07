@@ -76,3 +76,24 @@
     color: #fff;
 }
 
+.wrapper .container_pagamento{
+    margin:30px auto;
+}
+
+.wrapper .container_pagamento h4{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.wrapper .container_pagamento h4 span{
+    color:darkred;
+    display: relative;
+    top:20px;
+}
+
+
+.wrapper .container_pagamento .button_pagamento img{
+    width:220px;
+    padding: 20px;
+}
+

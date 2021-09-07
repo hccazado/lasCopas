@@ -26,6 +26,11 @@ const controller = {
             title: title,
             produtos: produtos
         })
+    },
+    pagar: (req, res, next) => {
+        res.render("pagamento", {
+            title: title
+        })
     }
 }
 

@@ -4,4 +4,6 @@ const controller = require("../Controllers/checkoutController");
 
 router.get("/", controller.carrinho);
 
+router.get("/pagar", controller.pagar);
+
 module.exports = router;
