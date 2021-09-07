@@ -36,7 +36,7 @@ const controller ={
             title: title
         });
     },
-    listaClientes: (req, res, next) =>{
+    listarClientes: (req, res, next) =>{
         res.render("listaClientes", {
             title:title,
             clientes: clientes
