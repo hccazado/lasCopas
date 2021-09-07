@@ -159,11 +159,14 @@ footer .container_links ul li{
 
 /*-----Estilo Painel Administrativo-----*/
 .wrapper .painel_wrapper{
-    margin: 20px auto;
+    margin: 40px auto;
+    border: #a3a3a3 1px solid;
+    border-radius: 5px;
     display: flex;
     flex-wrap: wrap;
     max-width: 650px;
     background-color: #bbb;
+    padding:30px;
 }
 
 .wrapper .painel_wrapper .card_admin{
@@ -195,6 +198,10 @@ footer .container_links ul li{
     margin: 20px;
 }
 
+.titulo_adm{
+    margin:20px auto;
+}
+
 /*---------Estilo para pagina Administrar Clientes e Pedidos--*/
 
 .wrapper .container_lista{
@@ -216,6 +223,12 @@ footer .container_links ul li{
 }
 
 /*---------Estilo para pagina Sobre---------------*/
+
+.wrapper .sobre{
+    width: 90%;
+    margin: 20px auto;
+}
+
 .wrapper .sobre h3{
     font-size: 18px;
     text-align: center;

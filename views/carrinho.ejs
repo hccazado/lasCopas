@@ -15,7 +15,7 @@
                 Total = <br>
                 <%=produto.qtd%> X R$ <%=produto.valor%>
                 <br>
-                R$<span><%=produto.qtd*produto.valor%></span>
+                R$<span><%=(produto.qtd*produto.valor).toFixed(2)%></span>
                 <%produto.total=produto.qtd*produto.valor%>
             </div>
         </div>
