@@ -34,7 +34,8 @@
 
 
 .login button{
-    background-color: #ccc;
+    /*background-color: #ccc;*/
+    background-color: #968FA6;
     font-size: 14px;
     width: 92%;
     padding: 10px;

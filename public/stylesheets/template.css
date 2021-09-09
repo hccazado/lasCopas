@@ -45,7 +45,8 @@ header .wrapper nav{
 }
 
 header .wrapper nav a{
-    color: #676767;
+    /*color: #676767;*/
+    color: #968FA6;
     padding: 15px;
     text-decoration: none;
     font-size: 20px;
@@ -58,11 +59,13 @@ header .wrapper .link_login{
 }
 
 header .wrapper nav a:hover{
-    background-color: cadetblue;
+    /*background-color: cadetblue;*/
+    background-color: #D99C52;
     color:white;
 }
 header .wrapper nav a:active{
-    background-color: darkblue;
+    /*background-color: darkblue;*/
+    background-color: #7ED9C8;
     color:white;
 }
 
@@ -78,12 +81,27 @@ content .wrapper #carousel{
 }
 
 content .wrapper #carousel img{
-    height: 270px;
-    
+    height: 270px;    
 }
+
+content .wrapper .container_banner{
+    display: flex;
+    background-color: #8C5F45;
+    height: 350px;
+}
+
+content .wrapper .container_banner img{
+    height: 100%;
+}
+
 
 content .wrapper .destaque{
     margin:40px 0 40px 0;
+}
+
+content .wrapper .destaque h3{
+    color: #5D3D2D;
+    text-decoration: none;
 }
 
 content .wrapper .destaque_container{
@@ -127,7 +145,8 @@ content .wrapper .cardp img{
 
 footer .wrapper{
     align-items: center;
-    background-color: dimgray;
+    /*background-color: dimgray;*/
+    background-color: #8C5F45;
     display: flex;
     flex-wrap: wrap;
     font-family: 'Open Sans', sans-serif;
@@ -142,6 +161,7 @@ footer .containet_map{
 }
 
 footer .container_links{
+    color:#968FA6;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -165,7 +185,8 @@ footer .container_links ul li{
     display: flex;
     flex-wrap: wrap;
     max-width: 650px;
-    background-color: #bbb;
+    /*background-color: #bbb;*/
+    background-color: #968FA6;
     padding:30px;
 }
 
@@ -173,6 +194,7 @@ footer .container_links ul li{
     width: 30%;
     margin: 20px auto;
     border: 1px solid #676767;
+    background-color: #bbb;
     border-radius: 10px;
     box-shadow: rgba(80,80,70, 0.5) 1px 1px 5px;
     transition: all 0,5s;
@@ -199,6 +221,7 @@ footer .container_links ul li{
 }
 
 .titulo_adm{
+    color: #5D3D2D;
     margin:20px auto;
 }
 
@@ -215,6 +238,7 @@ footer .container_links ul li{
 }
 
 .wrapper .container_lista h5{
+    color: #5D3D2D;
     font-size: 16px;
 }
 
