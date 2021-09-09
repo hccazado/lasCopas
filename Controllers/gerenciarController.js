@@ -62,6 +62,11 @@ const controller ={
             title: title,
             produtos: produtos
         })
+    },
+    cadastroCliente: (req, res, next) =>{
+        res.render("cadastroCliente", {
+            title: title
+        })
     }
 };
 

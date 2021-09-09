@@ -10,4 +10,6 @@ router.get("/pedidos", controller.listarPedidos);
 
 router.get("/produtos", controller.listarProdutos);
 
+router.get("/cadastrocliente", controller.cadastroCliente);
+
 module.exports = router;
