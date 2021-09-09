@@ -85,8 +85,9 @@ content .wrapper #carousel img{
 }
 
 content .wrapper .container_banner{
+    justify-content: center;
+    background-color: rgba(140, 95, 69, 0.5);
     display: flex;
-    background-color: #8C5F45;
     height: 350px;
 }
 
@@ -152,7 +153,6 @@ footer .wrapper{
     font-family: 'Open Sans', sans-serif;
     font-size: 18px;
     font-weight: 600;
-    
     justify-content: space-around;
 }
 
@@ -175,6 +175,18 @@ footer .container_links ul{
 
 footer .container_links ul li{
     margin: 0 5px;
+}
+
+footer .wrapper .chat{
+    position: fixed;
+    bottom: 7px;
+    right:7px;
+    z-index: 10;
+}
+
+footer .wrapper .chat img{
+    width:60px;
+    filter:drop-shadow(0 0 5px #a3a3a3);
 }
 
 /*-----Estilo Painel Administrativo-----*/
