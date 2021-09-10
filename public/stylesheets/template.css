@@ -41,7 +41,6 @@ header .wrapper h1 span{
 header .wrapper nav{
     list-style: none;
     display: flex;
-    margin-top: 10px;
 }
 
 header .wrapper nav a{
