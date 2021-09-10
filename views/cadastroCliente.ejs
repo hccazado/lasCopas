@@ -5,77 +5,81 @@
         <form action="/cliente/cadastra">
             <div class="container_formulario">
                 <div class="clientes">
-                <label for="nome">
-                    <small>Nome</small>
-                    <input type="text" id="nome" name="nome" placeholder="Digite nome" required>
-                </label>
-                <label for="nasc">
-                    <small>Nasc.</small>
-                    <input type="date" id="nasc" name="nascimento" required>
-                </label>
-                <label for="pessoa">
-                    <small>Pessoa</small>
-                    <select id="pessoa" name="pessoa">
-                        <option disabled selected>Selecione Tipo de Pessoa</option>
-                        <option value="fisica">Fisica</option>
-                        <option value="juridica">Juridica</option>
-                    </select>
-                </label>
-                <label for="doc">
-                    <small>CPF:</small>
-                    <input type="number" id="doc" name="cpf-cnpj" placeholder="informe CPF ou CNPJ" required>
-                </label>
-                <label for="cep">
-                    <small>CEP</small>
-                    <input type="text" id="cep" name="cep" placeholder="informe seu cep" required >
-                </label>
-                <label for="end1">
-                    <small>End.</small>
-                    <input type="text" id="end1" name="end1" placeholder="digite endereço" required>
-                </label>
-                <label for="end2">
-                    <small>End.</small>
-                    <input type="text" id="end2" name="end2" placeholder="Preencha caso precise complementar endereço">
-                </label>
-                <label for="uf">
-                    <small>UF</small>
-                    <select id="uf" name="uf">
-                        <option disabled selected>Selecione UF</option>
-                        <option value="AC">Acre</option>
-                        <option value="AL">Alagoas</option>
-                        <option value="AP">Amapá</option>
-                        <option value="AM">Amazonas</option>
-                        <option value="BA">Bahia</option>
-                        <option value="CE">Ceará</option>
-                        <option value="DF">Distrito Federal</option>
-                        <option value="ES">Espírito Santo</option>
-                        <option value="GO">Goiás</option>
-                        <option value="MA">Maranhão</option>
-                        <option value="MT">Mato Grosso</option>
-                        <option value="MS">Mato Grosso do Sul</option>
-                        <option value="MG">Minas Gerais</option>
-                        <option value="PA">Pará</option>
-                        <option value="PB">Paraíba</option>
-                        <option value="PR">Paraná</option>
-                        <option value="PE">Pernambuco</option>
-                        <option value="PI">Piauí</option>
-                        <option value="RJ">Rio de Janeiro</option>
-                        <option value="RN">Rio Grande do Norte</option>
-                        <option value="RS">Rio Grande do Sul</option>
-                        <option value="RO">Rondônia</option>
-                        <option value="RR">Roraima</option>
-                        <option value="SC">Santa Catarina</option>
-                        <option value="SP">São Paulo</option>
-                        <option value="SE">Sergipe</option>
-                        <option value="TO">Tocantins</option>
-                        <option value="EX">Estrangeiro</option>
-                    </select>
-                </label>
-                <label for="cidade">
-                    <small>Cidade</small>
-                    <input type="text" id="cidade" name="cidade" placeholder="informe cidade" required>
-                </label>
-            </div>
+                    <div>
+                        <label for="nome">Nome</label><br>
+                        <input type="text" id="nome" name="nome" placeholder="Digite nome" required>
+                    </div>
+                    <div>
+                        <label for="nasc">Nasc.</label><br>
+                        <input type="date" id="nasc" name="nascimento" required>
+                    </div>
+                    <div>
+                        <label for="email">Email</label><br>
+                        <input type="email" id="email" name="email" placeholder="Informe seu email" required>
+                    </div>
+                    <div>
+                        <label for="pessoa">Tipo de Pessoa</label><br>
+                        <select id="pessoa" name="pessoa">
+                            <option disabled selected>Selecione</option>
+                            <option value="fisica">Fisica</option>
+                            <option value="juridica">Juridica</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="doc">CPF</label><br>
+                        <input type="number" id="doc" name="cpf-cnpj" placeholder="Informe CPF ou CNPJ" required>
+                    </div>
+                    <div>
+                        <label for="cep">CEP</label><br>
+                        <input type="text" id="cep" name="cep" placeholder="Informe seu cep" required >
+                    </div>
+                    <div>
+                        <label for="end1">End.</label><br>
+                        <input type="text" id="end1" name="end1" placeholder="Digite endereço" required>
+                    </div>
+                    <div>
+                        <label for="compl">Complemento</label><br>
+                        <input type="text" id="compl" name="complemento" placeholder="Preencha caso precise complementar endereço">
+                    </div>
+                    <div>
+                        <label for="uf">UF</label><br>
+                        <select id="uf" name="uf">
+                            <option disabled selected>Selecione UF</option>
+                            <option value="AC">Acre</option>
+                            <option value="AL">Alagoas</option>
+                            <option value="AP">Amapá</option>
+                            <option value="AM">Amazonas</option>
+                            <option value="BA">Bahia</option>
+                            <option value="CE">Ceará</option>
+                            <option value="DF">Distrito Federal</option>
+                            <option value="ES">Espírito Santo</option>
+                            <option value="GO">Goiás</option>
+                            <option value="MA">Maranhão</option>
+                            <option value="MT">Mato Grosso</option>
+                            <option value="MS">Mato Grosso do Sul</option>
+                            <option value="MG">Minas Gerais</option>
+                            <option value="PA">Pará</option>
+                            <option value="PB">Paraíba</option>
+                            <option value="PR">Paraná</option>
+                            <option value="PE">Pernambuco</option>
+                            <option value="PI">Piauí</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="RN">Rio Grande do Norte</option>
+                            <option value="RS">Rio Grande do Sul</option>
+                            <option value="RO">Rondônia</option>
+                            <option value="RR">Roraima</option>
+                            <option value="SC">Santa Catarina</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="SE">Sergipe</option>
+                            <option value="TO">Tocantins</option>
+                            <option value="EX">Estrangeiro</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="cidade">Cidade</label><br>
+                        <input type="text" id="cidade" name="cidade" placeholder="Informe cidade" required>
+                    </div>             
+                </div>
             </div>
         <button type="submit" class="button">Cadastrar</button>
         </form>

@@ -42,6 +42,7 @@
 
 .wrapper .container_formulario .conjunto input{
     margin: 10px auto;
+    padding: 5px;
 }
 
 .wrapper .container_formulario .conjunto select{
@@ -95,23 +96,35 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 400px;
+    width: 360px;
     border: 1px solid #676767;
     border-radius: 5px;
     background-color: #bbb;
 }
-.clientes input,select{
-    border: #05ca 1px solid;
-    height: 20px;
-    margin: 10px 20px;
-    width: 280px;
+
+.clientes div{
+    width:100%;
+    margin: 6px;
+    text-align: left;
 }
-.clientes option:hover{
-    background-color: #05ca!important;
-    color: white !important;;
+.clientes div input{
+    width:90%;
+    padding:4px;
+    margin:3px;
 }
-.clientes label{
-    padding: 5px 0 10px 5px;
+
+.clientes div input[type="date"]{
+    width:50%;
+}
+
+.clientes div select{
+    width: 50%;
+    padding: 4px;
+    margin:3px;
+}
+
+.clientes div label{
+    margin:3px;
 }
 
 /*Estilos para formulario Envio*/

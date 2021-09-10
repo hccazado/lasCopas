@@ -146,8 +146,8 @@ content .wrapper .cardp img{
 
 footer .wrapper{
     align-items: center;
-    /*background-color: dimgray;*/
-    background-color: #8C5F45;
+    background-color: darkred;
+    /*background-color: #8C5F45;*/
     display: flex;
     flex-wrap: wrap;
     font-family: 'Open Sans', sans-serif;
