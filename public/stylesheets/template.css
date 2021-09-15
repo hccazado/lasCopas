@@ -135,7 +135,8 @@ content .wrapper .destaque h3{
 
 content .wrapper .destaque_container{
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 content .wrapper .cardp{

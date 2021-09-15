@@ -40,9 +40,9 @@
 
 .wrapper .container_vinhos{
     display: flex;
-    height:390px;
-    margin: 20px auto;
+    flex-wrap: wrap;
     justify-content: space-evenly;
+    margin: 20px auto;
 }
 
 .wrapper h3{
