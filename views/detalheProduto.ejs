@@ -3,15 +3,15 @@
     <div class="wrapper">
        <div class="produto_wrapper">
             <div class="container_rotulo">
-                <img src="<%=rotulo%>" alt="rotulo">
+                <img src="<%=vinho.rotulo%>" alt="rotulo">
             </div>
             <div class="container_descritivo">
-                <h4>Origem: <span><%=origem%></span></h4>
-                <h4>Uva: <span><%=uvas%></span></h4>
-                <h4>Ano: <span><%=ano%></span></h4>
-                <h4>Tipo: <span><%=tipo%></span></h4>
-                <% if (temDescricao) { %>
-                    <h4>Descrição: </h4><span><%=descricao%></span></span>
+                <h4>Origem: <span><%=vinho.origem%></span></h4>
+                <h4>Uva: <span><%=vinho.uvas%></span></h4>
+                <h4>Ano: <span><%=vinho.ano%></span></h4>
+                <h4>Tipo: <span><%=vinho.tipo%></span></h4>
+                <% if (descricao.length>0) { %>
+                    <h4>Descrição: </h4><span><%=vinho.descricao%></span></span>
                     <% } %>
             </div>
             <div class="preco">

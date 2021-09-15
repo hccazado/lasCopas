@@ -20,67 +20,72 @@
     border: palevioletred 1px solid;
 }
 
-.wrapper .container_formulario .conjunto{
+/*CSS para tela cadastro produto*/
+.wrapper .container_formulario .produto{
+    display: flex;
+    flex-direction: column;
+    width:360px;
     border: 1px solid #676767;
     border-radius: 5px;
     background-color: #bbb;
+}
+
+.wrapper .container_formulario .produto h5{
+    margin-top: 5px;
+}
+
+
+.container_uvas{
     display: flex;
-    flex-direction: column;
-    margin: 20px auto;
-    width:280px; 
-}
-.wrapper .container_formulario .conjunto p {
-    align-self: center;
-    margin: 10px;
-    border-bottom: 1px solid #ccc;
-    border-width: 80%;
-}
-
-.wrapper .container_formulario .conjunto label{
-    font-size: 16px;
-}
-
-.wrapper .container_formulario .conjunto input{
-    margin: 10px auto;
-    padding: 5px;
-}
-
-.wrapper .container_formulario .conjunto select{
-    margin: 10px auto;
-    width: 90%;
-}
-
-.wrapper .container_formulario .conjunto .wrapper_uvas{
-    display: flex;
-    justify-content: space-around;
-    font-size: 11px;
-}
-
-.wrapper .container_formulario .conjunto .wrapper_check{
-    display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-evenly;
 }
+
+.grupo_uvas{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 15px;
+}
+
+.grupo_uvas label{
+    margin-top: 7px;
+}
+
+.flex_column{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 15px;
+}
+
+.flex_column div{
+    width:100%;
+    margin: 6px;
+    text-align: left;
+}
+.flex_column div input{
+    width: 80%;
+    padding: 3px;
+}
+
+.flex_column div select{
+    width:80%;
+    padding:3px;
+}
+
+.flex_column div textarea{
+    width:90%;
+}
+
+
+/*------------------------*/
 
 .text_right{
     text-align: right;
 }
 
-.cosecha{
-    flex-direction: row!important;
-}
 
-.wrapper_tipo{
-    align-items: flex-end;
-    display: flex;
-    flex-direction: column;
-    margin: 10px 20px 15px 10px;
-}
-.tipo{
-    align-self: center;
-    display: flex;
-    flex-direction: row!important;
-}
 
 .wrapper_campos{
     display: flex;
@@ -89,6 +94,7 @@
     margin: 20px 10px 10px 0;
     padding: 10px;
 }
+
 
 /* Estilos para formulario Cadastro clientes */
 
