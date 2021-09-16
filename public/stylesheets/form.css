@@ -3,7 +3,7 @@
     margin: 20px auto;
     padding: 10px;
     justify-content: space-around;
-    width:650px;
+
 }
 
 .wrapper .button{
@@ -24,7 +24,6 @@
 .wrapper .container_formulario .produto{
     display: flex;
     flex-direction: column;
-    width:360px;
     border: 1px solid #676767;
     border-radius: 5px;
     background-color: #bbb;
@@ -85,27 +84,17 @@
     text-align: right;
 }
 
-
-
-.wrapper_campos{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin: 20px 10px 10px 0;
-    padding: 10px;
-}
-
-
 /* Estilos para formulario Cadastro clientes */
 
 .clientes{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 360px;
     border: 1px solid #676767;
     border-radius: 5px;
     background-color: #bbb;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0 10px 0;
+    width:360px;
 }
 
 .clientes div{
@@ -120,7 +109,7 @@
 }
 
 .clientes div input[type="date"]{
-    width:50%;
+    width:60%;
 }
 
 .clientes div select{

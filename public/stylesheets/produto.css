@@ -5,13 +5,18 @@
     justify-content: space-around;
     margin:10px;
 }
-.produto_wrapper .container_rotulo img{
+
+.produto_wrapper .container_rotulo{
     width:350px;
     background-color: rgb(90, 46, 26);
     background-image: url("../images/display.jpeg");
     background-size:contain;
     border-radius: 50%;
     margin: 15px auto;
+}
+
+.produto_wrapper .container_rotulo img{
+    max-width: 100%;
 }
 
 .produto_wrapper .container_descritivo{
