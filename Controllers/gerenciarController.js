@@ -63,10 +63,17 @@ const controller ={
             produtos: produtos
         })
     },
-    cadastroCliente: (req, res, next) =>{
+    formCadastroCliente: (req, res, next) =>{
         res.render("cadastroCliente", {
             title: title
         })
+    },
+    cadastrarCliente: (req, res, next) =>{
+        //desestruturando objeto de dados do formulario cadastro de cliente em variareis
+        let{nome, nascimento, email, pessoa, doc, cep, end1, complemento, uf, cidade} = req.body;
+
+        //redirecionamento à pagina de login
+        res.redirect("/login");
     }
 };
 
