@@ -3,7 +3,7 @@ const title = "lasCopas - Checkout";
 //lista de objetos para testar!
 const produtos = [
     {   id: 10,
-        rotulo: "/images/EM-roble.png",
+        rotulo: "/images/uploads/rotulos/EM-roble.png",
         finca: "Estancia Mendoza",
         uvas: "merlot,malbec",
         valor: 79.90,
@@ -11,7 +11,7 @@ const produtos = [
         total: ()=>this.valor*this.qtd
     },
     {   id: 12,
-        rotulo: "/images/Trapiche - cabernet.png",
+        rotulo: "/images/uploads/rotulos/Trapiche - cabernet.png",
         finca: "Trapiche",
         uvas: "Suavignon",
         valor: 83.90,
