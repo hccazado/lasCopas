@@ -84,7 +84,7 @@
 }
 .wrapper .container_vinhos .cardp img{
     text-align: center;
-    max-width:100%;
+    width:90%;
 }
 .wrapper .container_vinhos .cardp p{
     margin:5px auto 5px 0;

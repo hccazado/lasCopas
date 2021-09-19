@@ -21,6 +21,10 @@ header .wrapper{
     font-family: 'Open Sans', sans-serif;
 }
 
+/*alterando clase do CSS ->Para afastar items das bordas da tela*/
+header .container-fluid{
+    width:90% !important;
+}
 
 header .link_logo{
     color: #000;
@@ -44,7 +48,8 @@ header .links-menu{
 header .links-menu:hover{
     /*background-color: cadetblue;*/
     background-color: #D99C52;
-    color:white;
+    border-radius: 5px;
+    color:white !important;
 }
 
 header .links-menu:active{
@@ -114,7 +119,7 @@ content .wrapper #carousel img{
 
 content .wrapper .container_banner{
     justify-content: center;
-    background-color: rgba(140, 95, 69, 0.5);
+    background-color: rgba(90, 80, 80, 0.5);
     display: flex;
     height: 350px;
 }
@@ -129,7 +134,8 @@ content .wrapper .destaque{
 }
 
 content .wrapper .destaque h3{
-    color: #5D3D2D;
+    /*color: #5D3D2D;*/
+    color:darkred;
     text-decoration: none;
 }
 
@@ -145,6 +151,7 @@ content .wrapper .cardp{
     border: 1px solid #676767;
     border-radius: 10px;
     box-shadow: rgba(80,80,70, 0.5) 1px 1px 5px;
+    margin: 5px;
 }
 
 content .wrapper .cardp a{
@@ -155,10 +162,10 @@ content .wrapper .cardp a{
 
 content .wrapper .cardp p{
     text-align: left;
-    padding: 6px 0 6px 10px;
+    padding: 6px 0 0 6px; /*6px 0 6px 10px*/
     font-weight: 600;
     font-size: 14px;
-    margin-bottom: 0px;
+    margin-bottom: 4px;
 }
 
 content .wrapper .cardp small{
@@ -170,13 +177,13 @@ content .wrapper .cardp small{
 
 content .wrapper .cardp img{
     text-align: center;
-    width: 100%;
+    width: 90%;
 }
 
 footer .wrapper{
     align-items: center;
    /* background-color: darkred;*/
-    background-color: rgba(140, 95, 69, 0.8);;
+    background-color: rgba(90, 80, 80, 0.6);
     /*background-color: #8C5F45;*/
     display: flex;
     flex-wrap: wrap;
@@ -191,7 +198,8 @@ footer .containet_map{
 }
 
 footer .container_links{
-    color:#968FA6;
+    /*color:#968FA6;*/
+    color:darkred;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -308,6 +316,10 @@ footer .wrapper .chat img{
 /**-----Media Querie-------------------*/
 @media screen and (max-width: 600px){
     
+    header .container-fluid{
+        width:100% !important;
+    }
+
     .container_banner img{
         display: none;
     }
@@ -315,4 +327,22 @@ footer .wrapper .chat img{
         background-image: url("/images/banner-6402.jpg");
         background-size: cover;
     } 
+    
+    content .wrapper .cardp{
+        width: 90%;
+    }
+
+    footer .wrapper{
+        height: 70vh;
+        flex-direction: column;
+    }
+
+    footer .container_links{
+        align-items: center;
+        color: darkred;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 6px;
+    }
 }
