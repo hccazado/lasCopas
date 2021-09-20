@@ -8,21 +8,23 @@
                     <label for="buscaCliente">Buscar Cliente</label>
                 </div>
                 <div  class="table-responsive">
-                    <table class="table border border-success table-bordered caption-top">
+                    <table class="tabela-esquerda table border border-success table-bordered caption-top">
                         <caption>Clientes Cadastrados</caption>
                         <thead>
                             <tr>
-                                <td>id</td>
+                                <td>Doc.</td>
                                 <td>Nome</td>
-                                <td>CPF/CNPJ</td>
+                                <td>UF</td>
+                                <td>Cidade</td>
                             </tr>
                         </thead>
                         <tbody>
                             <%for(let i=0; i<clientes.length;i++){%>
                             <tr>
-                                <td><a class="link_tabela" href="/gerenciar/cliente/:<%=clientes[i].id%>"><%=clientes[i].id%></a></td>
-                                <td><a class="link_tabela" href="/gerenciar/cliente/:<%=clientes[i].id%>"><%=clientes[i].nome%></a></td>
                                 <td><a class="link_tabela" href="/gerenciar/cliente/:<%=clientes[i].id%>"><%=clientes[i].doc%></a></td>
+                                <td><a class="link_tabela" href="/gerenciar/cliente/:<%=clientes[i].id%>"><%=clientes[i].nome%></a></td>
+                                <td><a class="link_tabela" href="/gerenciar/cliente/:<%=clientes[i].id%>"><%=clientes[i].uf%></a></td>
+                                <td><a class="link_tabela" href="/gerenciar/cliente/:<%=clientes[i].id%>"><%=clientes[i].cidade%></a></td>
                             </tr>
                             <% } %>
                         </tbody>

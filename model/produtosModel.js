@@ -5,7 +5,7 @@ const vinhos = [{
     origem: "Argentina",
     uvas: ["malbec, merlot"],
     ano: 2016,
-    preco: "79,90",
+    preco: "79.90",
     cosecha: "temprana",
     tipo: "tinto",
     temDescricao: true,
@@ -13,12 +13,12 @@ const vinhos = [{
 {
     id:20,
     rotulo: "images/uploads/rotulos/Trapiche - cabernet.png",
-    finca: "Traoiche",
+    finca: "Trapiche",
     origem: "Argentina",
     uvas: ["suavignon"],
     cosecha: "temprana",
     ano: 2018,
-    preco: "74,90",
+    preco: "74.90",
     tipo: "tinto",
     temDescricao: false,
     descricao: "Um vilnho tinto de notas amadeiradas e aroma floral, sabor residual de rapadura. um autentico vinho argentino."}
@@ -40,7 +40,6 @@ function cadastrarVinho(uvas, cosecha, tipo, finca, ano, preco, origem, rotulo){
         rotulo: rotulo
     }
     vinhos.push(novoVinho);
-    console.log("Model: vinho inserido no vetor");
 };
 
 function buscarVinhoID (id){
