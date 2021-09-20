@@ -38,7 +38,8 @@ header .link_logo span{
 }
 
 header .links-menu{
-    color: #968FA6!important;
+    /*color: #968FA6!important;*/
+    color: rgba(200,170,180,0.6);
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;
     margin-right: 15px;
@@ -47,14 +48,15 @@ header .links-menu{
 
 header .links-menu:hover{
     /*background-color: cadetblue;*/
-    background-color: #D99C52;
+    /*background-color: #D99C52;*/
+    background-color: rgba(220,60,60,0.8);
     border-radius: 5px;
     color:white !important;
 }
 
 header .links-menu:active{
     /*background-color: darkblue;*/
-    background-color: #7ED9C8;
+    background-color: darkred;
     color:white;
 }
 
@@ -126,6 +128,7 @@ content .wrapper .container_banner{
 
 content .wrapper .container_banner img{
     height: 100%;
+    max-width:100%;
 }
 
 
@@ -330,6 +333,7 @@ footer .wrapper .chat img{
     
     content .wrapper .cardp{
         width: 90%;
+        margin-top: 5px;
     }
 
     footer .wrapper{

@@ -57,7 +57,9 @@
 
 .wrapper .link_button{
     box-shadow: rgba(80,80,70, 0.5) 1px 1px 5px;
-    background-color: #968FA6;
+    /*background-color: #968FA6;*/
+    background-color: rgba(220,60,60,0.8);
+    border-radius: 5px;
     margin: 20px auto;
     font-size: 20px;
     font-weight: 600;
@@ -69,8 +71,8 @@
 }
 
 .wrapper .link_button:hover{
-    background-color: cadetblue;
-    border-radius: 5px;
+    /*background-color: cadetblue;*/
+    background-color: darkred;
     color: white
 }
 
