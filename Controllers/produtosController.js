@@ -1,4 +1,6 @@
 const title = "lasCopas - Produtos";
+const model = require("../model/produtosModel");
+
 const vinhos = [{
         id:10,
         rotulo: "images/uploads/rotulos/EM-roble.png",
@@ -34,21 +36,31 @@ const controller = {
         });        
     },
     cadastrarProduto: (req, res, next) =>{
-        let{uvas, cosecha, tipo, finca, ano, preco, origem} = req.body;
-        let resultado = {
-            uvas: uvas,
-            cosecha: cosecha,
-            tipo: tipo,
-            finca: finca,
-            ano: ano,
-            preco: preco,
-            origem: origem,
-            //concatenando path relativo com nome do arquivo para correta exibição no card
-            rotulo: "images/uploads/rotulos/"+req.file.filename
-        }
-        vinhos.push(resultado);
-        console.log(resultado);
+        let{uvas, cosecha, tipo, finca, ano, preco, origem, descricao} = req.body;
+        let rotulo = "images/uploads/rotulos/"+req.file.filename
+        //chamando metodo de cadastro de produto no model
+        model.cadastrarVinho(uvas, cosecha, tipo, finca, ano, preco, origem, rotulo);
+ 
         res.redirect("/produtos");
+    },
+    editarProduto: (req, res, next) =>{
+        let id = req.params.id;
+        console.log(id);
+        let{uvas, cosecha, tipo, finca, ano, preco, origem, descricao} = req.body;
+        if(typeof req.file !== undefined){
+            model.editarVinho(id, uvas, cosecha, tipo, finca, ano, preco, origem, null, descricao);
+            console.log("editarProduto - sem rotulo");
+        }
+        else{
+            let rotulo = "images/uploads/rotulos/"+req.file.filename
+            model.editarVinho(id, uvas, cosecha, tipo, finca, ano, preco, origem, rotulo, descricao);
+            console.log("editarProduto - com rotulo");
+        }
+        res.redirect("/gerenciar/produtos");
+        
+        //chamando metodo de cadastro de produto no model
+        
+ 
     },
     detalhe: (req, res, next) =>{
         let produto = vinhos.find(vinho =>{

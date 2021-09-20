@@ -239,7 +239,7 @@ footer .wrapper .chat img{
     flex-wrap: wrap;
     max-width: 650px;
     /*background-color: #bbb;*/
-    background-color: #968FA6;
+    background-color:rgba(220,60,60,0.8);
     padding:30px;
 }
 
@@ -250,12 +250,13 @@ footer .wrapper .chat img{
     background-color: #bbb;
     border-radius: 10px;
     box-shadow: rgba(80,80,70, 0.5) 1px 1px 5px;
-    transition: all 0,5s;
+    transition: all 0.5s; 
+    transition-timing-function: ease-in-out;
 }
 
 .wrapper .painel_wrapper .card_admin:hover{
-    background-color: #4e6ce4;
-    color:#fff;
+    background-color:darkred;
+    color: #fff;
 }
 
 .wrapper .painel_wrapper .card_admin img{
@@ -266,15 +267,15 @@ footer .wrapper .chat img{
     text-decoration: none;
 }
 
-.wrapper .painel_wrapper .card_admin span{
+.wrapper .painel_wrapper .card_admin p{
     color: black;
     font-size: 14px;
     font-family: 'Open Sans', sans-serif;
-    margin: 20px;
+    margin: 8px 0 15px 0;
 }
 
 .titulo_adm{
-    color: #5D3D2D;
+    color: darkred;
     margin:20px auto;
 }
 
@@ -291,7 +292,7 @@ footer .wrapper .chat img{
 }
 
 .wrapper .container_lista h5{
-    color: #5D3D2D;
+    color: darkred;
     font-size: 16px;
 }
 

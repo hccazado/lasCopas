@@ -9,7 +9,8 @@
 .wrapper .button{
     padding: 10px 20px;
     border: 0;
-    background-color: cadetblue;
+    background-color: rgba(220,60,60,0.8);
+    border-radius: 5px;
     color: #ccc;
     cursor: pointer;
     transition: all 0.3s;

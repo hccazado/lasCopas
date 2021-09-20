@@ -32,4 +32,6 @@ router.post("/cadastro", upload.single("rotulo"), controller.cadastrarProduto)
 
 router.get("/:id", controller.detalhe);
 
+router.post("/editar/:id", upload.single("rotulo"), controller.editarProduto);
+
 module.exports = router;

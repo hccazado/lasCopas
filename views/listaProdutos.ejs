@@ -22,10 +22,10 @@
                     <tbody>
                         <%for(let i=0; i<produtos.length;i++){%>
                         <tr>
-                            <td><a class="link_tabela" href="/gerenciar/produtos/:<%=produtos[i].id%>"><%=produtos[i].id%></a></td>
-                            <td><a class="link_tabela" href="/gerenciar/produtos/:<%=produtos[i].id%>"><%=produtos[i].finca%></a></td>
-                            <td><a class="link_tabela" href="/gerenciar/produtos/:<%=produtos[i].id%>"><%=produtos[i].uvas%></a></td>
-                            <td><a class="link_tabela" href="/gerenciar/produtos/:<%=produtos[i].id%>"><%=produtos[i].preco%></a></td>
+                            <td><a class="link_tabela" href="/gerenciar/produtos/<%=produtos[i].id%>"><%=produtos[i].id%></a></td>
+                            <td><a class="link_tabela" href="/gerenciar/produtos/<%=produtos[i].id%>"><%=produtos[i].finca%></a></td>
+                            <td><a class="link_tabela" href="/gerenciar/produtos/<%=produtos[i].id%>"><%=produtos[i].uvas%></a></td>
+                            <td><a class="link_tabela" href="/gerenciar/produtos/<%=produtos[i].id%>"><%=produtos[i].preco%></a></td>
                         </tr>
                         <% } %>
                     </tbody>

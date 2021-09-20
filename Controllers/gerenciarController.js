@@ -71,9 +71,29 @@ const controller ={
     cadastrarCliente: (req, res, next) =>{
         //desestruturando objeto de dados do formulario cadastro de cliente em variareis
         let{nome, nascimento, email, pessoa, doc, cep, end1, complemento, uf, cidade} = req.body;
+        let novo ={
+            nome: nome,
+            nascimento: nascimento,
+            email: email,
+            pessoa: pessoa,
+            doc: doc,
+            cep: cep,
+            end1: end1,
+            comp: complemento,
+            uf: uf,
+            cidade: cidade
+        };
+        clientes.push(novo);
 
         //redirecionamento à pagina de login
         res.redirect("/login");
+    },
+    editarProduto: (req, res, next) =>{
+        let id=req.params.id;
+        res.render("editarProduto",{
+            title:title,
+            id:id
+        })
     }
 };
 

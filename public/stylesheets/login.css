@@ -25,8 +25,8 @@
 }
 
 .login input{
-    height: 30px;
     margin: 20px 15px 20px 0;
+    padding:5px;
     width: 70%;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -34,8 +34,7 @@
 
 
 .login button{
-    /*background-color: #ccc;*/
-    background-color: #968FA6;
+    background-color: rgba(220,60,60,0.8);
     font-size: 14px;
     width: 92%;
     padding: 10px;
@@ -45,7 +44,7 @@
 }
 
 .login button:hover{
-    background-color: cadetblue;
+    background-color: darkred;
     color: white
 }
 
@@ -54,7 +53,7 @@
     font-size: 13px;
 }
 .login p a{
-    text-decoration: none;
+    text-decoration: underline;
     color: cadetblue;
     font-weight: 600;
 }
