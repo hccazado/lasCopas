@@ -22,25 +22,25 @@ const pedidos = [
 ]
 
 //Objeto com os metodos do controller a serem exportados
-const controller ={
-    index: (req, res, next) =>{
+const controller = {
+    index: (req, res, next) => {
         res.render("painelAdministrativo", {
             title: title
         });
     },
-    listarClientes: (req, res, next) =>{
+    listarClientes: (req, res, next) => {
         res.render("listaClientes", {
-            title:title,
+            title: title,
             clientes: clientesModel.listarClientes()
         });
     },
-    listarPedidos: (req, res, next) =>{
+    listarPedidos: (req, res, next) => {
         res.render("listaPedidos", {
-            title:title,
+            title: title,
             pedidos: pedidos
         });
     },
-    listarProdutos: (req, res, next) =>{
+    listarProdutos: (req, res, next) => {
         //Carregando lista de todos produtos do controller de produtos
         let produtos = produtosModel.listarVinhos();
         res.render("listaProdutos", {
@@ -48,25 +48,25 @@ const controller ={
             produtos: produtos
         });
     },
-    formCadastroCliente: (req, res, next) =>{
+    formCadastroCliente: (req, res, next) => {
         res.render("cadastroCliente", {
             title: title
         });
     },
-    cadastrarCliente: (req, res, next) =>{
+    cadastrarCliente: (req, res, next) => {
         //desestruturando objeto de dados do formulario cadastro de cliente em variareis
-        let{nome, nascimento, email, password, pessoa, doc, cep, end1, complemento, uf, cidade} = req.body;
-        
+        let { nome, nascimento, email, password, pessoa, doc, cep, end1, complemento, uf, cidade } = req.body;
+
         clientesModel.cadastrarCliente(nome, nascimento, email, password, pessoa, doc, cep, end1, complemento, uf, cidade);
         //redirecionamento à pagina de login
         res.redirect("/login");
     },
-    editarProduto: (req, res, next) =>{
-        let id=req.params.id;
+    editarProduto: (req, res, next) => {
+        let id = req.params.id;
         let dadosProduto = produtosModel.buscarVinhoID(id);
-        res.render("editarProduto",{
-            title:title,
-            id:id,
+        res.render("editarProduto", {
+            title: title,
+            id: id,
             produto: dadosProduto
         });
     }
