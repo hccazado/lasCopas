@@ -3,9 +3,10 @@ const vinhos = [{
     rotulo: "images/uploads/rotulos/EM-roble.png",
     finca: "Trapiche",
     origem: "Argentina",
-    uvas: "malbec, merlot",
+    uvas: ["malbec, merlot"],
     ano: 2016,
     preco: "79,90",
+    cosecha: "temprana",
     tipo: "tinto",
     temDescricao: true,
     descricao: "Um vilnho tinto de notas amadeiradas e aroma floral, sabor residual de rapadura. um autentico vinho argentino."},
@@ -14,7 +15,8 @@ const vinhos = [{
     rotulo: "images/uploads/rotulos/Trapiche - cabernet.png",
     finca: "Traoiche",
     origem: "Argentina",
-    uvas: ["Cabernet"],
+    uvas: ["suavignon"],
+    cosecha: "temprana",
     ano: 2018,
     preco: "74,90",
     tipo: "tinto",
@@ -35,7 +37,6 @@ function cadastrarVinho(uvas, cosecha, tipo, finca, ano, preco, origem, rotulo){
         ano: ano,
         preco: preco,
         origem: origem,
-        //concatenando path relativo com nome do arquivo para correta exibição no card
         rotulo: rotulo
     }
     vinhos.push(novoVinho);
@@ -43,26 +44,27 @@ function cadastrarVinho(uvas, cosecha, tipo, finca, ano, preco, origem, rotulo){
 };
 
 function buscarVinhoID (id){
-    let resultado = vinhos.filter(vinho =>{
+    
+    let resultado = vinhos.find(vinho =>{
         if (vinho.id == id){
             return vinho;
         }
     });
+    return resultado;
 };
 
-function editarVinho(id, uvas, cosecha, tipo, finca, ano, preco, origem, rotulo=null, descricao){
-    let buscar = buscarVinhoID(id);
+function editarVinho(editar){
+    let buscar = buscarVinhoID(editar.id);
     
-    buscar.rotulo = rotulo,
-    buscar.finca = finca,
-    buscar.origem = origem,
-    buscar.uvas = uvas,
-    buscar.ano = ano,
-    buscar.preco = preco,
-    buscar.tipo = tipo,
-    buscar.descricao = descricao
-    if(rotulo!=null){
-        buscar.rotulo = rotulo
+    buscar.finca = editar.finca;
+    buscar.origem = editar.origem;
+    buscar.uvas = editar.uvas;
+    buscar.ano = editar.ano;
+    buscar.preco = editar.preco;
+    buscar.tipo = editar.tipo;
+    buscar.descricao = editar.descricao;
+    if(editar.rotulo!=null){
+        buscar.rotulo = editar.rotulo;
     }
 };
 

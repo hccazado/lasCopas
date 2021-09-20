@@ -1,33 +1,12 @@
 const title = "lasCopas - Produtos";
 const model = require("../model/produtosModel");
 
-const vinhos = [{
-        id:10,
-        rotulo: "images/uploads/rotulos/EM-roble.png",
-        finca: "Trapiche",
-        origem: "Argentina",
-        uvas: "malbec, merlot",
-        ano: 2016,
-        preco: "79,90",
-        tipo: "tinto",
-        temDescricao: true,
-        descricao: "Um vilnho tinto de notas amadeiradas e aroma floral, sabor residual de rapadura. um autentico vinho argentino."},
-    {
-        id:20,
-        rotulo: "images/uploads/rotulos/Trapiche - cabernet.png",
-        finca: "Traoiche",
-        origem: "Argentina",
-        uvas: ["Cabernet"],
-        ano: 2018,
-        preco: "74,90",
-        tipo: "tinto",
-        temDescricao: false,
-        descricao: "Um vilnho tinto de notas amadeiradas e aroma floral, sabor residual de rapadura. um autentico vinho argentino."}]
+
 const controller = {
     index: (req, res, next) =>{
         res.render("produtos", {
             title: title,
-            vinhos: vinhos
+            vinhos: model.listarVinhos()
         });
     }, 
     cadastroProduto: (req, res, next) =>{
@@ -45,45 +24,36 @@ const controller = {
     },
     editarProduto: (req, res, next) =>{
         let id = req.params.id;
-        console.log(id);
         let{uvas, cosecha, tipo, finca, ano, preco, origem, descricao} = req.body;
-        if(typeof req.file !== undefined){
-            model.editarVinho(id, uvas, cosecha, tipo, finca, ano, preco, origem, null, descricao);
-            console.log("editarProduto - sem rotulo");
+        let editar = {
+            id: id,
+            uvas: uvas,
+            cosecha: cosecha,
+            tipo: tipo,
+            finca: finca,
+            ano: ano,
+            preco: preco,
+            origem: origem,
+            descricao: descricao,
+            rotulo : null
         }
-        else{
-            let rotulo = "images/uploads/rotulos/"+req.file.filename
-            model.editarVinho(id, uvas, cosecha, tipo, finca, ano, preco, origem, rotulo, descricao);
-            console.log("editarProduto - com rotulo");
+        if(!req.file){
+            model.editarVinho(editar);
+        }
+        else {
+            var rotulo = "images/uploads/rotulos/"+req.file.filename;
+            editar.rotulo = rotulo;
+            model.editarVinho(editar);
         }
         res.redirect("/gerenciar/produtos");
-        
-        //chamando metodo de cadastro de produto no model
-        
- 
     },
     detalhe: (req, res, next) =>{
-        let produto = vinhos.find(vinho =>{
-            if(vinho.id == req.params.id){
-                console.log(vinho);
-                return vinho;
-            }
-        })
+        let produto = model.buscarVinhoID(req.params.id);
         res.render("detalheProduto", {
             title: title,
-            /*rotulo: "/images/uploads/rotulos/EM-roble.png",
-            origem: "Argentina",
-            uvas: ["malbec","merlot"],
-            ano: 2016,
-            preco: "79,90",
-            tipo: "tinto",
-            temDescricao: true,
-            descricao: "Um vilnho tinto de notas amadeiradas e aroma floral, sabor residual de rapadura. um autentico vinho argentino."
-            */
-           vinho: produto
-        })
+            vinho: produto
+        });
     }
-
 }
 
 module.exports = controller;

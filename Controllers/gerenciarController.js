@@ -1,5 +1,13 @@
+//Require dos controladores
+
+const produtosController = require("./produtosController");
+const produtosModel = require("../model/produtosModel");
+const loginController = require("./loginController");
+
+//Titulo das paginas
 const title = "lasCopas - Administração";
 
+//Arrays 
 const clientes = [{
         id:123,
         nome: "Heitor",
@@ -30,15 +38,7 @@ const pedidos = [
     }
 ]
 
-const produtos = [
-    { 
-        id: 10,
-        finca: "Trapiche",
-        uvas: "suavignon",
-        preco: 79.90
-    }
-]
-
+//Objeto com os metodos do controller a serem exportados
 const controller ={
     index: (req, res, next) =>{
         res.render("painelAdministrativo", {
@@ -58,6 +58,8 @@ const controller ={
         })
     },
     listarProdutos: (req, res, next) =>{
+        //Carregando lista de todos produtos do controller de produtos
+        let produtos = produtosModel.listarVinhos();
         res.render("listaProdutos", {
             title: title,
             produtos: produtos
@@ -90,9 +92,11 @@ const controller ={
     },
     editarProduto: (req, res, next) =>{
         let id=req.params.id;
+        let dadosProduto = produtosModel.buscarVinhoID(id);
         res.render("editarProduto",{
             title:title,
-            id:id
+            id:id,
+            produto: dadosProduto
         })
     }
 };
