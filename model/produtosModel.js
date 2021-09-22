@@ -1,5 +1,5 @@
 const vinhos = [{
-    id:10,
+    id:1,
     rotulo: "images/uploads/rotulos/EM-roble.png",
     finca: "Trapiche",
     origem: "Argentina",
@@ -8,10 +8,9 @@ const vinhos = [{
     preco: "79.90",
     cosecha: "temprana",
     tipo: "tinto",
-    temDescricao: true,
     descricao: "Um vilnho tinto de notas amadeiradas e aroma floral, sabor residual de rapadura. um autentico vinho argentino."},
 {
-    id:20,
+    id:2,
     rotulo: "images/uploads/rotulos/Trapiche - cabernet.png",
     finca: "Trapiche",
     origem: "Argentina",
@@ -20,7 +19,6 @@ const vinhos = [{
     ano: 2018,
     preco: "74.90",
     tipo: "tinto",
-    temDescricao: false,
     descricao: "Um vilnho tinto de notas amadeiradas e aroma floral, sabor residual de rapadura. um autentico vinho argentino."}
 ]
 
@@ -30,6 +28,7 @@ function listarVinhos(){
 
 function cadastrarVinho(uvas, cosecha, tipo, finca, ano, preco, origem, rotulo){
     let novoVinho = {
+        id: (vinhos.length)+1,
         uvas: uvas,
         cosecha: cosecha,
         tipo: tipo,

@@ -9,6 +9,8 @@ const clientes = [
     {
         id:456,
         nome: "teste",
+        email: "teste@gmail.com",
+        password: "123",
         doc: "333.333.444-55",
         uf: "SP",
         cidade: "Santos"
@@ -59,10 +61,40 @@ function cadastrarCliente(nome, nascimento, email, password, pessoa, doc, cep, e
     clientes.push(novoCliente);
 };
 
+function sigIn(user){
+    let cliente = clientes.find(cliente =>{
+       return cliente.email === user.email;
+    });
+    if(cliente!=undefined){
+        if(cliente.password === user.password){
+            return {
+                error:false,
+                message:null,
+                login:true
+            }
+        }
+        else{
+            return{
+                error:true,
+                message:"Senha incorreta",
+                login:false
+            }
+        } 
+    }
+    else{
+        return{
+            error:true,
+            message: "Usuario não encontrado",
+            login: false
+        }
+    }
+}
+
 
 //Exportando funções
 module.exports = {
     listarClientes,
     buscarClienteID,
-    cadastrarCliente
+    cadastrarCliente,
+    sigIn
 }
