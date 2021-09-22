@@ -31,7 +31,7 @@
                     <div>
                         <% if(errors.email){ %>
                             <label for="email">Email</label><br>
-                            <input type="email" id="email" name="email" placeholder="Informe seu email" value="<%=old.nascimento%>">
+                            <input type="email" id="email" name="email" placeholder="Informe seu email" value="<%=old.email%>">
                             <span id="error"><%=errors.email.msg%></span>
                         <% } else{ %>
                             <label for="email">Email</label><br>
@@ -41,8 +41,8 @@
                     <div>
                         <% if(errors.password){ %>
                             <label for="pass">Senha</label><br>
-                            <input type="password" id="pass" name="password" placeholder="informe sua senha" required value="<%=old.nascimento%>">
-                            <span id="error"><%=errors.email.msg%></span>
+                            <input type="password" id="pass" name="password" placeholder="informe sua senha" required>
+                            <span id="error"><%=errors.password.msg%></span>
                         <% } else{ %>
                             <label for="pass">Senha</label><br>
                             <input type="password" id="pass" name="password" placeholder="informe sua senha" required>
@@ -93,7 +93,7 @@
                     </div>
                     <div>
                         <label for="end1">End.</label><br>
-                        <% if(errors.cep){ %>
+                        <% if(errors.end1){ %>
                             <input type="text" id="end1" name="end1" placeholder="Digite endereço" required value="<%=old.end1%>">
                             <span id="error"><%=errors.end1.msg%></span>
                         <% } else{ %>
@@ -140,7 +140,12 @@
                     </div>
                     <div>
                         <label for="cidade">Cidade</label><br>
-                        <input type="text" id="cidade" name="cidade" placeholder="Informe cidade" required>
+                        <% if(errors.cidade){ %>
+                            <input type="text" id="cidade" name="cidade" placeholder="Informe cidade" required value="<%=old.cidade%>">
+                            <span id="error"><%=errors.cidade.msg%></span>
+                        <% } else{ %>
+                            <input type="text" id="cidade" name="cidade" placeholder="Informe cidade" required>
+                        <% } %>
                     </div>             
                 </div>
             </div>
