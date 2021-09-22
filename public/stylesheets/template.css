@@ -133,7 +133,7 @@ content .wrapper #carousel img{
 
 content .wrapper .container_banner{
     justify-content: center;
-    background-color: rgba(90, 80, 80, 0.5);
+    background-color: rgba(90, 80, 80, 0.1);
     display: flex;
     height: 350px;
 }
@@ -198,18 +198,38 @@ content .wrapper .cardp img{
 footer .wrapper{
     align-items: center;
    /* background-color: darkred;*/
-    background-color: rgba(90, 80, 80, 0.6);
+    background-color: rgba(90, 80, 80, 0.1);
     /*background-color: #8C5F45;*/
     display: flex;
     flex-wrap: wrap;
     font-family: 'Open Sans', sans-serif;
     font-size: 18px;
     font-weight: 600;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
-footer .containet_map{
-    padding: 10px auto;
+footer .container_map{
+    border:1px black solid;
+    margin: 5px;
+}
+
+footer .container_onde{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+footer .container_onde h4{
+    color: darkred;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+footer .container_onde p{
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 6px;
 }
 
 footer .container_links{
@@ -218,6 +238,13 @@ footer .container_links{
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+footer .container_links h4{
+    color: darkred;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
 }
 
 footer .container_links ul{
@@ -345,6 +372,9 @@ footer .wrapper .chat img{
 
 
 /**-----Media Querie-------------------*/
+@media (max-width: 420px){
+    
+}
 @media screen and (max-width: 600px){
     
     header .container-fluid{
@@ -365,8 +395,8 @@ footer .wrapper .chat img{
     }
 
     footer .wrapper{
-        height: 70vh;
         flex-direction: column;
+        width: 100%;
     }
 
     footer .container_links{
@@ -375,6 +405,13 @@ footer .wrapper .chat img{
         display: flex;
         flex-direction: column;
         justify-content: center;
-        margin-top: 6px;
+        margin: 6px 0 20px 0;
+    }
+
+    footer .container_onde{
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        margin: 25px 0 25px 0;
     }
 }

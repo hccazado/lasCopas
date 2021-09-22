@@ -18,7 +18,7 @@ const controller = {
                     title: title,
                     exists: true,
                     errors: {}
-                })
+                });
             }
         }
         else{
