@@ -8,7 +8,8 @@ const {validationResult} = require("express-validator");
 const controller={
     index: (req,res,next) =>{
         res.render("login",{
-            title: title
+            title: title,
+            created: false
         });
     },
     logar: (req, res, next) => {

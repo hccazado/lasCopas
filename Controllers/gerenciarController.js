@@ -50,16 +50,19 @@ const controller = {
     },
     formCadastroCliente: (req, res, next) => {
         res.render("cadastroCliente", {
-            title: title
+            title: title,
+            exists: false,
+            errors: {}
         });
     },
-    cadastrarCliente: (req, res, next) => {
-        //desestruturando objeto de dados do formulario cadastro de cliente em variareis
-        let { nome, nascimento, email, password, pessoa, doc, cep, end1, complemento, uf, cidade } = req.body;
+    //Metodo para chamar o model Cliente e recuperar os dados respectivos do ID e enviar os mesmos a view.
+    edicaoCliente: (req, res, next) =>{
+        let id = req.params.id;
+        let resultado = clientesModel.buscarClienteID(id);
+        console.log(resultado);
+    },
+    editarCliente: (req, res, next) =>{
 
-        clientesModel.cadastrarCliente(nome, nascimento, email, password, pessoa, doc, cep, end1, complemento, uf, cidade);
-        //redirecionamento à pagina de login
-        res.redirect("/login");
     },
     editarProduto: (req, res, next) => {
         let id = req.params.id;

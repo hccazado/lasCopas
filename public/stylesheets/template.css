@@ -3,6 +3,18 @@ html, body{
     padding: 0;
 }
 
+#created{
+    color: green;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#error{
+    color: red;
+    text-align: center;
+    margin: 5px;
+}
+
 .wrapper{
     text-align: center;
     width: 100%;

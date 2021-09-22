@@ -5,41 +5,100 @@
         <form action="/gerenciar/cadastroCliente" method="POST">
             <div class="container_formulario">
                 <div class="clientes">
+                    <% if(exists == true){ %>
+                        <span id="error">O email já está cadastrado</span>
+                    <% } %>
                     <div>
-                        <label for="nome">Nome</label><br>
-                        <input type="text" id="nome" name="nome" placeholder="Digite nome" required>
+                        <% if(errors.nome){ %>
+                            <label for="nome">Nome</label><br>
+                            <input type="text" id="nome" name="nome" value="<%=old.nome%>" placeholder="Digite nome">
+                            <span id="error"><%=errors.nome.msg%></span>
+                        <% } else{ %>
+                            <label for="nome">Nome</label><br>
+                            <input type="text" id="nome" name="nome" placeholder="Digite nome">
+                        <% } %>
                     </div>
                     <div>
-                        <label for="nasc">Nasc.</label><br>
-                        <input type="date" id="nasc" name="nascimento" required>
+                        <% if(errors.nascimento){ %>
+                            <label for="nasc">Nasc.</label><br>
+                            <input type="date" id="nasc" name="nascimento" value="<%=old.nascimento%>">
+                            <span id="error"><%=errors.nascimento.msg%></span>
+                        <% } else{ %>
+                            <label for="nasc">Nasc.</label><br>
+                            <input type="date" id="nasc" name="nascimento" required>
+                        <% } %>
                     </div>
                     <div>
-                        <label for="email">Email</label><br>
-                        <input type="email" id="email" name="email" placeholder="Informe seu email" required>
+                        <% if(errors.email){ %>
+                            <label for="email">Email</label><br>
+                            <input type="email" id="email" name="email" placeholder="Informe seu email" value="<%=old.nascimento%>">
+                            <span id="error"><%=errors.email.msg%></span>
+                        <% } else{ %>
+                            <label for="email">Email</label><br>
+                            <input type="email" id="email" name="email" placeholder="Informe seu email">
+                        <% } %>
                     </div>
                     <div>
-                        <label for="pass">Senha</label><br>
-                        <input type="password" id="pass" name="password" placeholder="informe sua senha" required>
+                        <% if(errors.password){ %>
+                            <label for="pass">Senha</label><br>
+                            <input type="password" id="pass" name="password" placeholder="informe sua senha" required value="<%=old.nascimento%>">
+                            <span id="error"><%=errors.email.msg%></span>
+                        <% } else{ %>
+                            <label for="pass">Senha</label><br>
+                            <input type="password" id="pass" name="password" placeholder="informe sua senha" required>
+                        <% } %>
                     </div>
                     <div>
-                        <label for="pessoa">Tipo de Pessoa</label><br>
-                        <select id="pessoa" name="pessoa">
-                            <option disabled selected>Selecione</option>
-                            <option value="fisica">Fisica</option>
-                            <option value="juridica">Juridica</option>
-                        </select>
+                        <% if(errors.pessoa){ %>
+                            <label for="pessoa">Tipo de Pessoa</label><br>
+                            <select id="pessoa" name="pessoa">
+                                <option disabled selected>Selecione</option>
+                                <%if(old.pessoa == "fisica") {%>
+                                    <option value="fisica" selected>Fisica</option>
+                                    <option value="juridica">Juridica</option>
+                                <% } else if(pessoa == "juridica") {%>
+                                    <option value="fisica">Fisica</option>
+                                    <option value="juridica" selected>Juridica</option>
+                                <% } %>
+                            </select>
+                            <span id="error"><%=errors.pessoa.msg%></span>
+                        <% } else{ %>
+                            <label for="pessoa">Tipo de Pessoa</label><br>
+                            <select id="pessoa" name="pessoa">
+                                <option disabled selected>Selecione</option>
+                                <option value="fisica">Fisica</option>
+                                <option value="juridica">Juridica</option>
+                            </select>
+                        <% } %>
                     </div>
                     <div>
-                        <label for="doc">CPF</label><br>
-                        <input type="number" id="doc" name="doc" placeholder="Informe CPF ou CNPJ" required>
+                        <% if(errors.doc){ %>
+                            <label for="doc">CPF/CNPJ</label><br>
+                            <input type="number" id="doc" name="doc" placeholder="Informe CPF ou CNPJ" required value="<%=old.doc%>">
+                            <span id="error"><%=errors.doc.msg%></span>
+                        <% } else{ %>
+                            <label for="doc">CPF/CNPJ</label><br>
+                            <input type="number" id="doc" name="doc" placeholder="Informe CPF ou CNPJ" required>
+                        <% } %>
                     </div>
                     <div>
-                        <label for="cep">CEP</label><br>
-                        <input type="text" id="cep" name="cep" placeholder="Informe seu cep" required >
+                        <% if(errors.cep){ %>
+                            <label for="cep">CEP</label><br>
+                            <input type="text" id="cep" name="cep" placeholder="Informe seu cep" required  value="<%=old.cep%>">
+                            <span id="error"><%=errors.cep.msg%></span>
+                        <% } else{ %>
+                            <label for="cep">CEP</label><br>
+                            <input type="text" id="cep" name="cep" placeholder="Informe seu cep" required >
+                        <% } %>
                     </div>
                     <div>
                         <label for="end1">End.</label><br>
-                        <input type="text" id="end1" name="end1" placeholder="Digite endereço" required>
+                        <% if(errors.cep){ %>
+                            <input type="text" id="end1" name="end1" placeholder="Digite endereço" required value="<%=old.end1%>">
+                            <span id="error"><%=errors.end1.msg%></span>
+                        <% } else{ %>
+                            <input type="text" id="end1" name="end1" placeholder="Digite endereço" required>
+                        <% } %>
                     </div>
                     <div>
                         <label for="compl">Complemento</label><br>

@@ -2,6 +2,9 @@
         <div class="login_container">
             <form action="/login" method="POST">
 				<div class="login">
+					<% if(created == true){ %>
+						<span id="created">Usuario Criado com sucesso!</span>
+					<% } %>
 					<div class="login_user">
 						<label for="usuario">Login: </label>
 						<input type="text" id="usuario" name="email" placeholder="username" >

@@ -3,10 +3,10 @@ var router = express.Router();
 const controller = require("../Controllers/loginController");
 
 //require middleware validator para campos login
-const validarLogin = require("../middlewares/login");
+const validator = require("../middlewares/validator");
 
 router.get("/", controller.index);
 
-router.post("/", validarLogin.validaCampos, controller.logar);
+router.post("/", validator.validaCamposLogin, controller.logar);
 
 module.exports = router;

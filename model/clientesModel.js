@@ -1,13 +1,13 @@
 const clientes = [
     {
-        id:123,
+        id:1,
         nome: "Heitor",
         doc: "222.333.444-55",
         uf: "MG",
         cidade: "Belo Horizonte"
     },
     {
-        id:456,
+        id:2,
         nome: "teste",
         email: "teste@gmail.com",
         password: "123",
@@ -16,7 +16,7 @@ const clientes = [
         cidade: "Santos"
     },
     {
-        id:765,
+        id:3,
         nome: "DH",
         doc: "286-567.765/0001-90",
         uf: "SP",
@@ -27,6 +27,7 @@ const clientes = [
 function listarClientes(){
     let clientesMap = clientes.map( cliente =>{
         return {
+            id: cliente.id,
             doc: cliente.doc,
             nome: cliente.nome,
             uf: cliente.uf,
@@ -43,22 +44,42 @@ function buscarClienteID(id){
     return resultado;
 }
 
-function cadastrarCliente(nome, nascimento, email, password, pessoa, doc, cep, end1, complemento, uf, cidade){
-    let novoCliente = {
-        id: doc,
-        nome: nome,
-        nascimento: nascimento,
-        email: email,
-        password: password,
-        pessoa: pessoa,
-        doc: doc,
-        cep: cep,
-        end1: end1,
-        complemento: complemento,
-        uf: uf,
-        cidade: cidade
-    };
-    clientes.push(novoCliente);
+/*function cadastrarCliente(nome, nascimento, email, password, pessoa, doc, cep, end1, complemento, uf, cidade){*/
+function cadastrarCliente(cadastro){
+    //verificando se o email informado já está cadastrado.
+    let resultado = clientes.find(cliente => {
+        if(cliente.email == cadastro.email){
+            console.log("model encontrou o email!");
+            return cliente;
+        }
+        });
+    if(resultado == undefined){
+        let novoCliente = {
+            id: (clientes.length)+1,
+            nome: cadastro.nome,
+            nascimento: cadastro.nascimento,
+            email: cadastro.email,
+            password: cadastro.password,
+            pessoa: cadastro.pessoa,
+            doc: cadastro.doc,
+            cep: cadastro.cep,
+            end1: cadastro.end1,
+            complemento: cadastro.complemento,
+            uf: cadastro.uf,
+            cidade: cadastro.cidade
+        };
+        clientes.push(novoCliente);
+        return {
+            exists: false,
+            created: true
+        }
+    }
+    else{
+        return{
+            exists:true,
+            created:false
+        }
+    }
 };
 
 function sigIn(user){
