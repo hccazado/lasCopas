@@ -16,7 +16,8 @@ const controller = {
             else{
                 res.render("cadastroCliente", {
                     title: title,
-                    exists: true
+                    exists: true,
+                    errors: {}
                 })
             }
         }
