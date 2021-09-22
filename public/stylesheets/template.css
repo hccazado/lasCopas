@@ -277,8 +277,8 @@ footer .wrapper .chat img{
     display: flex;
     flex-wrap: wrap;
     max-width: 650px;
-    /*background-color: #bbb;*/
-    background-color:rgba(220,60,60,0.8);
+    background-color: rgba(90, 80, 80, 0.2);
+    /*background-color:rgba(220,60,60,0.8);*/
     padding:30px;
 }
 
@@ -314,8 +314,8 @@ footer .wrapper .chat img{
 }
 
 .titulo_adm{
-    color: darkred;
-    margin:20px auto;
+    color: #555;
+    font-size: 28px;
 }
 
 /*---------Estilo para pagina Administrar Clientes e Pedidos--*/
@@ -413,5 +413,13 @@ footer .wrapper .chat img{
         flex-direction: column;
         text-align: left;
         margin: 25px 0 25px 0;
+    }
+
+    .wrapper .painel_wrapper{
+        flex-direction: column;
+        width:95%;
+    }
+    .wrapper .painel_wrapper .card_admin{
+        width:80%;
     }
 }
