@@ -8,8 +8,10 @@ const {validationResult} = require("express-validator");
 const controller={
     index: (req,res,next) =>{
         res.render("login",{
-            title: title,
-            created: false
+            title:title,
+            created: false,
+            error: {},
+            errorModel: null
         });
     },
     logar: (req, res, next) => {
@@ -20,11 +22,32 @@ const controller={
         if(errors.isEmpty()){
             let user = req.body;
             let autentica = clientesModel.sigIn(user);
-            console.log(autentica);
+            //console.log(autentica); //imprimindo retorno do metodo Sigin modelClientes
 
+            //Se a propriedade login conter valor true (email está cadastrado e senha igual)
+            if(autentica.login == true){
+                res.redirect("/");
+               /* res.render("login",{
+                    title:title,
+                    created: false,
+                    error: {},
+                    errorModel: autentica.message
+                });*/
+            }else{
+                res.render("login",{
+                    title: title,
+                    created: false,
+                    error: {},
+                    errorModel: autentica.message});
+            }
+            
         }
         else{
-            console.log("Encontrou erros"+errors.array());
+            res.render("login",{
+                title: title,
+                created: false,
+                errorModel: null,
+                error: errors.mapped()});
         }
     }
 };

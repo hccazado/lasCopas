@@ -16,6 +16,6 @@ router.get("/produtos/:id",controller.editarProduto);
 router.get("/cadastrocliente", controller.formCadastroCliente);
 router.post("/cadastrocliente", validator.validaCamposCadastroCliente, clientesController.cadastrar);
 router.get("/cliente/:id", controller.edicaoCliente);
-router.post("/editarCliente/:id", controller.editarCliente);
+router.post("/cliente/:id", validator.validaCamposCadastroCliente, clientesController.editar);
 
 module.exports = router;

@@ -82,6 +82,30 @@ function cadastrarCliente(cadastro){
     }
 };
 
+function editarCliente(id, novosDados){
+    let res = clientes.filter(cliente =>{
+        if (cliente.id == id){
+            cliente.nome = novosDados.nome,
+            cliente.nascimento = novosDados.nascimento,
+            cliente.email = novosDados.email,
+            cliente.password = novosDados.password,
+            cliente.pessoa = novosDados.pessoa,
+            cliente.doc = novosDados.doc,
+            cliente.cep = novosDados.cep,
+            cliente.end1 = novosDados.end1,
+            cliente.complemento = novosDados.complemento,
+            cliente.uf = novosDados.uf,
+            cliente.cidade = novosDados.cidade
+        }
+    });
+    if(res != undefined){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
 function sigIn(user){
     let cliente = clientes.find(cliente =>{
        return cliente.email === user.email;
@@ -117,5 +141,6 @@ module.exports = {
     listarClientes,
     buscarClienteID,
     cadastrarCliente,
+    editarCliente,
     sigIn
 }

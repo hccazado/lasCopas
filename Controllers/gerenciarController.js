@@ -52,17 +52,24 @@ const controller = {
         res.render("cadastroCliente", {
             title: title,
             exists: false,
-            errors: {}
+            errors: {},
+            id: null,
+            isEditing: false,
+            cliente: {}
         });
     },
     //Metodo para chamar o model Cliente e recuperar os dados respectivos do ID e enviar os mesmos a view.
     edicaoCliente: (req, res, next) =>{
         let id = req.params.id;
         let resultado = clientesModel.buscarClienteID(id);
-        console.log(resultado);
-    },
-    editarCliente: (req, res, next) =>{
-
+        res.render("cadastroCliente", {
+            title: title,
+            exists: null,
+            errors: {},
+            id: id,
+            isEditing: true,
+            cliente: resultado 
+        })
     },
     editarProduto: (req, res, next) => {
         let id = req.params.id;

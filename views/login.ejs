@@ -3,15 +3,24 @@
             <form action="/login" method="POST">
 				<div class="login">
 					<% if(created == true){ %>
-						<span id="created">Usuario Criado com sucesso!</span>
+						<span id="created">Dados inseridos com sucesso!</span>
 					<% } %>
+					<% if(error.password){ %>
+						<span id="error"><%=error.password.msg%></span>	
+					<%}%>
+					<% if(error.email){ %>
+						<span id="error"><%=error.email.msg%></span>	
+					<%}%>
+					<% if(errorModel != undefined){ %>
+						<span id="error"><%=errorModel%></span>	
+					<%}%>
 					<div class="login_user">
 						<label for="usuario">Login: </label>
-						<input type="text" id="usuario" name="email" placeholder="username" >
+						<input type="text" id="usuario" name="email" placeholder="username">
 					</div>
 					<div class="login_pass">
 						<label for="password">Senha: </label>
-						<input type="password" id="password" name="password" placeholder="password" >
+						<input type="password" id="password" name="password" placeholder="password">
 					</div>
 					<button type="submit" class="login_button">Logar</button>
 					<p>Não tem conta? <a href="/gerenciar/cadastrocliente">Cadastre agora!</a></p>

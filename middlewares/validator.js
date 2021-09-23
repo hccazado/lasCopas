@@ -9,7 +9,7 @@ const validaCamposCadastroCliente = [
     check("nome").notEmpty().withMessage("Informar nome para cadastro").bail().isLength({min:6}).withMessage("Nome deve ser maior que 6 caracteres"),
     check("nascimento").notEmpty().withMessage("Informar data de nascimento valida").bail(),
     check("email").notEmpty().withMessage("Informar email").bail().isEmail().withMessage("Informar Email valido"),
-    check("password").notEmpty().withMessage("Informar senha de acesso"),
+    check("password").notEmpty().withMessage("Informar senha de acesso").bail().isLength({min:6}).withMessage("pelo menos 6 caracteres"),
     check("pessoa").notEmpty().withMessage("Informar tipo de cadastro"),
     check("doc").notEmpty().withMessage("Informar documento"),
     check("cep").notEmpty().withMessage("Informar CEP"),
