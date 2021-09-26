@@ -12,7 +12,7 @@ const upload = middleMulter.uploadRotulo;
 router.get("/", controller.index);
 
 //get para cadastrar produto
-router.get("/cadastro", controller.cadastroProduto);
+//router.get("/cadastro", controller.cadastroProduto);
 
 //declarando rota POST para cadastro de produto, com instancia do multer para salvar o rotulo do vinho
 router.post("/cadastro", upload.single("rotulo"), controller.cadastrarProduto)

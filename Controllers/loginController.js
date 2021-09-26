@@ -26,6 +26,7 @@ const controller={
 
             //Se a propriedade login conter valor true (email está cadastrado e senha igual)
             if(autentica.login == true){
+                req.session.user = user;
                 res.redirect("/");
                /* res.render("login",{
                     title:title,

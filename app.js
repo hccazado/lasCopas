@@ -2,6 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var session = require("express-session");
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
@@ -9,12 +10,22 @@ var loginRouter = require('./routes/login');
 var produtosRouter = require('./routes/produtos');
 var checkoutRouter = require('./routes/checkout');
 var gerenciarRouter = require('./routes/gerenciar');
+const { application } = require('express');
+
+//import middleware autenticador
+//implantado no router gerenciar
+const authenticator = require("./middlewares/authenticator");
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+//declarando uso de session
+app.use(session({secret: "las Copas - winery",
+                 saveUninitialized: true,
+                 resave: true}));
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -26,7 +37,7 @@ app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/produtos', produtosRouter);
 app.use("/checkout", checkoutRouter);
-app.use('/gerenciar', gerenciarRouter);
+app.use('/gerenciar', authenticator.autenticaLogin ,gerenciarRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

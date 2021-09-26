@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const controller = require("../Controllers/gerenciarController");
 const clientesController = require("../Controllers/clientesController");
+const produtosController = require("../Controllers/produtosController");
+//import do middleware do validator
 const validator = require("../middlewares/validator");
 
 router.get("/", controller.index);
@@ -10,6 +12,7 @@ router.get("/clientes", controller.listarClientes);
 
 router.get("/pedidos", controller.listarPedidos);
 
+router.get("/produtocadastro", produtosController.cadastroProduto);
 router.get("/produtos", controller.listarProdutos);
 router.get("/produtos/:id",controller.editarProduto);
 
