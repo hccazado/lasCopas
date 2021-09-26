@@ -325,18 +325,29 @@ footer .wrapper .chat img{
     width:90%;
 }
 
-.tabela_esquerda thead td,tr tbody td,tr{
+.tabela_esquerda tbody,tr,td{
     text-align: left;
 }
 
-.tabela_esquerda thead,td,tr{
-    font-weight: 400;
+.table-responsive {
+    height: 370px;
+    overflow: scroll;
+    margin-top: 10px;
 }
 
+.table tbody,tr{
+    height:70px;
+}
+
+
+.rotulo_tabela{
+    height:80px;
+}
 
 .link_tabela{
     text-decoration: none;
     color:black;
+    margin: auto auto;
 }
 
 .link_tabela:hover{

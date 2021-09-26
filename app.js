@@ -13,7 +13,6 @@ var gerenciarRouter = require('./routes/gerenciar');
 const { application } = require('express');
 
 //import middleware autenticador
-//implantado no router gerenciar
 const authenticator = require("./middlewares/authenticator");
 
 var app = express();
@@ -37,7 +36,7 @@ app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/produtos', produtosRouter);
 app.use("/checkout", checkoutRouter);
-app.use('/gerenciar', authenticator.autenticaLogin ,gerenciarRouter);
+app.use('/gerenciar' ,gerenciarRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

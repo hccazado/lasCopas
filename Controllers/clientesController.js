@@ -1,6 +1,7 @@
 const title = "Las Copas - Cadastro Cliente";
 const clientesModel = require("../model/clientesModel");
 const {validationResult} = require("express-validator");
+const bcrypt = require("bcryptjs");
 
 const controller = {
     cadastrar: (req, res, next)=>{
@@ -8,6 +9,9 @@ const controller = {
         //verifica se o validator retornou algum erro no check dos campos
         if(errors.isEmpty()){
             let cadastro = req.body;
+            
+            //realizando hash com salt 10 do password informado pelo usuario antes de realizar cadastro
+            cadastro.password = bcrypt.hashSync(cadastro.password, 10);
             let {created, exists} = clientesModel.cadastrarCliente(cadastro);
             //Cliente cadastrado com sucesso (email ainda não existe), redireciona para pagina login
             if (created == true){

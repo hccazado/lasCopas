@@ -7,6 +7,7 @@
             <div class="form-floating busca_cliente">
                 <input type="text" class="form-control" id="buscaProduto" placeholder="Nome do Produto">
                 <label for="buscaProduto">Buscar Produto</label>
+
             </div>
             <div  class="table-responsive">
                 <table class="table border border-success table-bordered caption-top">
@@ -14,15 +15,20 @@
                     <thead>
                         <tr>
                             <td>ID</td>
+                            <td>Rotulo</td>
                             <td>Finca</td>
                             <td>Uvas</td>
                             <td>Preço</td>
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td><a class="link_tabela" href="/gerenciar/produtos/cadastro"><img src="https://img.icons8.com/flat-round/48/000000/plus.png"/></a></td>
+                        </tr>
                         <%for(let i=0; i<produtos.length;i++){%>
                         <tr>
                             <td><a class="link_tabela" href="/gerenciar/produtos/<%=produtos[i].id%>"><%=produtos[i].id%></a></td>
+                            <td><a class="link_tabela" href="/gerenciar/produtos/<%=produtos[i].id%>"><img class="rotulo_tabela" src="/<%=produtos[i].rotulo%>"></a></td>
                             <td><a class="link_tabela" href="/gerenciar/produtos/<%=produtos[i].id%>"><%=produtos[i].finca%></a></td>
                             <td><a class="link_tabela" href="/gerenciar/produtos/<%=produtos[i].id%>"><%=produtos[i].uvas%></a></td>
                             <td><a class="link_tabela" href="/gerenciar/produtos/<%=produtos[i].id%>"><%=produtos[i].preco%></a></td>

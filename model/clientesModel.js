@@ -1,3 +1,5 @@
+const bcrypt = require("bcryptjs");
+
 const clientes = [
     {
         id:1,
@@ -21,6 +23,15 @@ const clientes = [
         doc: "286-567.765/0001-90",
         uf: "SP",
         cidade: "São Paulo"
+    },
+    {
+        id: 4,
+        nome: "teste2",
+        email: "teste2@gmail.com",
+        password: "$2a$10$6TJeD5WOUtSswXle2ixGR.sIDOeAuI9yYDfcoTxP/5FNqh9f4bU56",
+        doc: "333.333.444-55",
+        uf: "SP",
+        cidade: "Santos"
     }
 ]
 
@@ -111,7 +122,8 @@ function sigIn(user){
        return cliente.email === user.email;
     });
     if(cliente!=undefined){
-        if(cliente.password === user.password){
+        //se o email cadastrado existe, realiza hashCompare do password
+        if(bcrypt.compareSync(user.password, cliente.password)){
             return {
                 error:false,
                 message:null,

@@ -1,6 +1,6 @@
 const title = "lasCopas - Produtos";
 const model = require("../model/produtosModel");
-
+const {validationResult} = require("express-validator");
 
 const controller = {
     index: (req, res, next) =>{
@@ -11,16 +11,36 @@ const controller = {
     }, 
     cadastroProduto: (req, res, next) =>{
         res.render("cadastroProduto", {
-            title: title
+            title: title,
+            isEditing:false,
+            errors:{}
         });        
     },
     cadastrarProduto: (req, res, next) =>{
-        let{uvas, cosecha, tipo, finca, ano, preco, origem, descricao} = req.body;
-        let rotulo = "images/uploads/rotulos/"+req.file.filename
-        //chamando metodo de cadastro de produto no model
-        model.cadastrarVinho(uvas, cosecha, tipo, finca, ano, preco, origem, rotulo);
- 
-        res.redirect("/produtos");
+        let errors = validationResult(req);
+        console.log(req.body);
+        console.log(errors);
+        if(errors.isEmpty()){
+            console.log("entrou errors empty cadastro produto")
+            let{uvas, cosecha, tipo, finca, ano, preco, origem, descricao} = req.body;
+            if(!req.file){
+                console.log("chamou registro SEM rotulo");
+                model.cadastrarVinho(uvas, cosecha, tipo, finca, ano, preco, origem, " ", descricao);
+            }else{
+                console.log("chamou registro COM rotulo");
+                let rotulo = "images/uploads/rotulos/"+req.file.filename
+                model.cadastrarVinho(uvas, cosecha, tipo, finca, ano, preco, origem, rotulo, descricao);
+            }  
+            res.redirect("/gerenciar/produtos");
+        }
+        else{
+            res.render("cadastroProduto", {
+                title: title,
+                isEditing: false,
+                errors:errors.mapped()
+            });
+        }
+
     },
     editarProduto: (req, res, next) =>{
         let id = req.params.id;

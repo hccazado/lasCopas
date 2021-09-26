@@ -26,7 +26,7 @@ function listarVinhos(){
     return vinhos;
 };
 
-function cadastrarVinho(uvas, cosecha, tipo, finca, ano, preco, origem, rotulo){
+function cadastrarVinho(uvas, cosecha, tipo, finca, ano, preco, origem, rotulo, descricao){
     let novoVinho = {
         id: (vinhos.length)+1,
         uvas: uvas,
@@ -36,7 +36,8 @@ function cadastrarVinho(uvas, cosecha, tipo, finca, ano, preco, origem, rotulo){
         ano: ano,
         preco: preco,
         origem: origem,
-        rotulo: rotulo
+        rotulo: rotulo,
+        descricao: descricao
     }
     vinhos.push(novoVinho);
 };

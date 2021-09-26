@@ -12,11 +12,29 @@
     width:370px;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     margin: 60px auto;
 }
 
 .login .login_user{
     margin-top: 20px;
+}
+
+.login .manter_logado{
+    font-size: 13px;
+    /*align-self: center;*/
+}
+
+.login .manter_logado input{
+    width:15px;
+}
+.login .manter_logado label{
+    margin: 15px 10px 15px 20px;
+}
+.login .manter_logado a{
+    text-decoration: underline;
+    color: cadetblue;
+    font-weight: 600;
 }
 
 
@@ -25,7 +43,7 @@
 }
 
 .login input{
-    margin: 20px 15px 20px 0;
+    margin: 20px 15px 15px 0;
     padding:5px;
     width: 70%;
     border-radius: 5px;
@@ -49,7 +67,7 @@
 }
 
 .login p {
-    text-align: center;
+    margin: 0 10px 15px 20px;
     font-size: 13px;
 }
 .login p a{
@@ -57,3 +75,4 @@
     color: cadetblue;
     font-weight: 600;
 }
+

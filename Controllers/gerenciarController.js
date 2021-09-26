@@ -74,10 +74,12 @@ const controller = {
     editarProduto: (req, res, next) => {
         let id = req.params.id;
         let dadosProduto = produtosModel.buscarVinhoID(id);
-        res.render("editarProduto", {
+        res.render("cadastroProduto", {
             title: title,
             id: id,
-            produto: dadosProduto
+            produto: dadosProduto,
+            isEditing: true,
+            errors: {}
         });
     }
 };

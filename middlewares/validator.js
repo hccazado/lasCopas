@@ -18,7 +18,15 @@ const validaCamposCadastroCliente = [
     check("cidade").notEmpty().withMessage("Informe cidade")
 ];
 
+const validaCamposCadastroProduto = [
+    check("finca").notEmpty().withMessage("deve informar bodega"),
+    check("ano").notEmpty().withMessage("Deve informar Ano de produção do vinho"),
+    check("preco").notEmpty().withMessage("Deve informar preço do vinho"),
+    check("origem").notEmpty().withMessage("Deve selecionar a origem do vinho")
+]
+
 module.exports = {
     validaCamposLogin,
-    validaCamposCadastroCliente
+    validaCamposCadastroCliente,
+    validaCamposCadastroProduto
 }
