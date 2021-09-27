@@ -29,7 +29,8 @@ const controller={
             //Se a propriedade login conter valor diferente undefined (dados do login serão salvos no cookie)
             if(user.manterLogado!=undefined && autentica.login == true){
                 console.log("manter logado");
-                res.cookie("user", user, {max:60000000});
+                //enviando cookie ao cliente com dados de login e propriedade expire para definir por quanto tempo o msm será valido
+                res.cookie("user", user, {expires: new Date(Date.now()+864000+(180*2592000))});
                 req.session.user = user;
                 res.redirect("/");
             }
