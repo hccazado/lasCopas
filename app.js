@@ -24,7 +24,7 @@ app.set('view engine', 'ejs');
 //declarando uso de session
 app.use(session({secret: "las Copas - winery",
                  saveUninitialized: true,
-                 resave: true}));
+                 resave: false}));
 
 app.use(logger('dev'));
 app.use(express.json());
