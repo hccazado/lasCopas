@@ -40,6 +40,9 @@ const controller={
                 //enviando cookie ao cliente com dados de login e propriedade expire para definir por quanto tempo o msm será valido
                 res.cookie("user", usuarioLogado, {expires: new Date(Date.now()+864000+(180*2592000))});
                 req.session.user = usuarioLogado;
+                if(usuarioLogado.admin){
+                    res.redirect("/gerenciar");
+                }
                 res.redirect("/");
             }
             
@@ -54,6 +57,9 @@ const controller={
                 req.session.user = usuarioLogado;
                 console.log("dados do objeto usuario para session")
                 console.log(usuarioLogado);
+                if(usuarioLogado.admin){
+                    res.redirect("/gerenciar");
+                }
                 res.redirect("/");
             }
             
