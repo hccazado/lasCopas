@@ -25,19 +25,35 @@ const controller={
         if(errors.isEmpty()){
             let user = req.body;
             let autentica = clientesModel.sigIn(user);
-
+            
             //Se a propriedade login conter valor diferente undefined (dados do login serão salvos no cookie)
             if(user.manterLogado!=undefined && autentica.login == true){
                 console.log("manter logado");
+                //Atribuindo dados do usuario a objeto para guardar na Session
+                let usuarioLogado = {
+                    email: user.email,
+                    nome: autentica.nome,
+                    admin: autentica.admin
+                }
+                console.log("dados do objeto usuario para session")
+                console.log(usuarioLogado);
                 //enviando cookie ao cliente com dados de login e propriedade expire para definir por quanto tempo o msm será valido
-                res.cookie("user", user, {expires: new Date(Date.now()+864000+(180*2592000))});
-                req.session.user = user;
+                res.cookie("user", usuarioLogado, {expires: new Date(Date.now()+864000+(180*2592000))});
+                req.session.user = usuarioLogado;
                 res.redirect("/");
             }
             
             else if(user.manterLogado == undefined && autentica.login == true){ 
-                req.session.user = user;
                 console.log("sessao sem salvar cookie");
+                //Atribuindo dados do usuario a objeto para guardar na Session
+                let usuarioLogado = {
+                    email: user.email,
+                    nome: autentica.nome,
+                    admin: autentica.admin
+                }
+                req.session.user = usuarioLogado;
+                console.log("dados do objeto usuario para session")
+                console.log(usuarioLogado);
                 res.redirect("/");
             }
             

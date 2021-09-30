@@ -35,6 +35,31 @@ function autenticaLogin(req, res, next){
     }*/
 }
 
+function autenticaAdmin(req,res,next){
+    //verifica se sessão está aberta e usuario é admin
+    if(req.session.user){
+        console.log("AutenticatorAdmin:dados da sessão:");
+        console.log(req.session);
+        if(req.session.user.admin == true){
+            console.log("reconhece sessao e admin");
+            return next();
+        }
+        //Usuario tem propriedade Admin FALSE
+        else{
+            res.render("login",{
+                title: "lasCopas - Login",
+                created: false,
+                error: {},
+                errorModel: "Usuario não é Administrador"
+            });
+        }
+    }
+    else{
+        res.redirect("/login");
+    }
+}
+
 module.exports = {
-    autenticaLogin
+    autenticaLogin,
+    autenticaAdmin
 }

@@ -6,16 +6,16 @@ const validaCamposLogin = [
 ];
 
 const validaCamposCadastroCliente = [
-    check("nome").notEmpty().withMessage("Informar nome para cadastro").bail().isLength({min:6}).withMessage("Nome deve ser maior que 6 caracteres"),
+    check("nome").trim().notEmpty().withMessage("Informar nome para cadastro").bail().isLength({min:4}).withMessage("Nome deve ser maior que 6 caracteres"),
     check("nascimento").notEmpty().withMessage("Informar data de nascimento valida").bail(),
-    check("email").notEmpty().withMessage("Informar email").bail().isEmail().withMessage("Informar Email valido"),
-    check("password").notEmpty().withMessage("Informar senha de acesso").bail().isLength({min:6}).withMessage("pelo menos 6 caracteres"),
+    check("email").trim().notEmpty().withMessage("Informar email").bail().isEmail().withMessage("Informar Email valido"),
+    check("password").trim().notEmpty().withMessage("Informar senha de acesso").bail().isLength({min:6}).withMessage("pelo menos 6 caracteres"),
     check("pessoa").notEmpty().withMessage("Informar tipo de cadastro"),
-    check("doc").notEmpty().withMessage("Informar documento"),
-    check("cep").notEmpty().withMessage("Informar CEP"),
-    check("end1").notEmpty().withMessage("Informar endereço"),
+    check("doc").trim().notEmpty().withMessage("Informar documento"),
+    check("cep").trim().notEmpty().withMessage("Informar CEP"),
+    check("end1").trim().notEmpty().withMessage("Informar endereço"),
     check("uf").notEmpty().withMessage("Selecionar Estado"),
-    check("cidade").notEmpty().withMessage("Informe cidade")
+    check("cidade").trim().notEmpty().withMessage("Informe cidade")
 ];
 
 const validaCamposCadastroProduto = [

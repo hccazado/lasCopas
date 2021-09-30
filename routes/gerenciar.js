@@ -16,17 +16,17 @@ const authenticator = require("../middlewares/authenticator");
 //vinculando middleware multer com storage p/rotulos
 const uploadRotulo = middleMulter.uploadRotulo;
 
-router.get("/", authenticator.autenticaLogin, controller.index);
+router.get("/", authenticator.autenticaAdmin, controller.index);
 
-router.get("/clientes", authenticator.autenticaLogin, controller.listarClientes);
+router.get("/clientes", authenticator.autenticaAdmin, controller.listarClientes);
 
-router.get("/pedidos", authenticator.autenticaLogin, controller.listarPedidos);
+router.get("/pedidos", authenticator.autenticaAdmin, controller.listarPedidos);
 
-router.get("/produtos", authenticator.autenticaLogin, controller.listarProdutos);
-router.get("/produtos/cadastro", authenticator.autenticaLogin, produtosController.cadastroProduto);
-router.post("/produtos/cadastro", authenticator.autenticaLogin, uploadRotulo.single("rotulo"), validator.validaCamposCadastroProduto, produtosController.cadastrarProduto);
-router.get("/produtos/:id", authenticator.autenticaLogin, controller.editarProduto);
-router.post("/produtos/editar/:id", authenticator.autenticaLogin, uploadRotulo.single("rotulo"), validator.validaCamposCadastroProduto, produtosController.editarProduto);
+router.get("/produtos", authenticator.autenticaAdmin, controller.listarProdutos);
+router.get("/produtos/cadastro", authenticator.autenticaAdmin, produtosController.cadastroProduto);
+router.post("/produtos/cadastro", authenticator.autenticaAdmin, uploadRotulo.single("rotulo"), validator.validaCamposCadastroProduto, produtosController.cadastrarProduto);
+router.get("/produtos/:id", authenticator.autenticaAdmin, controller.editarProduto);
+router.post("/produtos/editar/:id", authenticator.autenticaAdmin, uploadRotulo.single("rotulo"), validator.validaCamposCadastroProduto, produtosController.editarProduto);
 
 router.get("/cadastrocliente", controller.formCadastroCliente);
 router.post("/cadastrocliente", validator.validaCamposCadastroCliente, clientesController.cadastrar);

@@ -12,6 +12,7 @@ const clientes = [
         id:2,
         nome: "teste",
         email: "teste@gmail.com",
+        admin:false,
         password: "123",
         doc: "333.333.444-55",
         uf: "SP",
@@ -28,6 +29,7 @@ const clientes = [
         id: 4,
         nome: "teste2",
         email: "teste2@gmail.com",
+        admin:true,
         password: "$2a$10$6TJeD5WOUtSswXle2ixGR.sIDOeAuI9yYDfcoTxP/5FNqh9f4bU56",
         doc: "333.333.444-55",
         uf: "SP",
@@ -71,6 +73,7 @@ function cadastrarCliente(cadastro){
             nascimento: cadastro.nascimento,
             email: cadastro.email,
             password: cadastro.password,
+            admin: false,
             pessoa: cadastro.pessoa,
             doc: cadastro.doc,
             cep: cadastro.cep,
@@ -127,7 +130,9 @@ function sigIn(user){
             return {
                 error:false,
                 message:null,
-                login:true
+                login:true,
+                nome: cliente.nome,
+                admin:cliente.admin
             }
         }
         else{

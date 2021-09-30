@@ -55,7 +55,8 @@ const controller = {
             errors: {},
             id: null,
             isEditing: false,
-            cliente: {}
+            cliente: {},
+            old: {}
         });
     },
     //Metodo para chamar o model Cliente e recuperar os dados respectivos do ID e enviar os mesmos a view.

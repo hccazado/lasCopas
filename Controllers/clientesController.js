@@ -19,6 +19,7 @@ const controller = {
                 title:title,
                 created:true,
                 error: {},
+                old: {},
                 errorModel: null});
             }
             //Email informado já existe cadastro
@@ -29,19 +30,21 @@ const controller = {
                     errors: {},
                     id: null,
                     isEditing: false,
-                    cliente: {} 
+                    cliente: {},
+                    old:{} 
                 });
             }
         }
         //Encontrado algum erro nos campos do formulario
         else{
             console.log(req.body);
+            let old = req.body;
             console.log(errors.mapped());
             res.render("cadastroCliente", {
                 title: title,
                 exists: null,
                 errors: errors.mapped(),
-                old: req.body,
+                old: old,
                 id: null,
                 isEditing: false,
                 cliente: {} 
