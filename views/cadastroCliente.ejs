@@ -14,7 +14,7 @@
                     <% } %>
                     <div>
                         <label for="nome">Nome</label><br>
-                        <% if(errors){ %>
+                        <% if(errors.length > 0){ %>
                             <input type="text" id="nome" name="nome" value="<%=old.nome%>" placeholder="Digite nome">
                             <%if (errors.nome){%>
                             <span id="error"><%=errors.nome.msg%></span>
@@ -27,7 +27,7 @@
                     </div>
                     <div>
                         <label for="nasc">Nasc.</label><br>
-                        <% if(errors){ %>
+                        <% if(errors.length > 0){ %>
                             <input type="date" id="nasc" name="nascimento" value="<%=old.nascimento%>">
                             <%if (errors.nascimento){%>
                                 <span id="error"><%=errors.nascimento.msg%></span>
@@ -40,7 +40,7 @@
                     </div>
                     <div>
                         <label for="email">Email</label><br>
-                        <% if(errors){ %>
+                        <% if(errors.length > 0){ %>
                             <input type="email" id="email" name="email" placeholder="Informe seu email" value="<%=old.email%>">
                             <%if (errors.email){%>
                                 <span id="error"><%=errors.email.msg%></span>
@@ -52,7 +52,7 @@
                         <% } %>
                     </div>
                     <div>
-                        <% if(errors){ %>
+                        <% if(errors.length > 0){ %>
                             <label for="pass">Senha</label><br>
                             <input type="password" id="pass" name="password" placeholder="informe sua senha" required>
                             <%if (errors.password){%>
@@ -68,7 +68,7 @@
                     </div>
                     <div>
                         <label for="pessoa">Tipo de Pessoa</label><br>
-                        <% if(errors){ %>
+                        <% if(errors.length > 0){ %>
                             <select id="pessoa" name="pessoa">
                                 <option disabled selected>Selecione</option>
                                     <option value="fisica">Fisica</option>
@@ -87,7 +87,7 @@
                     </div>
                     <div>
                         <label for="doc">CPF/CNPJ</label><br>
-                        <% if(errors){ %>
+                        <% if(errors.length > 0){ %>
                             <input type="number" id="doc" name="doc" placeholder="Informe CPF ou CNPJ" required value="<%=old.doc%>">
                             <%if (errors.doc){%>
                                 <span id="error"><%=errors.doc.msg%></span>
@@ -100,7 +100,7 @@
                     </div>
                     <div>
                         <label for="cep">CEP</label><br>
-                        <% if(errors){ %>
+                        <% if(errors.length > 0){ %>
                             <input type="text" id="cep" name="cep" placeholder="Informe seu cep" required  value="<%=old.cep%>">
                             <%if (errors.cep){%>
                                 <span id="error"><%=errors.cep.msg%></span>
@@ -113,7 +113,7 @@
                     </div>
                     <div>
                         <label for="end1">End.</label><br>
-                        <% if(errors){ %>
+                        <% if(errors.length > 0){ %>
                             <input type="text" id="end1" name="end1" placeholder="Digite endereço" required value="<%=old.end1%>">
                             <%if (errors.end1){%>
                                 <span id="error"><%=errors.end1.msg%></span>
@@ -164,7 +164,7 @@
                     </div>
                     <div>
                         <label for="cidade">Cidade</label><br>
-                        <% if(errors){ %>
+                        <% if(errors.length > 0){ %>
                             <input type="text" id="cidade" name="cidade" placeholder="Informe cidade" required value="<%=old.cidade%>">
                             <%if (errors.cidade){%>
                                 <span id="error"><%=errors.cidade.msg%></span>

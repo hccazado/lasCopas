@@ -63,13 +63,15 @@ const controller = {
     edicaoCliente: (req, res, next) =>{
         let id = req.params.id;
         let resultado = clientesModel.buscarClienteID(id);
+        console.log(resultado);
         res.render("cadastroCliente", {
             title: title,
-            exists: null,
-            errors: {},
+            exists: false,
+            errors: [],
             id: id,
             isEditing: true,
-            cliente: resultado 
+            cliente: resultado,
+            old: {} 
         })
     },
     editarProduto: (req, res, next) => {
