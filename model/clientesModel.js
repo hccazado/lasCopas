@@ -104,6 +104,7 @@ function editarCliente(id, novosDados){
             cliente.email = novosDados.email,
             cliente.password = novosDados.password,
             cliente.pessoa = novosDados.pessoa,
+            cliente.admin = false,
             cliente.doc = novosDados.doc,
             cliente.cep = novosDados.cep,
             cliente.end1 = novosDados.end1,

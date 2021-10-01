@@ -57,6 +57,7 @@ const controller = {
         //verifica se o validator retornou algum erro no check dos campos
         if(errors.isEmpty()){
             let cadastro = req.body;
+            cadastro.password = bcrypt.hashSync(cadastro.password, 10);
             let update = clientesModel.editarCliente(id, cadastro);
             //Cliente atualizado com sucesso, redireciona para pagina login
             if (update == true){
