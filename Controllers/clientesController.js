@@ -4,6 +4,31 @@ const {validationResult} = require("express-validator");
 const bcrypt = require("bcryptjs");
 
 const controller = {
+    formCadastrarCliente: (req, res, next) =>{
+        res.render("cadastroCliente", {
+            title: title,
+            exists: false,
+            errors: {},
+            id: null,
+            isEditing: false,
+            cliente: {},
+            old: {}
+        });
+    },
+    formEditarCliente: (req, res, next) => {
+        let id = req.params.id;
+        let resultado = clientesModel.buscarClienteID(id);
+        console.log(resultado);
+        res.render("cadastroCliente", {
+            title: title,
+            exists: false,
+            errors: [],
+            id: id,
+            isEditing: true,
+            cliente: resultado,
+            old: {} 
+        })
+    },
     cadastrar: (req, res, next)=>{
         let errors = validationResult(req);
         //verifica se o validator retornou algum erro no check dos campos

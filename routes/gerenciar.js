@@ -11,26 +11,28 @@ const middleMulter = require("../middlewares/upload");
 const validator = require("../middlewares/validator");
 
 //import middleware autenticador
-const authenticator = require("../middlewares/authenticator");
+//const authenticator = require("../middlewares/authenticator");
 
 //vinculando middleware multer com storage p/rotulos
 const uploadRotulo = middleMulter.uploadRotulo;
 
-router.get("/", authenticator.autenticaAdmin, controller.index);
+router.get("/", controller.index);
 
-router.get("/clientes", authenticator.autenticaAdmin, controller.listarClientes);
+router.get("/clientes", controller.listarClientes);
 
-router.get("/pedidos", authenticator.autenticaAdmin, controller.listarPedidos);
+router.get("/pedidos", controller.listarPedidos);
 
-router.get("/produtos", authenticator.autenticaAdmin, controller.listarProdutos);
-router.get("/produtos/cadastro", authenticator.autenticaAdmin, produtosController.cadastroProduto);
-router.post("/produtos/cadastro", authenticator.autenticaAdmin, uploadRotulo.single("rotulo"), validator.validaCamposCadastroProduto, produtosController.cadastrarProduto);
-router.get("/produtos/:id", authenticator.autenticaAdmin, controller.editarProduto);
-router.post("/produtos/editar/:id", authenticator.autenticaAdmin, uploadRotulo.single("rotulo"), validator.validaCamposCadastroProduto, produtosController.editarProduto);
+router.get("/produtos", controller.listarProdutos);
+router.get("/produtos/cadastro", produtosController.cadastroProduto);
+router.post("/produtos/cadastro", uploadRotulo.single("rotulo"), validator.validaCamposCadastroProduto, produtosController.cadastrarProduto);
+router.get("/produtos/:id", controller.editarProduto);
+router.post("/produtos/editar/:id", uploadRotulo.single("rotulo"), validator.validaCamposCadastroProduto, produtosController.editarProduto);
 
+/*
 router.get("/cadastrocliente", controller.formCadastroCliente);
 router.post("/cadastrocliente", validator.validaCamposCadastroCliente, clientesController.cadastrar);
 router.get("/cliente/:id", controller.edicaoCliente);
 router.post("/cliente/:id", validator.validaCamposCadastroCliente, clientesController.editar);
+*/
 
 module.exports = router;

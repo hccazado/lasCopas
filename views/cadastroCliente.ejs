@@ -3,9 +3,9 @@
 <content>
     <div class="wrapper">
         <% if(isEditing == false) {%>
-            <form action="/gerenciar/cadastroCliente" method="POST">
+            <form action="/clientes/cadastrar" method="POST">
         <% } else{ %>
-            <form action="/gerenciar/cliente/<%=id%>" method="POST">
+            <form action="/clientes/editar/<%=id%>" method="POST">
                 <% } %>
             <div class="container_formulario">
                 <div class="clientes">
@@ -28,13 +28,13 @@
                     </div>
                     <div>
                         <label for="nasc">Nasc.</label><br>
-                        <% if(errors){ %>
-                            <input type="date" id="nasc" name="nascimento" value="<%=old.nascimento%>">
+                        <% if (isEditing){ %>
+                            <input type="date" id="nasc" name="nascimento" value="<%=cliente.nascimento%>" required>
                             <%if (errors.nascimento){%>
                                 <span id="error"><%=errors.nascimento.msg%></span>
                             <%}%>
-                        <% } else if (isEditing){ %>
-                            <input type="date" id="nasc" name="nascimento" value="<%=cliente.nascimento%>" required>
+                        <% } else if(errors){ %>
+                            <input type="date" id="nasc" name="nascimento" value="<%=old.nascimento%>">
                         <% } else{ %>
                             <input type="date" id="nasc" name="nascimento" required>
                         <% } %>
