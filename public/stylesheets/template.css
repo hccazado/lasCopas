@@ -45,6 +45,10 @@ header .link_logo{
     text-decoration: none;
 }
 
+header .link_logo:hover{
+    color: #000;
+}
+
 header .link_logo span{
     color:darkred;
 }

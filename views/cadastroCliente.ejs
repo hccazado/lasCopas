@@ -126,6 +126,19 @@
                         <% } %>
                     </div>
                     <div>
+                        <label for="num">Num.</label><br>
+                        <% if(isEditing){ %>
+                            <input type="text" id="num" name="num" value="<%=cliente.num%>" required>
+                        <% }else if(errors){ %>
+                            <input type="text" id="num" name="num" placeholder="Informe numero" required value="<%=old.num%>">
+                            <%if (errors.num){%>
+                                <span id="error"><%=errors.num.msg%></span>
+                            <%}%>
+                        <% } else{ %>
+                            <input type="text" id="num" name="num" placeholder="Informe numero" required>
+                        <% } %>
+                    </div>
+                    <div>
                         <label for="compl">Complemento</label><br>
                         <input type="text" id="compl" name="complemento" placeholder="Preencha caso precise complementar endereço">
                     </div>

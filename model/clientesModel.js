@@ -67,8 +67,11 @@ function cadastrarCliente(cadastro){
         }
         });
     if(resultado == undefined){
+        //criando um id com Hash para o cliente
+        //let idHash = bcrypt.hashSync(toString(clientes.length+1), 10); 
         let novoCliente = {
             id: (clientes.length)+1,
+            //id: idHash,
             nome: cadastro.nome,
             nascimento: cadastro.nascimento,
             email: cadastro.email,
@@ -79,6 +82,7 @@ function cadastrarCliente(cadastro){
             cep: cadastro.cep,
             end1: cadastro.end1,
             complemento: cadastro.complemento,
+            num: cadastro.num,
             uf: cadastro.uf,
             cidade: cadastro.cidade
         };
@@ -109,6 +113,7 @@ function editarCliente(id, novosDados){
             cliente.cep = novosDados.cep,
             cliente.end1 = novosDados.end1,
             cliente.complemento = novosDados.complemento,
+            cliente.num = novosDados.num,
             cliente.uf = novosDados.uf,
             cliente.cidade = novosDados.cidade
         }

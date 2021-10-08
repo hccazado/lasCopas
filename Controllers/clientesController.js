@@ -34,7 +34,7 @@ const controller = {
         //verifica se o validator retornou algum erro no check dos campos
         if(errors.isEmpty()){
             let cadastro = req.body;
-            
+            console.log(req.body);
             //realizando hash com salt 10 do password informado pelo usuario antes de realizar cadastro
             cadastro.password = bcrypt.hashSync(cadastro.password, 10);
             let {created, exists} = clientesModel.cadastrarCliente(cadastro);
