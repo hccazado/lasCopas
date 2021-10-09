@@ -27,7 +27,9 @@ const controller={
             let autentica = clientesModel.sigIn(user);
             
             //Se a propriedade login conter valor diferente undefined (dados do login serão salvos no cookie)
-            if(user.manterLogado!=undefined && autentica.login == true){
+            
+            //bloco comentado criava cookie com email e senha de login (função removida)
+            /*if(user.manterLogado!=undefined && autentica.login == true){
                 console.log("manter logado");
                 //Atribuindo dados do usuario a objeto para guardar na Session
                 let usuarioLogado = {
@@ -44,10 +46,11 @@ const controller={
                     res.redirect("/gerenciar");
                 }
                 res.redirect("/");
-            }
+            }*/
             
-            else if(user.manterLogado == undefined && autentica.login == true){ 
-                console.log("sessao sem salvar cookie");
+            //else if(user.manterLogado == undefined && autentica.login == true){ 
+            if(autentica.login == true){
+                //console.log("sessao sem salvar cookie");
                 //Atribuindo dados do usuario a objeto para guardar na Session
                 let usuarioLogado = {
                     email: user.email,
@@ -55,11 +58,13 @@ const controller={
                     admin: autentica.admin
                 }
                 req.session.user = usuarioLogado;
-                console.log("dados do objeto usuario para session")
-                console.log(usuarioLogado);
+                //console.log("dados do objeto usuario para session")
+                console.log("inicio de sessão usuario: "+usuarioLogado.nome);
+                //se usuario logado for administrador será redirecionado à rota gerenciar
                 if(usuarioLogado.admin){
                     res.redirect("/gerenciar");
                 }
+                //usuario nao admin será redirecionado à Home
                 res.redirect("/");
             }
             
