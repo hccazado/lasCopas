@@ -396,6 +396,10 @@ footer .wrapper .chat img{
         width:100% !important;
     }
 
+    header .links-menu{
+        margin-left: 15px;
+    }
+
     .container_banner img{
         display: none;
     }

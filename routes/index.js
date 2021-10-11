@@ -6,5 +6,9 @@ var controller = require("../Controllers/indexController");
 router.get('/', controller.index);
 router.get("/envio", controller.envio);
 router.get("/sobre", controller.sobre);
+router.get("/sair", (req, res, next)=>{
+    req.session.destroy();
+    res.redirect("/");
+});
 
 module.exports = router;

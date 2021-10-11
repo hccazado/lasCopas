@@ -27,6 +27,17 @@ app.use(session({secret: "las Copas - winery",
                  saveUninitialized: true,
                  resave: false}));
 
+app.use(function (req, res, next) {
+	if (!req.session) {
+		req.session.user.nome = undefined;
+		res.locals.sessao = req.session.user;
+		return next();
+	}else{
+    res.locals.sessao = req.session.user;
+    return next();
+  }
+});
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
