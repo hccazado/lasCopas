@@ -13,8 +13,9 @@ module.exports = (sequelize, DataType) =>{
             values:['fisica','juridica']
         },
         documento:DataType.STRING,
-        /*id_login:DataType.SMALLINT.UNSIGNED*/
+        id_login: DataType.SMALLINT.UNSIGNED
     },{
+        tablename: 'Clientes',
         timestamps:false
     })
     return Cliente

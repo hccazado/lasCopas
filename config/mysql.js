@@ -1,9 +1,9 @@
 const config = {
-    'username': 'root',
-    'password': '',
-    'host': 'localhost',
-    'database': 'lascopas',
-    'dialect': 'mysql',
+    username: 'root',
+    password: '',
+    host: 'localhost',
+    database: 'lascopas',
+    dialect: 'mysql',
     
 }
 
