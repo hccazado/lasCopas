@@ -190,6 +190,8 @@ content .wrapper .container_banner {
 
 .main_btn {
     width: 33%;
+    text-decoration: none;
+    font-size: 1.5rem;
     padding: 20px;
     border-radius: 10px;
     background-color: #820233 !important;
@@ -496,4 +498,52 @@ tr {
   .wrapper .painel_wrapper .card_admin {
     width: 80%;
   }
+}
+
+/* Custom CSS */
+/* Destaque Produtos */
+.destaqueProdutos h2 {
+  color: #ffffff;
+}
+.destaqueProdutos {
+  padding: 30px 0;
+  background-image: linear-gradient(to right, #000000, #260719, #3f0234, #4f005b, #4a148c);
+}
+
+.destaqueProdutos .row{
+  align-items: center;
+  justify-content: space-around;
+}
+
+.produto{
+  position: relative;
+  padding: 100px 0;
+}
+
+.produtoDescricao {
+  color: #ffffff;
+  text-align: left;
+}
+.precoDe {
+  font-size: 1.5rem;
+}
+
+.precoProdutoReal {
+  margin-left: 10px;
+  font-size: 1.5rem;
+  text-decoration: line-through;
+}
+
+.precoPor {
+  font-size: 2rem;
+}
+
+.precoProdutoVenda {
+  margin-left: 10px;
+  font-size: 2.5rem;  
+}
+
+.btnComprar {
+  width: 100%;
+  max-width: 30%;
 }

@@ -27,6 +27,20 @@
                         
                     </div>
                     <div>
+                        <label for="nome">Sobrenome</label><br>
+                        <%if(isEditing) { %>
+                            <input type="text" id="sobrenome" name="sobrenome" value="<%=cliente.sobrenome%>">
+                        <% }else if(errors){ %>
+                            <input type="text" id="sobrenome" name="sobrenome" value="<%=old.sobrenome%>" placeholder="Digite sobrenome">
+                            <%if (errors.nome){%>
+                            <span id="error"><%=errors.nome.msg%></span>
+                            <%}%>
+                        <%}else{ %>
+                            <input type="text" id="sobrenome" name="sobrenome" placeholder="Digite sobrenome">
+                        <% } %>
+                        
+                    </div>
+                    <div>
                         <label for="nasc">Nasc.</label><br>
                         <% if (isEditing){ %>
                             <input type="date" id="nasc" name="nascimento" value="<%=cliente.nascimento%>" required>

@@ -1,5 +1,7 @@
 const title="lasCopas - Login";
 
+const {Login, Cliente} = require('../models');
+
 const clientesModel = require("../model/clientesModel");
 
 //importando validator
@@ -17,7 +19,7 @@ const controller={
             errorModel: null
         });
     },
-    logar: (req, res, next) => {
+    logar: async (req, res, next) => {
         //atribuindo retorno do resultado de validação do Express Validator
         const errors = validationResult(req);
 
@@ -25,6 +27,8 @@ const controller={
         if(errors.isEmpty()){
             let user = req.body;
             let autentica = clientesModel.sigIn(user);
+            let login = await Cliente.findAll({include: database.Login});
+            console.log(login);
             
             //Se a propriedade login conter valor diferente undefined (dados do login serão salvos no cookie)
             
