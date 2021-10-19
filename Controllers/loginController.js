@@ -1,6 +1,6 @@
 const title="lasCopas - Login";
 
-const {Login} = require('../models/Login');
+const {Login, Cliente} = require('../models');
 
 const clientesModel = require("../model/clientesModel");
 
@@ -27,7 +27,7 @@ const controller={
         if(errors.isEmpty()){
             let user = req.body;
             let autentica = clientesModel.sigIn(user);
-            let login = await Login.findAll();
+            let login = await Cliente.findAll({include: database.Login});
             console.log(login);
             
             //Se a propriedade login conter valor diferente undefined (dados do login serão salvos no cookie)

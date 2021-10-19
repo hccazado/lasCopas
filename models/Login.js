@@ -1,3 +1,5 @@
+const Cliente = require("../models");
+
 module.exports = (sequelize,DataType) => {
     const Login = sequelize.define('Login',{
         id_login:{
@@ -17,7 +19,8 @@ module.exports = (sequelize,DataType) => {
     },{
         tableName: 'Login',
         timestamps: false
-    })
+    });
+
     return Login
 }
 

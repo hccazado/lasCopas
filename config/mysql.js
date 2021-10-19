@@ -1,10 +1,9 @@
 const config = {
     username: 'root',
-    password: '',
-    host: 'localhost',
+    password: 'Kz8i35@@',
     database: 'lascopas',
-    dialect: 'mysql',
-    
+    host: 'localhost',
+    dialect: 'mysql'
 }
 
 module.exports = config;

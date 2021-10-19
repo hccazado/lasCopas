@@ -1,3 +1,5 @@
+const Login = require("./Login");
+
 module.exports = (sequelize, DataType) =>{
     const Cliente = sequelize.define('Cliente',{
         id_cliente:{
@@ -5,19 +7,34 @@ module.exports = (sequelize, DataType) =>{
             primaryKey: true,
             autoIncrement: true,
         },
-        sobrenome:DataType.STRING,
-        sobrenome:DataType.STRING,
-        dt_nascimento:DataType.DATEONLY,
+        nome:DataType.STRING,
+        sobrenome:{
+            type: DataType.STRING,
+            allowNull: true
+        },
+        dt_nascimento:{
+            type: DataType.DATEONLY,
+            allowNull: true
+        },
         cadastro:{
             type:DataType.ENUM,
             values:['fisica','juridica']
         },
         documento:DataType.STRING,
-        id_login: DataType.SMALLINT.UNSIGNED
+        id_login: {
+            type: DataType.SMALLINT,
+            unsigned: true,
+            references:{
+                model: 'Login',
+                key: 'id_login'
+            }
+        }
     },{
         tablename: 'Clientes',
         timestamps:false
-    })
+    });
+    
+
     return Cliente
 }
 
