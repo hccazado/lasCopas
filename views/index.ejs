@@ -1,8 +1,8 @@
 <%- include('./partials/header') %>
-    <content>
-        <div class="wrapper">
-            <!--Seção Carrousel -- descomentar-->
-            <!--<div id="carousel" class="carousel slide" data-bs-ride="carousel">
+<content>
+    <div class="wrapper">
+        <!--Seção Carrousel -- descomentar-->
+        <!--<div id="carousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                     <img src="./images/finca1.jpg" class="d-block" alt="">
@@ -15,62 +15,101 @@
                   </div>
                 </div>
               </div> -->
-            <div class="container slider_banner">
-                <div class="row main_banner">
-                    <div class="banner_content col-md-5 d-flex text-lg-start">
-                        <h1 class="main_title">
-                            Vinhos para quem tem bom gosto e requinte.
-                        </h1>
-                        <span>Elaborado com as melhores safras.</span>
-                        <a href="#secaoProdutos" class="btn-primary text-center main_btn">Saiba mais</a>
-                    </div>
-                </div>
-            </div>
-              
-              <!------------------Seção recomendados-------------------------->
-            <div class="col-md12 container destaqueProdutos" id="secaoProdutos">
-                <div class="row d-flex">
-                    <h2 class="text-center">Os melhores vinhos da casa</h2>
-                    <div class="col-sm-4 produto">
-                        <img src="images/uploads/rotulos/EM-roble.png" class="img-fluid" alt="Estancia Mendoza - Roble">
-                    </div>
-                    <div class="col-sm-6 produtoDescricao">
-                        <h2 class="produtoTitulo"> Estancia Mendoza - Roble </h2>
-                        <p class="descricao-texto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae odio perferendis, amet itaque cumque consequatur incidunt, molestiae accusantium beatae hic, dicta aliquid cupiditate labore reprehenderit dolores quaerat quo! Corporis, non.</p>
-                        <p class="precoDe">DE: <span class="precoProdutoReal">R$120,90</span></p>
-                        <p class="precoPor">Por: <span class="precoProdutoVenda">R$70,90</span></p>
-                        <a href="/produtos/1" class="btn btn-outline-warning btnComprar">Comprar</a>
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="destaque">
-                <h3>Produtos Selecionados</h3>
-                <div class="destaque_container row">
-                    <div class="cardp md-col-3">
-                        <a href="/produtos/1">
-                            <img src="images/uploads/rotulos/EM-roble.png" alt="Estancia Mendoza - Roble">
-                            <p>Estancia Mendoza - Roble</p>
-                            <p class="preco">R$70,90</p>   
-                        </a>
-                    </div>
-                    <div class="cardp md-col-3">
-                        <a href="/produtos/2">
-                            <img src="images/uploads/rotulos/Trapiche - cabernet.png" alt="Trapiche - Cabernet Suavignon">
-                            <p>Trapiche - Cabernet Suavignon</p>
-                            <p class="preco">R$72,90</p> 
-                        </a> 
-                    </div>
-                    <div class="cardp md-col-3">
-                        <a href="/produtos/1">
-                            <img src="images/uploads/rotulos/Artero-tempranillo.webp" alt="Artero - Tempranillo">
-                            <p>Artero - Tempranillo</p>
-                            <p class="preco">R$68,99</p>
-                        </a>
-                    </div>
+        <div class="container slider_banner">
+            <div class="row main_banner">
+                <div class="banner_content col-md-5 d-flex text-lg-start">
+                    <h1 class="main_title">
+                        Vinhos para quem tem bom gosto e requinte.
+                    </h1>
+                    <span>Elaborado com as melhores safras.</span>
+                    <a href="#secaoProdutos" class="btn-primary text-center main_btn">Saiba mais</a>
                 </div>
             </div>
         </div>
-    </content>
+
+        <!------------------Seção recomendados-------------------------->
+        <div class="col-md12 container destaqueProdutos" id="secaoProdutos">
+            <div class="row d-flex">
+                <h2 class="text-center">Os melhores vinhos da casa</h2>
+                <div class="col-sm-3 produto">
+                    <img src="images/uploads/rotulos/EM-roble.png" class="img-fluid" alt="Estancia Mendoza - Roble">
+                </div>
+                <div class="col-sm-5 produtoDescricao text-left">
+                    <h2 class="produtoTitulo"> Estancia Mendoza - Roble </h2>
+                    <p class="descricao-texto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae odio
+                        perferendis, amet itaque cumque consequatur incidunt, molestiae accusantium beatae hic, dicta
+                        aliquid cupiditate labore reprehenderit dolores quaerat quo! Corporis, non.</p>
+                    <p class="precoDe">DE: <span class="precoProdutoReal">R$120,90</span></p>
+                    <p class="precoPor">Por: <span class="precoProdutoVenda">R$70,90</span></p>
+                    <a href="/produtos/1" class="btn btn-outline-warning btnComprar">Comprar</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider">divisor aqui</div>
+
+        <div class="col-md12 container destaqueProdutos">
+            <div class="row d-flex flex-row-reverse">
+                <div class="col-sm-3 produto">
+                    <img src="images/uploads/rotulos/EM-roble.png" class="img-fluid" alt="Estancia Mendoza - Roble">
+                </div>
+                <div class="col-sm-5 produtoDescricao text-right">
+                    <h2 class="produtoTitulo"> Estancia Mendoza - Roble </h2>
+                    <p class="descricao-texto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae odio
+                        perferendis, amet itaque cumque consequatur incidunt, molestiae accusantium beatae hic, dicta
+                        aliquid cupiditate labore reprehenderit dolores quaerat quo! Corporis, non.</p>
+                    <p class="precoDe">DE: <span class="precoProdutoReal">R$120,90</span></p>
+                    <p class="precoPor">Por: <span class="precoProdutoVenda">R$70,90</span></p>
+                    <a href="/produtos/1" class="btn btn-outline-warning btnComprar">Comprar</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider">divisor aqui</div>
+
+        <div class="col-md12 container destaqueProdutos">
+            <div class="row d-flex">
+                <div class="col-sm-3 produto">
+                    <img src="images/uploads/rotulos/EM-roble.png" class="img-fluid" alt="Estancia Mendoza - Roble">
+                </div>
+                <div class="col-sm-5 produtoDescricao text-left">
+                    <h2 class="produtoTitulo"> Estancia Mendoza - Roble </h2>
+                    <p class="descricao-texto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae odio
+                        perferendis, amet itaque cumque consequatur incidunt, molestiae accusantium beatae hic, dicta
+                        aliquid cupiditate labore reprehenderit dolores quaerat quo! Corporis, non.</p>
+                    <p class="precoDe">DE: <span class="precoProdutoReal">R$120,90</span></p>
+                    <p class="precoPor">Por: <span class="precoProdutoVenda">R$70,90</span></p>
+                    <a href="/produtos/1" class="btn btn-outline-warning btnComprar">Comprar</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="destaque">
+            <h3>Produtos Selecionados</h3>
+            <div class="destaque_container row">
+                <div class="cardp md-col-3">
+                    <a href="/produtos/1">
+                        <img src="images/uploads/rotulos/EM-roble.png" alt="Estancia Mendoza - Roble">
+                        <p>Estancia Mendoza - Roble</p>
+                        <p class="preco">R$70,90</p>
+                    </a>
+                </div>
+                <div class="cardp md-col-3">
+                    <a href="/produtos/2">
+                        <img src="images/uploads/rotulos/Trapiche - cabernet.png" alt="Trapiche - Cabernet Suavignon">
+                        <p>Trapiche - Cabernet Suavignon</p>
+                        <p class="preco">R$72,90</p>
+                    </a>
+                </div>
+                <div class="cardp md-col-3">
+                    <a href="/produtos/1">
+                        <img src="images/uploads/rotulos/Artero-tempranillo.webp" alt="Artero - Tempranillo">
+                        <p>Artero - Tempranillo</p>
+                        <p class="preco">R$68,99</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</content>
 <%- include("./partials/footer")%>

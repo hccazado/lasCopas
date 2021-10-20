@@ -501,6 +501,20 @@ tr {
 }
 
 /* Custom CSS */
+/* General */
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+
+/* Header */
+.clear{
+  height: 5vh;
+}
 /* Destaque Produtos */
 .destaqueProdutos h2 {
   color: #ffffff;
@@ -512,7 +526,7 @@ tr {
 
 .destaqueProdutos .row{
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .produto{
@@ -522,7 +536,6 @@ tr {
 
 .produtoDescricao {
   color: #ffffff;
-  text-align: left;
 }
 .precoDe {
   font-size: 1.5rem;
