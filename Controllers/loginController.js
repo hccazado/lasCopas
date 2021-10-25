@@ -27,7 +27,7 @@ const controller={
         if(errors.isEmpty()){
             let user = req.body;
             let autentica = clientesModel.sigIn(user);
-            let login = await Cliente.findAll({include: database.Login});
+            let login = await Cliente.findAll();
             console.log(login);
             
             //Se a propriedade login conter valor diferente undefined (dados do login serão salvos no cookie)
@@ -66,10 +66,10 @@ const controller={
                 console.log("inicio de sessão usuario: "+usuarioLogado.nome);
                 //se usuario logado for administrador será redirecionado à rota gerenciar
                 if(usuarioLogado.admin){
-                    res.redirect("/gerenciar");
+                   return res.redirect("/gerenciar");
                 }
                 //usuario nao admin será redirecionado à Home
-                res.redirect("/");
+                return res.redirect("/");
             }
             
             else if(autentica.login == false){
