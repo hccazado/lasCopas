@@ -1,6 +1,7 @@
 const title="lasCopas - Login";
 
-const {Login, Cliente} = require('../models');
+const {Login, Cliente, sequelize} = require('../models');
+const { QueryTypes } = require('sequelize');
 
 const clientesModel = require("../model/clientesModel");
 
@@ -26,32 +27,64 @@ const controller={
         //verificando se o objeto de validação é vazio(sem erros)
         if(errors.isEmpty()){
             let user = req.body;
-            let autentica = clientesModel.sigIn(user);
-            let login = await Cliente.findAll();
-            console.log(login);
+            //let autentica = clientesModel.sigIn(user);
             
-            //Se a propriedade login conter valor diferente undefined (dados do login serão salvos no cookie)
-            
-            //bloco comentado criava cookie com email e senha de login (função removida)
-            /*if(user.manterLogado!=undefined && autentica.login == true){
-                console.log("manter logado");
-                //Atribuindo dados do usuario a objeto para guardar na Session
-                let usuarioLogado = {
-                    email: user.email,
-                    nome: autentica.nome,
-                    admin: autentica.admin
+            //Testando Sequelize
+            //let login = await Cliente.findAll();
+
+            //Buscando via Sequelize com Raw Query
+            let login = await sequelize.query(
+                'select nome, Login.id_login, email, senha, admin FROM Clientes INNER JOIN Login ON Clientes.id_login = Login.id_login where email like :email_form',
+                {
+                    replacements: {email_form: user.email},
+                    type: QueryTypes.SELECT
                 }
-                console.log("dados do objeto usuario para session")
-                console.log(usuarioLogado);
-                //enviando cookie ao cliente com dados de login e propriedade expire para definir por quanto tempo o msm será valido
-                res.cookie("user", usuarioLogado, {expires: new Date(Date.now()+864000+(180*2592000))});
-                req.session.user = usuarioLogado;
-                if(usuarioLogado.admin){
-                    res.redirect("/gerenciar");
-                }
-                res.redirect("/");
-            }*/
+            );
             
+            //Entra no if caso a query tenha encontrado o email informado
+            if(login.length > 0){
+                //Verificando se a senha do form confere com o hash recuperado do banco
+                if(bcrypt.compareSync(user.password, login[0].senha)){
+                    
+                    //Objeto que será salvo na session
+                    let usuarioLogado = {
+                        email: login[0].email,
+                        nome: login[0].nome,
+                        admin: login[0].admin
+                    }
+                    req.session.user = usuarioLogado;
+                    console.log("inicio de sessão do usuario: "+usuarioLogado.nome);
+
+                    //Verificando se usuario é administrador e redirecionando para Home ou painel gerenciar
+                    if(usuarioLogado.admin = 1){
+                        return res.redirect("/gerenciar")
+                    }
+                    else{
+                        return res.redirect("/")
+                    }
+                }
+                //Bcrypt retornou false para compare de senha informada e Hash
+                else{
+                    res.render("login",{
+                        title: title,
+                        created: false,
+                        error: {},
+                        errorModel: "Senha Incorreta"
+                    });
+                }
+                 
+            }
+            else{
+                //A query não encontrou o email de login
+                res.render("login",{
+                    title: title,
+                    created: false,
+                    error: {},
+                    errorModel: "Email não encontrado"
+                });
+            }
+            
+            /*
             //else if(user.manterLogado == undefined && autentica.login == true){ 
             if(autentica.login == true){
                 //console.log("sessao sem salvar cookie");
@@ -78,7 +111,7 @@ const controller={
                 created: false,
                 error: {},
                 errorModel: autentica.message});
-            }
+            }*/
         }   
         else{
             res.render("login",{
