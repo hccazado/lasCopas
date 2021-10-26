@@ -6,7 +6,7 @@ const validaCamposLogin = [
 ];
 
 const validaCamposCadastroCliente = [
-    check("nome").trim().notEmpty().withMessage("Informar nome para cadastro").bail().isLength({min:4}).withMessage("Nome deve ser maior que 6 caracteres"),
+    check("nome").trim().notEmpty().withMessage("Informar nome para cadastro").bail().isLength({min:4}).withMessage("Nome deve ser maior que 4 caracteres"),
     check("nascimento").notEmpty().withMessage("Informar data de nascimento valida").bail(),
     check("email").trim().notEmpty().withMessage("Informar email").bail().isEmail().withMessage("Informar Email valido"),
     check("password").trim().notEmpty().withMessage("Informar senha de acesso").bail().isLength({min:6}).withMessage("pelo menos 6 caracteres"),

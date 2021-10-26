@@ -1,4 +1,4 @@
-CREATE DATABASE IF NOT EXISTS LasCopas;
+CREATE SCHEMA IF NOT EXISTS LasCopas;
 
 USE LasCopas;
 
@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS Login(
 	id_login SMALLINT UNSIGNED AUTO_INCREMENT,
     email VARCHAR(120) NOT NULL UNIQUE,
     senha VARCHAR(200) NOT NULL,
-    admin SMALLINT UNSIGNED,
+    admin SMALLINT UNSIGNED DEFAULT 0,
     PRIMARY KEY(id_login)
 );
 
@@ -86,9 +86,16 @@ insert into uvas (nome_uva) values ('suavignon');
 insert into uvas (nome_uva) values ('pinot');
 insert into uvas (nome_uva) values ('merlot');
 
-select * from uvas;
 
+-- Inserindo usuario administrador
 insert into Login (email, senha, admin) values ('admin@lascopas.com', '$2a$10$6TJeD5WOUtSswXle2ixGR.sIDOeAuI9yYDfcoTxP/5FNqh9f4bU56', 1);
 -- senha padrão - 123456 - Utilizando BCryptJS, Hash com salt=10;
 
 insert into Clientes(nome,id_login) values ('Administrador',1);
+
+-- Inserindo Usuario padrão
+insert into login (email, senha)
+values ('teste@gmail.com','$2a$10$6TJeD5WOUtSswXle2ixGR.sIDOeAuI9yYDfcoTxP/5FNqh9f4bU56');
+
+insert into Clientes (nome, sobrenome, dt_nascimento, cadastro, documento, id_login)
+values ('Teste', 'COPAS', '1996-07-20', 'fisica', '37820040077', 3);
