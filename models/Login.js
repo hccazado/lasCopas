@@ -21,6 +21,13 @@ module.exports = (sequelize,DataType) => {
         timestamps: false
     });
 
+    Login.associate = (listaModel)=>{
+        Login.belongsTo(listaModel.Cliente, {
+            foreignKey: 'id_login',
+            as: 'login'
+        })
+    };
+
     return Login
 }
 

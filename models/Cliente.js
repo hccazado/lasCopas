@@ -1,3 +1,4 @@
+
 const Login = require("./Login");
 
 module.exports = (sequelize, DataType) =>{
@@ -21,19 +22,24 @@ module.exports = (sequelize, DataType) =>{
             values:['fisica','juridica']
         },
         documento:DataType.STRING,
-        id_login: {
-            type: DataType.SMALLINT,
-            unsigned: true,
-            references:{
-                model: 'Login',
-                key: 'id_login'
-            }
-        }
+        id_login: DataType.SMALLINT
     },{
         tablename: 'Clientes',
         timestamps:false
     });
     
+    /*Cliente.associate = (Model)=>{
+        Cliente.hasOne(Model.Login,{
+            ForeignKey: id_login,
+            as: 'login'
+        })
+    }*/
+    Cliente.associate = (listaModelos) =>{
+        Cliente.hasOne(listaModelos.Login,{
+            foreignKey: 'id_Login',
+            as: 'login'
+        })
+    }
 
     return Cliente
 }

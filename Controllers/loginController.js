@@ -1,7 +1,8 @@
 const title="lasCopas - Login";
 
-const {Login, Cliente, sequelize} = require('../models');
+const {Login, Cliente, sequelize, Sequelize} = require('../models');
 const { QueryTypes } = require('sequelize');
+const Op = Sequelize.Op;
 
 const clientesModel = require("../model/clientesModel");
 
@@ -27,10 +28,6 @@ const controller={
         //verificando se o objeto de validação é vazio(sem erros)
         if(errors.isEmpty()){
             let user = req.body;
-            //let autentica = clientesModel.sigIn(user);
-            
-            //Testando Sequelize
-            //let login = await Cliente.findAll();
 
             //Buscando via Sequelize com Raw Query
             let login = await sequelize.query(
@@ -40,17 +37,27 @@ const controller={
                     type: QueryTypes.SELECT
                 }
             );
-            
+
+            let login2 = await Cliente.findAll({
+                attributes:['nome'],
+                include:{
+                    model: Login,
+                    as: 'login',
+                    attributes:['email', 'senha', 'admin'],
+                    where: {email: { [Op.like]:user.email}}
+                }
+            })
+            console.log(login2[0].dataValues.login.senha);
             //Entra no if caso a query tenha encontrado o email informado
-            if(login.length > 0){
+            if(login2.length > 0){
                 //Verificando se a senha do form confere com o hash recuperado do banco
-                if(bcrypt.compareSync(user.password, login[0].senha)){
+                if(bcrypt.compareSync(user.password, login2[0].dataValues.login.senha)){
                     
                     //Objeto que será salvo na session
                     let usuarioLogado = {
-                        email: login[0].email,
-                        nome: login[0].nome,
-                        admin: login[0].admin
+                        email: login2[0].dataValues.login.email,
+                        nome: login2[0].nome,
+                        admin: login2[0].dataValues.login.admin
                     }
                     req.session.user = usuarioLogado;
                     console.log("inicio de sessão do usuario: "+usuarioLogado.nome);
@@ -83,35 +90,6 @@ const controller={
                     errorModel: "Email não encontrado"
                 });
             }
-            
-            /*
-            //else if(user.manterLogado == undefined && autentica.login == true){ 
-            if(autentica.login == true){
-                //console.log("sessao sem salvar cookie");
-                //Atribuindo dados do usuario a objeto para guardar na Session
-                let usuarioLogado = {
-                    email: user.email,
-                    nome: autentica.nome,
-                    admin: autentica.admin
-                }
-                req.session.user = usuarioLogado;
-                //console.log("dados do objeto usuario para session")
-                console.log("inicio de sessão usuario: "+usuarioLogado.nome);
-                //se usuario logado for administrador será redirecionado à rota gerenciar
-                if(usuarioLogado.admin){
-                   return res.redirect("/gerenciar");
-                }
-                //usuario nao admin será redirecionado à Home
-                return res.redirect("/");
-            }
-            
-            else if(autentica.login == false){
-            res.render("login",{
-                title: title,
-                created: false,
-                error: {},
-                errorModel: autentica.message});
-            }*/
         }   
         else{
             res.render("login",{
