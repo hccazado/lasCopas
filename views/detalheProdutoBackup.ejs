@@ -1,0 +1,24 @@
+<%- include('./partials/header')%>
+<content>
+    <div class="wrapper">
+       <div class="produto_wrapper">
+            <div class="container_rotulo">
+                <img src="/<%=vinho.rotulo%>" alt="rotulo">
+            </div>
+            <div class="container_descritivo">
+                <h4>Origem: <span><%=vinho.origem%></span></h4>
+                <h4>Uva: <span><%=vinho.uvas%></span></h4>
+                <h4>Ano: <span><%=vinho.ano%></span></h4>
+                <h4>Tipo: <span><%=vinho.tipo%></span></h4>
+                <% if (vinho.descricao!=null) { %>
+                    <h4>Descrição: </h4><span><%=vinho.descricao%></span></span>
+                    <% } %>
+            </div>
+            <div class="preco">
+                <h4>Preço R$<%=vinho.preco%></h4>
+                <button class="button">Comprar</button>
+            </div>
+       </div>
+    </div>
+</content>
+<%- include('./partials/footer')%>

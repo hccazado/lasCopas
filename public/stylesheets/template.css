@@ -510,6 +510,11 @@ tr {
   text-align: right;
 }
 
+.divider {
+  background: #f2f2f2;
+  height: 2px;
+}
+
 
 /* Header */
 .clear{
@@ -559,4 +564,13 @@ tr {
 .btnComprar {
   width: 100%;
   max-width: 30%;
+}
+
+/* Último Banner */
+.last-banner{
+  background-image: url("/images/lascopasbanner.jpg");
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: cover;
 }
