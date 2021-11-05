@@ -1,6 +1,4 @@
 
-const Login = require("./Login");
-
 module.exports = (sequelize, DataType) =>{
     const Cliente = sequelize.define('Cliente',{
         id_cliente:{
@@ -34,10 +32,14 @@ module.exports = (sequelize, DataType) =>{
             as: 'login'
         })
     }*/
-    Cliente.associate = (listaModelos) =>{
-        Cliente.hasOne(listaModelos.Login,{
+    Cliente.associate = (Models) =>{
+        Cliente.hasOne(Models.Login,{
             foreignKey: 'id_Login',
             as: 'login'
+        }),
+        Cliente.hasMany(Models.Endereco,{
+            as: 'Enderecos',
+            foreignKey: 'id_cliente'
         })
     }
 

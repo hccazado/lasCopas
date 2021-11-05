@@ -1,9 +1,7 @@
-const Cliente = require("../models");
-
 module.exports = (sequelize,DataType) => {
     const Login = sequelize.define('Login',{
         id_login:{
-            type:DataType.SMALLINT,
+            type:DataType.SMALLINT.UNSIGNED,
             primaryKey:true,
             autoIncrement: true
         },
@@ -13,7 +11,7 @@ module.exports = (sequelize,DataType) => {
         },
         senha:DataType.STRING,
         admin:{
-            type:DataType.SMALLINT,
+            type:DataType.SMALLINT.UNSIGNED,
             defautValue: 0
         }
     },{
@@ -21,8 +19,8 @@ module.exports = (sequelize,DataType) => {
         timestamps: false
     });
 
-    Login.associate = (listaModel)=>{
-        Login.belongsTo(listaModel.Cliente, {
+    Login.associate = (Models)=>{
+        Login.belongsTo(Models.Cliente, {
             foreignKey: 'id_login',
             as: 'login'
         })
