@@ -6,10 +6,10 @@ module.exports = (sequelize,DataType) => {
             autoIncrement: true
         },
         email:{
-            type:DataType.STRING,
+            type:DataType.STRING(120),
             unique:true
         },
-        senha:DataType.STRING,
+        senha:DataType.STRING(200),
         admin:{
             type:DataType.SMALLINT.UNSIGNED,
             defautValue: 0

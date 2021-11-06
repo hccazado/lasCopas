@@ -1,27 +1,23 @@
-const Cliente = require("./Cliente");
-
 module.exports = (sequelize, DataType) =>{
     const Endereco = sequelize.define("Endereco",{
         id_endereco: {
             type: DataType.INTEGER.UNSIGNED,
-            PrimaryKey: true,
+            primaryKey: true,
             autoIncrement: true
         },
         cep: DataType.CHAR(10),
-        endereco: DataType.VARCHAR(100),
-        complemento: DataType.VARCHAR(50),
+        endereco: DataType.STRING(100),
+        complemento: DataType.STRING(50),
         numero: DataType.CHAR(5),
-        cidade: DataType.VARCHAR(45),
-        uf: DataType.VARCHAR(2),
+        cidade: DataType.STRING(45),
+        uf: DataType.STRING(2),
         id_cliente: {
-            type:DataType.INTEGER.UNSIGNED,
-            references:{
-                model: Cliente,
-                key: 'id_cliente'
-            }
+            type: DataType.INTEGER.UNSIGNED,
+            references: 'Clientes',
+            referencesKey: 'id_cliente'
         }
     },{
-        tablename: 'Clientes',
+        tablename: 'Enderecos',
         timestamps:false
     });
 
@@ -29,7 +25,11 @@ module.exports = (sequelize, DataType) =>{
         Endereco.belongsTo(Models.Cliente,{
             as: 'enderecos',
             foreignKey:'id_cliente'
-        })
+        }),
+        Endereco.belongsTo(Models.Pedido),{
+            as: "enderecoPedido",
+            foreignKey: "id_endereco"
+        }
     }
 
     return Endereco;
