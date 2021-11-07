@@ -22,11 +22,7 @@ const controller = {
         //})
 
         let Produtos = await Produto.findAll({
-            include: [{
-                model: Uva,
-                as: "uvas" 
-                }
-            ],
+            include: "uvas",
             raw: true,
             nest: true
         }).then(produtos =>{
@@ -34,7 +30,22 @@ const controller = {
                 console.log(produtos[i].id_produto +": "+produtos[i].finca +" Uvas:")
                 console.log(produtos[i]);
             }*/
+            //console.log(JSON.stringify(produtos[1], null, 2));
+            let uvares = []
+            let idant = 0;
+            for(let i=0; i<produtos.length; i++){
+                if(produtos[i].id_produto == idant){
+                    uvares.push(produtos[i].uvas.nome_uva);
+                }
+                else{
+                    idant = produtos[i].id_produto;
+                }
+                console.log(`${produtos[i].id_produto} ${produtos[i].finca} ${produtos[i].uvas.nome_uva}`)
+                
+            }
+
             console.log(produtos)
+            //res.send(produtos)
         })
 
         //Trazendo associacao Uvas -> Produtos
@@ -47,10 +58,10 @@ const controller = {
             console.log(result)
         })*/
 
-        res.render("produtos", {
+        /*res.render("produtos", {
             title: title,
             vinhos: model.listarVinhos()
-        });
+        });*/
     }, 
     cadastroProduto: (req, res, next) =>{
         res.render("cadastroProduto", {

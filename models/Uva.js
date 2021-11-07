@@ -1,3 +1,5 @@
+
+
 module.exports = (sequelize, DataType) =>{
     const Uva = sequelize.define("Uva",{
         id_uva:{
@@ -18,7 +20,7 @@ module.exports = (sequelize, DataType) =>{
             foreignKey: "uva_id",
             through: "Produtos_Uvas",
             otherKey: "produto_id"
-        })
+        });
     }
 
     return Uva;
