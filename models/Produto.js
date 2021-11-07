@@ -11,7 +11,7 @@ module.exports = (sequelize, DataType) =>{
         rotulo: DataType.STRING(200),
         ativo: DataType.ENUM('ativo', 'inativo'),
         descricao: DataType.TEXT
-    },
+    }, {},
     {
         tablename: 'Produtos',
         timestamps: false
@@ -23,6 +23,13 @@ module.exports = (sequelize, DataType) =>{
             foreignKey: "id_produto",
             through: "Pedidos_Produtos",
             otherKey: "id_pedido"
+        }),
+
+        Produto.belongsToMany(Models.Uva,{
+            as: "uvas",
+            foreignKey: "produto_id",
+            through: "Produtos_Uvas",
+            otherKey: "uva_id"
         })
     }
 

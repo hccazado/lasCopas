@@ -9,8 +9,17 @@ module.exports = (sequelize, DataType) =>{
 
     },{
         tablename: 'Uvas',
-        timestamps:false
+        timestamps: false
     });
     
+    Uva.associate = (Models) => {
+        Uva.belongsToMany(Models.Produto,{
+            as: "vinhos",
+            foreignKey: "uva_id",
+            through: "Produtos_Uvas",
+            otherKey: "produto_id"
+        })
+    }
+
     return Uva;
 }

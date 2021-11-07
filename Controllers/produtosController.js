@@ -2,8 +2,51 @@ const title = "lasCopas - Produtos";
 const model = require("../model/produtosModel");
 const {validationResult} = require("express-validator");
 
+const {Produto, Uva, sequelize, Sequelize} = require('../models');
+const Op = Sequelize.Op;
+
 const controller = {
-    index: (req, res, next) =>{
+    index: async (req, res, next) =>{
+        //let Produtos = await Produto.findAll({
+        //    include: [
+        //        {association: 'uvas'} 
+        //    ],
+        //    raw: true,
+        //    nest: true
+        //}).then(produtos =>{
+            /*for(let i=0; i< produtos.length; i++){
+                console.log(produtos[i].id_produto +": "+produtos[i].finca +" Uvas:")
+                console.log(produtos[i]);
+            }*/
+        //    console.log(produtos)
+        //})
+
+        let Produtos = await Produto.findAll({
+            include: [{
+                model: Uva,
+                as: "uvas" 
+                }
+            ],
+            raw: true,
+            nest: true
+        }).then(produtos =>{
+            /*for(let i=0; i< produtos.length; i++){
+                console.log(produtos[i].id_produto +": "+produtos[i].finca +" Uvas:")
+                console.log(produtos[i]);
+            }*/
+            console.log(produtos)
+        })
+
+        //Trazendo associacao Uvas -> Produtos
+        /*
+        let Uvas = await Uva.findAll({
+            include:{ association: "vinhos"},
+            raw: true,
+            nest: true
+        }).then(result =>{
+            console.log(result)
+        })*/
+
         res.render("produtos", {
             title: title,
             vinhos: model.listarVinhos()

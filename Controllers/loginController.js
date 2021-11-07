@@ -30,15 +30,15 @@ const controller={
             let user = req.body;
 
             //Buscando via Sequelize com Raw Query
-            let login = await sequelize.query(
+           /* let login = await sequelize.query(
                 'select nome, Login.id_login, email, senha, admin FROM Clientes INNER JOIN Login ON Clientes.id_login = Login.id_login where email like :email_form',
                 {
                     replacements: {email_form: user.email},
                     type: QueryTypes.SELECT
                 }
-            );
+            );*/
 
-            let login2 = await Cliente.findAll({
+            let login = await Cliente.findAll({
                 attributes:['nome'],
                 include:{
                     model: Login,
@@ -47,17 +47,17 @@ const controller={
                     where: {email: { [Op.like]:user.email}}
                 }
             })
-            console.log(login2[0].dataValues.login.senha);
+            console.log(login[0].dataValues.login.senha);
             //Entra no if caso a query tenha encontrado o email informado
-            if(login2.length > 0){
+            if(login.length > 0){
                 //Verificando se a senha do form confere com o hash recuperado do banco
                 if(bcrypt.compareSync(user.password, login2[0].dataValues.login.senha)){
                     
                     //Objeto que será salvo na session
                     let usuarioLogado = {
-                        email: login2[0].dataValues.login.email,
-                        nome: login2[0].nome,
-                        admin: login2[0].dataValues.login.admin
+                        email: login[0].dataValues.login.email,
+                        nome: login[0].nome,
+                        admin: login[0].dataValues.login.admin
                     }
                     req.session.user = usuarioLogado;
                     console.log("inicio de sessão do usuario: "+usuarioLogado.nome);

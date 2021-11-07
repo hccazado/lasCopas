@@ -3,7 +3,10 @@ const config = {
     password: '',
     database: 'lascopas',
     host: 'localhost',
-    dialect: 'mysql'
+    dialect: 'mysql',
+    define: {
+        timestamps: false
+    }
 }
 
 module.exports = config;

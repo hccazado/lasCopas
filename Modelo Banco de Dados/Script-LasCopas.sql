@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS Pedidos_Produtos(
 insert into uvas (nome_uva) values ('syrrah');
 insert into uvas (nome_uva) values ('malbec');
 insert into uvas (nome_uva) values ('tempranillo');
-insert into uvas (nome_uva) values ('suavignon');
+insert into uvas (nome_uva) values ('cabernet');
 insert into uvas (nome_uva) values ('pinot');
 insert into uvas (nome_uva) values ('merlot');
 
