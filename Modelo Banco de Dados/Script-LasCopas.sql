@@ -46,6 +46,8 @@ CREATE TABLE IF NOT EXISTS Uvas(
 CREATE TABLE IF NOT EXISTS Produtos(
 	id_produto INT UNSIGNED AUTO_INCREMENT,
     finca VARCHAR(45) NOT NULL,
+    cosecha ENUM('tardia','temprana'),
+    tipo ENUM('tinto', 'branco', 'rosé', 'frisante'),
     valor DOUBLE,
     origem VARCHAR(20),
     rotulo VARCHAR(200),
@@ -99,3 +101,4 @@ values ('teste@gmail.com','$2a$10$6TJeD5WOUtSswXle2ixGR.sIDOeAuI9yYDfcoTxP/5FNqh
 
 insert into Clientes (nome, sobrenome, dt_nascimento, cadastro, documento, id_login)
 values ('Teste', 'COPAS', '1996-07-20', 'fisica', '37820040077', 3);
+
