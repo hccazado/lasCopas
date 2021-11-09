@@ -1,5 +1,5 @@
 const title = "lasCopas - Produtos";
-const model = require("../model/produtosModel");
+//const model = require("../model/produtosModel");
 const {validationResult} = require("express-validator");
 
 const {Produto, Uva, sequelize, Sequelize} = require('../models');
@@ -7,61 +7,51 @@ const Op = Sequelize.Op;
 
 const controller = {
     index: async (req, res, next) =>{
-        //let Produtos = await Produto.findAll({
-        //    include: [
-        //        {association: 'uvas'} 
-        //    ],
-        //    raw: true,
-        //    nest: true
-        //}).then(produtos =>{
-            /*for(let i=0; i< produtos.length; i++){
-                console.log(produtos[i].id_produto +": "+produtos[i].finca +" Uvas:")
-                console.log(produtos[i]);
-            }*/
-        //    console.log(produtos)
-        //})
 
         let Produtos = await Produto.findAll({
-            include: "uvas",
-            raw: true,
-            nest: true
+            include: [{model: Uva, as: 'uvas'}],
+            //include: [Uva],
+            raw: false
         }).then(produtos =>{
-            /*for(let i=0; i< produtos.length; i++){
-                console.log(produtos[i].id_produto +": "+produtos[i].finca +" Uvas:")
-                console.log(produtos[i]);
-            }*/
-            //console.log(JSON.stringify(produtos[1], null, 2));
-            let uvares = []
-            let idant = 0;
-            for(let i=0; i<produtos.length; i++){
-                if(produtos[i].id_produto == idant){
-                    uvares.push(produtos[i].uvas.nome_uva);
+            //vetor para armazenar objetos de produtos
+            const arrayVinhos = [];
+            //recorrendo array de produtos retornado pelo sequelize
+            produtos.forEach(element => {
+                //criando objeto vinho para receber desestruturaçao de cada elemento iterado no resultado sequelize
+                let vinho = {
+                    ...element.dataValues
                 }
-                else{
-                    idant = produtos[i].id_produto;
-                }
-                console.log(`${produtos[i].id_produto} ${produtos[i].finca} ${produtos[i].uvas.nome_uva}`)
-                
-            }
+                //imprimindo estado atual do objeto vinho 
+                //console.log(vinho)
 
-            console.log(produtos)
-            //res.send(produtos)
+                //criando vetor vazio para receber as uvas de cada produto
+                let uvas = [];
+                //iterando as uvas de cada produto
+                element.dataValues.uvas.forEach(element2 =>{
+                    //adicionado prop nome_uva de cada iteraçao da ou das uvas do produto
+                    uvas.push(element2.dataValues.nome_uva);
+
+                    //Imprimindo nome da uva atual inserida no array de uvas
+                    //console.log(element2.dataValues.nome_uva);
+                })
+                vinho = {
+                    ...vinho,
+                    uvas,
+                }
+                //Adicionando objeto de vinho ao array de produtos
+                arrayVinhos.push(vinho)
+            });
+
+            //Imprimindo array de objtos
+            //console.log(arrayVinhos);
+
+
+            res.render("produtos", {
+                title: title,
+                vinhos: arrayVinhos
+            })
         })
 
-        //Trazendo associacao Uvas -> Produtos
-        /*
-        let Uvas = await Uva.findAll({
-            include:{ association: "vinhos"},
-            raw: true,
-            nest: true
-        }).then(result =>{
-            console.log(result)
-        })*/
-
-        /*res.render("produtos", {
-            title: title,
-            vinhos: model.listarVinhos()
-        });*/
     }, 
     cadastroProduto: (req, res, next) =>{
         res.render("cadastroProduto", {
@@ -121,12 +111,28 @@ const controller = {
         }
         res.redirect("/gerenciar/produtos");
     },
-    detalhe: (req, res, next) =>{
-        let produto = model.buscarVinhoID(req.params.id);
-        res.render("detalheProduto", {
-            title: title,
-            vinho: produto
-        });
+    detalhe: async (req, res, next) =>{
+        
+        let {id} = req.params
+        //let produto = model.buscarVinhoID(req.params.id);
+        
+        let produto = await Produto.findByPk(id,{
+            include: [{model: Uva, as: 'uvas'}],
+        }).then(resultado =>{
+            let uvas=[];
+            resultado.uvas.forEach(uva =>{
+                console.log(uva.dataValues.nome_uva);
+                uvas.push(uva.dataValues.nome_uva);
+            });
+            let vinho = {
+                ...resultado.dataValues,
+                uvas
+            }
+            res.render("detalheProduto", {
+                title: title,
+                vinho: vinho
+            });
+        })
     }
 }
 

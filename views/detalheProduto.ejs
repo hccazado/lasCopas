@@ -15,8 +15,8 @@
                     <% } %>
             </div>
             <div class="preco">
-                <h4>Preço R$<%=vinho.preco%></h4>
-                <form action="/produtos/adicionar/<%=vinho.id%>" method="POST">
+                <h4>Preço R$<%=vinho.valor%></h4>
+                <form action="/produtos/adicionar/<%=vinho.id_produto%>" method="POST">
                     <button class="button">Comprar</button>
                 </form>
             </div>

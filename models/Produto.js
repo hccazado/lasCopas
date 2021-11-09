@@ -6,8 +6,6 @@ module.exports = (sequelize, DataType) =>{
             primaryKey: true
         },
         finca: DataType.STRING(45),
-        cosecha: DataType.ENUM('tardia', 'temprana'),
-        tipo: DataType.ENUM('tinto', 'branco', 'rosé', 'frisante'),
         valor: DataType.DOUBLE,
         origem: DataType.STRING(20),
         rotulo: DataType.STRING(200),

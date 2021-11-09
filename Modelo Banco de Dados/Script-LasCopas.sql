@@ -100,5 +100,16 @@ insert into login (email, senha)
 values ('teste@gmail.com','$2a$10$6TJeD5WOUtSswXle2ixGR.sIDOeAuI9yYDfcoTxP/5FNqh9f4bU56');
 
 insert into Clientes (nome, sobrenome, dt_nascimento, cadastro, documento, id_login)
-values ('Teste', 'COPAS', '1996-07-20', 'fisica', '37820040077', 3);
+values ('Teste', 'COPAS', '1996-07-20', 'fisica', '37820040077', 2);
+
+insert into Produtos (finca, valor, origem, rotulo, ativo, descricao) values 
+('Estancia Mendoza', '199.00', 'Argentina', 'images/uploads/rotulos/EM-roble.png', 'ativo', 'Um vinho de color ruby, sabor amadeirado com notas de frutos do bosque');
+
+insert into Produtos (finca, valor, origem, rotulo, ativo, descricao) values 
+('Trapiche', '99.98', 'Argentina', 'images/uploads/rotulos/Trapiche - cabernet.png', 'ativo', 'Um vinho de color marcante, sabor caracteristico da uva cabernet com notas amadeiradas');
+
+INSERT INTO Produtos_Uvas (produto_id, uva_id) values (1, 1);
+INSERT INTO Produtos_Uvas (produto_id, uva_id) values (1, 2);
+INSERT INTO Produtos_Uvas (produto_id, uva_id) values (2, 4);
+INSERT INTO Produtos_Uvas (produto_id, uva_id) values (2, 2);
 

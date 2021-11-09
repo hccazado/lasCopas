@@ -29,15 +29,6 @@ const controller={
         if(errors.isEmpty()){
             let user = req.body;
 
-            //Buscando via Sequelize com Raw Query
-           /* let login = await sequelize.query(
-                'select nome, Login.id_login, email, senha, admin FROM Clientes INNER JOIN Login ON Clientes.id_login = Login.id_login where email like :email_form',
-                {
-                    replacements: {email_form: user.email},
-                    type: QueryTypes.SELECT
-                }
-            );*/
-
             let login = await Cliente.findAll({
                 attributes:['nome'],
                 include:{
@@ -47,11 +38,11 @@ const controller={
                     where: {email: { [Op.like]:user.email}}
                 }
             })
-            console.log(login[0].dataValues.login.senha);
+
             //Entra no if caso a query tenha encontrado o email informado
             if(login.length > 0){
                 //Verificando se a senha do form confere com o hash recuperado do banco
-                if(bcrypt.compareSync(user.password, login2[0].dataValues.login.senha)){
+                if(bcrypt.compareSync(user.password, login[0].dataValues.login.senha)){
                     
                     //Objeto que será salvo na session
                     let usuarioLogado = {
