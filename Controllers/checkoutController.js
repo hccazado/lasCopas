@@ -29,7 +29,6 @@ const produtos = [
 
 const controller = {
     carrinho: (req, res, next) =>{
-        var produtosArray = [];
         if(!req.session.carrinho){
             res.render("carrinho", {
                 title: title,
@@ -39,34 +38,35 @@ const controller = {
 
         else{
             let carrinho = req.session.carrinho;
-            
+            const produtosArray = [];
             carrinho.forEach(item =>{
-                 Produto.findByPk(item.id,{
-                    include: [{model: Uva, as:"uvas"}]
+                let resultado = Produto.findByPk(item.id,{
+                    include: [{model: Uva, as: "uvas"}]
                 }).then(resultado =>{
-                    let uvas = []
-                    resultado.uvas.forEach(uva =>{
-                        uvas.push(uva.dataValues.nome_uva)
-                    });
-
-                    let vinho = {
-                        ...resultado.dataValues,
+                    let vinho = {...resultado.dataValues,
                         qtd: item.quantidade,
-                        total: ()=>this.valor*this.qtd,
+                        total: ()=>this.valor*this.qtd
+                    };
+                    let uvas = [];
+                    resultado.uvas.forEach(uva=>{
+                        uvas.push(uva.dataValues.nome_uva);
+                    });
+                    vinho = {
+                        ...vinho,
                         uvas
                     };
-                    console.log(vinho);
+
                     produtosArray.push(vinho);
-                    //console.log(produtosArray);
-                    res.render("carrinho", {
+                    //console.log(vinho);
+                    res.render("carrinho",{
                         title: title,
                         produtos: produtosArray
                     })
                 });
-                
             });
+            
+            
         }
-        
     },
     pagar: (req, res, next) => {
         res.render("pagamento", {

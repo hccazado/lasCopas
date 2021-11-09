@@ -113,26 +113,29 @@ const controller = {
     },
     detalhe: async (req, res, next) =>{
         
-        let {id} = req.params
-        //let produto = model.buscarVinhoID(req.params.id);
-        
+        let {id} = req.params;
+        let vinho = {};
         let produto = await Produto.findByPk(id,{
             include: [{model: Uva, as: 'uvas'}],
         }).then(resultado =>{
             let uvas=[];
             resultado.uvas.forEach(uva =>{
-                console.log(uva.dataValues.nome_uva);
+                //console.log(uva.dataValues.nome_uva);
                 uvas.push(uva.dataValues.nome_uva);
             });
-            let vinho = {
+             vinho = {
                 ...resultado.dataValues,
                 uvas
             }
-            res.render("detalheProduto", {
-                title: title,
-                vinho: vinho
-            });
+            console.log("---detalhe Produto----");
+            console.log(vinho);
+            console.log("-----------------------");
+            
         })
+        res.render("detalheProduto", {
+            title: title,
+            vinho: vinho
+        });
     }
 }
 
