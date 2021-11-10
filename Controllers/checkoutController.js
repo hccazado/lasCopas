@@ -1,4 +1,5 @@
 const session = require("express-session");
+const { Result } = require("express-validator");
 
 const title = "lasCopas - Checkout";
 
@@ -6,7 +7,7 @@ const {Produto, Uva, sequelize, Sequelize} = require('../models');
 const Op = Sequelize.Op;
 
 //lista de objetos para testar!
-const produtos = [
+var produtos = [
     {   id: 10,
         rotulo: "/images/uploads/rotulos/EM-roble.png",
         finca: "Estancia Mendoza",
@@ -29,6 +30,7 @@ const produtos = [
 
 const controller = {
     carrinho: (req, res, next) =>{
+        
         if(!req.session.carrinho){
             res.render("carrinho", {
                 title: title,
@@ -38,17 +40,17 @@ const controller = {
 
         else{
             let carrinho = req.session.carrinho;
-            const produtosArray = [];
-            carrinho.forEach(item =>{
+            produtos = [];
+            /*carrinho.forEach(item =>{
                 let resultado = Produto.findByPk(item.id,{
-                    include: [{model: Uva, as: "uvas"}]
+                    include: Uva
                 }).then(resultado =>{
                     let vinho = {...resultado.dataValues,
                         qtd: item.quantidade,
                         total: ()=>this.valor*this.qtd
                     };
                     let uvas = [];
-                    resultado.uvas.forEach(uva=>{
+                    resultado.Uvas.forEach(uva=>{
                         uvas.push(uva.dataValues.nome_uva);
                     });
                     vinho = {
@@ -57,13 +59,35 @@ const controller = {
                     };
 
                     produtosArray.push(vinho);
-                    //console.log(vinho);
-                    res.render("carrinho",{
-                        title: title,
-                        produtos: produtosArray
-                    })
+                    
+                    
                 });
-            });
+            });*/
+            
+            for(atual of carrinho){
+                Produto.findByPk(atual.id,{
+                    include: Uva
+                }).then(resultado =>{
+                    let vinho = {
+                        ...resultado.dataValues,
+                        qtd: atual.quantidade,
+                        total: ()=> this.valor * this.qtd
+                    }
+                    let uvas = [];
+                    for(uva of resultado.Uvas){
+                        uvas.push(uva.nome_uva);
+                    }
+                    vinho = {
+                        ...vinho,
+                        Uvas: uvas
+                    }
+
+                    //return vinho
+                    produtos.push(vinho);
+                })
+            }
+            console.log("saiu do for");
+
             
             
         }

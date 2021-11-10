@@ -9,13 +9,16 @@ const controller = {
     index: async (req, res, next) =>{
 
         let Produtos = await Produto.findAll({
-            include: [{model: Uva, as: 'uvas'}],
-            //include: [Uva],
-            raw: false
+            //include: [{model: Uva, as: 'uvas'}],
+            include: Uva,
+            raw: false,
+            nested: true
         }).then(produtos =>{
             //vetor para armazenar objetos de produtos
             const arrayVinhos = [];
             //recorrendo array de produtos retornado pelo sequelize
+           
+           
             produtos.forEach(element => {
                 //criando objeto vinho para receber desestruturaçao de cada elemento iterado no resultado sequelize
                 let vinho = {
@@ -27,7 +30,7 @@ const controller = {
                 //criando vetor vazio para receber as uvas de cada produto
                 let uvas = [];
                 //iterando as uvas de cada produto
-                element.dataValues.uvas.forEach(element2 =>{
+                element.dataValues.Uvas.forEach(element2 =>{
                     //adicionado prop nome_uva de cada iteraçao da ou das uvas do produto
                     uvas.push(element2.dataValues.nome_uva);
 
@@ -42,14 +45,12 @@ const controller = {
                 arrayVinhos.push(vinho)
             });
 
-            //Imprimindo array de objtos
-            //console.log(arrayVinhos);
-
-
             res.render("produtos", {
                 title: title,
                 vinhos: arrayVinhos
             })
+
+            
         })
 
     }, 
@@ -116,20 +117,17 @@ const controller = {
         let {id} = req.params;
         let vinho = {};
         let produto = await Produto.findByPk(id,{
-            include: [{model: Uva, as: 'uvas'}],
+            include: Uva
         }).then(resultado =>{
             let uvas=[];
-            resultado.uvas.forEach(uva =>{
-                //console.log(uva.dataValues.nome_uva);
-                uvas.push(uva.dataValues.nome_uva);
+            resultado.Uvas.forEach(uva =>{
+
+                uvas.push(uva.nome_uva);
             });
              vinho = {
                 ...resultado.dataValues,
                 uvas
             }
-            console.log("---detalhe Produto----");
-            console.log(vinho);
-            console.log("-----------------------");
             
         })
         res.render("detalheProduto", {

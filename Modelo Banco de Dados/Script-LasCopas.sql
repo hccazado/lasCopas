@@ -107,7 +107,8 @@ insert into Produtos (finca, cosecha, tipo, ano, valor, origem, rotulo, ativo, d
 ('Estancia Mendoza','tardia', 'tinto','2020' , '199.00', 'Argentina', 'images/uploads/rotulos/EM-roble.png', 'ativo', 'Um vinho de color ruby, sabor amadeirado com notas de frutos do bosque');
 
 insert into Produtos (finca, cosecha, tipo, ano, valor, origem, rotulo, ativo, descricao) values 
-('Trapiche', 'tardia', 'tinto', '99.98', '2019', 'Argentina', 'images/uploads/rotulos/Trapiche - cabernet.png', 'ativo', 'Um vinho de color marcante, sabor caracteristico da uva cabernet com notas amadeiradas');
+('Trapiche', 'tardia', 'tinto', '2019', '99.98', 'Argentina', 'images/uploads/rotulos/Trapiche - cabernet.png', 'ativo', 'Um vinho de color marcante, sabor caracteristico da uva cabernet com notas amadeiradas');
+
 
 INSERT INTO Produtos_Uvas (produto_id, uva_id) values (1, 1);
 INSERT INTO Produtos_Uvas (produto_id, uva_id) values (1, 2);

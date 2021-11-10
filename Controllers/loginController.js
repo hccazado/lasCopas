@@ -29,32 +29,35 @@ const controller={
         if(errors.isEmpty()){
             let user = req.body;
 
-            let login = await Cliente.findAll({
-                attributes:['nome'],
+            let login = await Login.findOne({
+                where:{
+                    email: user.email
+                },
                 include:{
-                    model: Login,
-                    as: 'login',
-                    attributes:['email', 'senha', 'admin'],
-                    where: {email: { [Op.like]:user.email}}
+                    model: Cliente,
+                    attributes:['nome']
                 }
             })
+            console.log(login.Cliente.nome);
+
+            //console.log(login.dataValues);
 
             //Entra no if caso a query tenha encontrado o email informado
-            if(login.length > 0){
+            if(login.Cliente.nome){
                 //Verificando se a senha do form confere com o hash recuperado do banco
-                if(bcrypt.compareSync(user.password, login[0].dataValues.login.senha)){
+                if(bcrypt.compareSync(user.password, login.dataValues.senha)){
                     
                     //Objeto que será salvo na session
                     let usuarioLogado = {
-                        email: login[0].dataValues.login.email,
-                        nome: login[0].nome,
-                        admin: login[0].dataValues.login.admin
+                        email: login.dataValues.email,
+                        nome: login.Cliente.nome,
+                        admin: login.dataValues.admin
                     }
                     req.session.user = usuarioLogado;
                     console.log("inicio de sessão do usuario: "+usuarioLogado.nome);
 
                     //Verificando se usuario é administrador e redirecionando para Home ou painel gerenciar
-                    if(usuarioLogado.admin = 1){
+                    if(usuarioLogado.admin == 1){
                         return res.redirect("/gerenciar")
                     }
                     else{

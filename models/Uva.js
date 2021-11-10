@@ -1,5 +1,3 @@
-
-
 module.exports = (sequelize, DataType) =>{
     const Uva = sequelize.define("Uva",{
         id_uva:{
@@ -15,12 +13,26 @@ module.exports = (sequelize, DataType) =>{
     });
     
     Uva.associate = (Models) => {
-        Uva.belongsToMany(Models.Produto,{
+        /*Uva.belongsToMany(Models.Produto,{
             as: "vinhos",
             foreignKey: "uva_id",
             through: "Produtos_Uvas",
             otherKey: "produto_id"
-        });
+        }); */
+
+    /*Uva.belongsToMany(Models.Produto, {
+        through: "Produtos_Uvas",
+        foreignKey: "id_uva"
+        });*/
+    
+        Uva.belongsToMany(Models.Produto,{
+            through: "Produtos_Uvas",
+            foreignKey:"uva_id",
+            otherKey: "produto_id"
+        })
+
+    Uva.hasMany(Models.ProdutoUva);
+    
     }
 
     return Uva;

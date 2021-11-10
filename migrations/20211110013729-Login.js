@@ -15,7 +15,7 @@ module.exports = {
         senha: Sequelize.DataTypes.STRING(200),
         admin:{
           type: Sequelize.DataTypes.SMALLINT.UNSIGNED,
-          defautValue: 0
+          defaultValue: 0
         } 
       });
   },

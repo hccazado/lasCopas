@@ -28,12 +28,19 @@ module.exports = (sequelize, DataType) =>{
             otherKey: "id_pedido"
         }),
 
-        Produto.belongsToMany(Models.Uva,{
+        /*Produto.belongsToMany(Models.Uva,{
             as: "uvas",
             foreignKey: "produto_id",
             through: "Produtos_Uvas",
             otherKey: "uva_id"
-        })
+        })*/
+        Produto.belongsToMany(Models.Uva,{
+            through: "Produtos_Uvas",
+            foreignKey:"produto_id",
+            otherKey: "uva_id"
+        }),
+
+        Produto.hasMany(Models.ProdutoUva)
     }
 
     return Produto

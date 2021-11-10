@@ -31,8 +31,7 @@ module.exports = (sequelize, DataType) =>{
     }*/
     Cliente.associate = (Models) =>{
         Cliente.hasOne(Models.Login,{
-            foreignKey: 'id_Login',
-            as: 'login'
+            foreignKey: 'id_Login'
         }),
         Cliente.hasMany(Models.Endereco,{
             as: 'Enderecos',

@@ -7,12 +7,15 @@ module.exports = (sequelize,DataType) => {
         },
         email:{
             type:DataType.STRING(120),
-            unique:true
+            unique:{
+                args: true,
+                msg: "Email já cadastrado!"
+            }
         },
         senha:DataType.STRING(200),
         admin:{
             type:DataType.SMALLINT.UNSIGNED,
-            defautValue: 0
+            defaultValue: 0
         }
     },{
         tableName: 'Login',
@@ -21,8 +24,7 @@ module.exports = (sequelize,DataType) => {
 
     Login.associate = (Models)=>{
         Login.belongsTo(Models.Cliente, {
-            foreignKey: 'id_login',
-            as: 'login'
+            foreignKey: 'id_login'
         })
     };
 

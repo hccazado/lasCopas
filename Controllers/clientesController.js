@@ -3,6 +3,10 @@ const clientesModel = require("../model/clientesModel");
 const {validationResult} = require("express-validator");
 const bcrypt = require("bcryptjs");
 
+const {Login, Cliente, sequelize, Sequelize} = require('../models');
+const { QueryTypes } = require('sequelize');
+const Op = Sequelize.Op;
+
 const controller = {
     formCadastrarCliente: (req, res, next) =>{
         res.render("cadastroCliente", {
@@ -29,36 +33,69 @@ const controller = {
             old: {} 
         })
     },
-    cadastrar: (req, res, next)=>{
+    cadastrar: async (req, res, next)=>{
         let errors = validationResult(req);
         //verifica se o validator retornou algum erro no check dos campos
         if(errors.isEmpty()){
             let cadastro = req.body;
-            console.log(req.body);
             //realizando hash com salt 10 do password informado pelo usuario antes de realizar cadastro
             cadastro.password = bcrypt.hashSync(cadastro.password, 10);
-            let {created, exists} = clientesModel.cadastrarCliente(cadastro);
-            //Cliente cadastrado com sucesso (email ainda não existe), redireciona para pagina login
-            if (created == true){
-                res.render("login", {
-                title:title,
-                created:true,
-                error: {},
-                old: {},
-                errorModel: null});
-            }
-            //Email informado já existe cadastro
-            else{
-                res.render("cadastroCliente", {
+            
+            /*console.log("-------Dados recebidos pelo formulario-------")
+            console.log(cadastro);
+            console.log("-----------------------------------")
+            */
+            
+            let resultado = await Login.create({
+                email: cadastro.email,
+                senha: cadastro.password
+            }).then(data =>{
+                console.log(data.dataValues.id_login);
+                Cliente.create({
+                    nome: cadastro.nome,
+                    sobrenome: cadastro.sobrenome,
+                    dt_nascimento: cadastro.nascimento,
+                    cadastro: cadastro.pessoa,
+                    documento:cadastro.doc,
+                    id_login: data.dataValues.id_login
+                }).then(()=>{
+                    console.log("usuario criado!")
+                    return res.render("login", {
+                        title:title,
+                        created:true,
+                        error: {},
+                        old: {},
+                        errorModel: null});
+                }).catch(err =>{
+                    console.log(err)
+                })
+            }).catch(err => {
+                console.log(err);
+                return res.render("cadastroCliente", {
                     title: title,
                     exists: true,
                     errors: {},
                     id: null,
                     isEditing: false,
                     cliente: {},
-                    old:{} 
+                    old:{}
                 });
-            }
+            })
+            //console.log(resultado);
+            /*res.render("cadastroCliente", {
+                title: title,
+                exists: true,
+                errors: {},
+                id: null,
+                isEditing: false,
+                cliente: {},
+                old:{} 
+            });*/
+            //console.log(resultado);
+
+
+            //let {created, exists} = clientesModel.cadastrarCliente(cadastro);
+            //Cliente cadastrado com sucesso (email ainda não existe), redireciona para pagina login
         }
         //Encontrado algum erro nos campos do formulario
         else{
