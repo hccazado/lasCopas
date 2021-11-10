@@ -114,7 +114,7 @@ INSERT INTO Produtos_Uvas (produto_id, uva_id) values (1, 2);
 INSERT INTO Produtos_Uvas (produto_id, uva_id) values (2, 4);
 INSERT INTO Produtos_Uvas (produto_id, uva_id) values (2, 2);
 
-alter table produtos add column ano varchar(5);
+-- alter table produtos add column ano varchar(5);
 
 select * from produtos;
 
