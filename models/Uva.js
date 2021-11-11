@@ -27,11 +27,12 @@ module.exports = (sequelize, DataType) =>{
     
         Uva.belongsToMany(Models.Produto,{
             through: "Produtos_Uvas",
-            foreignKey:"uva_id",
-            otherKey: "produto_id"
-        })
+            foreignKey: "id_uva"
+        }),
 
-    Uva.hasMany(Models.ProdutoUva);
+        Uva.hasMany(Models.ProdutoUva,{
+            foreignKey: "id_uva"
+        });
     
     }
 

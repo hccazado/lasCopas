@@ -23,6 +23,11 @@
 .wrapper .lista_container .lista_item .rotulo{
     max-width: 120px;
 }
+
+.wrapper .rotulo{
+    width:120px;
+}
+
 .wrapper .lista_container .item_desc{
     width: 60%;
     display: flex;

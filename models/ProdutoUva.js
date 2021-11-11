@@ -1,12 +1,12 @@
 module.exports = (sequelize, DataType) => {
     const ProdutoUva = sequelize.define("ProdutoUva", {
         
-        produto_id: {
+        id_produto: {
             type: DataType.INTEGER.UNSIGNED,
             references: 'Produtos',
             referencesKey: 'id_produto'
         },
-        uva_id: {
+        id_uva: {
             type: DataType.INTEGER.UNSIGNED,
             references: 'Uvas',
             referencesKey: 'uva_id'
@@ -19,13 +19,11 @@ module.exports = (sequelize, DataType) => {
     ProdutoUva.associate = (Models)=>{
 
         ProdutoUva.belongsTo(Models.Produto,{
-            foreignKey: "produto_id",
-            otherKey:"id_produto"
+            foreignKey: "id_produto"
         }),
         
         ProdutoUva.belongsTo(Models.Uva, {
-            foreignKey: "uva_id",
-            otherKey: "id_uva"
+            foreignKey: "id_uva"
         })
 
     }

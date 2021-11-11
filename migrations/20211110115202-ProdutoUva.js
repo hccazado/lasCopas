@@ -3,7 +3,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Produtos_Uvas', { 
-      produto_id: {
+      id_produto: {
         type: Sequelize.DataTypes.INTEGER.UNSIGNED,
         references: {
           model: {
@@ -12,7 +12,7 @@ module.exports = {
           key: 'id_produto'
         }
       },
-      uva_id: {
+      id_uva: {
         type: Sequelize.DataTypes.INTEGER.UNSIGNED,
         references: {
           model: {

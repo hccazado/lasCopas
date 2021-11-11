@@ -58,8 +58,8 @@ CREATE TABLE IF NOT EXISTS Produtos(
 );
 
 CREATE TABLE IF NOT EXISTS Produtos_Uvas(
-	produto_id INT UNSIGNED,
-    uva_id INT UNSIGNED,
+	id_produto INT UNSIGNED,
+    id_uva INT UNSIGNED,
     FOREIGN KEY (produto_id) REFERENCES Produtos(id_produto),
     FOREIGN KEY (uva_id) REFERENCES Uvas(id_uva)
 );
@@ -110,10 +110,10 @@ insert into Produtos (finca, cosecha, tipo, ano, valor, origem, rotulo, ativo, d
 ('Trapiche', 'tardia', 'tinto', '2019', '99.98', 'Argentina', 'images/uploads/rotulos/Trapiche - cabernet.png', 'ativo', 'Um vinho de color marcante, sabor caracteristico da uva cabernet com notas amadeiradas');
 
 
-INSERT INTO Produtos_Uvas (produto_id, uva_id) values (1, 1);
-INSERT INTO Produtos_Uvas (produto_id, uva_id) values (1, 2);
-INSERT INTO Produtos_Uvas (produto_id, uva_id) values (2, 4);
-INSERT INTO Produtos_Uvas (produto_id, uva_id) values (2, 2);
+INSERT INTO Produtos_Uvas (id_produto, id_uva) values (1, 1);
+INSERT INTO Produtos_Uvas (id_produto, id_uva) values (1, 2);
+INSERT INTO Produtos_Uvas (id_produto, id_uva) values (2, 4);
+INSERT INTO Produtos_Uvas (id_produto, id_uva) values (2, 2);
 
 -- alter table produtos add column ano varchar(5);
 

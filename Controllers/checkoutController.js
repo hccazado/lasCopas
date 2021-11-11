@@ -6,29 +6,6 @@ const title = "lasCopas - Checkout";
 const { Produto, Uva, sequelize, Sequelize } = require('../models');
 const Op = Sequelize.Op;
 
-//lista de objetos para testar!
-var produtos = [
-    {
-        id: 10,
-        rotulo: "/images/uploads/rotulos/EM-roble.png",
-        finca: "Estancia Mendoza",
-        uvas: "merlot,malbec",
-        valor: 79.90,
-        qtd: 2,
-        total: () => this.valor * this.qtd
-    },
-    {
-        id: 12,
-        rotulo: "/images/uploads/rotulos/Trapiche - cabernet.png",
-        finca: "Trapiche",
-        uvas: "Suavignon",
-        valor: 83.90,
-        qtd: 3,
-        total: () => this.valor * this.qtd
-    },
-]
-
-
 
 const controller = {
     carrinho: (req, res, next) => {
@@ -41,7 +18,7 @@ const controller = {
         }
         //Ação padrão, há produtos no carrinho da session
         let carrinho = req.session.carrinho;
-        produtos = [];
+        let produtos = [];
         
         let listaId = [];
         for (valor of carrinho) {
@@ -53,12 +30,12 @@ const controller = {
                     [Op.in]: listaId
                 }
             },
-            include: [Uva]
+            include: {model: Uva, as: "uvas"}
         }).then(resultado => {
             let vinho = {};
             resultado.forEach(atual =>{
                 let uvas = [];
-                atual.Uvas.forEach(uva =>{
+                atual.uvas.forEach(uva =>{
                     uvas.push(uva.nome_uva);
                 })
                 let quantidade =0;

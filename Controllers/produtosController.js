@@ -10,32 +10,26 @@ const controller = {
 
         let Produtos = await Produto.findAll({
             //include: [{model: Uva, as: 'uvas'}],
-            include: Uva,
+            include: {model: Uva, as: "uvas"},
             raw: false,
             nested: true
         }).then(produtos =>{
+            //console.log(produtos);
             //vetor para armazenar objetos de produtos
             const arrayVinhos = [];
             //recorrendo array de produtos retornado pelo sequelize
-
             produtos.forEach(element => {
                 //criando objeto vinho para receber desestruturaçao de cada elemento iterado no resultado sequelize
                 let vinho = {
                     ...element.dataValues
                 }
-                //imprimindo estado atual do objeto vinho 
-                //console.log(vinho)
-
                 //criando vetor vazio para receber as uvas de cada produto
                 let uvas = [];
                 //iterando as uvas de cada produto
-                element.dataValues.Uvas.forEach(element2 =>{
+                element.dataValues.uvas.forEach(element2 =>{
                     //adicionado prop nome_uva de cada iteraçao da ou das uvas do produto
                     uvas.push(element2.dataValues.nome_uva);
-
-                    //Imprimindo nome da uva atual inserida no array de uvas
-                    //console.log(element2.dataValues.nome_uva);
-                })
+                });
                 vinho = {
                     ...vinho,
                     uvas,
@@ -53,6 +47,7 @@ const controller = {
         })
 
     }, 
+
     cadastroProduto: (req, res, next) =>{
         res.render("cadastroProduto", {
             title: title,
@@ -60,32 +55,7 @@ const controller = {
             errors:{}
         });        
     },
-    /*cadastrarProduto: (req, res, next) =>{
-        let errors = validationResult(req);
-        console.log(req.body);
-        console.log(errors);
-        if(errors.isEmpty()){
-            //console.log("entrou errors empty cadastro produto")
-            let{uvas, cosecha, tipo, finca, ano, preco, origem, descricao} = req.body;
-            if(!req.file){
-                console.log("chamou registro SEM rotulo");
-                //model.cadastrarVinho(uvas, cosecha, tipo, finca, ano, preco, origem, " ", descricao);
-            }else{
-                console.log("chamou registro COM rotulo");
-                let rotulo = "images/uploads/rotulos/"+req.file.filename
-                //model.cadastrarVinho(uvas, cosecha, tipo, finca, ano, preco, origem, rotulo, descricao);
-            }  
-            res.redirect("/gerenciar/produtos");
-        }
-        else{
-            res.render("cadastroProduto", {
-                title: title,
-                isEditing: false,
-                errors:errors.mapped()
-            });
-        }
 
-    },*/
     cadastrarProduto: async (req, res, next) =>{
         let errors = validationResult(req);
         console.log(req.body);
@@ -95,7 +65,7 @@ const controller = {
             let{uvas, cosecha, tipo, finca, ano, preco, origem, descricao} = req.body;
             if(!req.file){
                 console.log("chamou registro SEM rotulo");
-                let cadastro = await Produto.create(
+                let produtoCadastrado = await Produto.create(
                     {
                         finca,
                         cosecha,
@@ -105,17 +75,35 @@ const controller = {
                         origem,
                         ativo: true,
                         descricao,
-                        produtouva: uvas
-                    },{
-                        include:[Uva]
                     }
-                    )
-                console.log(cadastro);
+                )
+                console.log(produtoCadastrado);
+                for(uva of uvas){
+                    console.log("chamada addUva do produto cadastrado: "+uva)
+                    produtoCadastrado.addUvas(uva);    
+                }
+                
                 //model.cadastrarVinho(uvas, cosecha, tipo, finca, ano, preco, origem, " ", descricao);
             }else{
                 console.log("chamou registro COM rotulo");
                 let rotulo = "images/uploads/rotulos/"+req.file.filename
-                //model.cadastrarVinho(uvas, cosecha, tipo, finca, ano, preco, origem, rotulo, descricao);
+                let produtoCadastrado = await Produto.create(
+                    {
+                        finca,
+                        cosecha,
+                        tipo,
+                        ano,
+                        valor: preco,
+                        origem,
+                        ativo: true,
+                        rotulo: rotulo,
+                        descricao,
+                    }
+                )
+                for(uva of uvas){
+                    console.log("chamada addUva do produto cadastrado: "+uva)
+                    produtoCadastrado.addUvas(uva);    
+                }
             }  
             res.redirect("/gerenciar/produtos");
         }
@@ -158,10 +146,10 @@ const controller = {
         let {id} = req.params;
         let vinho = {};
         let produto = await Produto.findByPk(id,{
-            include: Uva
+            include: [{model: Uva, as: "uvas"}]
         }).then(resultado =>{
             let uvas=[];
-            resultado.Uvas.forEach(uva =>{
+            resultado.uvas.forEach(uva =>{
 
                 uvas.push(uva.nome_uva);
             });
