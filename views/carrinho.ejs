@@ -13,7 +13,7 @@
             </div>
             <div class="item_valor">
                 Total = <br>
-                <%=produto.qtd%> X R$ <%=produto.valor%>
+                <%=produto.qtd%> X R$ <%=(produto.valor).toFixed(2)%>
                 <br>
                 R$<span><%=(produto.qtd*produto.valor).toFixed(2)%></span>
                 <%produto.total=produto.qtd*produto.valor%>
