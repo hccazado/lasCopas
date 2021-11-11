@@ -1,5 +1,4 @@
 const title = "Las Copas - Cadastro Cliente";
-const clientesModel = require("../model/clientesModel");
 const {validationResult} = require("express-validator");
 const bcrypt = require("bcryptjs");
 

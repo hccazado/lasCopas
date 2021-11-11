@@ -4,7 +4,6 @@ const {Login, Cliente, sequelize, Sequelize} = require('../models');
 const { QueryTypes } = require('sequelize');
 const Op = Sequelize.Op;
 
-const clientesModel = require("../model/clientesModel");
 
 //importando validator
 const {validationResult} = require("express-validator");

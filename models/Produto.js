@@ -40,7 +40,11 @@ module.exports = (sequelize, DataType) =>{
             otherKey: "uva_id"
         }),
 
-        Produto.hasMany(Models.ProdutoUva)
+        Produto.hasMany(Models.ProdutoUva,{
+            as: "uvas",
+            sourceKey: "id_produto",
+            foreignKey: "produto_id"
+        })
     }
 
     return Produto

@@ -3,7 +3,7 @@
 const produtosController = require("./produtosController");
 const produtosModel = require("../model/produtosModel");
 const loginController = require("./loginController");
-const clientesModel = require("../model/clientesModel");
+//const clientesModel = require("../model/clientesModel");
 
 //Titulo das paginas
 const title = "lasCopas - Administração";
@@ -31,7 +31,7 @@ const controller = {
     listarClientes: (req, res, next) => {
         res.render("listaClientes", {
             title: title,
-            clientes: clientesModel.listarClientes()
+            clientes: []
         });
     },
     listarPedidos: (req, res, next) => {
@@ -62,15 +62,15 @@ const controller = {
     //Metodo para chamar o model Cliente e recuperar os dados respectivos do ID e enviar os mesmos a view.
     edicaoCliente: (req, res, next) =>{
         let id = req.params.id;
-        let resultado = clientesModel.buscarClienteID(id);
-        console.log(resultado);
+        //let resultado = clientesModel.buscarClienteID(id);
+        //console.log(resultado);
         res.render("cadastroCliente", {
             title: title,
             exists: false,
             errors: [],
             id: id,
             isEditing: true,
-            cliente: resultado,
+            cliente: [],
             old: {} 
         })
     },
