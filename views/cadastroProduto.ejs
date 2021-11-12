@@ -14,7 +14,7 @@
                         <div class="grupo_uvas">
                             <% if(isEditing){%>
                                 <label for="syrrah">
-                                    <% if(produto.uvas.indexOf("syrrah")>=0){ %>
+                                    <% if(produto.uvas.indexOf(1)>=0){ %>
                                     <input type="checkbox" id="syrrah" name="uvas" value="1" checked>
                                     <% } else {%>
                                         <input type="checkbox" id="syrrah" name="uvas" value="1">
@@ -22,7 +22,7 @@
                                     Syrrah
                                 </label>
                             <label for="malbec">
-                                <% if(produto.uvas.indexOf("malbec")>=0){ %>
+                                <% if(produto.uvas.indexOf(2)>=0){ %>
                                     <input type="checkbox" id="malbec" name="uvas" value= "2" checked>
                                 <% } else {%>
                                        <input type="checkbox" id="malbec" name="uvas" value= "2">
@@ -30,7 +30,7 @@
                                 Malbec
                             </label>
                             <label for="tempr">
-                                <% if(produto.uvas.indexOf("tempranillo")>=0){ %>
+                                <% if(produto.uvas.indexOf(3)>=0){ %>
                                     <input type="checkbox" id="tempr" name="uvas" value="3" checked>
                                 <% } else {%>
                                        <input type="checkbox" id="tempr" name="uvas" value="3">
@@ -55,7 +55,7 @@
                         <div class="grupo_uvas">
                             <% if(isEditing){%>
                                 <label for="suavignon">
-                                    <% if(produto.uvas.indexOf("suavignon")>=0){ %>
+                                    <% if(produto.uvas.indexOf(4)>=0){ %>
                                         <input type="checkbox" id="suavignon" name="uvas" value="4" checked>
                                     <% } else {%>
                                         <input type="checkbox" id="suavignon" name="uvas" value="4">
@@ -63,7 +63,7 @@
                                     Suavignon
                                 </label>
                                 <label for="pinot">
-                                    <% if(produto.uvas.indexOf("pinot")>=0){ %>
+                                    <% if(produto.uvas.indexOf(5)>=0){ %>
                                         <input type="checkbox" id="pinot" name="uvas" value="5" checked>
                                     <% } else {%>
                                         <input type="checkbox" id="pinot" name="uvas" value="5">
@@ -71,7 +71,7 @@
                                     Pinot Noir
                                 </label>
                                 <label for="merlot">
-                                    <% if(produto.uvas.indexOf("tempranillo")>=0){ %>
+                                    <% if(produto.uvas.indexOf(6)>=0){ %>
                                         <input type="checkbox" id="merlot" name="uvas" value="6" checked>
                                     <% } else {%>
                                         <input type="checkbox" id="merlot" name="uvas" value="6">
@@ -220,7 +220,7 @@
                         <div>
                             <label for="preco">Preço</label><br>
                             <%if(isEditing){%>
-                                <input type="number" step=".01" id="preco" name="preco" value="<%=produto.preco%>">
+                                <input type="number" step=".01" id="preco" name="preco" value="<%=produto.valor%>">
                             <% } else{%> 
                                 <input type="number" step=".01" id="preco" name="preco">
                             <% } %>
@@ -289,7 +289,11 @@
                         </div> 
                         <div>
                             <label for="rotulo">Selecionar Rotulo</label>
-                            <input type="file" id="rotulo" name="rotulo" accept=".jpg, .jpeg, .png, .webp">
+                            <%if(isEditing){%>
+                            <input type="file" id="rotulo" name="rotulo" accept=".jpg, .jpeg, .png, .webp" value="<%=produto.rotulo%>">
+                            <%} else{ %>
+                                <input type="file" id="rotulo" name="rotulo" accept=".jpg, .jpeg, .png, .webp">
+                            <%}%>
                         </div>
                         <div>
                             <%if(isEditing){%>

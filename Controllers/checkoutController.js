@@ -53,7 +53,6 @@ const controller = {
                 
                 produtos.push(vinho);
             });
-            //console.log(produtos);
         }).then(_=>{
             res.render("carrinho", {
                 title: title,

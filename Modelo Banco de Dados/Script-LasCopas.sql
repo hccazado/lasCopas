@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS Produtos(
 	id_produto INT UNSIGNED AUTO_INCREMENT,
     finca VARCHAR(45) NOT NULL,
     cosecha ENUM('tardia','temprana'),
-    tipo ENUM('tinto', 'branco', 'rosé', 'frisante'),
+    tipo ENUM('tinto', 'branco', 'rose', 'frisante'),
     ano CHAR(5),
     valor DOUBLE,
     origem VARCHAR(20),
@@ -118,4 +118,6 @@ INSERT INTO Produtos_Uvas (id_produto, id_uva) values (2, 2);
 -- alter table produtos add column ano varchar(5);
 
 select * from produtos;
+
+select * from login;
 

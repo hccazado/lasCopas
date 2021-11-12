@@ -77,7 +77,7 @@ const controller = {
                         descricao,
                     }
                 )
-                console.log(produtoCadastrado);
+                //console.log(produtoCadastrado);
                 for(uva of uvas){
                     console.log("chamada addUva do produto cadastrado: "+uva)
                     produtoCadastrado.addUvas(uva);    
@@ -115,32 +115,33 @@ const controller = {
                 errors:errors.mapped()
             });
         }
-
     },
-    editarProduto: (req, res, next) =>{
-        let id = req.params.id;
-        let{uvas, cosecha, tipo, finca, ano, preco, origem, descricao} = req.body;
+    editarProduto: async (req, res, next) =>{
+        let {id} = req.params;
+        let{uvas, cosecha, tipo, finca, ano, preco, origem, descricao, rotulo} = req.body;
+        if(req.file){
+            rotulo = "images/uploads/rotulos/"+req.file.filename;
+        }
+        let buscaProduto = await Produto.findByPk(id);
+        
+        console.log(buscaProduto);
         let editar = {
             id: id,
-            uvas: uvas,
             cosecha: cosecha,
             tipo: tipo,
             finca: finca,
             ano: ano,
-            preco: preco,
+            valor: preco,
             origem: origem,
             descricao: descricao,
-            rotulo : null
+            rotulo: rotulo
         }
-        if(!req.file){
-            model.editarVinho(editar);
-        }
-        else {
-            var rotulo = "images/uploads/rotulos/"+req.file.filename;
-            editar.rotulo = rotulo;
-            model.editarVinho(editar);
-        }
-        res.redirect("/gerenciar/produtos");
+        buscaProduto.update(editar);
+        buscaProduto.setUvas(uvas).then(_=>{
+            return res.redirect("/gerenciar/produtos");
+        })
+       
+        
     },
     detalhe: async (req, res, next) =>{
         

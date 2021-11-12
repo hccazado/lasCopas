@@ -23,7 +23,7 @@ module.exports = (sequelize,DataType) => {
     });
 
     Login.associate = (Models)=>{
-        Login.belongsTo(Models.Cliente, {
+        Login.hasOne(Models.Cliente, {
             foreignKey: 'id_login'
         })
     };

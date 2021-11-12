@@ -2,6 +2,7 @@
 
 const produtosController = require("./produtosController");
 const produtosModel = require("../model/produtosModel");
+const {Produto, Uva} = require("../models");
 const loginController = require("./loginController");
 //const clientesModel = require("../model/clientesModel");
 
@@ -40,10 +41,29 @@ const controller = {
             pedidos: pedidos
         });
     },
-    listarProdutos: (req, res, next) => {
+    listarProdutos: async (req, res, next) => {
         //Carregando lista de todos produtos do controller de produtos
-        let produtos = produtosModel.listarVinhos();
-        res.render("listaProdutos", {
+        let produtos = [];
+        let items = await Produto.findAll({
+            include: {
+                model: Uva,
+                as: "uvas"
+            }
+        }).then(resultado =>{
+            let vinho = {};
+            resultado.forEach(atual =>{
+                let uvas = [];
+                atual.uvas.forEach(uva=>{
+                    uvas.push(uva.nome_uva);
+                });
+                let vinho = {
+                    ...atual.dataValues,
+                    uvas
+                }
+                produtos.push(vinho);
+            })
+        })
+        return res.render("listaProdutos", {
             title: title,
             produtos: produtos
         });
@@ -74,16 +94,36 @@ const controller = {
             old: {} 
         })
     },
-    editarProduto: (req, res, next) => {
+    editarProduto: async (req, res, next) => {
         let id = req.params.id;
-        let dadosProduto = produtosModel.buscarVinhoID(id);
-        res.render("cadastroProduto", {
+        let dadosProduto = await Produto.findByPk(id,{
+            include:{model: Uva, as:"uvas"}
+        }).then(resultado =>{
+            let uvas = [];
+            resultado.dataValues.uvas.forEach(uva =>{
+                uvas.push(uva.id_uva);
+            });
+            let vinho ={
+                ...resultado.dataValues,
+                uvas
+            }
+
+            res.render("cadastroProduto", {
+                title: title,
+                id: id,
+                produto: vinho,
+                isEditing: true,
+                errors: {}
+            });
+        })
+        //console.log(dadosProduto.dataValues);
+        /*res.render("cadastroProduto", {
             title: title,
             id: id,
             produto: dadosProduto,
             isEditing: true,
             errors: {}
-        });
+        });*/
     }
 };
 

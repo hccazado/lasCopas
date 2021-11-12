@@ -37,12 +37,20 @@ const controller={
                     attributes:['nome']
                 }
             })
-            console.log(login.Cliente.nome);
+            console.log(login);
 
             //console.log(login.dataValues);
 
             //Entra no if caso a query tenha encontrado o email informado
-            if(login.Cliente.nome){
+            if(!login){
+                res.render("login",{
+                    title: title,
+                    created: false,
+                    error: {},
+                    old: {},
+                    errorModel: "Email não encontrado"
+                });
+            }
                 //Verificando se a senha do form confere com o hash recuperado do banco
                 if(bcrypt.compareSync(user.password, login.dataValues.senha)){
                     
@@ -68,27 +76,18 @@ const controller={
                     res.render("login",{
                         title: title,
                         created: false,
-                        error: {},
-                        errorModel: "Senha Incorreta"
+                        error: null,
+                        errorModel: "Senha Incorreta",
+                        old: user
                     });
                 }
-                 
-            }
-            else{
-                //A query não encontrou o email de login
-                res.render("login",{
-                    title: title,
-                    created: false,
-                    error: {},
-                    errorModel: "Email não encontrado"
-                });
-            }
         }   
         else{
             res.render("login",{
                 title: title,
                 created: false,
                 errorModel: null,
+                old: {},
                 error: errors.mapped()});
         }
     }
