@@ -82,9 +82,10 @@ const controller = {
                     console.log("chamada addUva do produto cadastrado: "+uva)
                     produtoCadastrado.addUvas(uva);    
                 }
-                
-                //model.cadastrarVinho(uvas, cosecha, tipo, finca, ano, preco, origem, " ", descricao);
-            }else{
+                //redirecionando para pagina de administraçao de produtos
+                return res.redirect("/gerenciar/produtos");
+            }
+            //Fluxo padrão (cadastro de produto com imagem de rotulo)
                 console.log("chamou registro COM rotulo");
                 let rotulo = "images/uploads/rotulos/"+req.file.filename
                 let produtoCadastrado = await Produto.create(
@@ -104,7 +105,7 @@ const controller = {
                     console.log("chamada addUva do produto cadastrado: "+uva)
                     produtoCadastrado.addUvas(uva);    
                 }
-            }  
+              
             res.redirect("/gerenciar/produtos");
         }
         else{
