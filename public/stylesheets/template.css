@@ -253,7 +253,7 @@ footer .container_onde p{
 }
 
 footer .container_links{
-    /*color:#968FA6;*/
+   
     color:darkred;
     display: flex;
     align-items: center;

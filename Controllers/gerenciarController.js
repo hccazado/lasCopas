@@ -1,26 +1,14 @@
 //Require dos controladores
 
 const produtosController = require("./produtosController");
-const produtosModel = require("../model/produtosModel");
-const {Produto, Uva} = require("../models");
+const {Produto, Uva, Cliente, Endereco} = require("../models");
 const loginController = require("./loginController");
 //const clientesModel = require("../model/clientesModel");
 
 //Titulo das paginas
 const title = "lasCopas - Administração";
 
-const pedidos = [
-    {
-        nro: 0012021,
-        nome: "zé das couve",
-        doc: "02234567890"
-    },
-    {
-        nro: 0022021,
-        nome: "zé do leite",
-        doc: "04567878902"
-    }
-]
+const pedidos = [];
 
 //Objeto com os metodos do controller a serem exportados
 const controller = {
@@ -29,10 +17,13 @@ const controller = {
             title: title
         });
     },
-    listarClientes: (req, res, next) => {
+    listarClientes: async (req, res, next) => {
+        let buscaClientes = await Cliente.findAll({
+            attributes: ["id_cliente","nome", "documento"]
+        })
         res.render("listaClientes", {
             title: title,
-            clientes: []
+            clientes: buscaClientes
         });
     },
     listarPedidos: (req, res, next) => {
@@ -80,11 +71,18 @@ const controller = {
         });
     },
     //Metodo para chamar o model Cliente e recuperar os dados respectivos do ID e enviar os mesmos a view.
-    edicaoCliente: (req, res, next) =>{
+    edicaoCliente: async (req, res, next) =>{
         let id = req.params.id;
-        //let resultado = clientesModel.buscarClienteID(id);
-        //console.log(resultado);
-        res.render("cadastroCliente", {
+        let dadosCliente = Clientes.findByPk(id,{
+            include:[{
+                model: Login
+            },{
+                model:Endereco,
+                as: "enderecos"
+            }]
+        });
+        console.log(dadosCliente);
+        /*res.render("cadastroCliente", {
             title: title,
             exists: false,
             errors: [],
@@ -92,7 +90,7 @@ const controller = {
             isEditing: true,
             cliente: [],
             old: {} 
-        })
+        })*/
     },
     editarProduto: async (req, res, next) => {
         let id = req.params.id;
@@ -116,14 +114,6 @@ const controller = {
                 errors: {}
             });
         })
-        //console.log(dadosProduto.dataValues);
-        /*res.render("cadastroProduto", {
-            title: title,
-            id: id,
-            produto: dadosProduto,
-            isEditing: true,
-            errors: {}
-        });*/
     }
 };
 

@@ -7,10 +7,27 @@ module.exports = {
           type: Sequelize.DataTypes.INTEGER.UNSIGNED,
           autoIncrement: true,
           primaryKey: true
-      },
-      id_endereco: Sequelize.DataTypes.INTEGER.UNSIGNED,
-      id_cliente: Sequelize.DataTypes.INTEGER.UNSIGNED
-      });
+        },
+        id_endereco: {
+          type: Sequelize.DataTypes.INTEGER.UNSIGNED,
+          references: {
+            model: {
+              tableName: 'Enderecos',
+            },
+            key: 'id_endereco'
+          }
+        },
+        id_cliente: {
+          type: Sequelize.DataTypes.INTEGER.UNSIGNED,
+          references: {
+            model: {
+              tableName: 'Clientes',
+            },
+            key: 'id_cliente'
+          }
+        }
+      }
+    );
   },
 
   down: async (queryInterface, Sequelize) => {

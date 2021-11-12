@@ -2,7 +2,7 @@ const title = "Las Copas - Cadastro Cliente";
 const {validationResult} = require("express-validator");
 const bcrypt = require("bcryptjs");
 
-const {Login, Cliente, sequelize, Sequelize} = require('../models');
+const {Login, Cliente, Endereco, sequelize, Sequelize} = require('../models');
 const { QueryTypes } = require('sequelize');
 const Op = Sequelize.Op;
 
@@ -18,9 +18,18 @@ const controller = {
             old: {}
         });
     },
-    formEditarCliente: (req, res, next) => {
+    formEditarCliente: async (req, res, next) => {
         let id = req.params.id;
-        let resultado = clientesModel.buscarClienteID(id);
+        let dadosCliente = await Cliente.findByPk(id,{
+            include:[{
+                model: Login
+            },
+            {
+            model: Endereco, as:"enderecos"
+            }]
+        });
+        console.log(dadosCliente.enderecos);
+        /*let resultado = clientesModel.buscarClienteID(id);
         console.log(resultado);
         res.render("cadastroCliente", {
             title: title,
@@ -30,7 +39,7 @@ const controller = {
             isEditing: true,
             cliente: resultado,
             old: {} 
-        })
+        })*/
     },
     cadastrar: async (req, res, next)=>{
         let errors = validationResult(req);
@@ -38,12 +47,10 @@ const controller = {
         if(errors.isEmpty()){
             let cadastro = req.body;
             //realizando hash com salt 10 do password informado pelo usuario antes de realizar cadastro
+            
+            //hash de password abaixo esta funcionando
             cadastro.password = bcrypt.hashSync(cadastro.password, 10);
             
-            /*console.log("-------Dados recebidos pelo formulario-------")
-            console.log(cadastro);
-            console.log("-----------------------------------")
-            */
             
             let resultado = await Login.create({
                 email: cadastro.email,
@@ -57,14 +64,25 @@ const controller = {
                     cadastro: cadastro.pessoa,
                     documento:cadastro.doc,
                     id_login: data.dataValues.id_login
-                }).then(()=>{
-                    console.log("usuario criado!")
-                    return res.render("login", {
-                        title:title,
-                        created:true,
-                        error: {},
-                        old: {},
-                        errorModel: null});
+                }).then(usuario=>{
+                    Endereco.create({
+                        cep: cadastro.cep,
+                        endereco: cadastro.end1,
+                        complemento: cadastro.complemento,
+                        numero: cadastro.num,
+                        cidade: cadastro.cidade,
+                        uf: cadastro.uf,
+                        id_cliente: usuario.dataValues.id_cliente
+                    }).then(_ =>{
+                        return res.render("login", {
+                            title:title,
+                            created:true,
+                            error: {},
+                            old: {},
+                            errorModel: null});
+                    }).catch(err =>{
+                        console.log(err);
+                    })  
                 }).catch(err =>{
                     console.log(err)
                 })
@@ -80,21 +98,6 @@ const controller = {
                     old:{}
                 });
             })
-            //console.log(resultado);
-            /*res.render("cadastroCliente", {
-                title: title,
-                exists: true,
-                errors: {},
-                id: null,
-                isEditing: false,
-                cliente: {},
-                old:{} 
-            });*/
-            //console.log(resultado);
-
-
-            //let {created, exists} = clientesModel.cadastrarCliente(cadastro);
-            //Cliente cadastrado com sucesso (email ainda não existe), redireciona para pagina login
         }
         //Encontrado algum erro nos campos do formulario
         else{
