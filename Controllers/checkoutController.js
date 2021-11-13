@@ -62,6 +62,10 @@ const controller = {
 
     },
     pagar: (req, res, next) => {
+        if(!req.session.user){
+            //console.log(req.);
+        }
+        
         res.render("pagamento", {
             title: title
         })

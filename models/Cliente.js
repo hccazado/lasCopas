@@ -27,6 +27,9 @@ module.exports = (sequelize, DataType) =>{
         Cliente.belongsTo(Models.Login,{
             foreignKey: 'id_login'
         }),
+        Cliente.hasOne(Models.Login,{
+            foreignKey: 'id_login'
+        }),
         Cliente.hasMany(Models.Endereco,{
             as: 'enderecos',
             foreignKey: 'id_cliente'

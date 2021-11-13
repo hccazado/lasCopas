@@ -37,7 +37,7 @@ const controller={
                     attributes:['nome']
                 }
             })
-            console.log(login);
+            //console.log(login);
 
             //console.log(login.dataValues);
 
@@ -54,6 +54,7 @@ const controller={
                 //Verificando se a senha do form confere com o hash recuperado do banco
                 if(bcrypt.compareSync(user.password, login.dataValues.senha)){
                     
+                    //console.log(login);
                     //Objeto que será salvo na session
                     let usuarioLogado = {
                         email: login.dataValues.email,
