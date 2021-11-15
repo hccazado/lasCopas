@@ -1,9 +1,9 @@
 const title="lasCopas - Login";
 
-const {Login, Cliente, sequelize} = require('../models');
+const {Login, Cliente, sequelize, Sequelize} = require('../models');
 const { QueryTypes } = require('sequelize');
+const Op = Sequelize.Op;
 
-const clientesModel = require("../model/clientesModel");
 
 //importando validator
 const {validationResult} = require("express-validator");
@@ -27,36 +27,47 @@ const controller={
         //verificando se o objeto de validação é vazio(sem erros)
         if(errors.isEmpty()){
             let user = req.body;
-            //let autentica = clientesModel.sigIn(user);
-            
-            //Testando Sequelize
-            //let login = await Cliente.findAll();
 
-            //Buscando via Sequelize com Raw Query
-            let login = await sequelize.query(
-                'select nome, Login.id_login, email, senha, admin FROM Clientes INNER JOIN Login ON Clientes.id_login = Login.id_login where email like :email_form',
-                {
-                    replacements: {email_form: user.email},
-                    type: QueryTypes.SELECT
+            let login = await Login.findOne({
+                where:{
+                    email: user.email
+                },
+                include:{
+                    model: Cliente,
+                    attributes:['id_cliente','nome']
                 }
-            );
-            
+            })
+            //console.log(login);
+
+            //console.log(login.dataValues);
+
             //Entra no if caso a query tenha encontrado o email informado
-            if(login.length > 0){
+            if(!login){
+                res.render("login",{
+                    title: title,
+                    created: false,
+                    error: {},
+                    old: {},
+                    errorModel: "Email não encontrado"
+                });
+            }
                 //Verificando se a senha do form confere com o hash recuperado do banco
-                if(bcrypt.compareSync(user.password, login[0].senha)){
+                if(bcrypt.compareSync(user.password, login.dataValues.senha)){
                     
+                    //console.log(login);
                     //Objeto que será salvo na session
                     let usuarioLogado = {
-                        email: login[0].email,
-                        nome: login[0].nome,
-                        admin: login[0].admin
+                        idCliente: login.Cliente.id_cliente,
+                        email: login.dataValues.email,
+                        nome: login.Cliente.nome,
+                        admin: login.dataValues.admin
                     }
                     req.session.user = usuarioLogado;
                     console.log("inicio de sessão do usuario: "+usuarioLogado.nome);
+                    console.log(req.session.user);
 
                     //Verificando se usuario é administrador e redirecionando para Home ou painel gerenciar
-                    if(usuarioLogado.admin = 1){
+                    if(usuarioLogado.admin == 1){
                         return res.redirect("/gerenciar")
                     }
                     else{
@@ -68,56 +79,18 @@ const controller={
                     res.render("login",{
                         title: title,
                         created: false,
-                        error: {},
-                        errorModel: "Senha Incorreta"
+                        error: [],
+                        errorModel: "Senha Incorreta",
+                        old: user
                     });
                 }
-                 
-            }
-            else{
-                //A query não encontrou o email de login
-                res.render("login",{
-                    title: title,
-                    created: false,
-                    error: {},
-                    errorModel: "Email não encontrado"
-                });
-            }
-            
-            /*
-            //else if(user.manterLogado == undefined && autentica.login == true){ 
-            if(autentica.login == true){
-                //console.log("sessao sem salvar cookie");
-                //Atribuindo dados do usuario a objeto para guardar na Session
-                let usuarioLogado = {
-                    email: user.email,
-                    nome: autentica.nome,
-                    admin: autentica.admin
-                }
-                req.session.user = usuarioLogado;
-                //console.log("dados do objeto usuario para session")
-                console.log("inicio de sessão usuario: "+usuarioLogado.nome);
-                //se usuario logado for administrador será redirecionado à rota gerenciar
-                if(usuarioLogado.admin){
-                   return res.redirect("/gerenciar");
-                }
-                //usuario nao admin será redirecionado à Home
-                return res.redirect("/");
-            }
-            
-            else if(autentica.login == false){
-            res.render("login",{
-                title: title,
-                created: false,
-                error: {},
-                errorModel: autentica.message});
-            }*/
         }   
         else{
             res.render("login",{
                 title: title,
                 created: false,
                 errorModel: null,
+                old: {},
                 error: errors.mapped()});
         }
     }

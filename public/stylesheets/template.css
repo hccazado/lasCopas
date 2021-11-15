@@ -22,21 +22,38 @@ body {
   margin: 0 auto;
 }
 
-header .wrapper {
-  border-bottom: 1px solid darkgray;
-  box-shadow: 2px 0 5px darkgray;
-  box-sizing: border-box;
-  display: flex;
-  height: 80px;
-  margin: 0;
-  text-align: left;
-  justify-content: space-between;
-  font-family: "Open Sans", sans-serif;
+header{
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
+header .wrapper{
+    border-bottom: 1px solid darkgray;
+    box-shadow: 2px 0 5px darkgray;
+    box-sizing: border-box;
+    display: flex;
+    /*height: 50px;*/
+    margin: 0;
+    text-align: left;
+    justify-content: space-between;
+    font-family: 'Open Sans', sans-serif;
+}
+
+header .navbar.navbar-expand-lg.navbar-light.bg-light{
+    background: rgb(91,3,133);
+    background: linear-gradient(300deg, rgba(91,3,133,1) 0%, rgba(45,9,121,1) 50%, rgba(81,4,218,1) 100%);
+    color: #FFF;
+    height: 70px;
+}
+
+header .navbar.navbar-expand-lg.navbar-light.bg-light a.nav-link.links-menu{
+    color:#fff
+}
 /*alterando clase do CSS ->Para afastar items das bordas da tela*/
-header .container-fluid {
-  width: 90% !important;
+header .container-fluid{
+    width:90% !important;
+    
 }
 
 header .link_logo {
@@ -54,13 +71,12 @@ header .link_logo span {
   color: darkred;
 }
 
-header .links-menu {
-  /*color: #968FA6!important;*/
-  color: rgba(200, 170, 180, 0.6);
-  font-family: "Open Sans", sans-serif;
-  font-size: 20px;
-  margin-right: 15px;
-  transition: all 0.5s;
+header .links-menu{
+    color: rgba(200,170,180,0.6);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    margin-right: 15px;
+    transition: all 0.5s;
 }
 
 header .links-menu:hover {
@@ -223,10 +239,17 @@ content .wrapper .destaque h3 {
   text-decoration: none;
 }
 
-content .wrapper .destaque_container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+footer .wrapper{
+    align-items: center;
+    /*background-color: rgba(90, 80, 80, 0.1);*/
+    background: rgb(81,4,218);
+background: linear-gradient(207deg, rgba(81,4,218,1) 0%, rgba(45,9,121,1) 61%, rgba(91,3,133,1) 100%);
+    display: flex;
+    flex-wrap: wrap;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    justify-content: space-evenly;
 }
 
 content .wrapper .cardp {
@@ -259,9 +282,12 @@ content .wrapper .cardp small {
   padding: 0 0 6px 10px;
 }
 
-content .wrapper .cardp img {
-  text-align: center;
-  width: 90%;
+footer .container_links{
+   
+    color:darkred;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 footer .wrapper {

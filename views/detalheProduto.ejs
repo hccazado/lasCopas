@@ -43,6 +43,7 @@
                 </a>
               </figure>
             </div>
+<<<<<<< HEAD
             <div class="col-12">
               <div class="row">
                 <div class="col-3">
@@ -169,6 +170,44 @@
         <button type="button" class="btn btn-light btn-md mr-1 mb-2"><i
             class="fas fa-shopping-cart pr-2"></i>Add to cart</button>
       </div>
+=======
+            <div class="container_descritivo">
+                <h4>Preço Unit. R$<%=(vinho.valor).toFixed(2)%></h4>
+                <form class="row row-cols-lg-auto g-3 align-items-center" action="/produtos/adicionar/<%=vinho.id_produto%>" method="POST">
+                        <div class="col-4">
+                            <select class="form-select" id="autoSizingSelect" name="quantidade">
+                            <option selected>sel.</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                        <!--<button class="button">Comprar</button>-->
+                            <button class="btn btn-success">Comprar</button>
+                        </div>
+                </form>
+                <br>
+                <h4>Origem: <span><%=vinho.origem%></span></h4>
+                <h4>Uva: <span><%=vinho.uvas%></span></h4>
+                <h4>Ano: <span><%=vinho.ano%></span></h4>
+                <h4>Tipo: <span><%=vinho.tipo%></span></h4>
+                <% if (vinho.descricao!=null) { %>
+                    <h4>Descrição: </h4><span><%=vinho.descricao%></span></span>
+                    <% } %>
+            </div>
+            <div class="preco">
+                
+            </div>
+       </div>
+>>>>>>> 39c0368de6de25140a4b652ef4a0cbf1b01571ad
     </div>
   
   </section>

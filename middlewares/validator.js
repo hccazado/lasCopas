@@ -1,7 +1,7 @@
 const {body, check,} = require("express-validator");
 
 const validaCamposLogin = [
-    check("email").notEmpty().withMessage("Deve Informar o login").bail(),
+    check("email").notEmpty().withMessage("Deve Informar o login").bail().isEmail().withMessage("Email invalido!"),
     check("password").notEmpty().withMessage("Informar senha")
 ];
 

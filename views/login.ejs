@@ -2,7 +2,7 @@
         <div class="login_container">
             <form action="/login" method="POST">
 				<div class="login">
-					<% if(created == true){ %>
+					<% if(created){ %>
 						<span id="created">Dados inseridos com sucesso!</span>
 					<% } %>
 					<% if(error.password){ %>
@@ -16,7 +16,11 @@
 					<%}%>
 					<div class="login_user">
 						<label for="usuario">Login: </label>
+						<% if(errorModel){ %>
+							<input type="text" id="usuario" name="email" placeholder="username" value="<%=old.email%>">	
+						<%} else{%>
 						<input type="text" id="usuario" name="email" placeholder="username">
+						<%}%>
 					</div>
 					<div class="login_pass">
 						<label for="password">Senha: </label>

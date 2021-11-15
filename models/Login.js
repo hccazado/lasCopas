@@ -1,25 +1,35 @@
-const Cliente = require("../models");
-
 module.exports = (sequelize,DataType) => {
     const Login = sequelize.define('Login',{
         id_login:{
-            type:DataType.SMALLINT,
+            type:DataType.SMALLINT.UNSIGNED,
             primaryKey:true,
             autoIncrement: true
         },
         email:{
-            type:DataType.STRING,
-            unique:true
+            type:DataType.STRING(120),
+            unique:{
+                args: true,
+                msg: "Email já cadastrado!"
+            }
         },
-        senha:DataType.STRING,
+        senha:DataType.STRING(200),
         admin:{
-            type:DataType.SMALLINT,
-            defautValue: 0
+            type:DataType.SMALLINT.UNSIGNED,
+            defaultValue: 0
         }
     },{
         tableName: 'Login',
         timestamps: false
     });
+
+    Login.associate = (Models)=>{
+        Login.hasOne(Models.Cliente, {
+            foreignKey: 'id_login'
+        })
+        Login.belongsTo(Models.Cliente, {
+            foreignKey: 'id_login'
+        })
+    };
 
     return Login
 }

@@ -49,7 +49,8 @@ app.use('/login', loginRouter);
 app.use('/produtos', produtosRouter);
 app.use("/clientes", clientesRouter);
 app.use("/checkout", checkoutRouter);
-app.use('/gerenciar',authenticator.autenticaAdmin, gerenciarRouter);
+//app.use('/gerenciar',authenticator.autenticaAdmin, gerenciarRouter);
+app.use('/gerenciar', gerenciarRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

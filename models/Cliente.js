@@ -1,4 +1,3 @@
-const Login = require("./Login");
 
 module.exports = (sequelize, DataType) =>{
     const Cliente = sequelize.define('Cliente',{
@@ -7,43 +6,39 @@ module.exports = (sequelize, DataType) =>{
             primaryKey: true,
             autoIncrement: true,
         },
-        nome:DataType.STRING,
+        nome:DataType.STRING(120),
         sobrenome:{
-            type: DataType.STRING,
+            type: DataType.STRING(100),
             allowNull: true
         },
         dt_nascimento:{
             type: DataType.DATEONLY,
             allowNull: true
         },
-        cadastro:{
-            type:DataType.ENUM,
-            values:['fisica','juridica']
-        },
+        cadastro: DataType.ENUM('fisica','juridica'),
         documento:DataType.STRING,
-        id_login: {
-            type: DataType.SMALLINT,
-            unsigned: true,
-            references:{
-                model: 'Login',
-                key: 'id_login'
-            }
-        }
+        id_login: DataType.SMALLINT
     },{
         tablename: 'Clientes',
         timestamps:false
     });
     
+    Cliente.associate = (Models) =>{
+        Cliente.belongsTo(Models.Login,{
+            foreignKey: 'id_login'
+        }),
+        Cliente.hasOne(Models.Login,{
+            foreignKey: 'id_login'
+        }),
+        Cliente.hasMany(Models.Endereco,{
+            as: 'enderecos',
+            foreignKey: 'id_cliente'
+        }),
+        Cliente.hasMany(Models.Pedido,{
+            as: "pedidos",
+            foreignKey: "id_cliente"
+        })
+    }
 
     return Cliente
 }
-
-/*
-id_cliente INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    nome VARCHAR(120) NOT NULL,
-    sobrenome VARCHAR (100),
-    dt_nascimento date,
-    cadastro ENUM('fisica','juridico'),
-    documento char(25),
-    id_login SMALLINT UNSIGNED,
-*/
