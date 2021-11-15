@@ -1,9 +1,10 @@
 const session = require("express-session");
 const { Result } = require("express-validator");
+const { locals } = require("../app");
 
 const title = "lasCopas - Checkout";
 
-const { Produto, Uva, sequelize, Sequelize } = require('../models');
+const { Produto, Uva, Cliente, Pedido, Endereco, PedidoProduto, sequelize, Sequelize } = require('../models');
 const Op = Sequelize.Op;
 
 
@@ -63,12 +64,50 @@ const controller = {
     },
     pagar: (req, res, next) => {
         if(!req.session.user){
-            //console.log(req.);
+            return res.render("login",{
+                title: title,
+                created: false,
+                error: [],
+                errorModel: "Necessario entrar para comprar!",
+                old: []
+            });
         }
         
         res.render("pagamento", {
             title: title
         })
+    },
+    confirmar: async (req, res, next) =>{
+        let {idCliente} = req.session.user;
+
+        let carrinho = req.session.carrinho;
+        let listaIdProdutos = [];
+        for (valor of carrinho) {
+            listaIdProdutos.push(valor.id);
+        }
+
+        let enderecoCliente = await Cliente.findByPk(idCliente, {
+            include: {
+                model: Endereco,
+                attributes: ['id_endereco'],
+                as: "enderecos"
+            }
+        })
+        let idEndereco = (enderecoCliente.enderecos[0].id_endereco)
+
+        let produtosComprados = Produto.findAll({
+            where: {
+                id_produto: {
+                    [Op.in]:listaIdProdutos
+                }
+            },
+            attributes: ['id_produto','valor']
+        }).then(resultado =>{
+            console.log(resultado.dataValues);
+        })
+
+        console.log(produtosComprados)
+        //let novoPedido = await Pedido
     }
 }
 

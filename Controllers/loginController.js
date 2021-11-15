@@ -34,7 +34,7 @@ const controller={
                 },
                 include:{
                     model: Cliente,
-                    attributes:['nome']
+                    attributes:['id_cliente','nome']
                 }
             })
             //console.log(login);
@@ -57,12 +57,14 @@ const controller={
                     //console.log(login);
                     //Objeto que será salvo na session
                     let usuarioLogado = {
+                        idCliente: login.Cliente.id_cliente,
                         email: login.dataValues.email,
                         nome: login.Cliente.nome,
                         admin: login.dataValues.admin
                     }
                     req.session.user = usuarioLogado;
                     console.log("inicio de sessão do usuario: "+usuarioLogado.nome);
+                    console.log(req.session.user);
 
                     //Verificando se usuario é administrador e redirecionando para Home ou painel gerenciar
                     if(usuarioLogado.admin == 1){
@@ -77,7 +79,7 @@ const controller={
                     res.render("login",{
                         title: title,
                         created: false,
-                        error: null,
+                        error: [],
                         errorModel: "Senha Incorreta",
                         old: user
                     });

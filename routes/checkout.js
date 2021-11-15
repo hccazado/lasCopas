@@ -6,4 +6,6 @@ router.get("/", controller.carrinho);
 
 router.get("/pagar", controller.pagar);
 
+router.get("/confirmarPagamento", controller.confirmar);
+
 module.exports = router;

@@ -22,25 +22,25 @@
         <% } %>
     </div> -->
     <div class="container"></div>
-    <% for(produto of produtos){ %>
-    <div class="row" style="--bs-gap: .25rem">
-        <div class="col g-col-4 item-img">
-            <img class="rotulo" src="<%=produto.rotulo%>" alt="rotulo">
+        <% for(produto of produtos){ %>   
+        <div class="row" style="--bs-gap: .25rem">
+            <div class="col g-col-4 item-img">
+                <img class="rotulo" src="<%=produto.rotulo%>" alt="rotulo">
+            </div>
+            <div class="col g-col-6">
+                <span><%=produto.finca%><br></span>
+                <%=produto.uvas %>
+            </div>
+            <div class="col g-col-4">
+                Total = <br>
+                <%=produto.qtd%> X R$ <%=(produto.valor).toFixed(2)%>
+                <br>
+                R$<span><%=(produto.qtd*produto.valor).toFixed(2)%></span>
+                <%produto.total=produto.qtd*produto.valor%>
+            </div>
+            <% } %>
         </div>
-        <div class="col g-col-6">
-            <span><%=produto.finca%><br></span>
-            <%=produto.uvas %>
-        </div>
-        <div class="col g-col-4">
-            Total = <br>
-            <%=produto.qtd%> X R$ <%=(produto.valor).toFixed(2)%>
-            <br>
-            R$<span><%=(produto.qtd*produto.valor).toFixed(2)%></span>
-            <%produto.total=produto.qtd*produto.valor%>
-        </div>
-        <% } %>
-        </div>
-        </div>
+    </div>
 
         <div class="container_total">
             <div class="cep">
