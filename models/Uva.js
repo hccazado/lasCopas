@@ -13,18 +13,6 @@ module.exports = (sequelize, DataType) =>{
     });
     
     Uva.associate = (Models) => {
-        /*Uva.belongsToMany(Models.Produto,{
-            as: "vinhos",
-            foreignKey: "uva_id",
-            through: "Produtos_Uvas",
-            otherKey: "produto_id"
-        }); */
-
-    /*Uva.belongsToMany(Models.Produto, {
-        through: "Produtos_Uvas",
-        foreignKey: "id_uva"
-        });*/
-    
         Uva.belongsToMany(Models.Produto,{
             through: "Produtos_Uvas",
             foreignKey: "id_uva"

@@ -20,6 +20,8 @@ const controller = {
         //Ação padrão, há produtos no carrinho da session
         let carrinho = req.session.carrinho;
         let produtos = [];
+        let novoCarrinho = []; //Array para receber nova listagem de produtos comprados com o valor atual
+                               //Para realizar insert na tabela item pedido com o valor atual.
         
         let listaId = [];
         for (valor of carrinho) {
@@ -34,6 +36,7 @@ const controller = {
             include: {model: Uva, as: "uvas"}
         }).then(resultado => {
             let vinho = {};
+            let novoProduto = {};
             resultado.forEach(atual =>{
                 let uvas = [];
                 atual.uvas.forEach(uva =>{
@@ -51,10 +54,19 @@ const controller = {
                     uvas: uvas,
                     total: ()=> this.valor*this.qtd
                 }
+
+                novoProduto = {
+                    id: vinho.id_produto,
+                    quantidade: vinho.qtd,
+                    valor: vinho.valor
+                }
+
+                novoCarrinho.push(novoProduto);
                 
                 produtos.push(vinho);
             });
         }).then(_=>{
+            req.session.carrinho = novoCarrinho;
             res.render("carrinho", {
                 title: title,
                 produtos: produtos
@@ -81,10 +93,16 @@ const controller = {
         let {idCliente} = req.session.user;
 
         let carrinho = req.session.carrinho;
-        let listaIdProdutos = [];
-        for (valor of carrinho) {
-            listaIdProdutos.push(valor.id);
+        carrinho = carrinho.map(item =>{
+            let itemMap = {id_produto: item.id,
+            quantidade: item.quantidade,
+            valor: item.valor
         }
+            return itemMap;
+        });
+        console.log(carrinho);
+
+        var idEndereco = 0;
 
         let enderecoCliente = await Cliente.findByPk(idCliente, {
             include: {
@@ -92,22 +110,30 @@ const controller = {
                 attributes: ['id_endereco'],
                 as: "enderecos"
             }
-        })
-        let idEndereco = (enderecoCliente.enderecos[0].id_endereco)
+        }).then(end =>{
+            idEndereco = (end.enderecos[0].id_endereco);
+        }).catch(error =>{console.log("Erro Sequelize. Possui endereço?\n" + error)})
 
-        let produtosComprados = Produto.findAll({
-            where: {
-                id_produto: {
-                    [Op.in]:listaIdProdutos
-                }
-            },
-            attributes: ['id_produto','valor']
+        let pedido = await Pedido.create({
+            id_endereco: idEndereco,
+            id_cliente: idCliente
         }).then(resultado =>{
-            console.log(resultado.dataValues);
+            for(item of carrinho){
+                PedidoProduto.create({
+                    id_pedido: resultado.dataValues.id_pedido,
+                    id_produto: item.id_produto,
+                    quantidade: item.quantidade,
+                    valor: item.valor
+                }).then(res =>{
+                    console.log(res)
+                }).catch(err =>{console.log(err)})
+            }
+        }).then(_ =>{
+            req.session.carrinho = [];
+            res.redirect("/");
         })
 
-        console.log(produtosComprados)
-        //let novoPedido = await Pedido
+       
     }
 }
 

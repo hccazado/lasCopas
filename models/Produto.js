@@ -22,10 +22,9 @@ module.exports = (sequelize, DataType) =>{
 
     Produto.associate = (Models) =>{
         Produto.belongsToMany(Models.Pedido,{
+            through: "Pedidos_Produtos",
             as: "pedidos",
             foreignKey: "id_produto",
-            through: "Pedidos_Produtos",
-            otherKey: "id_pedido"
         }),
 
         Produto.belongsToMany(Models.Uva,{

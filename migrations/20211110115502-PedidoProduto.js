@@ -5,6 +5,7 @@ module.exports = {
     await queryInterface.createTable('Pedidos_Produtos', {
       id_pedido: {
         type: Sequelize.DataTypes.INTEGER.UNSIGNED,
+        primaryKey: true,
         references: {
           model: {
             tableName: 'Pedidos',
@@ -14,6 +15,7 @@ module.exports = {
       },
     id_produto: {
         type: Sequelize.DataTypes.INTEGER.UNSIGNED,
+        primaryKey: true,
         references: {
           model: {
             tableName: 'Produtos',

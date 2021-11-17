@@ -2,10 +2,12 @@ module.exports = (sequelize, DataType) =>{
     const PedidoProduto = sequelize.define("PedidoProduto", {
         id_pedido: {
             type: DataType.INTEGER.UNSIGNED,
+            primaryKey: true,
             references: "Pedidos",
             referencesKey: "id_pedido"
         },
         id_produto: {
+            primaryKey: true,
             type: DataType.INTEGER.UNSIGNED,
             references: "Produtos",
             referencesKey: "id_produto"
@@ -13,8 +15,8 @@ module.exports = (sequelize, DataType) =>{
         quantidade: DataType.INTEGER.UNSIGNED,
         valor: DataType.DOUBLE
     },{
-        tablename: "Pedidos_Produtos",
-        timestamps: "false"
+        tableName: 'Pedidos_Produtos',
+        timeStamps: false
     });
 
     PedidoProduto.associate = (Models) =>{
@@ -22,7 +24,7 @@ module.exports = (sequelize, DataType) =>{
             as: "pedido",
             foreignKey: "id_pedido"
         }),
-        PedidoProduto.hasOne(Models.Produto,{
+        PedidoProduto.belongsTo(Models.Produto,{
             as: "produto",
             foreignKey: "id_produto"
         })

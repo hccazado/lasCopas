@@ -17,7 +17,7 @@ module.exports = (sequelize, DataType) => {
         }
     },{
         tablename: 'Pedidos',
-        timestamps: 'false'
+        timestamps: false
     });
 
     Pedido.associate = (Models) =>{
@@ -29,10 +29,17 @@ module.exports = (sequelize, DataType) => {
             as: "cliente",
             foreignKey: "id_cliente"
         }),
-        Pedido.hasMany(Models.PedidoProduto,{
-            as: "produtos",
-            foreignKey: "id_pedido"
+        Pedido.belongsToMany(Models.PedidoProduto,{
+            through: "Pedidos_Produtos",
+            foreignKey: "id_pedido",
+            as: "produtosPedido"
         })
+        Pedido.belongsToMany(Models.Produto, {
+            through: "Pedidos_Produtos",
+            foreignKey: "id_pedido",
+            as: "produto"
+        })
+        
     }
 
     return Pedido;

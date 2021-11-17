@@ -115,9 +115,8 @@ INSERT INTO Produtos_Uvas (id_produto, id_uva) values (1, 2);
 INSERT INTO Produtos_Uvas (id_produto, id_uva) values (2, 4);
 INSERT INTO Produtos_Uvas (id_produto, id_uva) values (2, 2);
 
--- alter table produtos add column ano varchar(5);
+-- select * from pedidos_produtos;
 
-select * from produtos;
+-- select * from login;
 
-select * from login;
-
+-- select id_pedido, id_produto, quantidade*valor as total from pedidos_produtos where id_pedido = 31;
