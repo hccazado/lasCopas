@@ -1,4 +1,5 @@
 const {body, check,} = require("express-validator");
+const { Produto, Uva, Cliente, Pedido, Endereco, PedidoProduto, sequelize, Sequelize } = require('../models');
 
 const validaCamposLogin = [
     check("email").notEmpty().withMessage("Deve Informar o login").bail().isEmail().withMessage("Email invalido!"),
@@ -8,7 +9,19 @@ const validaCamposLogin = [
 const validaCamposCadastroCliente = [
     check("nome").trim().notEmpty().withMessage("Informar nome para cadastro").bail().isLength({min:4}).withMessage("Nome deve ser maior que 4 caracteres"),
     check("nascimento").notEmpty().withMessage("Informar data de nascimento valida").bail(),
-    check("email").trim().notEmpty().withMessage("Informar email").bail().isEmail().withMessage("Informar Email valido"),
+    check("email").trim().notEmpty().withMessage("Informar email").bail().isEmail().withMessage("Informar Email valido").custom(async (emailBody) => {
+        const procuraEmail = await Login.findOne({
+            where: {
+                email: emailBody,
+            },
+        });
+        if (!procuraEmail) {
+            return emailBody;
+        }
+        if (procuraEmail.email) {
+            return Promise.reject("E-mail já cadastrado");
+        }
+    }),,
     check("password").trim().notEmpty().withMessage("Informar senha de acesso").bail().isLength({min:6}).withMessage("pelo menos 6 caracteres"),
     check("pessoa").notEmpty().withMessage("Informar tipo de cadastro"),
     check("doc").trim().notEmpty().withMessage("Informar documento"),
