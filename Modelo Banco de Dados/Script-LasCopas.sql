@@ -96,12 +96,6 @@ insert into Login (email, senha, admin) values ('admin@lascopas.com', '$2a$10$6T
 
 insert into Clientes(nome,id_login) values ('Administrador',1);
 
--- Inserindo Usuario padrão
-insert into login (email, senha)
-values ('teste@gmail.com','$2a$10$6TJeD5WOUtSswXle2ixGR.sIDOeAuI9yYDfcoTxP/5FNqh9f4bU56');
-
-insert into Clientes (nome, sobrenome, dt_nascimento, cadastro, documento, id_login)
-values ('Teste', 'COPAS', '1996-07-20', 'fisica', '37820040077', 2);
 
 insert into Produtos (finca, cosecha, tipo, ano, valor, origem, rotulo, ativo, descricao) values 
 ('Estancia Mendoza','tardia', 'tinto','2020' , '199.00', 'Argentina', 'images/uploads/rotulos/EM-roble.png', 'ativo', 'Um vinho de color ruby, sabor amadeirado com notas de frutos do bosque');
@@ -115,8 +109,16 @@ INSERT INTO Produtos_Uvas (id_produto, id_uva) values (1, 2);
 INSERT INTO Produtos_Uvas (id_produto, id_uva) values (2, 4);
 INSERT INTO Produtos_Uvas (id_produto, id_uva) values (2, 2);
 
--- select * from pedidos_produtos;
+-- alter table produtos add column ano varchar(5);
 
--- select * from login;
+select * from produtos;
 
--- select id_pedido, id_produto, quantidade*valor as total from pedidos_produtos where id_pedido = 31;
+select * from login;
+select * from clientes;
+select * from enderecos;
+
+select * from pedidos_produtos;
+select * from pedidos;
+
+-- update login set senha = '$2a$10$6TJeD5WOUtSswXle2ixGR.sIDOeAuI9yYDfcoTxP/5FNqh9f4bU56'where id_login = 1;
+

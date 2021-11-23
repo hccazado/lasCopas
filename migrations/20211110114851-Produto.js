@@ -15,7 +15,13 @@ module.exports = {
       valor: Sequelize.DataTypes.DOUBLE,
       origem: Sequelize.DataTypes.STRING(20),
       rotulo: Sequelize.DataTypes.STRING(200),
-      ativo: Sequelize.DataTypes.ENUM('ativo', 'inativo'),
+      estoque: {
+        type: Sequelize.DataTypes.SMALLINT.UNSIGNED
+      },
+      ativo: {
+        type: Sequelize.DataTypes.ENUM('ativo', 'inativo'),
+        defaultValue: "ativo"
+      },
       descricao: Sequelize.DataTypes.TEXT
    });
   },

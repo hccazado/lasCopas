@@ -112,6 +112,7 @@ const controller = {
             }
         }).then(end =>{
             idEndereco = (end.enderecos[0].id_endereco);
+            console.log("ID Endereço: "+idEndereco)
         }).catch(error =>{console.log("Erro Sequelize. Possui endereço?\n" + error)})
 
         let pedido = await Pedido.create({
@@ -124,13 +125,13 @@ const controller = {
                     id_produto: item.id_produto,
                     quantidade: item.quantidade,
                     valor: item.valor
-                }).then(res =>{
-                    console.log(res)
+                }).then(_ =>{
+                    req.session.carrinho = [];
+                    return res.redirect("/");
                 }).catch(err =>{console.log(err)})
             }
-        }).then(_ =>{
-            req.session.carrinho = [];
-            res.redirect("/");
+        }).catch(err =>{
+            console.log("Algo deu errado!\n"+err)
         })
 
        

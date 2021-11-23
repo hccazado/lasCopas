@@ -20,6 +20,9 @@ const controller = {
     },
     formEditarCliente: async (req, res, next) => {
         let id = req.params.id;
+        console.log("chamou form edicao cliente")
+       
+        //recuperando dados do cliente no banco
         let dadosCliente = await Cliente.findByPk(id,{
             include:[{
                 model: Login
@@ -28,18 +31,24 @@ const controller = {
             model: Endereco, as:"enderecos"
             }]
         });
-        console.log(dadosCliente.enderecos);
-        /*let resultado = clientesModel.buscarClienteID(id);
-        console.log(resultado);
-        res.render("cadastroCliente", {
+        //console.log(dadosCliente.dataValues);
+        //definindo objeto com dataValues do retorno do sequelize
+        let cliente = {
+            ...dadosCliente.dataValues,
+            ...dadosCliente.Login.dataValues,
+            ...dadosCliente.enderecos[0].dataValues
+        }
+        //retornando view cadastroCliente, passando objeto gerado
+        return res.render("cadastrocliente",{
             title: title,
             exists: false,
-            errors: [],
+            errors: {},
             id: id,
             isEditing: true,
-            cliente: resultado,
-            old: {} 
-        })*/
+            cliente: cliente,
+            old:{}
+        })
+        
     },
     cadastrar: async (req, res, next)=>{
         let errors = validationResult(req);
@@ -51,12 +60,13 @@ const controller = {
             //hash de password abaixo esta funcionando
             cadastro.password = bcrypt.hashSync(cadastro.password, 10);
             
-            
+            //Primeira etapa do cadastro, criar Login
             let resultado = await Login.create({
                 email: cadastro.email,
                 senha: cadastro.password
             }).then(data =>{
-                console.log(data.dataValues.id_login);
+                //console.log(data.dataValues.id_login);
+                //Inserção do cliente com sucesso na criação de login
                 Cliente.create({
                     nome: cadastro.nome,
                     sobrenome: cadastro.sobrenome,
@@ -65,6 +75,7 @@ const controller = {
                     documento:cadastro.doc,
                     id_login: data.dataValues.id_login
                 }).then(usuario=>{
+                    //Inserindo Endereço do cliente com sucesso na criação do Cliente
                     Endereco.create({
                         cep: cadastro.cep,
                         endereco: cadastro.end1,
@@ -74,6 +85,7 @@ const controller = {
                         uf: cadastro.uf,
                         id_cliente: usuario.dataValues.id_cliente
                     }).then(_ =>{
+                        //Após todas inserções bem sucedidas, renderiza tela de login com msg sucesso.
                         return res.render("login", {
                             title:title,
                             created:true,
@@ -81,12 +93,16 @@ const controller = {
                             old: {},
                             errorModel: null});
                     }).catch(err =>{
+                        //Recuperando erro
                         console.log(err);
                     })  
                 }).catch(err =>{
+                    //recuperando erro
                     console.log(err)
                 })
             }).catch(err => {
+                //Houve erro na inserção do login. (email ja cadastrado na base)
+                //renderiza form. cadastro com mensagem erro
                 console.log(err);
                 return res.render("cadastroCliente", {
                     title: title,
@@ -115,34 +131,68 @@ const controller = {
             });
         }
     },
-    editar: (req,res,next) => {
+    editar: async (req,res,next) => {
         let errors = validationResult(req);
+        //desestruturando id do parametro da rota
         let id = req.params.id;
+
         //verifica se o validator retornou algum erro no check dos campos
         if(errors.isEmpty()){
-            let cadastro = req.body;
-            cadastro.password = bcrypt.hashSync(cadastro.password, 10);
-            let update = clientesModel.editarCliente(id, cadastro);
-            //Cliente atualizado com sucesso, redireciona para pagina login
-            if (update == true){
-                res.render("login", {
-                title:title,
-                created:true,
-                error: {},
-                errorModel: null});
-            }
-            //atualização falhou
-            else{
-                res.redirect("/", {
-                    title: title,
+            //recuperando dados do formulario
+            let cadastro = req.body; 
+            
+            //Realizando busca de login, endereço e o proprio cadastro do cliente
+            let dadosCliente = await Cliente.findByPk(id,{
+                include:[{
+                    model: Login
+                },
+                {
+                model: Endereco, as:"enderecos"
+                }]
+            });
+
+            //Verificando se a senha informada é a mesma já cadastrada
+            //(nega valor true do compareSync)
+            if(!bcrypt.compareSync(cadastro.password, dadosCliente.Login.senha)){
+                //Hashing da senha informada no formulario
+                cadastro.password = bcrypt.hashSync(cadastro.password, 10);
+                //atualizando senha no Banco
+                dadosCliente.Login.update({
+                    senha: cadastro.password,
+                }).then(_=>{
+                    console.log("Nova senha definida");
                 });
             }
+            //Atualizando dados do cliente
+            let updCliente = dadosCliente.update({
+                nome: cadastro.nome,
+                sobrenome: cadastro.sobrenome,
+                dt_nascimento: cadastro.nascimento,
+                cadastro: cadastro.pessoa,
+                documento: cadastro.doc,
+            })
+            //atualizando dados do endereço
+            let updEndereco = await dadosCliente.enderecos[0].update({
+                cep: cadastro.cep,
+                endereco: cadastro.end1,
+                numero: cadastro.num,
+                complemento: cadastro.complemento,
+                cidade: cadastro.cidade,
+                uf: cadastro.uf
+            })
+
+            //Cliente Atualizado com sucesso. Renderiza para pagina de login com msg sucesso
+            return res.render("login", {
+                                title:title,
+                                created:true,
+                                error: {},
+                                errorModel: null});
+
         }
         //Encontrado algum erro nos campos do formulario
         else{
             console.log(req.body);
             console.log(errors.mapped());
-            let resultado = clientesModel.buscarClienteID(id);
             res.render("cadastroCliente", {
                 title: title,
                 exists: null,
@@ -150,7 +200,7 @@ const controller = {
                 old: req.body,
                 id: id,
                 isEditing: true,
-                cliente: resultado 
+                cliente: req.body 
             });
         }
     }

@@ -73,13 +73,8 @@ const controller = {
     //Metodo para chamar o model Cliente e recuperar os dados respectivos do ID e enviar os mesmos a view.
     edicaoCliente: async (req, res, next) =>{
         let id = req.params.id;
-        let dadosCliente = Clientes.findByPk(id,{
-            include:[{
-                model: Login
-            },{
-                model:Endereco,
-                as: "enderecos"
-            }]
+        console.log("chamou edicao cliente")
+        let dadosCliente = Cliente.findByPk(id,{
         });
         console.log(dadosCliente);
         /*res.render("cadastroCliente", {

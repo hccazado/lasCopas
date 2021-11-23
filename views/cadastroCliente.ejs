@@ -43,7 +43,7 @@
                     <div>
                         <label for="nasc">Nasc.</label><br>
                         <% if (isEditing){ %>
-                            <input type="date" id="nasc" name="nascimento" value="<%=cliente.nascimento%>" required>
+                            <input type="date" id="nasc" name="nascimento" value="<%=cliente.dt_nascimento%>" required>
                             <%if (errors.nascimento){%>
                                 <span id="error"><%=errors.nascimento.msg%></span>
                             <%}%>
@@ -56,7 +56,7 @@
                     <div>
                         <label for="email">Email</label><br>
                         <% if(isEditing){ %>
-                            <input type="email" id="email" name="email" value="<%=cliente.email%>">
+                            <input type="email" id="email" name="email" readonly value="<%=cliente.email%>">
                         <% } else if(errors){ %>
                             <input type="email" id="email" name="email" placeholder="Informe seu email" value="<%=old.email%>">
                             <%if (errors.email){%>
@@ -83,7 +83,21 @@
                     </div>
                     <div>
                         <label for="pessoa">Tipo de Pessoa</label><br>
-                        <% if(errors){ %>
+                        <% if(isEditing){ %>
+                            <%if(cliente.cadastro == 'fisica'){ %>
+                            <select id="pessoa" name="pessoa">
+                                <option disabled>Selecione</option>
+                                    <option value="fisica" selected>Fisica</option>
+                                    <option value="juridica">Juridica</option>
+                            </select>
+                        <% } else{%>
+                            <select id="pessoa" name="pessoa">
+                                <option disabled>Selecione</option>
+                                    <option value="fisica">Fisica</option>
+                                    <option value="juridica" selected>Juridica</option>
+                            </select>
+                        <%}%>
+                        <%}else if(errors){ %>
                             <select id="pessoa" name="pessoa">
                                 <option disabled selected>Selecione</option>
                                     <option value="fisica">Fisica</option>
@@ -103,7 +117,7 @@
                     <div>
                         <label for="doc">CPF/CNPJ</label><br>
                         <% if(isEditing){ %>
-                            <input type="number" id="doc" name="doc" value="<%=cliente.doc%>" required>
+                            <input type="number" id="doc" name="doc" value="<%=cliente.documento%>" required>
                         <% } else if(errors){ %>
                             <input type="number" id="doc" name="doc" placeholder="Informe CPF ou CNPJ" required value="<%=old.doc%>">
                             <%if (errors.doc){%>
@@ -129,7 +143,7 @@
                     <div>
                         <label for="end1">End.</label><br>
                         <% if(isEditing){ %>
-                            <input type="text" id="end1" name="end1" value="<%=cliente.end1%>" required>
+                            <input type="text" id="end1" name="end1" value="<%=cliente.endereco%>" required>
                         <% }else if(errors){ %>
                             <input type="text" id="end1" name="end1" placeholder="Digite endereço" required value="<%=old.end1%>">
                             <%if (errors.end1){%>
@@ -142,7 +156,7 @@
                     <div>
                         <label for="num">Num.</label><br>
                         <% if(isEditing){ %>
-                            <input type="text" id="num" name="num" value="<%=cliente.num%>" required>
+                            <input type="text" id="num" name="num" value="<%=cliente.numero%>" required>
                         <% }else if(errors){ %>
                             <input type="text" id="num" name="num" placeholder="Informe numero" required value="<%=old.num%>">
                             <%if (errors.num){%>
@@ -154,7 +168,11 @@
                     </div>
                     <div>
                         <label for="compl">Complemento</label><br>
-                        <input type="text" id="compl" name="complemento" placeholder="Preencha caso precise complementar endereço">
+                        <% if(isEditing){ %>
+                            <input type="text" id="compl" name="complemento" value="<%=cliente.complemento%>" >
+                        <%} else { %>
+                            <input type="text" id="compl" name="complemento" placeholder="Informe complemento endereço">
+                        <% } %>
                     </div>
                     <div>
                         <label for="uf">UF</label><br>

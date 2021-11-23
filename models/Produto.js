@@ -12,6 +12,7 @@ module.exports = (sequelize, DataType) =>{
         valor: DataType.DOUBLE,
         origem: DataType.STRING(20),
         rotulo: DataType.STRING(200),
+        estoque: DataType.SMALLINT.UNSIGNED,
         ativo: DataType.ENUM('ativo', 'inativo'),
         descricao: DataType.TEXT
     },
