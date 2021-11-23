@@ -1,9 +1,9 @@
 <%- include("./partials/header")%>
 
 <content>
-    <div class="container-sm"></div>
+    <div class="container-sm mb-5 mt-5">
         <% if(isEditing == false) {%>
-            <form action="/clientes/cadastrar" method="POST">
+            <form class="box rounded" action="/clientes/cadastrar" method="POST">
         <% } else{ %>
             <form action="/clientes/editar/<%=id%>" method="POST">
                 <% } %>
@@ -11,7 +11,7 @@
             <% if(exists == true){ %>
                 <span id="error">O email já está cadastrado</span>
             <% } %>
-            <div class="mb-3 mt-3">
+            <div class="mb-3">
                     <label for="nome" class="form-label">Nome</label>
                 <%if(isEditing) { %>
                     <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome" value="<%=cliente.nome%>">
@@ -227,16 +227,20 @@
             </div>
             <div class="mb-3 mt-3">
                 <label class="form-label" for="cidade">Cidade</label><br>
-                <% if(isEditing){ %>
-                    <input type="text" id="cidade" class="form-control" name="cidade" value="<%=cliente.cidade%>" required>
-                <%} else if(errors){ %>
-                    <input type="text" id="cidade" class="form-control" name="cidade" placeholder="Informe cidade" required value="<%=old.cidade%>">
-                    <%if (errors.cidade){%>
-                        <span id="error"><%=errors.cidade.msg%></span>
-                    <%}%>
-                <% } else{ %>
-                    <input type="text" id="cidade" class="form-control "name="cidade" placeholder="Informe cidade" required>
-                <% } %>
+                <div class="row">
+                    <div class="form-group col-lg-4">
+                        <% if(isEditing){ %>
+                            <input type="text" id="cidade" class="form-control" name="cidade" value="<%=cliente.cidade%>" required>
+                        <%} else if(errors){ %>
+                            <input type="text" id="cidade" class="form-control" name="cidade" placeholder="Informe cidade" required value="<%=old.cidade%>">
+                            <%if (errors.cidade){%>
+                                <span id="error"><%=errors.cidade.msg%></span>
+                            <%}%>
+                        <% } else{ %>
+                            <input type="text" id="cidade" class="form-control "name="cidade" placeholder="Informe cidade" required>
+                        <% } %>
+                    </div>
+                </div>
             </div>             
             <%if(isEditing){ %>
                 <button type="submit" class="btn btn-success btn-lg mb-3">Editar</button>

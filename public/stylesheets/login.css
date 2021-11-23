@@ -16,6 +16,10 @@
     margin: 60px auto;
 }
 
+.login_container_BS5{
+    max-width: 570px!important;
+}
+
 .login .login_user{
     margin-top: 20px;
 }

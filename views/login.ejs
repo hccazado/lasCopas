@@ -1,36 +1,33 @@
 <%- include('./partials/header') %>
-	<div class="container-sm">
+	<div class="container login_container_BS5 container-sm mb-5 mt-5">
 		<form action="/login" method="POST">
-			
-				<% if(created){ %>
-					<span id="created">Dados inseridos com sucesso!</span>
-				<% } %>
-				<% if(error.password){ %>
-					<span id="error"><%=error.password.msg%></span>	
+			<% if(created){ %>
+				<span id="created">Dados inseridos com sucesso!</span>
+			<% } %>
+			<% if(error.password){ %>
+				<span id="error"><%=error.password.msg%></span>	
+			<%}%>
+			<% if(error.email){ %>
+				<span id="error"><%=error.email.msg%></span>	
+			<%}%>
+			<% if(errorModel != undefined){ %>
+				<span id="error"><%=errorModel%></span>	
+			<%}%>
+			<div class="mb-3">
+				<label for="usuario" class="form-label">Login</label>
+				<% if(errorModel){ %>
+					<input type="text" id="usuario" class="form-control" name="email" placeholder="username" value="<%=old.email%>">	
+				<%} else{%>
+				<input type="text" id="usuario" class="form-control" name="email" placeholder="email de cadastro">
 				<%}%>
-				<% if(error.email){ %>
-					<span id="error"><%=error.email.msg%></span>	
-				<%}%>
-				<% if(errorModel != undefined){ %>
-					<span id="error"><%=errorModel%></span>	
-				<%}%>
-				<div class="mb-3 mt-3">
-                    <label for="usuario" class="form-label">Login</label>
-					<% if(errorModel){ %>
-						<input type="text" id="usuario" class="form-control" name="email" placeholder="username" value="<%=old.email%>">	
-					<%} else{%>
-					<input type="text" id="usuario" class="form-control" name="email" placeholder="email de cadastro">
-					<%}%>
-				</div>
-					
-				<div class="mb-3 mt-3">
-					<label class="form-label" for="password">Senha</label>
-					<input type="password" class ="form-control" id="password" name="password" placeholder="password">
-				</div>
-				<button type="submit" class="btn btn-success btn-lg btn-block mb-3">Logar</button>
+			</div>
 				
-				<p class="text-muted">Não tem conta? <a href="/clientes/cadastrar">Cadastre agora!</a></p>
-				
+			<div class="mb-3">
+				<label class="form-label" for="password">Senha</label>
+				<input type="password" class ="form-control" id="password" name="password" placeholder="password">
+			</div>
+			<button type="submit" class="btn btn-success btn-lg btn-block mb-3">Logar</button>
+			<p class="text-muted">Não tem conta? <a href="/clientes/cadastrar">Cadastre agora!</a></p>	
 		</form>
     </div>
 <%- include("./partials/footer")%>
