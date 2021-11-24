@@ -87,6 +87,10 @@
 
 /* Estilos para formulario Cadastro clientes */
 
+.container-cliente{
+    max-width: 740px !important;
+}
+
 .clientes{
     border: 1px solid #676767;
     border-radius: 5px;

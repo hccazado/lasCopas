@@ -1,7 +1,7 @@
 <%- include("./partials/header")%>
 
 <content>
-    <div class="container-sm mb-5 mt-5">
+    <div class="container-sm container-cliente mb-5 mt-5">
         <% if(isEditing == false) {%>
             <form class="box rounded" action="/clientes/cadastrar" method="POST">
         <% } else{ %>
@@ -140,16 +140,19 @@
                 <label class="form-label" for="cep">CEP</label>
                 <div class="row">
                     <div class="form-group col-lg-4">
-                        <% if(isEditing){ %>
-                            <input type="text" id="cep" class="form-control" name="cep" value="<%=cliente.cep%>" required >
-                        <%} else if(errors){ %>
-                            <input type="text" id="cep" class="form-control" name="cep" placeholder="Informe seu cep" required  value="<%=old.cep%>">
-                            <%if (errors.cep){%>
-                                <span id="error"><%=errors.cep.msg%></span>
-                            <%}%>
-                        <%} else{ %>
-                            <input type="text" id="cep" class="form-control" name="cep" placeholder="Informe seu cep" required >
-                        <% } %>
+                        <div class="input-group">
+                            <% if(isEditing){ %>
+                                <input type="text" id="cep" class="form-control" name="cep" value="<%=cliente.cep%>" required >
+                            <%} else if(errors){ %>
+                                <input type="text" id="cep" class="form-control" name="cep" placeholder="Informe seu cep" required  value="<%=old.cep%>">
+                                <%if (errors.cep){%>
+                                    <span id="error"><%=errors.cep.msg%></span>
+                                <%}%>
+                            <%} else{ %>
+                                <input type="text" id="cep" class="form-control" name="cep" placeholder="Informe seu cep" required >
+                            <% } %>
+                            <button class="btn btn-outline-secondary" type="button" id="getCEP">Buscar</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -168,25 +171,67 @@
             </div>
             <div class="mb-3 mt-3">
                 <label class="form-label" for="num">Numero</label>
-                <% if(isEditing){ %>
-                    <input type="text" class="form-control" id="num" name="num" value="<%=cliente.numero%>" required>
-                <% }else if(errors){ %>
-                    <input type="text" class="form-control" id="num" name="num" placeholder="Informe numero" required value="<%=old.num%>">
-                    <%if (errors.num){%>
-                        <span id="error"><%=errors.num.msg%></span>
-                    <%}%>
-                <% } else{ %>
-                    <input type="text" class="form-control" id="num" name="num" placeholder="Informe numero" required>
-                <% } %>
+                <div class="row">
+                    <div class="form-group col-lg-4">
+                        <% if(isEditing){ %>
+                            <input type="text" class="form-control" id="num" name="num" value="<%=cliente.numero%>" required>
+                        <% }else if(errors){ %>
+                            <input type="text" class="form-control" id="num" name="num" placeholder="Informe numero" required value="<%=old.num%>">
+                            <%if (errors.num){%>
+                                <span id="error"><%=errors.num.msg%></span>
+                            <%}%>
+                        <% } else{ %>
+                            <input type="text" class="form-control" id="num" name="num" placeholder="Informe numero" required>
+                        <% } %>
+                    </div>
+                </div>
             </div>
             <div class="mb-3 mt-3">
                 <label class="form-label" for="compl">Complemento</label>
-                <% if(isEditing){ %>
-                    <input type="text" id="compl" class="form-control" name="complemento" value="<%=cliente.complemento%>" >
-                <%} else { %>
-                    <input type="text" id="compl" class="form-control" name="complemento" placeholder="Informe complemento endereço">
-                <% } %>
+                <div class="row">
+                    <div class="form-group col-lg-4">
+                        <% if(isEditing){ %>
+                            <input type="text" id="compl" class="form-control" name="complemento" value="<%=cliente.complemento%>" >
+                        <%} else { %>
+                            <input type="text" id="compl" class="form-control" name="complemento" placeholder="Informe complemento endereço">
+                        <% } %>
+                    </div>
+                </div>
             </div>
+            <div class="mb-3 mt-3">
+                <label class="form-label" for="bairro">Bairro</label>
+                <div class="row">
+                    <div class="form-group col-lg-4">
+                        <% if(isEditing){ %>
+                            <input type="text" class="form-control" id="bairro" name="bairro" value="<%=cliente.bairro%>" required>
+                        <% }else if(errors){ %>
+                            <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Informe Bairro" required value="<%=old.num%>">
+                            <%if (errors.num){%>
+                                <span id="error"><%=errors.bairro.msg%></span>
+                            <%}%>
+                        <% } else{ %>
+                            <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Informe bairro" required>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3 mt-3">
+                <label class="form-label" for="cidade">Cidade</label><br>
+                <div class="row">
+                    <div class="form-group col-lg-4">
+                        <% if(isEditing){ %>
+                            <input type="text" id="cidade" class="form-control" name="cidade" value="<%=cliente.cidade%>" required>
+                        <%} else if(errors){ %>
+                            <input type="text" id="cidade" class="form-control" name="cidade" placeholder="Informe cidade" required value="<%=old.cidade%>">
+                            <%if (errors.cidade){%>
+                                <span id="error"><%=errors.cidade.msg%></span>
+                            <%}%>
+                        <% } else{ %>
+                            <input type="text" id="cidade" class="form-control "name="cidade" placeholder="Informe cidade" required>
+                        <% } %>
+                    </div>
+                </div>
+            </div> 
             <div class="mb-3 mt-3">
                 <label class="form-label" for="uf">UF</label>
                 <div class="row">
@@ -224,24 +269,7 @@
                         </select>
                     </div>
                 </div>
-            </div>
-            <div class="mb-3 mt-3">
-                <label class="form-label" for="cidade">Cidade</label><br>
-                <div class="row">
-                    <div class="form-group col-lg-4">
-                        <% if(isEditing){ %>
-                            <input type="text" id="cidade" class="form-control" name="cidade" value="<%=cliente.cidade%>" required>
-                        <%} else if(errors){ %>
-                            <input type="text" id="cidade" class="form-control" name="cidade" placeholder="Informe cidade" required value="<%=old.cidade%>">
-                            <%if (errors.cidade){%>
-                                <span id="error"><%=errors.cidade.msg%></span>
-                            <%}%>
-                        <% } else{ %>
-                            <input type="text" id="cidade" class="form-control "name="cidade" placeholder="Informe cidade" required>
-                        <% } %>
-                    </div>
-                </div>
-            </div>             
+            </div>            
             <%if(isEditing){ %>
                 <button type="submit" class="btn btn-success btn-lg mb-3">Editar</button>
             <%} else{ %>
@@ -250,4 +278,6 @@
         </form>
     </div>
 </content>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script src="/javascripts/geradorEndereco.js"></script>
 <%- include("./partials/footer")%>

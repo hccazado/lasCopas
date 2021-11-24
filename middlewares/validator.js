@@ -23,13 +23,14 @@ const validaCamposCadastroCliente = [
             return Promise.reject("Email já está em uso!");
         }
     }),*/
-    check("password").trim().notEmpty().withMessage("Informar senha de acesso").bail().isLength({min:6}).withMessage("pelo menos 6 caracteres"),
-    check("pessoa").notEmpty().withMessage("Informar tipo de cadastro"),
-    check("doc").trim().notEmpty().withMessage("Informar documento"),
+    check("password").trim().notEmpty().withMessage("Informar Senha de Login").bail().isLength({min:6}).withMessage("pelo menos 6 caracteres"),
+    check("pessoa").notEmpty().withMessage("Informar Tipo de Cadastro"),
+    check("doc").trim().notEmpty().withMessage("Informar Documento"),
     check("cep").trim().notEmpty().withMessage("Informar CEP"),
-    check("end1").trim().notEmpty().withMessage("Informar endereço"),
+    check("end1").trim().notEmpty().withMessage("Informar Endereço"),
+    check("bairro").trim().notEmpty().withMessage("Informar Bairro"),
     check("uf").notEmpty().withMessage("Selecionar Estado"),
-    check("cidade").trim().notEmpty().withMessage("Informe cidade")
+    check("cidade").trim().notEmpty().withMessage("Informe Cidade")
 ];
 
 const validaCamposCadastroProduto = [
