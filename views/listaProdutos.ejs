@@ -4,34 +4,41 @@
     <div class="wrapper">
         <div class="container_lista">
             <h5>Administração Produtos</h5>
-            <div class="form-floating busca_cliente">
-                <input type="text" class="form-control" id="buscaProduto" placeholder="Nome do Produto">
-                <label for="buscaProduto">Buscar Produto</label>
+            <div class="row mt-5">
+                <div class="col">
+                    <div class="form-floating busca_cliente">
+                        <input type="text" class="form-control" id="buscaProduto" placeholder="Nome do Produto">
+                        <label for="buscaProduto">Buscar Produto</label>
+                    </div>
+                </div>
+                    
+                <div class="col">
+                    <a class="btn btn-success btn-lg " role="button" href="/gerenciar/produtos/cadastro">Novo Produto</a>
+                </div>
+                <div class="col-2">
 
-            </div>
-            <div  class="table-responsive">
-                <table class="table border border-success table-bordered caption-top">
+                </div>
+            </div>                
+            <div  class="table-responsive mt-3">
+                <table class="table border-mutted table-bordered table-hover caption-bottom">
                     <caption>Produtos Cadastrados</caption>
                     <thead>
                         <tr>
-                            <td>ID</td>
-                            <td>Rotulo</td>
-                            <td>Finca</td>
-                            <td>Uvas</td>
-                            <td>Preço</td>
+                            <td class="align-middle">ID</td>
+                            <td class="align-middle">Rotulo</td>
+                            <td class="align-middle">Finca</td>
+                            <td class="align-middle">Uvas</td>
+                            <td class="align-middle">Preço</td>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><a class="link_tabela" href="/gerenciar/produtos/cadastro"><img src="https://img.icons8.com/flat-round/48/000000/plus.png"/></a></td>
-                        </tr>
                         <%for(let i=0; i<produtos.length;i++){%>
                         <tr>
-                            <td><a class="link_tabela" href="/gerenciar/produtos/<%=produtos[i].id_produto%>"><%=produtos[i].id_produto%></a></td>
-                            <td><a class="link_tabela" href="/gerenciar/produtos/<%=produtos[i].id_produto%>"><img class="rotulo_tabela" src="/<%=produtos[i].rotulo%>"></a></td>
-                            <td><a class="link_tabela" href="/gerenciar/produtos/<%=produtos[i].id_produto%>"><%=produtos[i].finca%></a></td>
-                            <td><a class="link_tabela" href="/gerenciar/produtos/<%=produtos[i].id_produto%>"><%=produtos[i].uvas%></a></td>
-                            <td><a class="link_tabela" href="/gerenciar/produtos/<%=produtos[i].id_produto%>"><%=produtos[i].valor%></a></td>
+                            <td class="align-middle"><a class="link_tabela" href="/gerenciar/produtos/<%=produtos[i].id_produto%>"><%=produtos[i].id_produto%></a></td>
+                            <td class="align-middle"><a class="link_tabela" href="/gerenciar/produtos/<%=produtos[i].id_produto%>"><img class="rotulo_tabela" src="/<%=produtos[i].rotulo%>"></a></td>
+                            <td class="align-middle"><a class="link_tabela" href="/gerenciar/produtos/<%=produtos[i].id_produto%>"><%=produtos[i].finca%></a></td>
+                            <td class="align-middle"><a class="link_tabela" href="/gerenciar/produtos/<%=produtos[i].id_produto%>"><%=produtos[i].uvas%></a></td>
+                            <td class="align-middle"><a class="link_tabela" href="/gerenciar/produtos/<%=produtos[i].id_produto%>"><%=produtos[i].valor%></a></td>
                         </tr>
                         <% } %>
                     </tbody>

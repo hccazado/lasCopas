@@ -11,4 +11,6 @@ router.get("/editar/:id", controller.formEditarCliente);
 
 router.post("/editar/:id", validator.validaCamposCadastroCliente, controller.editar);
 
+router.get("/buscar/%3F*", controller.buscar);
+
 module.exports = router;

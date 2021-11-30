@@ -239,7 +239,7 @@ footer .container_onde{
     text-align: left;
 }
 footer .container_onde h4{
-    color: darkred;
+    color: #bbb;
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 12px;
@@ -247,6 +247,7 @@ footer .container_onde h4{
 }
 
 footer .container_onde p{
+    color: #aaa;
     font-size: 14px;
     font-weight: 400;
     margin-bottom: 6px;
@@ -254,14 +255,14 @@ footer .container_onde p{
 
 footer .container_links{
    
-    color:darkred;
+    color:#bbb;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
 footer .container_links h4{
-    color: darkred;
+    color: #bbb;
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 12px;
@@ -381,9 +382,7 @@ footer .wrapper .chat img{
     margin-top: 10px;
 }
 
-.container_busca{
-    width:90%;
-}
+
 
 /*---------Estilo para pagina Sobre---------------*/
 
@@ -431,7 +430,7 @@ footer .wrapper .chat img{
 
     footer .wrapper{
         flex-direction: column;
-        width: 100%;
+        width: 100vw;
     }
 
     footer .container_links{

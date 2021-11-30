@@ -203,6 +203,9 @@ const controller = {
                 cliente: req.body 
             });
         }
+    },
+    buscar: (req, res, next) =>{
+        console.log(req.query);
     }
 }
 

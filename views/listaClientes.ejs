@@ -3,26 +3,37 @@
         <div class="wrapper">
             <div class="container_lista">
                 <h5>Administração Clientes</h5>
-                <div class="form-floating busca_cliente">
-                    <input type="text" class="form-control" id="buscaCliente" placeholder="Nome ou Documento">
-                    <label for="buscaCliente">Buscar Cliente</label>
+                <div class="row mt-5">
+                    <div class="col">
+                        <div class="form-floating busca_cliente">
+                            <input type="text" class="form-control" id="buscaCliente" placeholder="Nome ou Documento">
+                            <label for="buscaCliente">Buscar Cliente</label> 
+                        </div>
+                    </div>
+                    <div class="col">
+                        <a class="btn btn-success btn-lg" role="button" href="/clientes/cadastrar">Novo Cliente</a>   
+                    </div>
+                    <div class="col-2">
+
+                    </div>
                 </div>
-                <div  class="table-responsive">
-                    <table class="tabela-esquerda table border border-success table-bordered caption-top">
+                
+                <div  class="table-responsive mt-3">
+                    <table class="tabela-esquerda table border-mutted table-bordered table-hover caption-bottom">
                         <caption>Clientes Cadastrados</caption>
                         <thead>
                             <tr>
-                                <td>ID Cliente</td>
-                                <td>Doc.</td>
-                                <td>Nome</td>
+                                <td class="align-middle">ID Cliente</td>
+                                <td class="align-middle">Doc.</td>
+                                <td class="align-middle">Nome</td>
                             </tr>
                         </thead>
                         <tbody>
                             <%for(let i=0; i<clientes.length;i++){%>
                             <tr>
-                                <td><a class="link_tabela" href="/clientes/editar/<%=clientes[i].id_cliente%>"><%=clientes[i].id_cliente%></a></td>
-                                <td><a class="link_tabela" href="/clientes/editar/<%=clientes[i].id_cliente%>"><%=clientes[i].documento%></a></td>
-                                <td><a class="link_tabela" href="/clientes/editar/<%=clientes[i].id_cliente%>"><%=clientes[i].nome%></a></td>
+                                <td class="align-middle"><a class="link_tabela" href="/clientes/editar/<%=clientes[i].id_cliente%>"><%=clientes[i].id_cliente%></a></td>
+                                <td class="align-middle"><a class="link_tabela" href="/clientes/editar/<%=clientes[i].id_cliente%>"><%=clientes[i].documento%></a></td>
+                                <td class="align-middle"><a class="link_tabela" href="/clientes/editar/<%=clientes[i].id_cliente%>"><%=clientes[i].nome%></a></td>
                             </tr>
                             <% } %>
                         </tbody>
@@ -31,4 +42,5 @@
             </div>
         </div>
     </content>
+    <script src="/javascripts/buscaCliente.js"></script>
 <%-include('./partials/footerAdm')%>
