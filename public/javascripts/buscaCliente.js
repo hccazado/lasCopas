@@ -1,18 +1,13 @@
 let btnBusca = document.getElementById("buscaCliente");
+let btBck = document.getElementById("btBck");
 
 btnBusca.addEventListener("keyup", (evento) =>{
     if(evento.key == "Enter"){
         let valor = btnBusca.value;
-        let path = "/clientes/buscar/";
-        if(isNaN(parseInt(valor))){
-            let queryItems: [URLSearchParams] = btnBusca.value
-            window.location.pathname="/clientes/buscar/"+btnBusca.value
-            return;
-        }
-        else{
-            window.location.pathname="/clientes/buscar/?doc="+btnBusca.value
-        }
-        
-        //window.location.pathname="/clientes/buscar/?"+btnBusca.value
+        window.location.pathname="/gerenciar/clientes/buscar/"+btnBusca.value
     }
-})
+});
+
+btBck.addEventListener("click", () =>{
+    window.history.back();
+});

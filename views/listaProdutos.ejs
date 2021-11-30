@@ -6,18 +6,19 @@
             <h5>Administração Produtos</h5>
             <div class="row mt-5">
                 <div class="col">
+                    <a class="btn btn-primary text-mutted" role="button" id="btBck">Voltar</a>
+                </div>
+                <div class="col">
+                    <a class="btn btn-success" role="button" href="/gerenciar/produtos/cadastro">Novo Produto</a>
+                </div>
+                <div class="col">               
                     <div class="form-floating busca_cliente">
                         <input type="text" class="form-control" id="buscaProduto" placeholder="Nome do Produto">
                         <label for="buscaProduto">Buscar Produto</label>
                     </div>
                 </div>
-                    
-                <div class="col">
-                    <a class="btn btn-success btn-lg " role="button" href="/gerenciar/produtos/cadastro">Novo Produto</a>
-                </div>
-                <div class="col-2">
-
-                </div>
+                
+                
             </div>                
             <div  class="table-responsive mt-3">
                 <table class="table border-mutted table-bordered table-hover caption-bottom">
@@ -47,5 +48,6 @@
         </div>
     </div>
 </content>
+<script src="/javascripts/buscaProduto.js"></script>
 
 <%-include('./partials/footerAdm')%>

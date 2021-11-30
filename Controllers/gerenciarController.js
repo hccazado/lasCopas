@@ -1,7 +1,8 @@
 //Require dos controladores
 
 const produtosController = require("./produtosController");
-const {Produto, Uva, Cliente, Endereco} = require("../models");
+const {Cliente, Endereco, Produto, ProdutoUva, Uva, sequelize, Sequelize} = require('../models');
+const Op = Sequelize.Op;
 const loginController = require("./loginController");
 //const clientesModel = require("../model/clientesModel");
 
@@ -39,6 +40,72 @@ const controller = {
             include: {
                 model: Uva,
                 as: "uvas"
+            }
+        }).then(resultado =>{
+            let vinho = {};
+            resultado.forEach(atual =>{
+                let uvas = [];
+                atual.uvas.forEach(uva=>{
+                    uvas.push(uva.nome_uva);
+                });
+                let vinho = {
+                    ...atual.dataValues,
+                    uvas
+                }
+                produtos.push(vinho);
+            })
+        })
+        return res.render("listaProdutos", {
+            title: title,
+            produtos: produtos
+        });
+    },
+    buscarClientes: async (req, res, next) =>{
+        let valor = req.params.valor;
+        let buscar = '';
+        if(isNaN(parseInt(valor))){
+            let clientes = await Cliente.findAll({
+                where:{
+                    [Op.or]:{
+                        nome:{ [Op.substring]: valor },
+                        sobrenome:{ [Op.substring]: valor}
+                    }
+                }
+            });
+            res.render("listaClientes", {
+                title: title,
+                clientes: clientes
+            });
+        }
+        else{
+            let clientes = await Cliente.findAll({
+                where:{
+                    documento:{
+                        [Op.substring]: valor
+                    }
+                },
+                attributes: ['id_cliente', 'nome', 'documento']
+            });
+            res.render("listaClientes", {
+                title: title,
+                clientes: clientes
+            });
+        }  
+    },
+    buscarProdutos: async (req, res, next) =>{
+        let valor = req.params.valor;
+        let produtos = [];
+        let items = await Produto.findAll({
+            include: {
+                model: Uva,
+                as: "uvas"
+            },
+            where: {
+                [Op.or]:{
+                    finca: { [Op.substring]: valor},
+                    origem: { [Op.substring]: valor},
+                    ativo: { [Op.like]: valor}
+                }
             }
         }).then(resultado =>{
             let vinho = {};

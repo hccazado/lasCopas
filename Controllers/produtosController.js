@@ -62,7 +62,7 @@ const controller = {
         console.log(errors);
         if(errors.isEmpty()){
             //console.log("entrou errors empty cadastro produto")
-            let{uvas, cosecha, tipo, finca, ano, preco, origem, descricao} = req.body;
+            let{uvas, cosecha, tipo, finca, ano, estoque, preco, origem, ativo, descricao} = req.body;
             if(!req.file){
                 console.log("chamou registro SEM rotulo");
                 let produtoCadastrado = await Produto.create(
@@ -72,8 +72,9 @@ const controller = {
                         tipo,
                         ano,
                         valor: preco,
+                        estoque,
                         origem,
-                        ativo: true,
+                        ativo,
                         descricao,
                     }
                 )
@@ -95,8 +96,9 @@ const controller = {
                         tipo,
                         ano,
                         valor: preco,
+                        estoque,
                         origem,
-                        ativo: true,
+                        ativo,
                         rotulo: rotulo,
                         descricao,
                     }
@@ -118,7 +120,7 @@ const controller = {
     },
     editarProduto: async (req, res, next) =>{
         let {id} = req.params;
-        let{uvas, cosecha, tipo, finca, ano, preco, origem, descricao, rotulo} = req.body;
+        let{uvas, cosecha, tipo, finca, ano, preco, estoque, origem, ativo, descricao, rotulo} = req.body;
         if(req.file){
             rotulo = "images/uploads/rotulos/"+req.file.filename;
         }
@@ -132,7 +134,9 @@ const controller = {
             finca: finca,
             ano: ano,
             valor: preco,
+            estoque: estoque,
             origem: origem,
+            ativo: ativo,
             descricao: descricao,
             rotulo: rotulo
         }
@@ -165,6 +169,12 @@ const controller = {
             title: title,
             vinho: vinho
         });
+    },
+    buscar: async (req, res, next) =>{
+        let valor = req.params;
+        if(isNaN(parseInt(valor))){
+            
+        }
     }
 }
 

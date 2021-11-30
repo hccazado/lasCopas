@@ -20,7 +20,7 @@ module.exports = {
       },
       ativo: {
         type: Sequelize.DataTypes.ENUM('ativo', 'inativo'),
-        defaultValue: "ativo"
+        defaultValue: 'ativo'
       },
       descricao: Sequelize.DataTypes.TEXT
    });

@@ -245,6 +245,49 @@
                 <%}%>
             </div>
 
+            <p class="lead">Disponibilidade</p>
+            <div class="mb-3 mt-3">
+                <% if(isEditing){%>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <% if(produto.ativo == "ativo"){ %>
+                                    <input type="radio" class="form-check-input" name="ativo" value="ativo" id="ativo" checked>
+                                    <% } else {%>
+                                    <input type="radio" class="form-check-input" name="ativo" value="ativo" id="ativo">
+                                    <% } %>
+                                <label for="ativo" class="form-check-label">Ativo</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <% if(produto.ativo == "inativo"){ %>
+                                    <input type="radio" class="form-check-input" name="ativo" value="inativo" id="inativo" checked>
+                                    <% } else {%>
+                                    <input type="radio" class="form-check-input" name="ativo" value="inativo" id="inativo">
+                                    <% } %>
+                                <label for="inativo" class="form-check-label">Inativo</label>
+                            </div>
+                        </div>
+                    </div>
+                <%} else{%>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <input type="radio" class="form-check-input" name="ativo" value="ativo" id="ativo">
+                                <label for="ativo" class="form-check-label">Ativo</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <input type="radio" class="form-check-input" name="ativo" value="inativo" id="inativo">
+                                <label for="inativo" class="form-check-label">Inativo</label>
+                            </div>
+                        </div>
+                    </div>
+                <%}%>
+            </div>
+
             <div class="mb-3 mt-3">
                 <label for="finca" class="form-label">Finca</label>
                 <div class="row">
@@ -287,6 +330,23 @@
                             <input type="number" step=".01" id="preco" class="form-control" name="preco" value="<%=produto.valor%>">
                         <% } else{%> 
                             <input type="number" step=".01" id="preco" class="form-control" name="preco">
+                        <% } %>
+                        <%if(errors.preco){%>
+                            <br>
+                            <span id="error"><%=errors.preco.msg%></span>
+                        <%}%>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label for="estoque" class="form-label">Estoque</label>
+                <div class="row">
+                    <div class="form-group col-lg-4">
+                        <%if(isEditing){%>
+                            <input type="number" step="1" id="estoque" class="form-control" name="estoque" value="<%=produto.estoque%>">
+                        <% } else{%> 
+                            <input type="number" step="1" id="estoque" class="form-control" name="estoque">
                         <% } %>
                         <%if(errors.preco){%>
                             <br>
