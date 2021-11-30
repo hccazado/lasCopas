@@ -1,318 +1,387 @@
 <%- include("./partials/headerAdm")%>
 
 <content>
-    <div class="wrapper">
+    <!--<div class="wrapper">-->
+        <div class="container-sm container-cliente mb-5 mt-5">
         <%if(isEditing){%>
-            <form action="/gerenciar/produtos/editar/<%=id%>" method="POST" enctype="multipart/form-data">
+            <form class="box rounded" action="/gerenciar/produtos/editar/<%=id%>" method="POST" enctype="multipart/form-data">
         <% } else {%>
-            <form action="/gerenciar/produtos/cadastro" method="POST" enctype="multipart/form-data">
+            <form class="box rounded" action="/gerenciar/produtos/cadastro" method="POST" enctype="multipart/form-data">
         <% } %>
-            <div class="container_formulario">
-                <div class="produto">
-                    <h5>Uvas</h5>
-                    <div class="container_uvas">
-                        <div class="grupo_uvas">
-                            <% if(isEditing){%>
-                                <label for="syrrah">
-                                    <% if(produto.uvas.indexOf(1)>=0){ %>
-                                    <input type="checkbox" id="syrrah" name="uvas" value="1" checked>
-                                    <% } else {%>
-                                        <input type="checkbox" id="syrrah" name="uvas" value="1">
-                                    <% } %>
-                                    Syrrah
-                                </label>
-                            <label for="malbec">
-                                <% if(produto.uvas.indexOf(2)>=0){ %>
-                                    <input type="checkbox" id="malbec" name="uvas" value= "2" checked>
+       
+            <p class="lead">Uvas</p>
+            <div class="mb-3 mt-3">
+                <% if(isEditing){%>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                            <% if(produto.uvas.indexOf(1)>=0){ %>
+                                <input type="checkbox" class="form-check-input" name="uvas" value="1" id="syrrah" checked>
                                 <% } else {%>
-                                       <input type="checkbox" id="malbec" name="uvas" value= "2">
+                                    <input type="checkbox" class="form-check-input" name="uvas" value="1" id="syrrah">
                                 <% } %>
-                                Malbec
-                            </label>
-                            <label for="tempr">
-                                <% if(produto.uvas.indexOf(3)>=0){ %>
-                                    <input type="checkbox" id="tempr" name="uvas" value="3" checked>
-                                <% } else {%>
-                                       <input type="checkbox" id="tempr" name="uvas" value="3">
-                                <% } %>
-                                Tempranillo
-                            </label>
-                            <%} else{%>
-                                <label for="syrrah">
-                                    <input type="checkbox" id="syrrah" name="uvas" value= "1">
-                                    Syrrah
-                                </label>
-                                <label for="malbec">
-                                    <input type="checkbox" id="malbec" name="uvas" value= "2">
-                                    Malbec
-                                </label>
-                                <label for="tempr">
-                                    <input type="checkbox" id="tempr" name="uvas" value="3">
-                                    Tempranillo
-                                </label>
-                            <%}%>
-                        </div>
-                        <div class="grupo_uvas">
-                            <% if(isEditing){%>
-                                <label for="suavignon">
-                                    <% if(produto.uvas.indexOf(4)>=0){ %>
-                                        <input type="checkbox" id="suavignon" name="uvas" value="4" checked>
-                                    <% } else {%>
-                                        <input type="checkbox" id="suavignon" name="uvas" value="4">
-                                    <% } %>
-                                    Suavignon
-                                </label>
-                                <label for="pinot">
-                                    <% if(produto.uvas.indexOf(5)>=0){ %>
-                                        <input type="checkbox" id="pinot" name="uvas" value="5" checked>
-                                    <% } else {%>
-                                        <input type="checkbox" id="pinot" name="uvas" value="5">
-                                    <% } %>
-                                    Pinot Noir
-                                </label>
-                                <label for="merlot">
-                                    <% if(produto.uvas.indexOf(6)>=0){ %>
-                                        <input type="checkbox" id="merlot" name="uvas" value="6" checked>
-                                    <% } else {%>
-                                        <input type="checkbox" id="merlot" name="uvas" value="6">
-                                    <% } %>
-                                    Merlot
-                                </label>
-                            <%} else{%>
-                                <label for="suavignon">
-                                    <input type="checkbox" id="suavignon" name="uvas" value="4">
-                                    Suavignon
-                                </label>
-                                <label for="pinot">
-                                    <input type="checkbox" id="pinot" name="uvas" value="5">
-                                    Pinot Noir
-                                </label>
-                                <label for="merlot">
-                                    <input type="checkbox" id="merlot" name="uvas" value="6">
-                                    Merlot
-                                </label>
-                            <%}%>
-                        </div>
-                    </div>
-                    
-                    <h5>Colheita</h5>
-                    <div class="container_uvas">
-                        <div class="grupo_uvas">
-                            <% if(isEditing){%>
-                                <label for="temprana">
-                                    <% if(produto.cosecha == "temprana"){ %>
-                                        <input type="radio" id="temprana" name="cosecha" value="temprana" checked>
-                                    <% } else { %>
-                                        <input type="radio" id="temprana" name="cosecha" value="temprana">
-                                    <% } %>
-                                    Temprana
-                                </label>
-                                </div>
-                                <div class="grupo_uvas">
-                                <label for="tardia">
-                                    <% if(produto.cosecha == "tardia"){ %>
-                                        <input type="radio" id="tardia" name="cosecha" value="tardia" checked>
-                                    <% } else { %>
-                                        <input type="radio" id="tardia" name="cosecha" value="tardia">
-                                    <% } %>
-                                    Tardia
-                                </label>
-                            <%} else{%>
-                                <label for="temprana">
-                                    <input type="radio" id="temprana" name="cosecha" value="temprana">
-                                    Temprana
-                                </label>
-                                </div>
-                                <div class="grupo_uvas">
-                                <label for="tardia">
-                                    <input type="radio" id="tardia" name="cosecha" value="tardia" checked>
-                                    Tardia
-                                </label>
-                            <%}%>
-                        </div>
-                    </div>
-                    <h5>Tipo</h5>
-                    <div class="container_uvas">
-                        <div class="grupo_uvas">
-                            <% if(isEditing){%>
-                                <label for="tinto">
-                                    <% if(produto.tipo == "tinto"){ %>
-                                        <input type="radio" id="tinto" name="tipo" value="tinto" checked>
-                                    <% } else { %>
-                                        <input type="radio" id="tinto" name="tipo" value="tinto">
-                                    <% } %>
-                                    Tinto
-                                </label>
-                                <label for="branco">
-                                    <% if(produto.tipo == "branco"){ %>
-                                        <input type="radio" id="branco" name="tipo" value="branco" checked>
-                                    <% } else { %>
-                                        <input type="radio" id="branco" name="tipo" value="branco">
-                                    <% } %>
-                                    Branco
-                                </label>
-                            <%} else{%>
-                                <label for="tinto">
-                                    <input type="radio" id="tinto" name="tipo" value="tinto" checked>
-                                    Tinto
-                                </label>
-                                <label for="branco">
-                                    <input type="radio" id="branco" name="tipo" value="branco">
-                                    Branco
-                                </label>
-                            <%}%>
-                        </div>
-                        <div class="grupo_uvas">
-                            <% if(isEditing){%>
-                                <label for="rose">
-                                    <% if(produto.tipo == "rose"){ %>
-                                        <input type="radio" id="rose" name="tipo" value="rose" checked>
-                                    <% } else { %>
-                                        <input type="radio" id="rose" name="tipo" value="rose">
-                                    <% } %>
-                                    Rosé
-                                </label>
-                                <label for="frisante">
-                                    <% if(produto.tipo == "frisante"){ %>
-                                        <input type="radio" id="frisante" name="tipo" value="frisante" checked>
-                                    <% } else { %>
-                                        <input type="radio" id="frisante" name="tipo" value="frisante">
-                                    <% } %>
-                                    Frisante
-                                </label>
-                            <%} else{%>
-                                <label for="rose">
-                                    <input type="radio" id="rose" name="tipo" value="rose">
-                                    Rosé
-                                </label>
-                                <label for="frisante">
-                                    <input type="radio" id="frisante" name="tipo" value="frisante">
-                                    Frisante
-                                </label>
-                            <%}%>
-                        </div>
-                    </div>
-                    <div class="flex_column">
-                        <div>
-                            <label for="finca">Finca</label><br>
-                            <%if(isEditing){%>
-                            <input type="text" id="finca" name="finca" placeholder="Informe bodega" value="<%=produto.finca%>">
-                            <% } else{%>
-                            <input type="text" id="finca" name="finca" placeholder="Informe bodega">
-                                <% } %>
-                            <%if(errors.finca){%>
-                                <br>
-                                <span id="error"><%=errors.finca.msg%></span>
-                            <%}%>
-                        </div>
-                        <div>
-                            <label for="ano">Ano</label><br>
-                            <%if(isEditing){%>
-                                <input type="number" id="ano" name="ano" min="1900" placeholder="ano de produção" value="<%=produto.ano%>">
-                            <% } else{%> 
-                                <input type="number" id="ano" name="ano" min="1900" placeholder="ano de produção">
-                            <% } %>
-                            <%if(errors.ano){%>
-                                <br>
-                                <span id="error"><%=errors.ano.msg%></span>
-                            <%}%>
-                        </div>
-                        <div>
-                            <label for="preco">Preço</label><br>
-                            <%if(isEditing){%>
-                                <input type="number" step=".01" id="preco" name="preco" value="<%=produto.valor%>">
-                            <% } else{%> 
-                                <input type="number" step=".01" id="preco" name="preco">
-                            <% } %>
-                            <%if(errors.preco){%>
-                                <br>
-                                <span id="error"><%=errors.preco.msg%></span>
-                            <%}%>
+                                <label for="syrrah" class="form-check-label">Syrrah</label>
                             </div>
-                        <div>
-                        <label for="origem">Selecione País de Origem</label>
-                        <%if(isEditing){%>
-                        <select id="origem" name="origem" required>
-                            <option disabled selected>Selecione Origem</option>
-                            <% if(produto.origem=="Argentina"){ %>
-                                <option value="Argentina" selected>Argentina</option>
-                            <% } else{ %>
-                                <option value="Argentina">Argentina</option>
-                            <% } %>
-                            <% if(produto.origem=="Brasil"){ %>
-                                <option value="Brasil" selected>Brasil</option>
-                            <% } else {%>
-                                <option value="Brasil">Brasil</option>
-                            <% } %>
-                            <% if(produto.origem=="Chile") {%>
-                                <option value="Chile" selected>Chile</option>
-                            <% } else {%>
-                                <option value="Chile">Chile</option>
-                            <% } %>
-                            <% if(produto.origem=="Espanha") {%>
-                                <option value="Espanha" selected>Espanha</option>
-                            <% } else {%>
-                                <option value="Espanha">Espanha</option>
-                            <% } %>
-                            <% if(produto.origem=="França") {%>
-                                <option value="França" selected>França</option>
-                            <% } else {%>
-                                <option value="França">França</option>
-                            <% } %>
-                            <% if(produto.origem=="Itália") {%>
-                                <option value="Itália" selected>Itália</option>
-                            <% } else {%>
-                                <option value="Itália">Itália</option>
-                            <% } %>
-                            <% if(produto.origem=="Portugal") {%>
-                                <option value="Portugal" selected>Portugal</option>
-                            <% } else {%>
-                                <option value="Portugal">Portugal</option>
-                            <% } %>
-                        </select>
-                        <% } else{%>
-                            <select id="origem" name="origem">
-                            <option disabled selected>Selecione Origem</option>
-                            <option value="Argentina">Argentina</option>
-                            <option value="Brasil">Brasil</option>
-                            <option value="Chile">Chile</option>
-                            <option value="Espanha">Espanha</option>
-                            <option value="França">França</option>
-                            <option value="Itália">Itália</option>
-                            <option value="Portugal">Portugal</option>
-                        </select>
-                        <% } %>
-                        <%if(errors.origem){%>
-                                <br>
-                                <span id="error"><%=errors.origem.msg%></span>
-                        <%}%>
-                        </div> 
-                        <div>
-                            <label for="rotulo">Selecionar Rotulo</label>
-                            <%if(isEditing){%>
-                            <input type="file" id="rotulo" name="rotulo" accept=".jpg, .jpeg, .png, .webp" value="<%=produto.rotulo%>">
-                            <%} else{ %>
-                                <input type="file" id="rotulo" name="rotulo" accept=".jpg, .jpeg, .png, .webp">
-                            <%}%>
                         </div>
-                        <div>
-                            <%if(isEditing){%>
-                                <label for="descricao">Descrição</label>
-                                <br>
-                                <textarea name="descricao" id="descricao"><%=produto.descricao%></textarea>
-                            <%} else {%>
-                                <label for="descricao">Descrição</label>
-                                <br>
-                                <textarea name="descricao" id="descricao"></textarea>
-                            <% } %> 
+                        <div class="col">
+                            <div class="mb-3">
+                            <% if(produto.uvas.indexOf(2)>=0){ %>
+                                <input type="checkbox" class="form-check-input" name="uvas" value="2" id="malbec" checked>
+                                <% } else {%>
+                                    <input type="checkbox" class="form-check-input" name="uvas" value="2" id="malbec">
+                                <% } %>
+                                <label for="malbec" class="form-check-label">Malbec</label>
+                            </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <% if(produto.uvas.indexOf(3)>=0){ %>
+                                    <input type="checkbox" class="form-check-input" name="uvas" value="3" id="temp3" checked>
+                                    <% } else {%>
+                                        <input type="checkbox" class="form-check-input" name="uvas" value="3" id="tempr">
+                                    <% } %>
+                                    <label for="tempr" class="form-check-label">Tempranillo</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <% if(produto.uvas.indexOf(4)>=0){ %>
+                                    <input type="checkbox" class="form-check-input" name="uvas" value="4" id="suavignon" checked>
+                                    <% } else {%>
+                                        <input type="checkbox" class="form-check-input" name="uvas" value="4" id="suavignon">
+                                    <% } %>
+                                <label for="suavignon" class="form-check-label">Suavignon</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <% if(produto.uvas.indexOf(5)>=0){ %>
+                                    <input type="checkbox" class="form-check-input" name="uvas" value="5" id="pinot" checked>
+                                    <% } else {%>
+                                        <input type="checkbox" class="form-check-input" name="uvas" value="5" id="pinot">
+                                    <% } %>
+                                <label for="pinot" class="form-check-label">Pinot-Noir</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <% if(produto.uvas.indexOf(6)>=0){ %>
+                                    <input type="checkbox" class="form-check-input" name="uvas" value="6" id="merlot" checked>
+                                    <% } else {%>
+                                        <input type="checkbox" class="form-check-input" name="uvas" value="6" id="merlot">
+                                    <% } %>
+                                <label for="merlot" class="form-check-label">Merlot</label>
+                            </div>
+                        </div>
+                    </div>
+                <%} else{%>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <input type="checkbox" class="form-check-input" name="uvas" value="1" id="syrrah">
+                                <label for="syrrah" class="form-check-label">Syrrah</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <input type="checkbox" class="form-check-input" name="uvas" value="2" id="malbec">
+                                <label for="malbec" class="form-check-label">Malbec</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <input type="checkbox" class="form-check-input" name="uvas" value="3" id="tempr">
+                                <label for="tempr" class="form-check-label">Tempranillo</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <input type="checkbox" class="form-check-input" name="uvas" value="4" id="suavignon">
+                                <label for="suavignon" class="form-check-label">Suavignon</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <input type="checkbox" class="form-check-input" name="uvas" value="5" id="pinot">
+                                <label for="pinot" class="form-check-label">Pinot-Noir</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <input type="checkbox" class="form-check-input" name="uvas" value="6" id="merlot">
+                                <label for="merlot" class="form-check-label">Merlot</label>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+
+            <p class="lead">Colheita</p>
+            <div class="mb-3 mt-3">
+                <% if(isEditing){%>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <% if(produto.cosecha == "temprana"){ %>
+                                    <input type="radio" class="form-check-input" name="cosecha" value="temprana" id="temprana" checked>
+                                    <% } else {%>
+                                    <input type="radio" class="form-check-input" name="cosecha" value="temprana" id="temprana">
+                                    <% } %>
+                                <label for="temprana" class="form-check-label">Temprana</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <% if(produto.cosecha == "tardia"){ %>
+                                    <input type="radio" class="form-check-input" name="cosecha" value="tardia" id="tardia" checked>
+                                    <% } else {%>
+                                    <input type="radio" class="form-check-input" name="cosecha" value="tardia" id="tardia">
+                                    <% } %>
+                                <label for="tardia" class="form-check-label">Tardia</label>
+                            </div>
+                        </div>
+                    </div>
+                <%} else{%>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <input type="radio" class="form-check-input" name="cosecha" value="temprana" id="temprana">
+                                <label for="temprana" class="form-check-label">Temprana</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <input type="radio" class="form-check-input" name="cosecha" value="tardia" id="tardia">
+                                <label for="tardia" class="form-check-label">Tardia</label>
+                            </div>
+                        </div>
+                    </div>
+                <%}%>
+            </div>
+            <p class="lead">Tipo</p>
+            <div class="mb-3 mt-3">
+                <% if(isEditing){%>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <% if(produto.tipo == "tinto"){ %>
+                                    <input type="radio" class="form-check-input" name="tipo" value="tinto" id="tinto" checked>
+                                <% } else {%>
+                                    <input type="radio" class="form-check-input" name="tipo" value="tinto" id="tinto">
+                                <% } %>
+                                <label for="tinto" class="form-check-label">Tinto</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <% if(produto.tipo == "branco"){ %>
+                                    <input type="radio" class="form-check-input" name="tipo" value="branco" id="branco" checked>
+                                <% } else {%>
+                                    <input type="radio" class="form-check-input" name="tipo" value="branco" id="branco">
+                                <% } %>
+                                <label for="branco" class="form-check-label">Branco</label>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <% if(produto.tipo == "rosé"){ %>
+                                    <input type="radio" class="form-check-input" name="tipo" value="rosé" id="rose" checked>
+                                <% } else {%>
+                                    <input type="radio" class="form-check-input" name="tipo" value="rosé" id="rose">
+                                <% } %>
+                                <label for="rose" class="form-check-label">Rosé</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <% if(produto.tipo == "frisante"){ %>
+                                    <input type="radio" class="form-check-input" name="tipo" value="frisante" id="frisante" checked>
+                                <% } else {%>
+                                    <input type="radio" class="form-check-input" name="tipo" value="frisante" id="frisante">
+                                <% } %>
+                                <label for="frisante" class="form-check-label">Frisante</label>
+                            </div>
+                        </div>
+                    </div>     
+                <%} else {%>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <input type="radio" class="form-check-input" name="tipo" value="tinto" id="tinto">
+                                <label for="tinto" class="form-check-label">Tinto</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <input type="radio" class="form-check-input" name="tipo" value="branco" id="branco">
+                                <label for="branco" class="form-check-label">Branco</label>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <input type="radio" class="form-check-input" name="tipo" value="rose" id="rose">
+                                <label for="rose" class="form-check-label">Rosé</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <input type="radio" class="form-check-input" name="tipo" value="frisante" id="frisante">
+                                <label for="frisante" class="form-check-label">Frisante</label>
+                            </div>
+                        </div>
+                    </div> 
+                <%}%>
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label for="finca" class="form-label">Finca</label>
+                <div class="row">
+                    <div class="form-group col-lg-4">
+                        <%if(isEditing){%>
+                        <input type="text" id="finca" class="form-control" name="finca" placeholder="Informe bodega" value="<%=produto.finca%>">
+                        <% } else{%>
+                        <input type="text" id="finca" class="form-control" name="finca" placeholder="Informe bodega">
+                            <% } %>
+                        <%if(errors.finca){%>
+                            <br>
+                            <span id="error"><%=errors.finca.msg%></span>
+                        <%}%>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label for="ano" class="form-label">Ano</label>
+                <div class="row">
+                    <div class="form-group col-lg-4">
+                        <%if(isEditing){%>
+                            <input type="number" id="ano" class="form-control" name="ano" min="1900" placeholder="ano de produção" value="<%=produto.ano%>">
+                        <% } else{%> 
+                            <input type="number" id="ano" class="form-control" name="ano" min="1900" placeholder="ano de produção">
+                        <% } %>
+                        <%if(errors.ano){%>
+                            <br>
+                            <span id="error"><%=errors.ano.msg%></span>
+                        <%}%>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label for="preco" class="form-label">Preço</label>
+                <div class="row">
+                    <div class="form-group col-lg-4">
+                        <%if(isEditing){%>
+                            <input type="number" step=".01" id="preco" class="form-control" name="preco" value="<%=produto.valor%>">
+                        <% } else{%> 
+                            <input type="number" step=".01" id="preco" class="form-control" name="preco">
+                        <% } %>
+                        <%if(errors.preco){%>
+                            <br>
+                            <span id="error"><%=errors.preco.msg%></span>
+                        <%}%>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3 mt-3">
+            <label  class="form-label" for="origem">País de Origem</label>
+            <div class="row">
+                <div class="form-group col-lg-4">
+                    <%if(isEditing){%>
+                    <select id="origem" class="form-select" name="origem" required>
+                        <option disabled selected>--Origem--</option>
+                        <% if(produto.origem=="Argentina"){ %>
+                            <option value="Argentina" selected>Argentina</option>
+                        <% } else{ %>
+                            <option value="Argentina">Argentina</option>
+                        <% } %>
+                        <% if(produto.origem=="Brasil"){ %>
+                            <option value="Brasil" selected>Brasil</option>
+                        <% } else {%>
+                            <option value="Brasil">Brasil</option>
+                        <% } %>
+                        <% if(produto.origem=="Chile") {%>
+                            <option value="Chile" selected>Chile</option>
+                        <% } else {%>
+                            <option value="Chile">Chile</option>
+                        <% } %>
+                        <% if(produto.origem=="Espanha") {%>
+                            <option value="Espanha" selected>Espanha</option>
+                        <% } else {%>
+                            <option value="Espanha">Espanha</option>
+                        <% } %>
+                        <% if(produto.origem=="França") {%>
+                            <option value="França" selected>França</option>
+                        <% } else {%>
+                            <option value="França">França</option>
+                        <% } %>
+                        <% if(produto.origem=="Itália") {%>
+                            <option value="Itália" selected>Itália</option>
+                        <% } else {%>
+                            <option value="Itália">Itália</option>
+                        <% } %>
+                        <% if(produto.origem=="Portugal") {%>
+                            <option value="Portugal" selected>Portugal</option>
+                        <% } else {%>
+                            <option value="Portugal">Portugal</option>
+                        <% } %>
+                    </select>
+                    <% } else{%>
+                        <select id="origem" class="form-select" name="origem">
+                        <option disabled selected>--Origem--</option>
+                        <option value="Argentina">Argentina</option>
+                        <option value="Brasil">Brasil</option>
+                        <option value="Chile">Chile</option>
+                        <option value="Espanha">Espanha</option>
+                        <option value="França">França</option>
+                        <option value="Itália">Itália</option>
+                        <option value="Portugal">Portugal</option>
+                    </select>
+                    <% } %>
+                    <%if(errors.origem){%>
+                            <br>
+                            <span id="error"><%=errors.origem.msg%></span>
+                    <%}%>
+                    </div>
+                </div>
+            </div> 
+            <div class="mb-3 mt-3">
+                <div class="form-group">
+                <label for="rotulo" class="form-label" >Selecionar Rotulo</label>
+                <%if(isEditing){%>
+                <input type="file" id="rotulo" class="form-control" name="rotulo" accept=".jpg, .jpeg, .png, .webp" value="<%=produto.rotulo%>">
+                <%} else{ %>
+                    <input type="file" id="rotulo" class="form-control-file" name="rotulo" accept=".jpg, .jpeg, .png, .webp">
+                <%}%>
+                </div>
+            </div>
+            <div class="mb-3 mt-3 form-group">
+                <label class="form-label" for="descricao">Descrição</label>
+                <%if(isEditing){%>
+                    <textarea class="form-control"  name="descricao" id="descricao"><%=produto.descricao%></textarea>
+                <%} else {%>
+                    <textarea class="form-control"  name="descricao" id="descricao"></textarea>
+                <% } %> 
+            </div>
             <%if(isEditing){%>
-                <button class="button" type="submit" value="Editar">Editar</button>
+                <button class="btn btn-primary  mb-3" type="submit" value="Editar">Editar</button>
             <%} else {%>
-                <button class="button" type="submit" value="Cadastrar">Cadastrar</button>
+                <button class="btn btn-primary  mb-3" type="submit" value="Cadastrar">Cadastrar</button>
             <%}%>
-            </div>    
+            <!--</div>-->    
         </div>
         </form>
     </div>

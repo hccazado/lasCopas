@@ -5,7 +5,7 @@
         <% if(isEditing == false) {%>
             <form class="box rounded" action="/clientes/cadastrar" method="POST">
         <% } else{ %>
-            <form action="/clientes/editar/<%=id%>" method="POST">
+            <form class="box rounded" action="/clientes/editar/<%=id%>" method="POST">
                 <% } %>
             <!--<div class="container_formulario">-->
             <% if(exists == true){ %>
@@ -39,7 +39,7 @@
                 <% } %>
                 
             </div>
-            <div class="mb-3 mt-3row">
+            <div class="mb-3 mt-3 row">
                 <label class="form-label" for="nasc">Nascimento</label>
                 <div class="row">
                     <div class="form-group col-lg-4">
