@@ -8,7 +8,7 @@ module.exports = (sequelize, DataType) =>{
         nome_uva:DataType.STRING(20),
 
     },{
-        tablename: 'Uvas',
+        tableName: 'Uvas',
         timestamps: false
     });
     

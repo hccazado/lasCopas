@@ -19,7 +19,7 @@ module.exports = (sequelize, DataType) =>{
         documento:DataType.STRING,
         id_login: DataType.SMALLINT
     },{
-        tablename: 'Clientes',
+        tableName: 'Clientes',
         timestamps:false
     });
     

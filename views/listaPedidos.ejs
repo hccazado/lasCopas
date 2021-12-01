@@ -3,26 +3,35 @@
         <div class="wrapper">
             <div class="container_lista">
                 <h5>Administração Pedidos</h5>
-                <div class="form-floating busca_cliente">
-                    <input type="text" class="form-control" id="buscaPedido" placeholder="Nro pedido">
-                    <label for="buscaPedido">Buscar pedido</label>
-                </div>
-                <div  class="table-responsive">
-                    <table class="table border border-success table-bordered caption-top">
+                <div class="row mt-5">
+                    <div class="col">
+                        <a class="btn btn-primary text-mutted" role="button" id="btBck">Voltar</a>
+                    </div>
+                    <div class="col">               
+                        <div class="form-floating busca_cliente">
+                            <input type="text" class="form-control" id="buscaProduto" placeholder="Nro. Produto ou doc. Cliente ">
+                            <label for="buscaProduto">Buscar Pedido</label>
+                        </div>
+                    </div>
+                </div> 
+                <div  class="table-responsive mt-3">
+                    <table class="table border-mutted table-bordered table-hover caption-bottom">
                         <caption>Pedidos Confirmados</caption>
                         <thead>
                             <tr>
-                                <td>Nro.</td>
-                                <td>Cliente</td>
-                                <td>CPF/CNPJ</td>
+                                <td class="align-middle">Nro.</td>
+                                <td class="align-middle">Cliente</td>
+                                <td class="align-middle">Endereço</td>
+                                <td class="align-middle">Data</td>
                             </tr>
                         </thead>
                         <tbody>
                             <%for(let i=0; i<pedidos.length;i++){%>
                             <tr>
-                                <td><a class="link_tabela" href="/gerenciar/pedidos/:<%=pedidos[i].nro%>"><%=pedidos[i].nro%></a></td>
-                                <td><a class="link_tabela" href="/gerenciar/pedidos/:<%=pedidos[i].nro%>"><%=pedidos[i].nome%></a></td>
-                                <td><a class="link_tabela" href="/gerenciar/pedidos/:<%=pedidos[i].nro%>"><%=pedidos[i].doc%></a></td>
+                                <td class="align-middle"><a class="link_tabela" href="/gerenciar/pedidos/:<%=pedidos[i].nro%>"><%=pedidos[i].nro%></a></td>
+                                <td class="align-middle"><a class="link_tabela" href="/gerenciar/pedidos/:<%=pedidos[i].nro%>"><%=pedidos[i].cliente%></a></td>
+                                <td class="align-middle"><a class="link_tabela" href="/gerenciar/pedidos/:<%=pedidos[i].nro%>"><%=pedidos[i].endereco%></a></td>
+                                <td class="align-middle"><a class="link_tabela" href="/gerenciar/pedidos/:<%=pedidos[i].nro%>"><%=pedidos[i].data%></a></td>
                             </tr>
                             <% } %>
                         </tbody>
@@ -31,4 +40,5 @@
             </div>
         </div>
     </content>
+    <script src="/javascripts/buscaPedido.js"></script>
 <%-include('./partials/footerAdm')%>

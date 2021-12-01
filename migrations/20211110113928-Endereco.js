@@ -12,6 +12,7 @@ module.exports = {
     endereco: Sequelize.DataTypes.STRING(100),
     complemento: Sequelize.DataTypes.STRING(50),
     numero: Sequelize.DataTypes.CHAR(5),
+    bairro: Sequelize.DataTypes.STRING(45),
     cidade: Sequelize.DataTypes.STRING(45),
     uf: Sequelize.DataTypes.STRING(2),
     id_cliente: {

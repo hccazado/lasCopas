@@ -49,14 +49,20 @@ header .navbar.navbar-expand-lg.navbar-light.bg-light{
 header .navbar.navbar-expand-lg.navbar-light.bg-light a.nav-link.links-menu{
     color:#fff
 }
+
+/* change navbar-toggler inside lines color (stroke) */
+.navbar-light span.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='yellow' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    color: white;
+  }
 /*alterando clase do CSS ->Para afastar items das bordas da tela*/
-header .container-fluid{
+/*header .container-fluid{
     width:90% !important;
     
-}
+}*/
 
 header .link_logo{
-    color: #000;
+    color: #ccc;
     font-family: 'Open Sans', sans-serif;
     margin:10px;
     text-decoration: none;
@@ -67,28 +73,27 @@ header .link_logo:hover{
 }
 
 header .link_logo span{
-    color:darkred;
+    /*color:darkred;*/
+    color: #D99C52;
 }
 
 header .links-menu{
-    color: rgba(200,170,180,0.6);
+ 
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;
-    margin-right: 15px;
+    margin-left: 15px;
     transition: all 0.5s;
 }
 
 header .links-menu:hover{
-    /*background-color: cadetblue;*/
-    /*background-color: #D99C52;*/
     background-color: rgba(220,60,60,0.8);
     border-radius: 5px;
-    color:white !important;
+    
+    color: #D99C52 !important;
 }
 
 header .links-menu:active{
-    /*background-color: darkblue;*/
-    background-color: darkred;
+    
     color:white;
 }
 
@@ -109,32 +114,8 @@ header .wrapper h1 span{
     top:20px;
 }
 
-header .wrapper nav{
-    display: flex;
-}
 
-header .wrapper nav a{
-    /*color: #676767;*/
-    color: #968FA6;
-    padding: 15px;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: 600;
-    margin-right: 15px;
-    transition: all 0.5s;
-}
 
-header .wrapper nav a:hover{
-    /*background-color: cadetblue;*/
-    background-color: #D99C52;
-    color:white;
-}
-
-header .wrapper nav a:active{
-    /*background-color: darkblue;*/
-    background-color: #7ED9C8;
-    color:white;
-}
 
 content .wrapper{
     display: flex;
@@ -382,10 +363,6 @@ footer .wrapper .chat img{
     margin-top: 10px;
 }
 
-/*#btBck {
-    width: 40px;
-    cursor: pointer;
-}*/
 
 
 
@@ -410,14 +387,20 @@ footer .wrapper .chat img{
 @media (max-width: 420px){
     
 }
-@media screen and (max-width: 600px){
+@media screen and (max-width: 900px){
     
     header .container-fluid{
         width:100% !important;
     }
 
     header .links-menu{
-        margin-left: 15px;
+        background-color: rgb(91,3,133);
+        margin-left: -12px;
+        width: 100vw;
+    }
+
+    header a.nav-link.links-menu{
+        padding-left: 25px;
     }
 
     .container_banner img{

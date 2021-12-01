@@ -1,6 +1,7 @@
 const session = require("express-session");
 const { Result } = require("express-validator");
-const { locals } = require("../app");
+
+const moment = require("moment");
 
 const title = "lasCopas - Checkout";
 
@@ -9,6 +10,7 @@ const Op = Sequelize.Op;
 
 
 const controller = {
+
     carrinho: (req, res, next) => {
         //varifica se ja foi criado o atributo carrinho na session
         if (!req.session.carrinho) {
@@ -74,6 +76,7 @@ const controller = {
         })
 
     },
+
     pagar: (req, res, next) => {
         if(!req.session.user){
             return res.render("login",{
@@ -84,11 +87,11 @@ const controller = {
                 old: []
             });
         }
-        
         res.render("pagamento", {
             title: title
         })
     },
+
     confirmar: async (req, res, next) =>{
         let {idCliente} = req.session.user;
 
@@ -117,7 +120,8 @@ const controller = {
 
         let pedido = await Pedido.create({
             id_endereco: idEndereco,
-            id_cliente: idCliente
+            id_cliente: idCliente,
+            data: moment().format('L')
         }).then(resultado =>{
             for(item of carrinho){
                 PedidoProduto.create({
@@ -132,9 +136,7 @@ const controller = {
             }
         }).catch(err =>{
             console.log("Algo deu errado!\n"+err)
-        })
-
-       
+        }) 
     }
 }
 

@@ -19,6 +19,7 @@ router.get("/", controller.index);
 router.get("/clientes", controller.listarClientes);
 router.get("/clientes/buscar/:valor", controller.buscarClientes);
 router.get("/produtos/buscar/:valor", controller.buscarProdutos);
+router.get("/pedidos/buscar/:valor", controller.buscarPedidos);
 
 
 router.get("/pedidos", controller.listarPedidos);

@@ -81,6 +81,7 @@ const controller = {
                         endereco: cadastro.end1,
                         complemento: cadastro.complemento,
                         numero: cadastro.num,
+                        bairro: cadastro.bairro,
                         cidade: cadastro.cidade,
                         uf: cadastro.uf,
                         id_cliente: usuario.dataValues.id_cliente
@@ -177,6 +178,7 @@ const controller = {
                 endereco: cadastro.end1,
                 numero: cadastro.num,
                 complemento: cadastro.complemento,
+                bairro: cadastro.bairro,
                 cidade: cadastro.cidade,
                 uf: cadastro.uf
             })

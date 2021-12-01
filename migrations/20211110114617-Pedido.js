@@ -25,7 +25,8 @@ module.exports = {
             },
             key: 'id_cliente'
           }
-        }
+        },
+        data: Sequelize.DataTypes.DATEONLY
       }
     );
   },

@@ -10,6 +10,7 @@ module.exports = (sequelize, DataType) =>{
         complemento: DataType.STRING(50),
         numero: DataType.CHAR(5),
         cidade: DataType.STRING(45),
+        bairro: DataType.STRING(45),
         uf: DataType.STRING(2),
         id_cliente: {
             type: DataType.INTEGER.UNSIGNED,
@@ -17,19 +18,15 @@ module.exports = (sequelize, DataType) =>{
             referencesKey: 'id_cliente'
         }
     },{
-        tablename: 'Enderecos',
+        tableName: 'Enderecos',
         timestamps:false
     });
 
     Endereco.associate = (Models) =>{
         Endereco.belongsTo(Models.Cliente,{
-            as: 'enderecos',
             foreignKey:'id_cliente'
-        }),
-        Endereco.hasOne(Models.Pedido),{
-            as: "enderecoPedido",
-            foreignKey: "id_endereco"
-        }
+        })
+        
     }
 
     return Endereco;

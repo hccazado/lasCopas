@@ -12,7 +12,7 @@ module.exports = (sequelize, DataType) => {
             referencesKey: 'uva_id'
         }
     },{
-        tablename: "Produtos_Uvas",
+        tableName: "Produtos_Uvas",
         timestamps: false
     });
 
