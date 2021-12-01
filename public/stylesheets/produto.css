@@ -76,6 +76,9 @@
     color: white
 }
 
+.card-img-top{
+    width:300px;
+}
 .wrapper .container_vinhos .cardp{
     border-radius: 5px;
     box-sizing: border-box;
