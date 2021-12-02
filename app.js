@@ -11,6 +11,7 @@ var produtosRouter = require('./routes/produtos');
 var clientesRouter = require("./routes/clientes");
 var checkoutRouter = require('./routes/checkout');
 var gerenciarRouter = require('./routes/gerenciar');
+var apiRouter = require("./routes/api");
 const { application } = require('express');
 
 //import middleware autenticador
@@ -51,6 +52,8 @@ app.use("/clientes", clientesRouter);
 app.use("/checkout", checkoutRouter);
 //app.use('/gerenciar',authenticator.autenticaAdmin, gerenciarRouter);
 app.use('/gerenciar', gerenciarRouter);
+app.use('/API', apiRouter);
+app.use('/images', express.static('images'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

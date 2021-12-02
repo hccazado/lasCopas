@@ -1,280 +1,265 @@
 <%- include("./partials/header")%>
 
 <content>
-    <div class="container-sm container-cliente mb-5 mt-5">
+    <div class="container container-cliente">
         <% if(isEditing == false) {%>
-            <form class="box rounded" action="/clientes/cadastrar" method="POST">
+            <form  action="/clientes/cadastrar" method="POST">
         <% } else{ %>
-            <form class="box rounded" action="/clientes/editar/<%=id%>" method="POST">
+            <form  action="/clientes/editar/<%=id%>" method="POST">
                 <% } %>
             <!--<div class="container_formulario">-->
             <% if(exists == true){ %>
                 <span id="error">O email já está cadastrado</span>
             <% } %>
-            <div class="mb-3">
-                    <label for="nome" class="form-label">Nome</label>
-                <%if(isEditing) { %>
-                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome" value="<%=cliente.nome%>">
-                <% }else if(errors){ %>
-                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome" value="<%=old.nome%>">
-                    <%if (errors.nome){%>
-                    <span id="error"><%=errors.nome.msg%></span>
-                    <%}%>
-                <%}else{ %>
-                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome">
-                <% } %>    
-            </div>
+            <div class="row">
+                <div class="form-group col-md-6 mb-3 mt-3">
+                        <label for="nome" class="form-label">Nome</label>
+                    <%if(isEditing) { %>
+                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome" value="<%=cliente.nome%>">
+                    <% }else if(errors){ %>
+                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome" value="<%=old.nome%>">
+                        <%if (errors.nome){%>
+                        <span id="error"><%=errors.nome.msg%></span>
+                        <%}%>
+                    <%}else{ %>
+                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome">
+                    <% } %>    
+                </div>
 
-            <div class="mb-3 mt-3">
-                <label for="nome" class="form-label">Sobrenome</label>
-                <%if(isEditing) { %>
-                    <input type="text" id="sobrenome" class="form-control" name="sobrenome" placeholder="Digite sobrenome" value="<%=cliente.sobrenome%>">
-                <% }else if(errors){ %>
-                    <input type="text" id="sobrenome" class="form-control" name="sobrenome" placeholder="Digite sobrenome" value="<%=old.sobrenome%>">
-                    <%if (errors.nome){%>
-                    <span id="error"><%=errors.nome.msg%></span>
-                    <%}%>
-                <%}else{ %>
-                    <input type="text" id="sobrenome" class="form-control" name="sobrenome" placeholder="Digite sobrenome">
-                <% } %>
-                
+                <div class="form-group col-md-6 mb-3 mt-3">
+                    <label for="nome" class="form-label">Sobrenome</label>
+                    <%if(isEditing) { %>
+                        <input type="text" id="sobrenome" class="form-control" name="sobrenome" placeholder="Digite sobrenome" value="<%=cliente.sobrenome%>">
+                    <% }else if(errors){ %>
+                        <input type="text" id="sobrenome" class="form-control" name="sobrenome" placeholder="Digite sobrenome" value="<%=old.sobrenome%>">
+                        <%if (errors.nome){%>
+                        <span id="error"><%=errors.nome.msg%></span>
+                        <%}%>
+                    <%}else{ %>
+                        <input type="text" id="sobrenome" class="form-control" name="sobrenome" placeholder="Digite sobrenome">
+                    <% } %>
+                </div>        
             </div>
-            <div class="mb-3 mt-3 row">
-                <label class="form-label" for="nasc">Nascimento</label>
-                <div class="row">
-                    <div class="form-group col-lg-4">
-                        <% if (isEditing){ %>
-                            <input type="date" id="nasc" class="form-control" name="nascimento" value="<%=cliente.dt_nascimento%>" required>
-                        <% } else if(errors){ %>
-                            <input type="date" id="nasc" class="form-control" name="nascimento" value="<%=old.nascimento%>">
-                            <%if (errors.nascimento){%>
-                                <span id="error"><%=errors.nascimento.msg%></span>
-                            <%}%>
-                        <% } else{ %>
-                            <input type="date" id="nasc" class="form-control" name="nascimento" required>
-                        <% } %>
-                    </div>
+            <div class="row">
+                <div class="col-md-6 mb-3 mt-3">
+                    <label class="form-label" for="email">Email</label>
+                    <% if(isEditing){ %>
+                        <input type="email" id="email" class="form-control" name="email" readonly value="<%=cliente.email%>">
+                    <% } else if(errors){ %>
+                        <input type="email" id="email" class="form-control" name="email" placeholder="Informe seu email" value="<%=old.email%>">
+                        <%if (errors.email){%>
+                            <span id="error"><%=errors.email.msg%></span>
+                        <%}%>
+                    <%}else{ %>
+                        <input type="email" id="email" class="form-control" name="email" placeholder="Informe seu email">
+                    <% } %>
+                </div>
+                <div class="col-md-6 mb-3 mt-3">
+                    <label class="form-label" for="nasc">Nascimento</label>
+                    <% if (isEditing){ %>
+                        <input type="date" id="nasc" class="form-control" name="nascimento" value="<%=cliente.dt_nascimento%>" required>
+                    <% } else if(errors){ %>
+                        <input type="date" id="nasc" class="form-control" name="nascimento" value="<%=old.nascimento%>">
+                        <%if (errors.nascimento){%>
+                            <span id="error"><%=errors.nascimento.msg%></span>
+                        <%}%>
+                    <% } else{ %>
+                        <input type="date" id="nasc" class="form-control" name="nascimento" required>
+                    <% } %>
                 </div>
             </div>
-            <div class="mb-3 mt-3">
-                <label class="form-label" for="email">Email</label>
-                <% if(isEditing){ %>
-                    <input type="email" id="email" class="form-control" name="email" readonly value="<%=cliente.email%>">
-                <% } else if(errors){ %>
-                    <input type="email" id="email" class="form-control" name="email" placeholder="Informe seu email" value="<%=old.email%>">
-                    <%if (errors.email){%>
-                        <span id="error"><%=errors.email.msg%></span>
-                    <%}%>
-                <%}else{ %>
-                    <input type="email" id="email" class="form-control" name="email" placeholder="Informe seu email">
-                <% } %>
-            </div>
-            <div class="mb-3 mt-3">
-                <label class="form-label" for="pass">Senha</label>
-                <% if(isEditing){ %>
-                    <input type="password" id="pass" class="form-control" name="password" placeholder="informe sua senha" required>
-                <% }else if(errors){ %>
-                    <input type="password" id="pass" class="form-control" name="password" placeholder="informe sua senha" required>
-                    <%if (errors.password){%>
-                        <span id="error"><%=errors.password.msg%></span>
-                    <%}%>
-                <% } else { %>
-                    <input type="password" id="pass" class="form-control" name="password" placeholder="informe sua senha" required>
-                <% } %>
-            </div>
-            <div class="mb-3 mt-3">
-                <label class="form-label" for="pessoa">Tipo de Pessoa</label>
-                <div class="row">
-                    <div class="form-group col-lg-4">
-                        <% if(isEditing){ %>
-                            <%if(cliente.cadastro == 'fisica'){ %>
-                            <select id="pessoa" class="form-select" name="pessoa">
-                                <option disabled>Selecione</option>
-                                    <option value="fisica" selected>Fisica</option>
-                                    <option value="juridica">Juridica</option>
-                            </select>
-                        <% } else{%>
-                            <select id="pessoa" class="form-select" name="pessoa">
-                                <option disabled>Selecione</option>
-                                    <option value="fisica">Fisica</option>
-                                    <option value="juridica" selected>Juridica</option>
-                            </select>
+            <div class="row">
+                <div class="col-md-6 mb-3 mt-3">
+                    <label class="form-label" for="pass">Senha</label>
+                    <% if(isEditing){ %>
+                        <input type="password" id="pass" class="form-control" name="password" placeholder="informe sua senha" required>
+                    <% }else if(errors){ %>
+                        <input type="password" id="pass" class="form-control" name="password" placeholder="informe sua senha" required>
+                        <%if (errors.password){%>
+                            <span id="error"><%=errors.password.msg%></span>
                         <%}%>
-                        <%}else if(errors){ %>
-                            <select id="pessoa" class="form-select" name="pessoa">
-                                <option disabled selected>Selecione</option>
-                                    <option value="fisica">Fisica</option>
-                                    <option value="juridica">Juridica</option>
-                            </select>
-                            <%if (errors.pessoa){%>
-                                <span id="error"><%=errors.pessoa.msg%></span>
-                            <%}%>
-                        <% } else{ %>
-                            <select id="pessoa" class="form-select" name="pessoa">
-                                <option disabled selected>Selecione</option>
+                    <% } else { %>
+                        <input type="password" id="pass" class="form-control" name="password" placeholder="informe sua senha" required>
+                    <% } %>
+                </div>
+                <div class="col-md-6 mb-3 mt-3">
+                    <label class="form-label" for="confirmarPass">Confirmar Senha</label>
+                    <input type="password" id="confirmarPass" class="form-control" name="confirmaPassword" placeholder="Confirme sua senha" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-3 mt-3">
+                    <label class="form-label" for="pessoa">Tipo de Pessoa</label>
+                    <% if(isEditing){ %>
+                        <%if(cliente.cadastro == 'fisica'){ %>
+                        <select id="pessoa" class="form-select" name="pessoa">
+                            <option disabled>Selecione</option>
+                                <option value="fisica" selected>Fisica</option>
+                                <option value="juridica">Juridica</option>
+                        </select>
+                    <% } else{%>
+                        <select id="pessoa" class="form-select" name="pessoa">
+                            <option disabled>Selecione</option>
+                                <option value="fisica">Fisica</option>
+                                <option value="juridica" selected>Juridica</option>
+                        </select>
+                    <%}%>
+                    <%}else if(errors){ %>
+                        <select id="pessoa" class="form-select" name="pessoa">
+                            <option disabled selected>Selecione</option>
                                 <option value="fisica">Fisica</option>
                                 <option value="juridica">Juridica</option>
-                            </select>
-                        <% } %>
-                    </div>
+                        </select>
+                        <%if (errors.pessoa){%>
+                            <span id="error"><%=errors.pessoa.msg%></span>
+                        <%}%>
+                    <% } else{ %>
+                        <select id="pessoa" class="form-select" name="pessoa">
+                            <option disabled selected>Selecione</option>
+                            <option value="fisica">Fisica</option>
+                            <option value="juridica">Juridica</option>
+                        </select>
+                    <% } %>
                 </div>
-            </div>
-            <div class="mb-3 mt-3">
-                <label class="form-label" for="doc">CPF/CNPJ</label><br>
-                <div class="row">
-                    <div class="form-group col-lg-4">
+                <div class="col-md-4 mb-3 mt-3">
+                    <label class="form-label" for="doc">CPF/CNPJ</label><br>
+                    <% if(isEditing){ %>
+                        <input type="text" id="doc" class="form-control" name="doc" value="<%=cliente.documento%>" required>
+                    <% } else if(errors){ %>
+                        <input type="text" id="doc" class="form-control" name="doc" placeholder="Informe CPF ou CNPJ" required value="<%=old.doc%>">
+                        <%if (errors.doc){%>
+                            <span id="error"><%=errors.doc.msg%></span>
+                        <%}%>
+                    <% }else{ %>
+                        <input type="text" id="doc" class="form-control" name="doc" placeholder="Informe CPF ou CNPJ" required>
+                    <% } %>
+                </div>
+                <div class="col-md-4 mb-3 mt-3">
+                    <label class="form-label" for="cep">CEP</label>
+                    <div class="input-group">
                         <% if(isEditing){ %>
-                            <input type="text" id="doc" class="form-control" name="doc" value="<%=cliente.documento%>" required>
-                        <% } else if(errors){ %>
-                            <input type="text" id="doc" class="form-control" name="doc" placeholder="Informe CPF ou CNPJ" required value="<%=old.doc%>">
-                            <%if (errors.doc){%>
-                                <span id="error"><%=errors.doc.msg%></span>
+                            <input type="text" id="cep" class="form-control" name="cep" value="<%=cliente.cep%>" required >
+                        <%} else if(errors){ %>
+                            <input type="text" id="cep" class="form-control" name="cep" placeholder="Informe seu cep" required  value="<%=old.cep%>">
+                            <%if (errors.cep){%>
+                                <span id="error"><%=errors.cep.msg%></span>
                             <%}%>
-                        <% }else{ %>
-                            <input type="text" id="doc" class="form-control" name="doc" placeholder="Informe CPF ou CNPJ" required>
+                        <%} else{ %>
+                            <input type="text" id="cep" class="form-control" name="cep" placeholder="Informe seu cep" required >
                         <% } %>
+                        <button class="btn btn-outline-secondary" type="button" id="getCEP">Buscar</button>
                     </div>
                 </div>
             </div>
-            <div class="mb-3 mt-3">
-                <label class="form-label" for="cep">CEP</label>
-                <div class="row">
-                    <div class="form-group col-lg-4">
-                        <div class="input-group">
-                            <% if(isEditing){ %>
-                                <input type="text" id="cep" class="form-control" name="cep" value="<%=cliente.cep%>" required >
-                            <%} else if(errors){ %>
-                                <input type="text" id="cep" class="form-control" name="cep" placeholder="Informe seu cep" required  value="<%=old.cep%>">
-                                <%if (errors.cep){%>
-                                    <span id="error"><%=errors.cep.msg%></span>
-                                <%}%>
-                            <%} else{ %>
-                                <input type="text" id="cep" class="form-control" name="cep" placeholder="Informe seu cep" required >
-                            <% } %>
-                            <button class="btn btn-outline-secondary" type="button" id="getCEP">Buscar</button>
-                        </div>
-                    </div>
+            <div class="row">
+                <div class="col-md-12 mb-3 mt-3">
+                    <label class="form-label" for="end1">Endereço</label>
+                    <% if(isEditing){ %>
+                        <input type="text" class="form-control" id="end1" name="end1" value="<%=cliente.endereco%>" required>
+                    <% }else if(errors){ %>
+                        <input type="text" class="form-control" id="end1" name="end1" placeholder="Digite endereço" required value="<%=old.end1%>">
+                        <%if (errors.end1){%>
+                            <span id="error"><%=errors.end1.msg%></span>
+                        <%}%>
+                    <% } else{ %>
+                        <input type="text" class="form-control" id="end1" name="end1" placeholder="Digite endereço" required>
+                    <% } %>
                 </div>
             </div>
-            <div class="mb-3 mt-3">
-                <label class="form-label" for="end1">Endereço</label>
-                <% if(isEditing){ %>
-                    <input type="text" class="form-control" id="end1" name="end1" value="<%=cliente.endereco%>" required>
-                <% }else if(errors){ %>
-                    <input type="text" class="form-control" id="end1" name="end1" placeholder="Digite endereço" required value="<%=old.end1%>">
-                    <%if (errors.end1){%>
-                        <span id="error"><%=errors.end1.msg%></span>
-                    <%}%>
-                <% } else{ %>
-                    <input type="text" class="form-control" id="end1" name="end1" placeholder="Digite endereço" required>
+            <div class="row">
+                <div class="col-md-4 mb-3 mt-3">
+                    <label class="form-label" for="num">Numero</label>
+                    <% if(isEditing){ %>
+                        <input type="text" class="form-control" id="num" name="num" value="<%=cliente.numero%>" required>
+                    <% }else if(errors){ %>
+                        <input type="text" class="form-control" id="num" name="num" placeholder="Informe numero" required value="<%=old.num%>">
+                        <%if (errors.num){%>
+                            <span id="error"><%=errors.num.msg%></span>
+                        <%}%>
+                    <% } else{ %>
+                        <input type="text" class="form-control" id="num" name="num" placeholder="Informe numero" required>
+                    <% } %>
+                </div>
+                <div class="col-md-8 mb-3 mt-3">
+                    <label class="form-label" for="compl">Complemento</label>
+                    <% if(isEditing){ %>
+                        <input type="text" id="compl" class="form-control" name="complemento" value="<%=cliente.complemento%>" >
+                    <%} else { %>
+                        <input type="text" id="compl" class="form-control" name="complemento" placeholder="Informe complemento endereço">
+                    <% } %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-3 mt-3">
+                    <label class="form-label" for="bairro">Bairro</label>
+                    <% if(isEditing){ %>
+                        <input type="text" class="form-control" id="bairro" name="bairro" value="<%=cliente.bairro%>" required>
+                    <% }else if(errors){ %>
+                        <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Informe Bairro" required value="<%=old.num%>">
+                        <%if (errors.num){%>
+                            <span id="error"><%=errors.bairro.msg%></span>
+                        <%}%>
+                    <% } else{ %>
+                        <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Informe bairro" required>
+                    <% } %>
+                </div>
+                <div class="col-md-4 mb-3 mt-3">
+                    <label class="form-label" for="cidade">Cidade</label><br>
+                    <% if(isEditing){ %>
+                        <input type="text" id="cidade" class="form-control" name="cidade" value="<%=cliente.cidade%>" required>
+                    <%} else if(errors){ %>
+                        <input type="text" id="cidade" class="form-control" name="cidade" placeholder="Informe cidade" required value="<%=old.cidade%>">
+                        <%if (errors.cidade){%>
+                            <span id="error"><%=errors.cidade.msg%></span>
+                        <%}%>
+                    <% } else{ %>
+                        <input type="text" id="cidade" class="form-control "name="cidade" placeholder="Informe cidade" required>
+                    <% } %>
+                </div> 
+                <div class="col-md-4 mb-3 mt-3">
+                    <label class="form-label" for="uf">UF</label>
+                    <select id="uf" class="form-select" name="uf">
+                        <option disabled selected>Selecione UF</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                        <option value="EX">Estrangeiro</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">          
+                <%if(isEditing){ %>
+                    <button type="submit" class="btn btn-success btn-block mb-4">Editar</button>
+                <%} else{ %>
+                    <button type="submit" class="btn btn-success btn-block mb-4">Cadastrar</button>
                 <% } %>
             </div>
-            <div class="mb-3 mt-3">
-                <label class="form-label" for="num">Numero</label>
-                <div class="row">
-                    <div class="form-group col-lg-4">
-                        <% if(isEditing){ %>
-                            <input type="text" class="form-control" id="num" name="num" value="<%=cliente.numero%>" required>
-                        <% }else if(errors){ %>
-                            <input type="text" class="form-control" id="num" name="num" placeholder="Informe numero" required value="<%=old.num%>">
-                            <%if (errors.num){%>
-                                <span id="error"><%=errors.num.msg%></span>
-                            <%}%>
-                        <% } else{ %>
-                            <input type="text" class="form-control" id="num" name="num" placeholder="Informe numero" required>
-                        <% } %>
-                    </div>
-                </div>
             </div>
-            <div class="mb-3 mt-3">
-                <label class="form-label" for="compl">Complemento</label>
-                <div class="row">
-                    <div class="form-group col-lg-4">
-                        <% if(isEditing){ %>
-                            <input type="text" id="compl" class="form-control" name="complemento" value="<%=cliente.complemento%>" >
-                        <%} else { %>
-                            <input type="text" id="compl" class="form-control" name="complemento" placeholder="Informe complemento endereço">
-                        <% } %>
-                    </div>
-                </div>
-            </div>
-            <div class="mb-3 mt-3">
-                <label class="form-label" for="bairro">Bairro</label>
-                <div class="row">
-                    <div class="form-group col-lg-4">
-                        <% if(isEditing){ %>
-                            <input type="text" class="form-control" id="bairro" name="bairro" value="<%=cliente.bairro%>" required>
-                        <% }else if(errors){ %>
-                            <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Informe Bairro" required value="<%=old.num%>">
-                            <%if (errors.num){%>
-                                <span id="error"><%=errors.bairro.msg%></span>
-                            <%}%>
-                        <% } else{ %>
-                            <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Informe bairro" required>
-                        <% } %>
-                    </div>
-                </div>
-            </div>
-            <div class="mb-3 mt-3">
-                <label class="form-label" for="cidade">Cidade</label><br>
-                <div class="row">
-                    <div class="form-group col-lg-4">
-                        <% if(isEditing){ %>
-                            <input type="text" id="cidade" class="form-control" name="cidade" value="<%=cliente.cidade%>" required>
-                        <%} else if(errors){ %>
-                            <input type="text" id="cidade" class="form-control" name="cidade" placeholder="Informe cidade" required value="<%=old.cidade%>">
-                            <%if (errors.cidade){%>
-                                <span id="error"><%=errors.cidade.msg%></span>
-                            <%}%>
-                        <% } else{ %>
-                            <input type="text" id="cidade" class="form-control "name="cidade" placeholder="Informe cidade" required>
-                        <% } %>
-                    </div>
-                </div>
-            </div> 
-            <div class="mb-3 mt-3">
-                <label class="form-label" for="uf">UF</label>
-                <div class="row">
-                    <div class="form-group col-lg-4">
-                        <select id="uf" class="form-select" name="uf">
-                            <option disabled selected>Selecione UF</option>
-                            <option value="AC">Acre</option>
-                            <option value="AL">Alagoas</option>
-                            <option value="AP">Amapá</option>
-                            <option value="AM">Amazonas</option>
-                            <option value="BA">Bahia</option>
-                            <option value="CE">Ceará</option>
-                            <option value="DF">Distrito Federal</option>
-                            <option value="ES">Espírito Santo</option>
-                            <option value="GO">Goiás</option>
-                            <option value="MA">Maranhão</option>
-                            <option value="MT">Mato Grosso</option>
-                            <option value="MS">Mato Grosso do Sul</option>
-                            <option value="MG">Minas Gerais</option>
-                            <option value="PA">Pará</option>
-                            <option value="PB">Paraíba</option>
-                            <option value="PR">Paraná</option>
-                            <option value="PE">Pernambuco</option>
-                            <option value="PI">Piauí</option>
-                            <option value="RJ">Rio de Janeiro</option>
-                            <option value="RN">Rio Grande do Norte</option>
-                            <option value="RS">Rio Grande do Sul</option>
-                            <option value="RO">Rondônia</option>
-                            <option value="RR">Roraima</option>
-                            <option value="SC">Santa Catarina</option>
-                            <option value="SP">São Paulo</option>
-                            <option value="SE">Sergipe</option>
-                            <option value="TO">Tocantins</option>
-                            <option value="EX">Estrangeiro</option>
-                        </select>
-                    </div>
-                </div>
-            </div>            
-            <%if(isEditing){ %>
-                <button type="submit" class="btn btn-success btn-lg mb-3">Editar</button>
-            <%} else{ %>
-                <button type="submit" class="btn btn-success btn-lg  mb-3">Cadastrar</button>
-            <% } %>
         </form>
     </div>
 </content>
