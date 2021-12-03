@@ -10,7 +10,7 @@ module.exports = {
       },
       finca: Sequelize.DataTypes.STRING(45),
       cosecha: Sequelize.DataTypes.ENUM('tardia', 'temprana'),
-      tipo: Sequelize.DataTypes.ENUM('tinto', 'branco', 'rosé', 'frisante'),
+      tipo: Sequelize.DataTypes.ENUM('tinto', 'branco', 'rose', 'frisante'),
       ano: Sequelize.DataTypes.STRING(5),
       valor: Sequelize.DataTypes.DOUBLE,
       origem: Sequelize.DataTypes.STRING(20),

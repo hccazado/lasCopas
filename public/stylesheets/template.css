@@ -69,7 +69,7 @@ header .link_logo{
 }
 
 header .link_logo:hover{
-    color: #000;
+    color: darkred;
 }
 
 header .link_logo span{
@@ -389,6 +389,7 @@ footer .wrapper .chat img{
 }
 @media screen and (max-width: 900px){
     
+
     header .container-fluid{
         width:100% !important;
     }
