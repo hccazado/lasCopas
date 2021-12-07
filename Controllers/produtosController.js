@@ -52,14 +52,13 @@ const controller = {
         res.render("cadastroProduto", {
             title: title,
             isEditing:false,
+            old: null,
             errors:{}
         });        
     },
 
     cadastrarProduto: async (req, res, next) =>{
         let errors = validationResult(req);
-        console.log(req.body);
-        console.log(errors);
         if(errors.isEmpty()){
             //console.log("entrou errors empty cadastro produto")
             let{uvas, cosecha, tipo, finca, ano, estoque, preco, origem, ativo, descricao} = req.body;
@@ -114,6 +113,7 @@ const controller = {
             res.render("cadastroProduto", {
                 title: title,
                 isEditing: false,
+                old: req.body,
                 errors:errors.mapped()
             });
         }

@@ -78,6 +78,73 @@
                             </div>
                         </div>
                     </div>
+                <%} else if(old){%>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                            <% if(old.uvas.indexOf(1)>=0){ %>
+                                <input type="checkbox" class="form-check-input" name="uvas" value="1" id="syrrah" checked>
+                                <% } else {%>
+                                    <input type="checkbox" class="form-check-input" name="uvas" value="1" id="syrrah">
+                                <% } %>
+                                <label for="syrrah" class="form-check-label">Syrrah</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                            <% if(old.uvas.indexOf(2)>=0){ %>
+                                <input type="checkbox" class="form-check-input" name="uvas" value="2" id="malbec" checked>
+                                <% } else {%>
+                                    <input type="checkbox" class="form-check-input" name="uvas" value="2" id="malbec">
+                                <% } %>
+                                <label for="malbec" class="form-check-label">Malbec</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <% if(old.uvas.indexOf(3)>=0){ %>
+                                    <input type="checkbox" class="form-check-input" name="uvas" value="3" id="temp3" checked>
+                                    <% } else {%>
+                                        <input type="checkbox" class="form-check-input" name="uvas" value="3" id="tempr">
+                                    <% } %>
+                                    <label for="tempr" class="form-check-label">Tempranillo</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <% if(old.uvas.indexOf(4)>=0){ %>
+                                    <input type="checkbox" class="form-check-input" name="uvas" value="4" id="suavignon" checked>
+                                    <% } else {%>
+                                        <input type="checkbox" class="form-check-input" name="uvas" value="4" id="suavignon">
+                                    <% } %>
+                                <label for="suavignon" class="form-check-label">Suavignon</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <% if(old.uvas.indexOf(5)>=0){ %>
+                                    <input type="checkbox" class="form-check-input" name="uvas" value="5" id="pinot" checked>
+                                    <% } else {%>
+                                        <input type="checkbox" class="form-check-input" name="uvas" value="5" id="pinot">
+                                    <% } %>
+                                <label for="pinot" class="form-check-label">Pinot-Noir</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <% if(old.uvas.indexOf(6)>=0){ %>
+                                    <input type="checkbox" class="form-check-input" name="uvas" value="6" id="merlot" checked>
+                                    <% } else {%>
+                                        <input type="checkbox" class="form-check-input" name="uvas" value="6" id="merlot">
+                                    <% } %>
+                                <label for="merlot" class="form-check-label">Merlot</label>
+                            </div>
+                        </div>
+                    </div>
                 <%} else{%>
                     <div class="row">
                         <div class="col">
@@ -288,78 +355,74 @@
                 <%}%>
             </div>
 
-            <div class="mb-3 mt-3">
-                <label for="finca" class="form-label">Finca</label>
-                <div class="row">
-                    <div class="form-group col-lg-4">
-                        <%if(isEditing){%>
-                        <input type="text" id="finca" class="form-control" name="finca" placeholder="Informe bodega" value="<%=produto.finca%>">
-                        <% } else{%>
-                        <input type="text" id="finca" class="form-control" name="finca" placeholder="Informe bodega">
-                            <% } %>
-                        <%if(errors.finca){%>
-                            <br>
-                            <span id="error"><%=errors.finca.msg%></span>
-                        <%}%>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-3 mt-3">
-                <label for="ano" class="form-label">Ano</label>
-                <div class="row">
-                    <div class="form-group col-lg-4">
-                        <%if(isEditing){%>
-                            <input type="number" id="ano" class="form-control" name="ano" min="1900" placeholder="ano de produção" value="<%=produto.ano%>">
-                        <% } else{%> 
-                            <input type="number" id="ano" class="form-control" name="ano" min="1900" placeholder="ano de produção">
-                        <% } %>
-                        <%if(errors.ano){%>
-                            <br>
-                            <span id="error"><%=errors.ano.msg%></span>
-                        <%}%>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-3 mt-3">
-                <label for="preco" class="form-label">Preço</label>
-                <div class="row">
-                    <div class="form-group col-lg-4">
-                        <%if(isEditing){%>
-                            <input type="number" step=".01" id="preco" class="form-control" name="preco" value="<%=produto.valor%>">
-                        <% } else{%> 
-                            <input type="number" step=".01" id="preco" class="form-control" name="preco">
-                        <% } %>
-                        <%if(errors.preco){%>
-                            <br>
-                            <span id="error"><%=errors.preco.msg%></span>
-                        <%}%>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-3 mt-3">
-                <label for="estoque" class="form-label">Estoque</label>
-                <div class="row">
-                    <div class="form-group col-lg-4">
-                        <%if(isEditing){%>
-                            <input type="number" step="1" id="estoque" class="form-control" name="estoque" value="<%=produto.estoque%>">
-                        <% } else{%> 
-                            <input type="number" step="1" id="estoque" class="form-control" name="estoque">
-                        <% } %>
-                        <%if(errors.preco){%>
-                            <br>
-                            <span id="error"><%=errors.preco.msg%></span>
-                        <%}%>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-3 mt-3">
-            <label  class="form-label" for="origem">País de Origem</label>
             <div class="row">
-                <div class="form-group col-lg-4">
+                <div class="form-group col-md-6 mb-3 mt-3">
+                    <label for="finca" class="form-label">Finca</label>
+                    <%if(isEditing){%>
+                        <input type="text" id="finca" class="form-control" name="finca" placeholder="Informe bodega" value="<%=produto.finca%>">
+                    <% } else if(old){%>
+                        <input type="text" id="finca" class="form-control" name="finca" placeholder="Informe bodega" value="<%=old.finca%>">
+                    <% } else{%>
+                        <input type="text" id="finca" class="form-control" name="finca" placeholder="Informe bodega">
+                    <%} %>
+                    <%if(errors.finca){%>
+                        <br>
+                        <span id="error"><%=errors.finca.msg%></span>
+                    <%}%>
+                </div>
+            
+
+                <div class="form-group col-md-6 mb-3 mt-3">
+                    <label for="ano" class="form-label">Ano</label>
+                    <%if(isEditing){%>
+                        <input type="number" id="ano" class="form-control" name="ano" min="1900" placeholder="ano de produção" value="<%=produto.ano%>">
+                        <% } else if(old){%>
+                        <input type="number" id="ano" class="form-control" name="ano" min="1900" placeholder="ano de produção" value="<%=old.ano%>">
+                        <% } else{%>
+                        <input type="number" id="ano" class="form-control" name="ano" min="1900" placeholder="ano de produção">   
+                    <% } %>
+                    <%if(errors.ano){%>
+                        <br>
+                        <span id="error"><%=errors.ano.msg%></span>
+                    <%}%>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-6 mb-3 mt-3">
+                    <label for="preco" class="form-label">Preço</label>
+                    <%if(isEditing){%>
+                        <input type="number" step=".01" id="preco" class="form-control" name="preco" value="<%=produto.valor%>">
+                    <% } else if(old){%> 
+                        <input type="number" step=".01" id="preco" class="form-control" name="preco" value="<%=old.valor%>">
+                    <% } else{%>
+                        <input type="number" step=".01" id="preco" class="form-control" name="preco">
+                    <% } %>
+                    <%if(errors.preco){%>
+                        <br>
+                        <span id="error"><%=errors.preco.msg%></span>
+                    <%}%>
+                </div>
+            
+                <div class="form-group col-md-6 mb-3 mt-3">
+                    <label for="estoque" class="form-label">Estoque</label>
+                    <%if(isEditing){%>
+                        <input type="number" step="1" id="estoque" class="form-control" name="estoque" value="<%=produto.estoque%>">
+                    <% } else if(old){%> 
+                        <input type="number" step="1" id="estoque" class="form-control" name="estoque" value="<%=old.estoque%>">
+                    <% } else{%> 
+                        <input type="number" step="1" id="estoque" class="form-control" name="estoque">
+                    <% } %>
+                    <%if(errors.estoque){%>
+                        <br>
+                        <span id="error"><%=errors.estoque.msg%></span>
+                    <%}%>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6 mb-3 mt-3">
+                    <label  class="form-label" for="origem">País de Origem</label>
                     <%if(isEditing){%>
                     <select id="origem" class="form-select" name="origem" required>
                         <option disabled selected>--Origem--</option>
@@ -399,8 +462,47 @@
                             <option value="Portugal">Portugal</option>
                         <% } %>
                     </select>
-                    <% } else{%>
-                        <select id="origem" class="form-select" name="origem">
+                    <% } else if(old){%>
+                    <select id="origem" class="form-select" name="origem" required>
+                        <option disabled selected>--Origem--</option>
+                        <% if(old.origem=="Argentina"){ %>
+                            <option value="Argentina" selected>Argentina</option>
+                        <% } else{ %>
+                            <option value="Argentina">Argentina</option>
+                        <% } %>
+                        <% if(old.origem=="Brasil"){ %>
+                            <option value="Brasil" selected>Brasil</option>
+                        <% } else {%>
+                            <option value="Brasil">Brasil</option>
+                        <% } %>
+                        <% if(old.origem=="Chile") {%>
+                            <option value="Chile" selected>Chile</option>
+                        <% } else {%>
+                            <option value="Chile">Chile</option>
+                        <% } %>
+                        <% if(old.origem=="Espanha") {%>
+                            <option value="Espanha" selected>Espanha</option>
+                        <% } else {%>
+                            <option value="Espanha">Espanha</option>
+                        <% } %>
+                        <% if(old.origem=="França") {%>
+                            <option value="França" selected>França</option>
+                        <% } else {%>
+                            <option value="França">França</option>
+                        <% } %>
+                        <% if(old.origem=="Itália") {%>
+                            <option value="Itália" selected>Itália</option>
+                        <% } else {%>
+                            <option value="Itália">Itália</option>
+                        <% } %>
+                        <% if(old.origem=="Portugal") {%>
+                            <option value="Portugal" selected>Portugal</option>
+                        <% } else {%>
+                            <option value="Portugal">Portugal</option>
+                        <% } %>
+                    </select>
+                    <%} else { %>
+                    <select id="origem" class="form-select" name="origem">
                         <option disabled selected>--Origem--</option>
                         <option value="Argentina">Argentina</option>
                         <option value="Brasil">Brasil</option>
@@ -415,23 +517,22 @@
                             <br>
                             <span id="error"><%=errors.origem.msg%></span>
                     <%}%>
-                    </div>
                 </div>
-            </div> 
-            <div class="mb-3 mt-3">
-                <div class="form-group">
-                <label for="rotulo" class="form-label" >Selecionar Rotulo</label>
-                <%if(isEditing){%>
-                <input type="file" id="rotulo" class="form-control" name="rotulo" accept=".jpg, .jpeg, .png, .webp" value="<%=produto.rotulo%>">
-                <%} else{ %>
-                    <input type="file" id="rotulo" class="form-control-file" name="rotulo" accept=".jpg, .jpeg, .png, .webp">
-                <%}%>
+                <div class="form-group col-md-6 mb-3 mt-3">
+                    <label for="rotulo" class="form-label" >Selecionar Rotulo</label>
+                    <%if(isEditing){%>
+                    <input type="file" id="rotulo" class="form-control" name="rotulo" accept=".jpg, .jpeg, .png, .webp" value="<%=produto.rotulo%>">
+                    <%} else{ %>
+                        <input type="file" id="rotulo" class="form-control-file" name="rotulo" accept=".jpg, .jpeg, .png, .webp">
+                    <%}%>
                 </div>
             </div>
             <div class="mb-3 mt-3 form-group">
                 <label class="form-label" for="descricao">Descrição</label>
                 <%if(isEditing){%>
                     <textarea class="form-control"  name="descricao" id="descricao"><%=produto.descricao%></textarea>
+                <%} else if(old){%>
+                    <textarea class="form-control"  name="descricao" id="descricao"><%=old.descricao%></textarea>
                 <%} else {%>
                     <textarea class="form-control"  name="descricao" id="descricao"></textarea>
                 <% } %> 

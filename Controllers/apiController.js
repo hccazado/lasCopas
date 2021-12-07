@@ -34,7 +34,7 @@ const controller = {
             }catch{
                 res.status(503).send("erro de servidor");
             }
-                
+       
         }
         else{
             res.status(404).send("Tipo de vinho invalido");
