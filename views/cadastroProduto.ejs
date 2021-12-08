@@ -38,7 +38,7 @@
                         <div class="col">
                             <div class="mb-3">
                                 <% if(produto.uvas.indexOf(3)>=0){ %>
-                                    <input type="checkbox" class="form-check-input" name="uvas" value="3" id="temp3" checked>
+                                    <input type="checkbox" class="form-check-input" name="uvas" value="3" id="tempr" checked>
                                     <% } else {%>
                                         <input type="checkbox" class="form-check-input" name="uvas" value="3" id="tempr">
                                     <% } %>
@@ -78,11 +78,11 @@
                             </div>
                         </div>
                     </div>
-                <%} else if(old){%>
+                <%} else if(old && old.uvas){%>
                     <div class="row">
                         <div class="col">
                             <div class="mb-3">
-                            <% if(old.uvas.indexOf(1)>=0){ %>
+                            <% if(old.uvas.indexOf('1')>=0){ %>
                                 <input type="checkbox" class="form-check-input" name="uvas" value="1" id="syrrah" checked>
                                 <% } else {%>
                                     <input type="checkbox" class="form-check-input" name="uvas" value="1" id="syrrah">
@@ -92,7 +92,7 @@
                         </div>
                         <div class="col">
                             <div class="mb-3">
-                            <% if(old.uvas.indexOf(2)>=0){ %>
+                            <% if(old.uvas.indexOf('2')>=0){ %>
                                 <input type="checkbox" class="form-check-input" name="uvas" value="2" id="malbec" checked>
                                 <% } else {%>
                                     <input type="checkbox" class="form-check-input" name="uvas" value="2" id="malbec">
@@ -104,8 +104,8 @@
                     <div class="row">
                         <div class="col">
                             <div class="mb-3">
-                                <% if(old.uvas.indexOf(3)>=0){ %>
-                                    <input type="checkbox" class="form-check-input" name="uvas" value="3" id="temp3" checked>
+                                <% if(old.uvas.indexOf('3')>=0){ %>
+                                    <input type="checkbox" class="form-check-input" name="uvas" value="3" id="tempr" checked>
                                     <% } else {%>
                                         <input type="checkbox" class="form-check-input" name="uvas" value="3" id="tempr">
                                     <% } %>
@@ -114,7 +114,7 @@
                         </div>
                         <div class="col">
                             <div class="mb-3">
-                                <% if(old.uvas.indexOf(4)>=0){ %>
+                                <% if(old.uvas.indexOf('4')>=0){ %>
                                     <input type="checkbox" class="form-check-input" name="uvas" value="4" id="suavignon" checked>
                                     <% } else {%>
                                         <input type="checkbox" class="form-check-input" name="uvas" value="4" id="suavignon">
@@ -126,7 +126,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="mb-3">
-                                <% if(old.uvas.indexOf(5)>=0){ %>
+                                <% if(old.uvas.indexOf('5')>=0){ %>
                                     <input type="checkbox" class="form-check-input" name="uvas" value="5" id="pinot" checked>
                                     <% } else {%>
                                         <input type="checkbox" class="form-check-input" name="uvas" value="5" id="pinot">
@@ -136,7 +136,7 @@
                         </div>
                         <div class="col">
                             <div class="mb-3">
-                                <% if(old.uvas.indexOf(6)>=0){ %>
+                                <% if(old.uvas.indexOf('6')>=0){ %>
                                     <input type="checkbox" class="form-check-input" name="uvas" value="6" id="merlot" checked>
                                     <% } else {%>
                                         <input type="checkbox" class="form-check-input" name="uvas" value="6" id="merlot">
@@ -216,6 +216,29 @@
                             </div>
                         </div>
                     </div>
+                <%} else if(old){%>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <% if(old.cosecha == "temprana"){ %>
+                                    <input type="radio" class="form-check-input" name="cosecha" value="temprana" id="temprana" checked>
+                                    <% } else {%>
+                                    <input type="radio" class="form-check-input" name="cosecha" value="temprana" id="temprana">
+                                    <% } %>
+                                <label for="temprana" class="form-check-label">Temprana</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <% if(old.cosecha == "tardia"){ %>
+                                    <input type="radio" class="form-check-input" name="cosecha" value="tardia" id="tardia" checked>
+                                    <% } else {%>
+                                    <input type="radio" class="form-check-input" name="cosecha" value="tardia" id="tardia">
+                                    <% } %>
+                                <label for="tardia" class="form-check-label">Tardia</label>
+                            </div>
+                        </div>
+                    </div>
                 <%} else{%>
                     <div class="row">
                         <div class="col">
@@ -279,7 +302,52 @@
                                 <label for="frisante" class="form-check-label">Frisante</label>
                             </div>
                         </div>
-                    </div>     
+                    </div>
+                <%} else if(old){%>     
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <% if(old.tipo == "tinto"){ %>
+                                    <input type="radio" class="form-check-input" name="tipo" value="tinto" id="tinto" checked>
+                                <% } else {%>
+                                    <input type="radio" class="form-check-input" name="tipo" value="tinto" id="tinto">
+                                <% } %>
+                                <label for="tinto" class="form-check-label">Tinto</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <% if(old.tipo == "branco"){ %>
+                                    <input type="radio" class="form-check-input" name="tipo" value="branco" id="branco" checked>
+                                <% } else {%>
+                                    <input type="radio" class="form-check-input" name="tipo" value="branco" id="branco">
+                                <% } %>
+                                <label for="branco" class="form-check-label">Branco</label>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <% if(old.tipo == "rose"){ %>
+                                    <input type="radio" class="form-check-input" name="tipo" value="rose" id="rose" checked>
+                                <% } else {%>
+                                    <input type="radio" class="form-check-input" name="tipo" value="rose" id="rose">
+                                <% } %>
+                                <label for="rose" class="form-check-label">Rosé</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <% if(old.tipo == "frisante"){ %>
+                                    <input type="radio" class="form-check-input" name="tipo" value="frisante" id="frisante" checked>
+                                <% } else {%>
+                                    <input type="radio" class="form-check-input" name="tipo" value="frisante" id="frisante">
+                                <% } %>
+                                <label for="frisante" class="form-check-label">Frisante</label>
+                            </div>
+                        </div>
+                    </div>
                 <%} else {%>
                     <div class="row">
                         <div class="col">
@@ -337,6 +405,29 @@
                             </div>
                         </div>
                     </div>
+                <%} else if(old){%>  
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <% if(old.ativo == "ativo"){ %>
+                                    <input type="radio" class="form-check-input" name="ativo" value="ativo" id="ativo" checked>
+                                    <% } else {%>
+                                    <input type="radio" class="form-check-input" name="ativo" value="ativo" id="ativo">
+                                    <% } %>
+                                <label for="ativo" class="form-check-label">Ativo</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <% if(old.ativo == "inativo"){ %>
+                                    <input type="radio" class="form-check-input" name="ativo" value="inativo" id="inativo" checked>
+                                    <% } else {%>
+                                    <input type="radio" class="form-check-input" name="ativo" value="inativo" id="inativo">
+                                    <% } %>
+                                <label for="inativo" class="form-check-label">Inativo</label>
+                            </div>
+                        </div>
+                    </div>
                 <%} else{%>
                     <div class="row">
                         <div class="col">
@@ -366,7 +457,6 @@
                         <input type="text" id="finca" class="form-control" name="finca" placeholder="Informe bodega">
                     <%} %>
                     <%if(errors.finca){%>
-                        <br>
                         <span id="error"><%=errors.finca.msg%></span>
                     <%}%>
                 </div>
@@ -382,25 +472,22 @@
                         <input type="number" id="ano" class="form-control" name="ano" min="1900" placeholder="ano de produção">   
                     <% } %>
                     <%if(errors.ano){%>
-                        <br>
                         <span id="error"><%=errors.ano.msg%></span>
                     <%}%>
                 </div>
-
             </div>
 
             <div class="row">
                 <div class="form-group col-md-6 mb-3 mt-3">
                     <label for="preco" class="form-label">Preço</label>
                     <%if(isEditing){%>
-                        <input type="number" step=".01" id="preco" class="form-control" name="preco" value="<%=produto.valor%>">
+                        <input type="number" step=".01" id="preco" class="form-control" name="preco" placeholder="Informe preço" value="<%=produto.valor%>">
                     <% } else if(old){%> 
-                        <input type="number" step=".01" id="preco" class="form-control" name="preco" value="<%=old.valor%>">
+                        <input type="number" step=".01" id="preco" class="form-control" name="preco" placeholder="Informe preço" value="<%=old.preco%>">
                     <% } else{%>
-                        <input type="number" step=".01" id="preco" class="form-control" name="preco">
+                        <input type="number" step=".01" id="preco" class="form-control" placeholder="Informe preço" name="preco">
                     <% } %>
                     <%if(errors.preco){%>
-                        <br>
                         <span id="error"><%=errors.preco.msg%></span>
                     <%}%>
                 </div>
@@ -408,14 +495,13 @@
                 <div class="form-group col-md-6 mb-3 mt-3">
                     <label for="estoque" class="form-label">Estoque</label>
                     <%if(isEditing){%>
-                        <input type="number" step="1" id="estoque" class="form-control" name="estoque" value="<%=produto.estoque%>">
+                        <input type="number" step="1" id="estoque" class="form-control" name="estoque" placeholder="Informe estoque" value="<%=produto.estoque%>">
                     <% } else if(old){%> 
-                        <input type="number" step="1" id="estoque" class="form-control" name="estoque" value="<%=old.estoque%>">
+                        <input type="number" step="1" id="estoque" class="form-control" name="estoque" placeholder="Informe estoque" value="<%=old.estoque%>">
                     <% } else{%> 
-                        <input type="number" step="1" id="estoque" class="form-control" name="estoque">
+                        <input type="number" step="1" id="estoque" class="form-control" placeholder="Informe estoque" name="estoque">
                     <% } %>
                     <%if(errors.estoque){%>
-                        <br>
                         <span id="error"><%=errors.estoque.msg%></span>
                     <%}%>
                 </div>
@@ -514,8 +600,7 @@
                     </select>
                     <% } %>
                     <%if(errors.origem){%>
-                            <br>
-                            <span id="error"><%=errors.origem.msg%></span>
+                        <span id="error"><%=errors.origem.msg%></span>
                     <%}%>
                 </div>
                 <div class="form-group col-md-6 mb-3 mt-3">
