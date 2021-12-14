@@ -84,7 +84,7 @@ const controller = {
             let vinho = {};
             resultado.forEach(atual =>{
                 let uvas = [];
-                atual.uvas.forEach(uva=>{
+                atual.uvas.forEach(uva=>{                    
                     uvas.push(uva.nome_uva);
                 });
                 let vinho = {
@@ -160,6 +160,7 @@ const controller = {
                 produtos.push(vinho);
             })
         })
+        console.log(produtos);
         return res.render("listaProdutos", {
             title: title,
             produtos: produtos
