@@ -76,6 +76,10 @@ header .navbar.navbar-expand-lg.navbar-light.bg-light{
     filter:drop-shadow(0 0 5px #a3a3a3);
 }
 
+.button_pagamento img{
+    width:200px;
+}
+
 /*----------------------------------------------*/
 .table-responsive{
     height: 400px;
