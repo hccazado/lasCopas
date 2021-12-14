@@ -1,6 +1,7 @@
 <%- include('./partials/header') %>
     <content>
-        <div class="wrapper">
+        <!--<div class="wrapper">-->
+        <div class="container mt-3">
             <!--Seção Carrousel -- descomentar-->
             <!--<div id="carousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
@@ -15,36 +16,37 @@
                   </div>
                 </div>
               </div> -->
-            <div class="container_banner">
+            <div class="row mt-3">
                 <img src="/images/banner2.png" alt="">
             </div>
               
               <!------------------Seção recomendados-------------------------->
-            <div class="destaque">
-                <h3>Produtos Selecionados</h3>
-                <div class="destaque_container row">
-                    <div class="cardp md-col-3">
-                        <a href="/produtos/1">
-                            <img src="images/uploads/rotulos/EM-roble.png" alt="Estancia Mendoza - Roble">
-                            <p>Estancia Mendoza - Roble</p>
-                            <p class="preco">R$70,90</p>    
-                        </a>
+              <h3 class="subtitulo mt-5">Produtos Selecionados</h3>
+              <div class="d-flex justify-content-around mt-3 p-2 selecao">
+                <div class="card" style="width: 20rem;">
+                  <img class="card-img-top" src="images/uploads/rotulos/EM-roble.png" alt="Rotulo Vinho Estancia Mendoza - Roble">
+                  <div class="card-body">
+                      <h6 class="card-title">Estancia Mendoza</h6> <!--O titulo é a finca(origem)-->
+                      <p class="card-text">Roble</p> <!--Uvas do vinho-->
+                      <a href="#" class="btn btn-primary">Compre</a><!--direcionar para pagina descriçao produto-->
+                  </div>
+                  </div>
+                  <div class="card" style="width: 20rem;">
+                    <img class="card-img-top" src="images/uploads/rotulos/Artero-tempranillo.webp" alt="otulo Vinho Artero - Tempranillo">
+                    <div class="card-body">
+                        <h6 class="card-title">Artero</h6> <!--O titulo é a finca(origem)-->
+                        <p class="card-text">Tempranillo</p> <!--Uvas do vinho-->
+                        <a href="#" class="btn btn-primary">Compre</a><!--direcionar para pagina descriçao produto-->
                     </div>
-                    <div class="cardp md-col-3">
-                        <a href="/produtos/2">
-                            <img src="images/uploads/rotulos/Trapiche - cabernet.png" alt="Trapiche - Cabernet Suavignon">
-                            <p>Trapiche - Cabernet Suavignon</p>
-                            <p class="preco">R$72,90</p> 
-                        </a> 
+                  </div>
+                  <div class="card" style="width: 20rem;">
+                    <img class="card-img-top" src="images/uploads/rotulos/Trapiche - cabernet.png" alt="Rotulo Vinho Trapichew - Cabernet">
+                    <div class="card-body">
+                        <h6 class="card-title">Trapiche</h6> <!--O titulo é a finca(origem)-->
+                        <p class="card-text">Cabernet</p> <!--Uvas do vinho-->
+                        <a href="#" class="btn btn-primary">Compre</a><!--direcionar para pagina descriçao produto-->
                     </div>
-                    <div class="cardp md-col-3">
-                        <a href="/produtos/1">
-                            <img src="images/uploads/rotulos/Artero-tempranillo.webp" alt="Artero - Tempranillo">
-                            <p>Artero - Tempranillo</p>
-                            <p class="preco">R$68,99</p>
-                        </a>
-                    </div>
-                </div>
+                  </div>   
             </div>
         </div>
     </content>

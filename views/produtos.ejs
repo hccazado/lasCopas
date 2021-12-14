@@ -1,9 +1,9 @@
 <%-include('./partials/header')%>
 <div class="container mt-3 mb-3">
-    <div class="d-flex flex-row flex-wrap justify-content-evenly mt-3 mb-3">
+    <div class="d-flex gx-5 mt-3 p-2 selecao">
         <% for(vinho of vinhos){ %>
             <div class="col">
-                <div class="card" style="width: 18rem;" >
+                <div class="card" style="width: 20rem;" >
                     <a href="produtos/<%=vinho.id_produto%>"><img class="card-img-top" src="<%=vinho.rotulo%>" alt="<%=vinho.finca%>"></a>
                     <div class="card-body">
                         <h5 class="card-title"><%=vinho.finca%></h5>

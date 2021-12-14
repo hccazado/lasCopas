@@ -1,0 +1,136 @@
+#created{
+    color: green;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#error{
+    color: red;
+    text-align: center;
+    margin: 5px;
+}
+
+.link_logo{
+    text-decoration: none;
+    color: rgb(253, 207, 0);
+}
+
+.link_logo:hover{
+    color:rgb(197, 58, 81) !important;
+}
+
+.link_logo span{
+    /*color:rgb(197, 58, 81)*/
+    color: #D99C52;
+}
+
+.titulo_adm{
+    color: rgb(253, 207, 0);
+}
+
+
+header .navbar.navbar-expand-lg.navbar-light.bg-light{
+    background: rgb(91,3,133);
+    background: linear-gradient(300deg, rgba(91,3,133,1) 0%, rgba(45,9,121,1) 50%, rgba(81,4,218,1) 100%);
+    color: #FFF;
+    height: 70px;
+}
+
+.navbar-light span.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='yellow' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    color: white;
+}
+
+.links-menu{
+    color: rgb(253, 207, 0) !important;
+    font-size: 18px;
+    margin-right: 10px;
+    border-radius: 5px;
+    transition: all 0.5ms;
+}
+
+.links-menu:hover{
+    background-color: rgb(197, 58, 81);
+    border-radius: 5px;
+    color: #eee !important;
+}
+
+.subtitulo{
+    color: rgb(197, 58, 81);
+}
+
+.produto-card a p h5{
+    text-decoration: none !important;
+    color: black !important;
+}
+
+.chat{
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    z-index:10;
+}
+
+.chat img{
+    width: 60px;
+    filter:drop-shadow(0 0 5px #a3a3a3);
+}
+
+/*----------------------------------------------*/
+.table-responsive{
+    height: 400px;
+    overflow: scroll;
+}
+
+.table-responsive thead{
+    height: 60px
+}
+
+.table-responsive tbody{
+    height: 100px;
+}
+
+.table-responsive tbody .rotulo_tabela{
+    height:100px;
+}
+
+.table-responsive tbody .link_tabela{
+    color: #000;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.table-responsive tbody .link_tabela:hover{
+    color:darkred;
+}
+
+
+
+
+
+
+
+
+
+/*----------------------------------------------*/
+
+@media screen and (max-width: 900px) {
+    .links-menu{
+        background-color: rgb(155, 101, 226);
+        width: 100vw;
+        margin-left: -12px;
+        border-radius: 0;
+        z-index:10;
+    }
+    .links-menu:hover{
+        border-radius: 0;
+    }
+    a.nav-links.links-menu{
+        padding-left: 10px;
+    }
+    .selecao{
+        flex-direction: column;
+        margin-top: 10px;
+    }
+}
+
