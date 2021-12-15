@@ -6,9 +6,11 @@
                 <div class="card" style="width: 20rem;" >
                     <a href="produtos/<%=vinho.id_produto%>"><img class="card-img-top" src="<%=vinho.rotulo%>" alt="<%=vinho.finca%>"></a>
                     <div class="card-body">
-                        <h5 class="card-title"><%=vinho.finca%></h5>
+                        <div class="d-flex justify-content-between">
+                            <h6 class="card-title"><%=vinho.finca%></h6>
+                            <p class="card-text text-muted p-1">R$ <%=vinho.valor%></p>
+                        </div>
                         <p class="card-text"><%=vinho.uvas%></p>
-                        <p class="card-text text-muted">R$ <%=vinho.valor%></p>
                         <a href="produtos/<%=vinho.id_produto%>" class="btn btn-primary">Compre</a>
                     </div>
                 </div>

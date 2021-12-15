@@ -1,46 +1,42 @@
 <%-include('./partials/headerAdm')%>
-    <content>
-        <div class="wrapper">
-            <div class="container_lista">
-                <h5>Administração Clientes</h5>
-                <div class="row mt-5">                
-                    <div class="col">
-                        <a class="btn btn-primary text-mutted" role="button" id="btBck">Voltar</a>
-                    </div>
-                    <div class="col">
-                        <a class="btn btn-success align-middle" role="button" href="/clientes/cadastrar">Novo Cliente</a>   
-                    </div>
-                    <div class="col">
-                        <div class="form-floating busca_cliente">
-                            <input type="text" class="form-control" id="buscaCliente" placeholder="Nome ou Documento">
-                            <label for="buscaCliente">Buscar Cliente</label> 
-                        </div>
-                    </div>                    
-                </div>
-                
-                <div  class="table-responsive mt-3">
-                    <table class="tabela-esquerda table border-mutted table-bordered table-hover caption-bottom">
-                        <caption>Clientes Cadastrados</caption>
-                        <thead>
-                            <tr>
-                                <td class="align-middle">ID Cliente</td>
-                                <td class="align-middle">Doc.</td>
-                                <td class="align-middle">Nome</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <%for(let i=0; i<clientes.length;i++){%>
-                            <tr>
-                                <td class="align-middle"><a class="link_tabela" href="/clientes/editar/<%=clientes[i].id_cliente%>"><%=clientes[i].id_cliente%></a></td>
-                                <td class="align-middle"><a class="link_tabela" href="/clientes/editar/<%=clientes[i].id_cliente%>"><%=clientes[i].documento%></a></td>
-                                <td class="align-middle"><a class="link_tabela" href="/clientes/editar/<%=clientes[i].id_cliente%>"><%=clientes[i].nome%></a></td>
-                            </tr>
-                            <% } %>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+<div class="container mt-3">
+    <h4 class="subtitulo">Administração Clientes</h4>
+    <div class="row mt-5">                
+        <div class="col">
+            <a class="btn btn-primary text-mutted" role="button" id="btBck">Voltar</a>
         </div>
-    </content>
+        <div class="col">
+            <a class="btn btn-success align-middle" role="button" href="/clientes/cadastrar">Novo Cliente</a>   
+        </div>
+        <div class="col">
+            <div class="form-floating busca_cliente">
+                <input type="text" class="form-control" id="buscaCliente" placeholder="Nome ou Documento">
+                <label for="buscaCliente">Buscar Cliente</label> 
+            </div>
+        </div>                    
+    </div>
+    
+    <div class="table-responsive mt-3">
+        <table class="table border-mutted table-bordered table-hover caption-bottom">
+            <caption>Clientes Cadastrados</caption>
+            <thead>
+                <tr>
+                    <td>ID Cliente</td>
+                    <td>Doc.</td>
+                    <td>Nome</td>
+                </tr>
+            </thead>
+            <tbody>
+                <%for(let i=0; i<clientes.length;i++){%>
+                <tr>
+                    <td><a href="/clientes/editar/<%=clientes[i].id_cliente%>"><%=clientes[i].id_cliente%></a></td>
+                    <td><a href="/clientes/editar/<%=clientes[i].id_cliente%>"><%=clientes[i].documento%></a></td>
+                    <td><a href="/clientes/editar/<%=clientes[i].id_cliente%>"><%=clientes[i].nome%></a></td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
     <script src="/javascripts/buscaCliente.js"></script>
 <%-include('./partials/footerAdm')%>

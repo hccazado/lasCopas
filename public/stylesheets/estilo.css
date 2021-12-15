@@ -12,11 +12,11 @@
 
 .link_logo{
     text-decoration: none;
-    color: rgb(253, 207, 0);
+    color: rgb(224, 71, 10);
 }
 
 .link_logo:hover{
-    color:rgb(197, 58, 81) !important;
+    color:#eee !important;
 }
 
 .link_logo span{
@@ -25,13 +25,16 @@
 }
 
 .titulo_adm{
-    color: rgb(253, 207, 0);
+    color: rgb(224, 71, 10);
 }
 
 
 header .navbar.navbar-expand-lg.navbar-light.bg-light{
-    background: rgb(91,3,133);
+   /* background: rgb(91,3,133);
     background: linear-gradient(300deg, rgba(91,3,133,1) 0%, rgba(45,9,121,1) 50%, rgba(81,4,218,1) 100%);
+    */
+    background: rgb(46,6,6);
+    background: linear-gradient(174deg, rgba(46,6,6,1) 0%, rgba(115,2,2,1) 53%, rgba(42,39,39,1) 100%);
     color: #FFF;
     height: 70px;
 }
@@ -50,7 +53,8 @@ header .navbar.navbar-expand-lg.navbar-light.bg-light{
 }
 
 .links-menu:hover{
-    background-color: rgb(197, 58, 81);
+    /*background-color: rgb(197, 58, 81);*/
+    background-color: #93001b;
     border-radius: 5px;
     color: #eee !important;
 }
@@ -62,6 +66,16 @@ header .navbar.navbar-expand-lg.navbar-light.bg-light{
 .produto-card a p h5{
     text-decoration: none !important;
     color: black !important;
+}
+
+
+
+footer .footer-social img{
+    width:32px;
+}
+
+footer section p{
+    font-size:14px;
 }
 
 .chat{
@@ -81,32 +95,44 @@ header .navbar.navbar-expand-lg.navbar-light.bg-light{
 }
 
 /*----------------------------------------------*/
+.detalhe-rotulo img{
+    width: 25vw;
+}
+
+/*----------------------------------------------*/
 .table-responsive{
     height: 400px;
-    overflow: scroll;
+    overflow: scroll;   
 }
 
 .table-responsive thead{
-    height: 60px
+    height: 60px;
+    font-weight: 600;
 }
 
+.table-responsive tr,td{
+    vertical-align: middle;
+}
+
+.table-responsive tr,td a{
+    color: #000;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.table-responsive tbody td a:hover{
+    color: darkred;
+}
+
+
 .table-responsive tbody{
-    height: 100px;
+    height: 90px;
 }
 
 .table-responsive tbody .rotulo_tabela{
     height:100px;
 }
 
-.table-responsive tbody .link_tabela{
-    color: #000;
-    font-size: 16px;
-    text-decoration: none;
-}
-
-.table-responsive tbody .link_tabela:hover{
-    color:darkred;
-}
 
 
 
@@ -120,7 +146,7 @@ header .navbar.navbar-expand-lg.navbar-light.bg-light{
 
 @media screen and (max-width: 900px) {
     .links-menu{
-        background-color: rgb(155, 101, 226);
+        background-color: #93001b;
         width: 100vw;
         margin-left: -12px;
         border-radius: 0;
@@ -135,6 +161,10 @@ header .navbar.navbar-expand-lg.navbar-light.bg-light{
     .selecao{
         flex-direction: column;
         margin-top: 10px;
+    }
+
+    .detalhe-rotulo img{
+        width:100vw;
     }
 }
 
