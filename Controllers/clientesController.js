@@ -20,8 +20,6 @@ const controller = {
     },
     formEditarCliente: async (req, res, next) => {
         let id = req.params.id;
-        console.log("chamou form edicao cliente")
-       
         //recuperando dados do cliente no banco
         let dadosCliente = await Cliente.findByPk(id,{
             include:[{
@@ -31,7 +29,6 @@ const controller = {
             model: Endereco, as:"enderecos"
             }]
         });
-        //console.log(dadosCliente.dataValues);
         //definindo objeto com dataValues do retorno do sequelize
         let cliente = {
             ...dadosCliente.dataValues,
@@ -118,7 +115,6 @@ const controller = {
         }
         //Encontrado algum erro nos campos do formulario
         else{
-            console.log(req.body);
             let old = req.body;
             console.log(errors.mapped());
             res.render("cadastroCliente", {
@@ -193,8 +189,7 @@ const controller = {
         }
         //Encontrado algum erro nos campos do formulario
         else{
-            console.log(req.body);
-            console.log(errors.mapped());
+            //console.log(errors.mapped());
             res.render("cadastroCliente", {
                 title: title,
                 exists: null,
