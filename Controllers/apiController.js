@@ -1,4 +1,4 @@
-const{Produto, ProdutoUva, Uva, sequelize, Sequelize} = require("../models");
+const {Cliente, Endereco, Pedido, PedidoProduto, Produto, ProdutoUva, Uva, sequelize, Sequelize} = require('../models');
 const Op = Sequelize.Op;
 const controller = {
 
@@ -39,6 +39,29 @@ const controller = {
         else{
             res.status(404).send("Tipo de vinho invalido");
             return;
+        }
+    },
+    getPedido: async (req, res, next) =>{
+        let id = req.params.id;
+        console.log(id);
+        if(!id){
+            res.status(400).send("Deve informar Numero de pedido");
+        }
+        try{
+            let pedido = await Pedido.findAll({
+                include:[
+                    {model: Cliente},
+                    {model: Endereco},
+                    {model: PedidoProduto, attributes:['valor'], 
+                            include:{model: Produto, as: 'produto', attributes: ['finca']}}
+                ]
+            }).then(pedido=>{
+                res.status(200).json(pedido);
+            });
+           
+        }
+        catch{
+            res.status(501).send("Pedido não encontrado");
         }
     }  
 }
