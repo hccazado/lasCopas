@@ -48,14 +48,27 @@ const controller = {
             res.status(400).send("Deve informar Numero de pedido");
         }
         try{
+            let vinho = {};
             let pedido = await Pedido.findAll({
                 include:[
-                    {model: Cliente},
-                    {model: Endereco},
-                    {model: PedidoProduto, attributes:['valor'], 
-                            include:{model: Produto, as: 'produto', attributes: ['finca']}}
+                    {model: Cliente, attributes:['nome', 'sobrenome', 'dt_nascimento', 'cadastro', 'documento']},
+                    {model: Endereco, attributes: ['cep', 'endereco', 'complemento', 'numero', 'cidade', 'bairro', 'uf']},
+                    {model: PedidoProduto, attributes:['valor', 'quantidade'], 
+                            include:{model: Produto, as: 'produto', attributes: ['finca'],
+                            include:[{model: Uva, as:"uvas"}]
+                            }
+                    }
                 ]
             }).then(pedido=>{
+                let vetorUva = [];
+                for (item of pedido[0].PedidoProdutos){
+                    for(uva of item.produto.uvas){
+                        vetorUva.push(uva.nome_uva);
+                    }
+                    console.log(vetorUva);
+                    item.produto.uvas = vetorUva;
+                }
+                console.log(pedido);
                 res.status(200).json(pedido);
             });
            
