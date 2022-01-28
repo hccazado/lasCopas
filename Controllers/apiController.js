@@ -65,10 +65,8 @@ const controller = {
                     for(uva of item.produto.uvas){
                         vetorUva.push(uva.nome_uva);
                     }
-                    console.log(vetorUva);
                     item.produto.uvas = vetorUva;
                 }
-                console.log(pedido);
                 res.status(200).json(pedido);
             });
            
