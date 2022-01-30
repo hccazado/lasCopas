@@ -1,3 +1,5 @@
+
+
 #created{
     color: green;
     text-align: center;
@@ -25,7 +27,7 @@
 }
 
 .titulo_adm{
-    color: rgb(224, 71, 10);
+    color: rgb(253, 207, 0) !important;
 }
 
 
@@ -72,6 +74,10 @@ header .navbar.navbar-expand-lg.navbar-light.bg-light{
 
 footer .footer-social img{
     width:32px;
+}
+
+footer .social{
+    max-width: 95vw;
 }
 
 footer section p{
