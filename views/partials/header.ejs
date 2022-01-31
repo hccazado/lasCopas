@@ -27,12 +27,12 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                  <a class="nav-link links-menu" aria-current="page" href="/produtos">Produtos</a>
+                  <a class="nav-link links-menu links-menu-padding" aria-current="page" href="/produtos">Produtos</a>
                   <a class="nav-link links-menu" href="/sobre">Trajetoria</a>
                   <% if(!sessao){ %>
-                    <a class="nav-link links-menu" href="/login">Login</a>
+                    <a class="nav-link links-menu links-menu-padding" href="/login">Login</a>
                   <% } else{%>
-                    <div class="dropdown">
+                    <div class="dropdown link-menu links-menu-padding">
                       <a class="nav-link links-menu dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                         <%=sessao.nome%>
                       </a>

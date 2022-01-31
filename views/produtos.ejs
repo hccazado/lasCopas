@@ -1,18 +1,16 @@
 <%-include('./partials/header')%>
 <div class="container mt-3 mb-3">
-    <div class="d-flex gx-5 mt-3 p-2 selecao">
+    <div class="row w-100 d-flex justify-content-around">
         <% for(vinho of vinhos){ %>
-            <div class="col">
-                <div class="card" style="width: 20rem;" >
-                    <a href="produtos/<%=vinho.id_produto%>"><img class="card-img-top" src="<%=vinho.rotulo%>" alt="<%=vinho.finca%>"></a>
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="card-title"><%=vinho.finca%></h6>
-                            <p class="card-text text-muted p-1">R$ <%=vinho.valor%></p>
-                        </div>
-                        <p class="card-text"><%=vinho.uvas%></p>
-                        <a href="produtos/<%=vinho.id_produto%>" class="btn btn-primary">Compre</a>
+            <div class="card bg-light d-flex mt-3" style="width: 20rem;" >
+                <a href="produtos/<%=vinho.id_produto%>"><img class="card-img-top" src="<%=vinho.rotulo%>" alt="<%=vinho.finca%>"></a>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <h6 class="card-title"><%=vinho.finca%></h6>
+                        <p class="card-text text-muted p-1">R$ <%=vinho.valor%></p>
                     </div>
+                    <p class="card-text"><%=vinho.uvas%></p>
+                    <a href="produtos/<%=vinho.id_produto%>" class="btn btn-primary">Compre</a>
                 </div>
             </div>
         <% } %>

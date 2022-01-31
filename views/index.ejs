@@ -1,7 +1,7 @@
 <%- include('./partials/header') %>
     <content>
         <!--<div class="wrapper">-->
-        <div class="container mt-3">
+        <div class="container-fluid-xl mt-3">
             <!--Seção Carrousel -- descomentar-->
             <!--<div id="carousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
@@ -16,47 +16,36 @@
                   </div>
                 </div>
               </div> -->
-            <div class="row mt-3">
-                <img src="/images/banner2.png" alt="">
+            <div class="d-flex banner">
+              <img src="images/banner.jpeg" alt="vinhedo em mendoza">
+              <div class="banner d-flex justify-content-around align-items-center">
+                <div class="frase">
+                  frete gratis<br>sul e sudeste
+                </div>
+                <div class="frase">
+                  pague em até<br>6X sem juros
+                </div>
+              </div>
             </div>
               
               <!------------------Seção recomendados-------------------------->
               <h3 class="subtitulo mt-5">Produtos Selecionados</h3>
-              <div class="d-flex justify-content-around mt-3 p-2 selecao">
-                <div class="card" style="width: 20rem;">
-                  <img class="card-img-top" src="images/uploads/rotulos/EM-roble.png" alt="Rotulo Vinho Estancia Mendoza - Roble">
-                  <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                      <h6 class="card-title">Estancia Mendoza</h6> <!--O titulo é a finca(origem)-->
-                      <p class="card-text text-muted p-1">R$ 119,00</p>
-                    </div>
-                      <p class="card-text">Roble</p> <!--Uvas do vinho-->
-                      <a href="#" class="btn btn-primary">Compre</a><!--direcionar para pagina descriçao produto-->
-                  </div>
-                  </div>
-                  <div class="card" style="width: 20rem;">
-                    <img class="card-img-top" src="images/uploads/rotulos/Artero-tempranillo.webp" alt="otulo Vinho Artero - Tempranillo">
+              <!--<div class="d-flex justify-content-around mt-3 p-2 selecao">-->
+              <div class="row w-100 d-flex justify-content-around mt-2">
+                <%for(vinho of vinhos){%>
+                  <div class="card bg-light d-flex mt-2" style="width: 20rem;" >
+                    <a href="produtos/<%=vinho.id_produto%>"><img class="card-img-top" src="<%=vinho.rotulo%>" alt="<%=vinho.finca%>"></a>
                     <div class="card-body">
-                      <div class="d-flex justify-content-between">
-                        <h6 class="card-title">Artero</h6> <!--O titulo é a finca(origem)-->
-                        <p class="card-text text-muted p-1">R$ 119,00</p>
-                      </div>
-                        <p class="card-text">Tempranillo</p> <!--Uvas do vinho-->
-                        <a href="#" class="btn btn-primary">Compre</a><!--direcionar para pagina descriçao produto-->
+                        <div class="d-flex justify-content-between">
+                            <h6 class="card-title"><%=vinho.finca%></h6>
+                            <p class="card-text text-muted p-1">R$ <%=vinho.valor%></p>
+                        </div>
+                        <p class="card-text"><%=vinho.uvas%></p>
+                        <a href="produtos/<%=vinho.id_produto%>" class="btn btn-primary">Compre</a>
                     </div>
-                  </div>
-                  <div class="card" style="width: 20rem;">
-                    <img class="card-img-top" src="images/uploads/rotulos/Trapiche - cabernet.png" alt="Rotulo Vinho Trapichew - Cabernet">
-                    <div class="card-body">
-                      <div class="d-flex justify-content-between">
-                        <h6 class="card-title">Trapiche</h6> <!--O titulo é a finca(origem)-->
-                        <p class="card-text text-muted p-1">R$ 119,00</p>
-                      </div>
-                        <p class="card-text">Cabernet</p> <!--Uvas do vinho-->
-                        <a href="#" class="btn btn-primary">Compre</a><!--direcionar para pagina descriçao produto-->
-                    </div>
-                  </div>   
-            </div>
+                </div>
+                <% } %>
+             </div>
         </div>
     </content>
 <%- include("./partials/footer")%>

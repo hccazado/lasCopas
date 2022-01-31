@@ -32,9 +32,6 @@
 
 
 header .navbar.navbar-expand-lg.navbar-light.bg-light{
-   /* background: rgb(91,3,133);
-    background: linear-gradient(300deg, rgba(91,3,133,1) 0%, rgba(45,9,121,1) 50%, rgba(81,4,218,1) 100%);
-    */
     background: rgb(46,6,6);
     background: linear-gradient(174deg, rgba(46,6,6,1) 0%, rgba(115,2,2,1) 53%, rgba(42,39,39,1) 100%);
     color: #FFF;
@@ -63,11 +60,32 @@ header .navbar.navbar-expand-lg.navbar-light.bg-light{
 
 .subtitulo{
     color: rgb(197, 58, 81);
+    text-align: center;
 }
 
 .produto-card a p h5{
     text-decoration: none !important;
     color: black !important;
+}
+
+
+.banner {
+    background-color: rgb(128, 65, 23); /*#2060dd*/
+    width: 100vw;
+}
+
+.banner img{
+    width: 25vw;
+    margin-right: 30px;
+}
+
+.banner .frase{
+    color: #abc;
+    font-weight: 600;
+}
+
+.card-adm img{
+    width:90px
 }
 
 
@@ -150,14 +168,24 @@ footer section p{
 
 /*----------------------------------------------*/
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 990px) {
     .links-menu{
-        background-color: #93001b;
+        /*background-color: #93001b;*/
+        background-color: rgba(147, 0, 27, 0.8);
         width: 100vw;
         margin-left: -12px;
         border-radius: 0;
         z-index:10;
     }
+
+    .links-menu-padding{
+        padding-right: 10px !important;
+    }
+
+    .banner img{
+        display: none;
+    }
+
     .links-menu:hover{
         border-radius: 0;
     }
