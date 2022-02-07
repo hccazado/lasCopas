@@ -1,6 +1,6 @@
 const config = {
     "username": 'root',
-    "password": '12345678',
+    "password": '',
     "database": 'lasCopas',
     "host": 'localhost',
     "dialect": 'mysql',

@@ -1,50 +1,50 @@
-.wrapper .lista_container{
+.lista_container{
     
     margin: 20px auto;
     border: 1px solid #ccc;
     max-width: 80%;
 }
 
-.wrapper .lista_container ul{
+.lista_container ul{
     list-style: none;
     margin-block-start: 0;
 }
-.wrapper .lista_container .lista_item{
+.lista_container .lista_item{
     display: flex;
     height: 120px;
     border-bottom: 1px solid #ccc;  
     border: 80%; 
 }
 
-.wrapper .lista_container .item_img{
+.lista_container .item_img{
     width:20%;
 }
 
-.wrapper .lista_container .lista_item .rotulo{
+.lista_container .lista_item .rotulo{
     max-width: 120px;
 }
 
-.wrapper .rotulo{
+.rotulo{
     width:120px;
 }
 
-.wrapper .lista_container .item_desc{
+.lista_container .item_desc{
     width: 60%;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.wrapper .lista_container .item_desc span{
+.lista_container .item_desc span{
     font-weight: 500;
 }
-.wrapper .lista_container .item_valor{
+.lista_container .item_valor{
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 20%;
 }
 
-.wrapper .lista_container .item_valor span{
+.lista_container .item_valor span{
     color: red;
     font-weight: 500;
 }

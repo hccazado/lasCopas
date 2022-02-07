@@ -1,14 +1,12 @@
 <%- include('./partials/header')%>
-<div class="container">
-    <div id="detalheProduto" class="row">
-        <div id="detalheRotulo" class="col-4 mt-3 mb-3">
+<div class="container-fluid mt-5">
+    <div class=" d-flex row justify-content-center">
+        <div class="col mt-3 mb-3">
             <div class="detalhe-rotulo">
                 <img src="/<%=vinho.rotulo%>" alt="rotulo">
             </div>
         </div>
-        <div id="detalheDesc" class="col-5 col-sm1 mb-3">
-            <h4>Preço Unit. R$<%=(vinho.valor).toFixed(2)%></h4>
-            <br>
+        <div class="col  mb-3">
             <h5 class="fw-normal">Origem: <span><%=vinho.origem%></span><br>
             Uva: <span><%=vinho.uvas%></span><br>
             Ano: <span><%=vinho.ano%></span><br>
@@ -19,7 +17,8 @@
             <% } %>
         </div>
         <div class="col mb-3 mt-3">
-            <form class="row row-cols-lg-auto g-3 align-items-center" action="/produtos/adicionar/<%=vinho.id_produto%>" method="POST">
+            <h4>Preço Unit. R$<%=(vinho.valor).toFixed(2)%></h4>
+            <form class="row row-cols-lg-auto g-3 align-items-center mt-3" action="/produtos/adicionar/<%=vinho.id_produto%>" method="POST">
                 <div class="col-5">
                     <select class="form-select" id="autoSizingSelect" name="quantidade">
                     <option selected>sel.</option>

@@ -16,7 +16,8 @@ const controller = {
             },
             include: {model: Uva, as: "uvas"},
             raw: false,
-            nested: true
+            nested: true,
+            limit: 3
         }).then(produtos =>{
             //console.log(produtos);
             //vetor para armazenar objetos de produtos

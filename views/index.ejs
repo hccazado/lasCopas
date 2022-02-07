@@ -1,7 +1,7 @@
 <%- include('./partials/header') %>
     <content>
         <!--<div class="wrapper">-->
-        <div class="container-fluid-xl mt-3">
+        <div class="container-fluid-md mt-1">
             <!--Seção Carrousel -- descomentar-->
             <!--<div id="carousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
@@ -31,7 +31,7 @@
               <!------------------Seção recomendados-------------------------->
               <h3 class="subtitulo mt-5">Produtos Selecionados</h3>
               <!--<div class="d-flex justify-content-around mt-3 p-2 selecao">-->
-              <div class="row w-100 d-flex justify-content-around mt-2">
+              <div class="row w-100 d-flex justify-content-around mt-3">
                 <%for(vinho of vinhos){%>
                   <div class="card bg-light d-flex mt-2" style="width: 20rem;" >
                     <a href="produtos/<%=vinho.id_produto%>"><img class="card-img-top" src="<%=vinho.rotulo%>" alt="<%=vinho.finca%>"></a>

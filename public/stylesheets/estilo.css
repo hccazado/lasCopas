@@ -17,6 +17,16 @@
     color: rgb(224, 71, 10);
 }
 
+.nunito_font400{
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+}
+
+.nunito_font300{
+    font-family: 'Nunito', sans-serif;
+    font-weight: 300;
+}
+
 .link_logo:hover{
     color:#eee !important;
 }
@@ -71,7 +81,7 @@ header .navbar.navbar-expand-lg.navbar-light.bg-light{
 
 .banner {
     background-color: rgb(128, 65, 23); /*#2060dd*/
-    width: 100vw;
+    max-width: 100vw;
 }
 
 .banner img{
@@ -82,6 +92,7 @@ header .navbar.navbar-expand-lg.navbar-light.bg-light{
 .banner .frase{
     color: #abc;
     font-weight: 600;
+    width: 20vw;
 }
 
 .card-adm img{
@@ -184,6 +195,10 @@ footer section p{
 
     .banner img{
         display: none;
+    }
+
+    .frase{
+        display: hide;
     }
 
     .links-menu:hover{

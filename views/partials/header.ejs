@@ -14,36 +14,37 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400&display=swap" rel="stylesheet">
 
     <title><%= title %></title>
 </head>
-<body>
+<body class="nunito_font400 bg-light">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <a class="link_logo" href="/"><h1>las <span>Copas</span></h1></a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                  <a class="nav-link links-menu links-menu-padding" aria-current="page" href="/produtos">Produtos</a>
-                  <a class="nav-link links-menu" href="/sobre">Trajetoria</a>
-                  <% if(!sessao){ %>
-                    <a class="nav-link links-menu links-menu-padding" href="/login">Login</a>
-                  <% } else{%>
-                    <div class="dropdown link-menu links-menu-padding">
-                      <a class="nav-link links-menu dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                        <%=sessao.nome%>
-                      </a>
-                      <ul class="dropdown-menu bg-light" aria-labelledby="dropdownMenuLink">
-                        <li><a class="dropdown-item" href="/checkout">Carrinho</a></li>
-                        <li><a class="dropdown-item" href="/sair">Logout</a></li>
-                      </ul>
-                    </div>
-                  <%}%>
-                </div>
+          <div class="container-fluid">
+              <a class="link_logo nunito_font400" href="/"><h1>las <span>Copas</span></h1></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="nav-link links-menu links-menu-padding" aria-current="page" href="/produtos">Produtos</a>
+                <a class="nav-link links-menu" href="/sobre">Trajetoria</a>
+                <% if(!sessao){ %>
+                  <a class="nav-link links-menu links-menu-padding" href="/login">Login</a>
+                <% } else{%>
+                  <div class="dropdown link-menu links-menu-padding">
+                    <a class="nav-link links-menu dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                      <%=sessao.nome%>
+                    </a>
+                    <ul class="dropdown-menu bg-light" aria-labelledby="dropdownMenuLink">
+                      <li><a class="dropdown-item" href="/checkout">Carrinho</a></li>
+                      <li><a class="dropdown-item" href="/sair">Logout</a></li>
+                    </ul>
+                  </div>
+                <%}%>
               </div>
             </div>
-          </nav>
+          </div>
+        </nav>
     </header>
