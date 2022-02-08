@@ -97,13 +97,13 @@ const controller = {
 
         let carrinho = req.session.carrinho;
         carrinho = carrinho.map(item =>{
-            let itemMap = {id_produto: item.id,
-            quantidade: item.quantidade,
-            valor: item.valor
-        }
+            let itemMap = {
+                id_produto: item.id,
+                quantidade: item.quantidade,
+                valor: item.valor
+            }
             return itemMap;
         });
-        console.log(carrinho);
 
         var idEndereco = 0;
 
@@ -115,8 +115,14 @@ const controller = {
             }
         }).then(end =>{
             idEndereco = (end.enderecos[0].id_endereco);
-            console.log("ID Endereço: "+idEndereco)
         }).catch(error =>{console.log("Erro Sequelize. Possui endereço?\n" + error)})
+
+        for(item of carrinho){
+            let prod = await Produto.findByPk(item.id_produto);
+            let novoEstoque = (prod.dataValues.estoque - item.quantidade);
+            prod.update({estoque: novoEstoque}).then(res=>{console.log(res)});
+        }
+        
 
         let pedido = await Pedido.create({
             id_endereco: idEndereco,

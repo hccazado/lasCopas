@@ -181,8 +181,8 @@ footer section p{
 
 @media screen and (max-width: 990px) {
     .links-menu{
-        /*background-color: #93001b;*/
-        background-color: rgba(147, 0, 27, 0.8);
+        background-color: #93001b;
+        /*background-color: rgba(147, 0, 27, 0.8);*/
         width: 100vw;
         margin-left: -12px;
         border-radius: 0;
@@ -198,7 +198,7 @@ footer section p{
     }
 
     .frase{
-        display: hide;
+        text-align: center;
     }
 
     .links-menu:hover{

@@ -17,14 +17,14 @@
             <% } %>
         </div>
         <div class="col mb-3 mt-3">
-            <h4>Preço Unit. R$<%=(vinho.valor).toFixed(2)%></h4>
+            <h5>Preço Unit. R$<%=(vinho.valor).toFixed(2)%></h5>
             <form class="row row-cols-lg-auto g-3 align-items-center mt-3" action="/produtos/adicionar/<%=vinho.id_produto%>" method="POST">
                 <div class="col-5">
                     <select class="form-select" id="autoSizingSelect" name="quantidade">
                     <option selected>sel.</option>
                     <%if(vinho.estoque && vinho.estoque>0){%>
-                        <%for(let i=1; i<vinho.estoque+1; i++){%>
-                            <option value="<%i%>"><%=i%></option>
+                        <%for(let i=1; i<vinho.estoque+1 && i<=10; i++){%>
+                            <option value="<%=i%>"> <%=i%> </option>
                     <%}} %>
                     </select>
                 </div>
