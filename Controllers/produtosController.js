@@ -50,6 +50,46 @@ const controller = {
 
     }, 
 
+    indexFiltro: async (req, res, next) =>{
+        let {tipo} = req.params;
+        let Produtos = await Produto.findAll({
+            //include: [{model: Uva, as: 'uvas'}],
+            include: {model: Uva, as: "uvas"},
+            where: {tipo: tipo},
+            raw: false,
+            nested: true
+        }).then(produtos =>{
+            //console.log(produtos);
+            //vetor para armazenar objetos de produtos
+            const arrayVinhos = [];
+            //recorrendo array de produtos retornado pelo sequelize
+            produtos.forEach(element => {
+                //criando objeto vinho para receber desestruturaçao de cada elemento iterado no resultado sequelize
+                let vinho = {
+                    ...element.dataValues
+                }
+                //criando vetor vazio para receber as uvas de cada produto
+                let uvas = [];
+                //iterando as uvas de cada produto
+                element.dataValues.uvas.forEach(element2 =>{
+                    //adicionado prop nome_uva de cada iteraçao da ou das uvas do produto
+                    uvas.push(element2.dataValues.nome_uva);
+                });
+                vinho = {
+                    ...vinho,
+                    uvas,
+                }
+                //Adicionando objeto de vinho ao array de produtos
+                arrayVinhos.push(vinho)
+            });
+
+            res.render("produtos", {
+                title: title,
+                vinhos: arrayVinhos
+            })   
+        })
+    },
+
     cadastroProduto: (req, res, next) =>{
         res.render("cadastroProduto", {
             title: title,

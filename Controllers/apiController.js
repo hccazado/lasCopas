@@ -50,6 +50,7 @@ const controller = {
         try{
             let vinho = {};
             let pedido = await Pedido.findAll({
+                where: {id_pedido: id},
                 include:[
                     {model: Cliente, attributes:['nome', 'sobrenome', 'dt_nascimento', 'cadastro', 'documento']},
                     {model: Endereco, attributes: ['cep', 'endereco', 'complemento', 'numero', 'cidade', 'bairro', 'uf']},
@@ -65,6 +66,7 @@ const controller = {
                     for(uva of item.produto.uvas){
                         vetorUva.push(uva.nome_uva);
                     }
+                    console.log(vetorUva);
                     item.produto.uvas = vetorUva;
                 }
                 res.status(200).json(pedido);

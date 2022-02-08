@@ -6,6 +6,7 @@ const controllerCarrinho = require('../Controllers/carrinhoController');
 //-------------Rotas-------------------------
 //index
 router.get("/", controller.index);
+router.get("/:tipo", controller.indexFiltro);
 
 //get para cadastrar produto
 //router.get("/cadastro", controller.cadastroProduto);

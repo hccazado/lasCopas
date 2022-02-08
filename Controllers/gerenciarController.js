@@ -171,6 +171,56 @@ const controller = {
         /* A ser implementado */
 
     },
+
+    detalhePedido: async (req, res, next) =>{
+        let id = req.params.id;
+        console.log(id);
+        if(!id){
+            res.status(400).send("Deve informar Numero de pedido");
+        }
+        try{
+            let vinho = {};
+            let pedido = await Pedido.findAll({
+                where: {id_pedido: id},
+                include:[
+                    {model: Cliente, attributes:['nome', 'sobrenome', 'dt_nascimento', 'cadastro', 'documento']},
+                    {model: Endereco, attributes: ['cep', 'endereco', 'complemento', 'numero', 'cidade', 'bairro', 'uf']},
+                    {model: PedidoProduto, attributes:['valor', 'quantidade'], 
+                            include:{model: Produto, as: 'produto', attributes: ['finca'],
+                            include:[{model: Uva, as:"uvas"}]
+                            }
+                    }
+                ]
+            }).then(pedido=>{
+                let vetorProdutos = [];
+                
+                for (item of pedido[0].PedidoProdutos){
+                    let produto = {};
+                    let vetorUva = [];
+                    produto = {
+                        valor: item.dataValues.valor,
+                        quantidade: item.dataValues.quantidade,
+                        finca: item.produto.finca
+                    }
+                                        
+                    for(uva of item.produto.uvas){
+                        vetorUva.push(uva.nome_uva);
+                    }
+                    produto.uvas = vetorUva;
+                    vetorProdutos.push(produto);
+                }
+                //console.log(vetorProdutos)
+                return res.render("detalhePedido", {
+                    pedido: pedido[0],
+                    produtos: vetorProdutos});
+            });
+           
+        }
+        catch{
+            res.status(501).send("Pedido não encontrado");
+        }
+    },
+
     formCadastroCliente: (req, res, next) => {
         res.render("cadastroCliente", {
             title: title,

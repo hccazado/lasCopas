@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/estilo.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <!--Fonte Open Sans-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400&display=swap" rel="stylesheet">
+    <title>Pedido <%=pedido.id_pedido%> </title>
+</head>
+<body>
+    <header>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col">
+                    <img src="https://img.icons8.com/cute-clipart/64/000000/wine-glass.png">
+                </div>
+                <div class="col">
+                    <h1 class="text-danger">LasCopas</h1>
+                </div>
+                <div class="col">
+                    <h5>Resumo Pedido: <%=pedido.id_pedido%><br><%=pedido.data%></h5>
+                </div>
+            </div>
+        </div>
+    </header>
+    <content>
+        <div class="container mt-4">
+            <h4>Cliente</h4>
+            <div class="row">
+                <div class="col border border-mutted">
+                    <span class="fw-bold">Nome:</span> <%=pedido.Cliente.nome%> <%=pedido.Cliente.sobrenome%>
+                </div>
+                <div class="col border border-mutted">
+                    <span class="fw-bold">Pessoa:</span> <%=pedido.Cliente.cadastro%>
+                </div>
+                <div class="col border border-mutted">
+                    <span class="fw-bold">Documento:</span> <%=pedido.Cliente.documento%>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col border border-mutted">
+                    <span class="fw-bold">End:</span> <%=pedido.Endereco.endereco%>
+                </div>
+                <div class="col border border-mutted">
+                    <span class="fw-bold">Numero:</span> <%=pedido.Endereco.numero%>
+                </div>
+                <div class="col border border-mutted">
+                    <span class="fw-bold">Compl.:</span> <%=pedido.Endereco.complemento%>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col border border-mutted">
+                    <span class="fw-bold">Bairro:</span> <%=pedido.Endereco.bairro%>
+                </div>
+                <div class="col border border-mutted">
+                    <span class="fw-bold">Cidade:</span> <%=pedido.Endereco.cidade%>
+                </div>
+                <div class="col border border-mutted">
+                    <span class="fw-bold">UF:</span> <%=pedido.Endereco.uf%>
+                </div>
+                <div class="col border border-mutted">
+                    <span class="fw-bold">CEP:</span> <%=pedido.Endereco.cep%>
+                </div>
+            </div>    
+        </div>
+        
+        <div class="container mt-4">
+            <h4>Produtos Comprados</h4>
+            <% var vTotal = 0;
+               var tProdutos = 0; %>
+                <% for (produto of produtos){ %>
+                   <% vTotal += produto.valor * produto.quantidade;
+                    tProdutos += produto.quantidade; %>
+                
+                <div class="row border border-mutted mt-1">
+                    <div class="col border border-mutted">
+                        <span class="fw-bold">Finca:</span> <%=produto.finca%>
+                    </div>
+                    <div class="col border border-mutted">
+                        <span class="fw-bold">Uvas:</span> <%=produto.uvas%>
+                    </div>
+                    <div class="col border border-mutted">
+                        <span class="fw-bold">Qtd:</span> <%=produto.quantidade%> Und
+                    </div>
+                    <div class="col border border-mutted">
+                        <span class="fw-bold">Valor:</span> R$ <%=produto.valor%>
+                    </div>         
+                </div>
+            <% } %>
+            <div class="row border border-mutted mt-3">
+                <div class="col border border-mutted">
+                    <span class="fw-bold">Itens Comprados: <%=tProdutos%></span>
+                </div>
+                <div class="col border border-mutted">
+                    <span class="fw-bold">Valor Total: <%=vTotal%></span>
+                </div>
+            </div>
+            
+        </div>
+    </content>
+</body>
+</html>

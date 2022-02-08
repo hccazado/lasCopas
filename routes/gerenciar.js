@@ -23,6 +23,7 @@ router.get("/pedidos/buscar/:valor", controller.buscarPedidos);
 
 
 router.get("/pedidos", controller.listarPedidos);
+router.get("/pedidos/:id", controller.detalhePedido);
 
 router.get("/produtos", controller.listarProdutos);
 router.get("/produtos/cadastro", produtosController.cadastroProduto);
