@@ -3,7 +3,11 @@
     <div class=" d-flex row justify-content-center">
         <div class="col mt-3 mb-3">
             <div class="detalhe-rotulo">
-                <img src="/<%=vinho.rotulo%>" alt="rotulo">
+                <%if(!vinho.rotulo){%>
+                    <img class="card-img-top" src="/images/uploads/rotulos/vinho-vazio2.jpg" alt="<%=vinho.finca%>">
+                <%} else{%>   
+                    <img class="card-img-top" src="/<%=vinho.rotulo%>" alt="<%=vinho.finca%>">
+                <% } %>
             </div>
         </div>
         <div class="col  mb-3">

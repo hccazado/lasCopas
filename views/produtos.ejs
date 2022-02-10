@@ -1,33 +1,37 @@
 <%-include('./partials/header')%>
 <div class="container mt-3 mb-3">
-    <ul class="nav nav-pills">
+    <!--<ul class="nav nav-pills">
         <li class="nav-item">
             <a class="nav-link" href="/produtos">Todos</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/produtos/tinto">Tintos</a>
+            <a class="nav-link" href="/produtos/tipo/tinto">Tintos</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/produtos/branco">Branco</a>
+            <a class="nav-link" href="/produtos/tipo/branco">Branco</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/produtos/rose">Rosé</a>
+            <a class="nav-link" href="/produtos/tipo/rose">Rosé</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/produtos/espumante">Espumante</a>
+            <a class="nav-link" href="/produtos/tipo/espumante">Espumante</a>
         </li>
-    </ul>
+    </ul>-->
     <div class="row w-100 d-flex justify-content-around">
         <% for(vinho of vinhos){ %>
             <div class="card bg-light d-flex g-4" style="width: 20rem;" >
-                <a href="produtos/<%=vinho.id_produto%>"><img class="card-img-top" src="/<%=vinho.rotulo%>" alt="<%=vinho.finca%>"></a>
+                <%if(!vinho.rotulo){%>
+                    <a href="/produtos/<%=vinho.id_produto%>"><img class="card-img-top" src="/images/uploads/rotulos/vinho-vazio2.jpg" alt="<%=vinho.finca%>"></a> 
+                <%} else{%>   
+                    <a href="/produtos/<%=vinho.id_produto%>"><img class="card-img-top" src="/<%=vinho.rotulo%>" alt="<%=vinho.finca%>"></a>
+                <% } %>
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
                         <h6 class="card-title"><%=vinho.finca%></h6>
                         <p class="card-text text-muted p-1">R$ <%=vinho.valor%></p>
                     </div>
                     <p class="card-text"><%=vinho.uvas%></p>
-                    <a href="produtos/<%=vinho.id_produto%>" class="btn btn-primary">Compre</a>
+                    <a href="/produtos/<%=vinho.id_produto%>" class="btn btn-primary">Compre</a>
                 </div>
             </div>
         <% } %>

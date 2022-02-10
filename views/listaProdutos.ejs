@@ -32,7 +32,12 @@
                 <%for(let i=0; i<produtos.length;i++){%>
                 <tr>
                     <td><a href="/gerenciar/produtos/<%=produtos[i].id_produto%>"><%=produtos[i].id_produto%></a></td>
-                    <td><a href="/gerenciar/produtos/<%=produtos[i].id_produto%>"><img class="rotulo_tabela" src="/<%=produtos[i].rotulo%>"></a></td>
+                    <td><a href="/gerenciar/produtos/<%=produtos[i].id_produto%>">
+                        <%if(!produtos[i].rotulo){%>
+                            <img class="rotulo_tabela" src="/images/uploads/rotulos/vinho-vazio2.jpg" alt="<%=vinho.finca%>"> 
+                        <%} else{%>   
+                            <img class="rotulo_tabela" src="/<%=produtos[i].rotulo%>" alt="<%=vinho.finca%>">
+                        <% } %></a></td>
                     <td><a href="/gerenciar/produtos/<%=produtos[i].id_produto%>"><%=produtos[i].finca%></a></td>
                     <td><a href="/gerenciar/produtos/<%=produtos[i].id_produto%>"><%=produtos[i].uvas%></a></td>
                     <td><a href="/gerenciar/produtos/<%=produtos[i].id_produto%>"><%=produtos[i].valor%></a></td>

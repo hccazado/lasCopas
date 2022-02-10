@@ -209,7 +209,6 @@ const controller = {
                     produto.uvas = vetorUva;
                     vetorProdutos.push(produto);
                 }
-                //console.log(vetorProdutos)
                 return res.render("detalhePedido", {
                     pedido: pedido[0],
                     produtos: vetorProdutos});
