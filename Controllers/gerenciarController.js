@@ -126,6 +126,12 @@ const controller = {
                 }
             }
         }).then(resultado =>{
+            if(!resultado){
+                return res.render("listaProdutos", {
+                    title: title,
+                    produtos: []
+                });
+            }
             let vinho = {};
             resultado.forEach(atual =>{
                 let uvas = [];
@@ -147,13 +153,41 @@ const controller = {
     },
 
     buscarPedidos: async (req, res, next) =>{
-        /* A ser implementado */
+        let id = req.params.valor;
+        let estruturaPedidos =[];
+        let item = {};
+
+        let pedidos = await Pedido.findAll({
+            where:{
+                [Op.or]:{
+                    id_pedido:{[Op.like]: id}
+                }
+            },
+            include:[
+                {model: Cliente, attributes: ['documento', 'nome']},
+                {model: Endereco, attributes: ['endereco']}            
+            ]
+        });
+
+        for(pedido of pedidos){
+            item = {
+                nro: pedido.dataValues.id_pedido,
+                cliente: pedido.dataValues.Cliente.nome,
+                endereco: pedido.dataValues.Endereco.endereco,
+                data: pedido.dataValues.data
+            }
+            estruturaPedidos.push(item);
+        }
+
+        res.render("listaPedidos", {
+            title: title,
+            pedidos: estruturaPedidos
+        });
 
     },
 
     detalhePedido: async (req, res, next) =>{
         let id = req.params.id;
-        console.log(id);
         if(!id){
             res.status(400).send("Deve informar Numero de pedido");
         }

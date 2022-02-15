@@ -34,9 +34,9 @@
                     <td><a href="/gerenciar/produtos/<%=produtos[i].id_produto%>"><%=produtos[i].id_produto%></a></td>
                     <td><a href="/gerenciar/produtos/<%=produtos[i].id_produto%>">
                         <%if(!produtos[i].rotulo){%>
-                            <img class="rotulo_tabela" src="/images/uploads/rotulos/vinho-vazio2.jpg" alt="<%=vinho.finca%>"> 
+                            <img class="rotulo_tabela" src="/images/uploads/rotulos/vinho-vazio2.jpg" alt="<%=produtos[i].finca%>"> 
                         <%} else{%>   
-                            <img class="rotulo_tabela" src="/<%=produtos[i].rotulo%>" alt="<%=vinho.finca%>">
+                            <img class="rotulo_tabela" src="/<%=produtos[i].rotulo%>" alt="<%=produtos[i].finca%>">
                         <% } %></a></td>
                     <td><a href="/gerenciar/produtos/<%=produtos[i].id_produto%>"><%=produtos[i].finca%></a></td>
                     <td><a href="/gerenciar/produtos/<%=produtos[i].id_produto%>"><%=produtos[i].uvas%></a></td>
