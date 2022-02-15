@@ -8,17 +8,6 @@ const loginController = require("./loginController");
 //Titulo das paginas
 const title = "lasCopas - Administração";
 
-// Query para gerar relatorio de pedido//
-/*let pedidos = await Pedido.findAll({
-            include:[
-                {model: Cliente, attributes: ['documento', 'nome']},
-                {model: Endereco, attributes: ['endereco']},
-                {model: PedidoProduto, attributes:['valor'], 
-                        include:{model: Produto, as: 'produto', attributes: ['finca']}}
-            ]
-        });
-        console.log(pedidos[0].dataValues.PedidoProdutos[1].dataValues);
-*/
 
 //Objeto com os metodos do controller a serem exportados
 const controller = {
@@ -39,16 +28,6 @@ const controller = {
     listarPedidos: async (req, res, next) => {
         let estruturaPedidos =[];
         let item = {};
-
-       /* let pedidos = await Pedido.findAll({
-            group:['id_pedido', 'id_produto'],
-            include:[
-                {model: Cliente, attributes: ['documento', 'nome']},
-                {model: Endereco, attributes: ['endereco']},
-                {model: PedidoProduto, attributes: [ [Sequelize.fn('SUM', Sequelize.col('quantidade')), 'total'] ]             
-                }
-            ]
-        });*/
 
         let pedidos = await Pedido.findAll({
             include:[

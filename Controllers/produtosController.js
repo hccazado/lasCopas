@@ -16,7 +16,6 @@ const controller = {
             raw: false,
             nested: true
         }).then(produtos =>{
-            //console.log(produtos);
             //vetor para armazenar objetos de produtos
             const arrayVinhos = [];
             //recorrendo array de produtos retornado pelo sequelize
@@ -59,7 +58,6 @@ const controller = {
             raw: false,
             nested: true
         }).then(produtos =>{
-            //console.log(produtos);
             //vetor para armazenar objetos de produtos
             const arrayVinhos = [];
             //recorrendo array de produtos retornado pelo sequelize
@@ -102,10 +100,8 @@ const controller = {
     cadastrarProduto: async (req, res, next) =>{
         let errors = validationResult(req);
         if(errors.isEmpty()){
-            //console.log("entrou errors empty cadastro produto")
             let{uvas, cosecha, tipo, finca, ano, estoque, preco, origem, ativo, descricao} = req.body;
             if(!req.file){
-                //console.log("chamou registro SEM rotulo");
                 let produtoCadastrado = await Produto.create(
                     {
                         finca,
@@ -119,9 +115,7 @@ const controller = {
                         descricao,
                     }
                 )
-                //console.log(produtoCadastrado);
                 for(uva of uvas){
-                    //console.log("chamada addUva do produto cadastrado: "+uva)
                     produtoCadastrado.addUvas(uva);    
                 }
                 //redirecionando para pagina de administraçao de produtos
@@ -145,7 +139,6 @@ const controller = {
                     }
                 )
                 for(uva of uvas){
-                    //console.log("chamada addUva do produto cadastrado: "+uva)
                     produtoCadastrado.addUvas(uva);    
                 }
               

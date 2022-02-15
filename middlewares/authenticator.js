@@ -23,9 +23,10 @@ function autenticaAdmin(req, res, next){
         //Usuario tem propriedade Admin FALSE
         else{
             res.render("login",{
-                title: "lasCopas - Login",
+                title: "Las Copas - Login",
                 created: false,
                 error: {},
+                old: {},
                 errorModel: "Usuario não é Administrador"
             });
         }

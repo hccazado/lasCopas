@@ -43,7 +43,7 @@ const controller={
 
             //Entra no if caso a query tenha encontrado o email informado
             if(!login){
-                res.render("login",{
+                return res.render("login",{
                     title: title,
                     created: false,
                     error: {},

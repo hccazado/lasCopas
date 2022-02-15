@@ -12,8 +12,6 @@ const carrinho = {
             };
             carrinho.push(produto);
             req.session.carrinho = carrinho;
-            console.log("Carrinho vazinho, add item.");
-            console.log(req.session.carrinho);
             return res.redirect("/produtos");
         }
         //variavel carrinho presente na session
@@ -27,8 +25,6 @@ const carrinho = {
                     carrinho[i].quantidade = quantidade;
                     //substituindo valor da variavel carrinho na session pela atual
                     req.session.carrinho = carrinho;
-                    console.log("carrinho nao esta vazio. add mais um item");
-                    console.log(req.session.carrinho);
                     //retornado para pagina produtos
                     return res.redirect("/produtos");
                 }
@@ -43,8 +39,6 @@ const carrinho = {
             carrinho.push(produto);
             //atribuindo valor do array à session
             req.session.carrinho = carrinho;
-            console.log("carrinho nao esta vazio. add mais um item");
-            console.log(req.session.carrinho);
             //retornando pagina de produtos
             return res.redirect("/produtos");
     },

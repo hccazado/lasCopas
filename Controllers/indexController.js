@@ -19,7 +19,6 @@ const controller = {
             nested: true,
             limit: 3
         }).then(produtos =>{
-            //console.log(produtos);
             //vetor para armazenar objetos de produtos
             const arrayVinhos = [];
             //recorrendo array de produtos retornado pelo sequelize
