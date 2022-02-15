@@ -48,36 +48,35 @@ const controller={
                     errorModel: "Email não encontrado"
                 });
             }
-                //Verificando se a senha do form confere com o hash recuperado do banco
-                if(bcrypt.compareSync(user.password, login.dataValues.senha)){
-                    
-                    //Objeto que será salvo na session
-                    let usuarioLogado = {
-                        idCliente: login.Cliente.id_cliente,
-                        email: login.dataValues.email,
-                        nome: login.Cliente.nome,
-                        admin: login.dataValues.admin
-                    }
-                    req.session.user = usuarioLogado;
+            //Verificando se a senha do form confere com o hash recuperado do banco
+            if(bcrypt.compareSync(user.password, login.dataValues.senha)){
+                //Objeto que será salvo na session
+                let usuarioLogado = {
+                    idCliente: login.Cliente.id_cliente,
+                    email: login.dataValues.email,
+                    nome: login.Cliente.nome,
+                    admin: login.dataValues.admin
+                }
+                req.session.user = usuarioLogado;
 
-                    //Verificando se usuario é administrador e redirecionando para Home ou painel gerenciar
-                    if(usuarioLogado.admin == 1){
-                        return res.redirect("/gerenciar")
-                    }
-                    else{
-                        return res.redirect("/")
-                    }
+                //Verificando se usuario é administrador e redirecionando para Home ou painel gerenciar
+                if(usuarioLogado.admin == 1){
+                    return res.redirect("/gerenciar")
                 }
-                //Bcrypt retornou false para compare de senha informada e Hash
                 else{
-                    return res.render("login",{
-                        title: title,
-                        created: false,
-                        error: [],
-                        errorModel: "Senha Incorreta",
-                        old: user
-                    });
+                    return res.redirect("/")
                 }
+            }
+            //Bcrypt retornou false para compare de senha informada e Hash
+            else{
+                return res.render("login",{
+                    title: title,
+                    created: false,
+                    error: [],
+                    errorModel: "Senha Incorreta",
+                    old: user
+                });
+            }
         }   
         else{
             return res.render("login",{
