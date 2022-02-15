@@ -17,7 +17,6 @@ function autenticaAdmin(req, res, next){
     //verifica se sessão está aberta e usuario é admin
     if(req.session.user){
         if(req.session.user.admin == true){
-            console.log("Authenticator, usuario admin");
             return next();
         }
         //Usuario tem propriedade Admin FALSE

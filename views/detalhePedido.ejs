@@ -88,16 +88,16 @@
                         <span class="fw-bold">Qtd:</span> <%=produto.quantidade%> Und
                     </div>
                     <div class="col border border-mutted">
-                        <span class="fw-bold">Valor:</span> R$ <%=produto.valor%>
+                        <span class="fw-bold">Valor:</span> R$ <%=produto.valor.toFixed(2)%>
                     </div>         
                 </div>
             <% } %>
             <div class="row border border-mutted mt-3">
                 <div class="col border border-mutted">
-                    <span class="fw-bold">Itens Comprados: <%=tProdutos%></span>
+                    <span class="fw-bold">Itens Comprados:</span> <%=tProdutos%>
                 </div>
                 <div class="col border border-mutted">
-                    <span class="fw-bold">Valor Total: <%=vTotal%></span>
+                    <span class="fw-bold">Valor Total: R$ <%=vTotal.toFixed(2)%></span>
                 </div>
             </div>
             

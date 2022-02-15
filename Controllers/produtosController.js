@@ -39,7 +39,7 @@ const controller = {
                 arrayVinhos.push(vinho)
             });
 
-            res.render("produtos", {
+            return res.render("produtos", {
                 title: title,
                 vinhos: arrayVinhos
             })
@@ -58,6 +58,12 @@ const controller = {
             raw: false,
             nested: true
         }).then(produtos =>{
+            if(!produtos){
+                return res.render("produtos", {
+                    title: title,
+                    vinhos: []
+                }); 
+            }
             //vetor para armazenar objetos de produtos
             const arrayVinhos = [];
             //recorrendo array de produtos retornado pelo sequelize
@@ -81,7 +87,7 @@ const controller = {
                 arrayVinhos.push(vinho)
             });
 
-            res.render("produtos", {
+            return res.render("produtos", {
                 title: title,
                 vinhos: arrayVinhos
             })   
@@ -142,10 +148,10 @@ const controller = {
                     produtoCadastrado.addUvas(uva);    
                 }
               
-            res.redirect("/gerenciar/produtos");
+            return res.redirect("/gerenciar/produtos");
         }
         else{
-            res.render("cadastroProduto", {
+            return res.render("cadastroProduto", {
                 title: title,
                 isEditing: false,
                 old: req.body,
@@ -205,6 +211,9 @@ const controller = {
         let produto = await Produto.findByPk(id,{
             include: [{model: Uva, as: "uvas"}]
         }).then(resultado =>{
+            if(!resultado){
+                return res.redirect("/produtos");
+            }
             let uvas=[];
             resultado.uvas.forEach(uva =>{
 
@@ -215,7 +224,7 @@ const controller = {
                 uvas
             }   
         })
-        res.render("detalheProduto", {
+        return res.render("detalheProduto", {
             title: title,
             vinho: vinho
         });

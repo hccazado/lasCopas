@@ -37,9 +37,6 @@ const controller={
                     attributes:['id_cliente','nome']
                 }
             })
-            //console.log(login);
-
-            //console.log(login.dataValues);
 
             //Entra no if caso a query tenha encontrado o email informado
             if(!login){
@@ -54,7 +51,6 @@ const controller={
                 //Verificando se a senha do form confere com o hash recuperado do banco
                 if(bcrypt.compareSync(user.password, login.dataValues.senha)){
                     
-                    //console.log(login);
                     //Objeto que será salvo na session
                     let usuarioLogado = {
                         idCliente: login.Cliente.id_cliente,
@@ -63,8 +59,6 @@ const controller={
                         admin: login.dataValues.admin
                     }
                     req.session.user = usuarioLogado;
-                    console.log("inicio de sessão do usuario: "+usuarioLogado.nome);
-                    console.log(req.session.user);
 
                     //Verificando se usuario é administrador e redirecionando para Home ou painel gerenciar
                     if(usuarioLogado.admin == 1){
@@ -76,7 +70,7 @@ const controller={
                 }
                 //Bcrypt retornou false para compare de senha informada e Hash
                 else{
-                    res.render("login",{
+                    return res.render("login",{
                         title: title,
                         created: false,
                         error: [],
@@ -86,7 +80,7 @@ const controller={
                 }
         }   
         else{
-            res.render("login",{
+            return res.render("login",{
                 title: title,
                 created: false,
                 errorModel: null,
